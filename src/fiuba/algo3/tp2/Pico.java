@@ -1,8 +1,8 @@
 package fiuba.algo3.tp2;
 
-public class Hacha extends Herramienta {
+public class Pico extends Herramienta {
 	
-	public Hacha(Material material) {
+	public Pico(Material material){
 		super(material);
 	}
 	
@@ -17,7 +17,7 @@ public class Hacha extends Herramienta {
 	}
 	
 	public int getFuerzaMetal() {
-		return 10;
+		return 12;
 	}
 	
 }

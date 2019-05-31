@@ -1,10 +1,16 @@
-
 package fiuba.algo3.tp2;
 
-public interface Herramienta {
+public abstract class Herramienta {
+	
+	protected Material material;
+	
+	public Herramienta(Material material) {
+		this.material=material;
+	}
+	
+	public abstract int getDurabilidad();
 
-	Integer getDurabilidad();
-
-	Integer getFuerza();
-
+	public abstract int getFuerza();
+	
+	public abstract int getFuerzaMetal();
 }
