@@ -1,11 +1,10 @@
 package fiuba.algo3.tp2.integracion.entrega1;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-
 import fiuba.algo3.tp2.Hacha;
 import fiuba.algo3.tp2.Herramienta;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HerramientaTest {
 
