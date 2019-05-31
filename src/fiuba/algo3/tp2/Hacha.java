@@ -13,4 +13,8 @@ public class Hacha implements Herramienta {
 		
 		return 2;
 	}
+	
+	public Integer usar() {
+		return 99;
+	}
 }
