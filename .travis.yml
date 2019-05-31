@@ -8,5 +8,8 @@ notifications:
     email:
         recipients:
             - cefernandez@fi.uba.ar
+            - lore64210@gmail.com
+            - ben.inneo@gmail.com
+            - aye.lopez.bizon@hotmail.com
         on_success: always
         on_failure: always

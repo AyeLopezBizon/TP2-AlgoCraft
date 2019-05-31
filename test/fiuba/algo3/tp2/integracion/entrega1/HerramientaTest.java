@@ -15,6 +15,6 @@ public class HerramientaTest {
 		Herramienta hacha = new Hacha();
 		
 		assertEquals(new Integer(100), hacha.getDurabilidad());
-		assertEquals(new Integer(2), hacha.getFuerza());
+		assertEquals(new Integer(3), hacha.getFuerza());
 	}
 }
