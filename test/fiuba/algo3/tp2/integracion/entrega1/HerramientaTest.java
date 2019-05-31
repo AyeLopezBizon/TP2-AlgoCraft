@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.integracion.entrega1;
+/*package fiuba.algo3.tp2.integracion.entrega1;
 
 import fiuba.algo3.tp2.Hacha;
 import fiuba.algo3.tp2.Herramienta;
@@ -17,3 +17,4 @@ public class HerramientaTest {
 		assertEquals(new Integer(2), hacha.getFuerza());
 	}
 }
+*/
