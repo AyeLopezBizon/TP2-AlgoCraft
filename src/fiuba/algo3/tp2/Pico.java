@@ -7,7 +7,7 @@ public class Pico extends Herramienta {
 	}
 	
 	@Override
-	public int getDurabilidad() {
+	public float getDurabilidad() {
 		return material.getDurabilidad(this);
 	}
 
@@ -19,5 +19,10 @@ public class Pico extends Herramienta {
 	public int getFuerzaMetal() {
 		return 12;
 	}
-	
+
+	@Override
+	public void usar(MaterialCubo materialCubo) {
+		material.reducirDurabilidad(this, materialCubo);
+	}
+
 }

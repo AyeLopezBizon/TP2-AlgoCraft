@@ -8,9 +8,11 @@ public abstract class Herramienta {
 		this.material=material;
 	}
 	
-	public abstract int getDurabilidad();
+	public abstract float getDurabilidad();
 
 	public abstract int getFuerza();
 	
 	public abstract int getFuerzaMetal();
+
+	public abstract void usar(MaterialCubo materialCubo);
 }

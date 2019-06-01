@@ -7,7 +7,7 @@ public class Hacha extends Herramienta {
 	}
 	
 	@Override
-	public int getDurabilidad() {
+	public float getDurabilidad() {
 		return material.getDurabilidad(this);
 	}
 
@@ -19,5 +19,10 @@ public class Hacha extends Herramienta {
 	public int getFuerzaMetal() {
 		return 10;
 	}
-	
+
+	@Override
+	public void usar(MaterialCubo materialCubo) {
+		material.reducirDurabilidad(this, materialCubo);
+	}
+
 }

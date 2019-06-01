@@ -6,7 +6,7 @@ public class PicoFino extends Pico {
 		super(material);
 	}
 	
-	public int getDurabilidad() {
+	public float getDurabilidad() {
 		return 1000;
 	}
 	

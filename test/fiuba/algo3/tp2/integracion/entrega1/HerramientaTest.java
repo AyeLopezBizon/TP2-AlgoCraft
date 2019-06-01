@@ -6,34 +6,217 @@ import static org.junit.Assert.*;
 
 public class HerramientaTest {
 
+	//Pruebas Hacha de madera
 	@Test
 	public void dadaUnHachaDeMadera_CuandoSeCrea_DeberiaTenerDurabilidad100YFuerza2() {
 		Herramienta hacha = new Hacha(new Madera());
 		assertTrue(hacha.getDurabilidad()==100);
 		assertTrue(hacha.getFuerza()==2);
 	}
-	
+
+	@Test
+	public void dadaUnHachaDeMadera_CuandoSeUsaUnaVezContraMaderaCubo_DeberiaDisminuirLaDurabilidadEn2(){
+		Herramienta hacha = new Hacha(new Madera());
+		MaterialCubo maderaCubo = new MaderaCubo();
+
+		float durabilidad = hacha.getDurabilidad();
+
+		hacha.usar(maderaCubo);
+
+		assertEquals(hacha.getDurabilidad(), durabilidad - 2, 0.0);
+	}
+
+	@Test
+	public void dadaUnHachaDeMadera_CuandoSeUsaUnaVezContraPiedraCubo_DeberiaDisminuirLaDurabilidadEn2(){
+
+		Herramienta hacha = new Hacha(new Madera());
+		MaterialCubo piedraCubo = new PiedraCubo();
+
+		float durabilidad = hacha.getDurabilidad();
+
+		hacha.usar(piedraCubo);
+
+		assertEquals(hacha.getDurabilidad(), durabilidad - 2, 0.0);
+	}
+
+	@Test
+	public void dadaUnHachaDeMadera_CuandoSeUsaUnaVezContraMetalCubo_DeberiaDisminuirLaDurabilidadEn2(){
+		Herramienta hacha = new Hacha(new Madera());
+		MaterialCubo metalCubo = new MetalCubo();
+
+		float durabilidad = hacha.getDurabilidad();
+
+		hacha.usar(metalCubo);
+
+		assertEquals(hacha.getDurabilidad(), durabilidad - 2, 0.0);
+	}
+
+	@Test
+	public void dadaUnHachaDeMadera_CuandoSeUsaUnaVezContraDiamanteCubo_DeberiaDisminuirLaDurabilidadEn2(){
+		Herramienta hacha = new Hacha(new Madera());
+		MaterialCubo diamanteCubo = new DiamanteCubo();
+
+		float durabilidad = hacha.getDurabilidad();
+
+		hacha.usar(diamanteCubo);
+
+		assertEquals(hacha.getDurabilidad(), durabilidad - 2, 0.0);
+	}
+
+	//Pruebas Pico de madera
 	@Test
 	public void dadoUnPicoDeMadera_CuandoSeCrea_DeberiaTenerDurabilidad100YFuerza2() {
 		Herramienta pico = new Pico(new Madera());
 		assertTrue(pico.getDurabilidad()==100);
 		assertTrue(pico.getFuerza()==2);
 	}
-	
+
+	@Test
+	public void dadoUnPicoDeMadera_CuandoSeUsaUnaVezContraMaderaCubo_DeberiaDisminuirLaDurabilidadEn2(){
+		Herramienta pico = new Pico(new Madera());
+		MaterialCubo maderaCubo = new MaderaCubo();
+
+		float durabilidad = pico.getDurabilidad();
+
+		pico.usar(maderaCubo);
+
+		assertEquals(pico.getDurabilidad(), durabilidad - 2, 0.0);
+	}
+
+	@Test
+	public void dadoUnPicoDeMadera_CuandoSeUsaUnaVezContraPiedraCubo_DeberiaDisminuirLaDurabilidadEn2(){
+
+		Herramienta pico = new Pico(new Madera());
+		MaterialCubo piedraCubo = new PiedraCubo();
+
+		float durabilidad = pico.getDurabilidad();
+
+		pico.usar(piedraCubo);
+
+		assertEquals(pico.getDurabilidad(), durabilidad - 2, 0.0);
+	}
+
+	@Test
+	public void dadoUnPicoDeMadera_CuandoSeUsaUnaVezContraMetalCubo_DeberiaDisminuirLaDurabilidadEn2(){
+
+		Herramienta pico = new Pico(new Madera());
+		MaterialCubo metalCubo = new MetalCubo();
+
+		float durabilidad = pico.getDurabilidad();
+
+		pico.usar(metalCubo);
+
+		assertEquals(pico.getDurabilidad(), durabilidad - 2, 0.0);
+	}
+
+	@Test
+	public void dadoUnPicoDeMadera_CuandoSeUsaUnaVezContraDiamanteCubo_DeberiaDisminuirLaDurabilidadEn2(){
+
+		Herramienta pico = new Pico(new Madera());
+		MaterialCubo diamanteCubo = new DiamanteCubo();
+
+		float durabilidad = pico.getDurabilidad();
+
+		pico.usar(diamanteCubo);
+
+		assertEquals(pico.getDurabilidad(), durabilidad - 2, 0.0);
+	}
+
+	//Pruebas Hacha de piedra
+	@Test
+	public void dadaUnHachaDePiedra_CuandoSeCrea_DeberiaTenerDurabilidad200YFuerza5() {
+		Herramienta hacha = new Hacha(new Piedra(5));
+		assertTrue(hacha.getDurabilidad()==200);
+		assertTrue(hacha.getFuerza()==5);
+	}
+
+	@Test
+	public void dadaUnHachaDePiedra_CuandoSeUsaUnaVezContraMaderaCubo_DeberiaDisminuirLaDurabilidadEn5(){
+		Herramienta hacha = new Hacha(new Piedra(5));
+		MaterialCubo maderaCubo = new MaderaCubo();
+
+		float durabilidad = hacha.getDurabilidad();
+
+		hacha.usar(maderaCubo);
+
+		assertEquals(hacha.getDurabilidad(), durabilidad - 5, 0.0);
+	}
+
+	@Test
+	public void dadaUnHachaDePiedra_CuandoSeUsaUnaVezContraPiedraCubo_DeberiaDisminuirLaDurabilidadEn5(){
+
+		Herramienta hacha = new Hacha(new Piedra(5));
+		MaterialCubo piedraCubo = new PiedraCubo();
+
+		float durabilidad = hacha.getDurabilidad();
+
+		hacha.usar(piedraCubo);
+
+		assertEquals(hacha.getDurabilidad(), durabilidad - 5, 0.0);
+	}
+
+	@Test
+	public void dadaUnHachaDePiedra_CuandoSeUsaUnaVezContraMetalCubo_DeberiaDisminuirLaDurabilidadEn5(){
+		Herramienta hacha = new Hacha(new Piedra(5));
+		MaterialCubo metalCubo = new MetalCubo();
+
+		float durabilidad = hacha.getDurabilidad();
+
+		hacha.usar(metalCubo);
+
+		assertEquals(hacha.getDurabilidad(), durabilidad - 5, 0.0);
+	}
+
+	@Test
+	public void dadaUnHachaDePiedra_CuandoSeUsaUnaVezContraDiamanteCubo_DeberiaDisminuirLaDurabilidadEn5(){
+		Herramienta hacha = new Hacha(new Piedra(5));
+		MaterialCubo diamanteCubo = new DiamanteCubo();
+
+		float durabilidad = hacha.getDurabilidad();
+
+		hacha.usar(diamanteCubo);
+
+		assertEquals(hacha.getDurabilidad(), durabilidad - 5, 0.0);
+	}
+
+	//Pruebas Pico de piedra
+	@Test
+	public void dadoUnPicoDePiedra_CuandoSeCrea_DeberiaTenerDurabilidad200YFuerza4(){
+		Herramienta pico = new Pico(new Piedra(4));
+		assertTrue(pico.getDurabilidad()==200);
+		assertTrue(pico.getFuerza()==4);
+	}
+/*
+	@Test
+	public void dadoUnPicodePiedra_CuandoSeUsaUnaVezContraMaderaCubo_DeberiaDesminuirlaDurabilidadEn2Coma6(){
+		Herramienta pico = new Pico(new Piedra(4));
+		MaterialCubo maderaCubo = new MaderaCubo();
+
+		float durabilidad = pico.getDurabilidad();
+
+		pico.usar(maderaCubo);
+
+		assertTrue(pico.getDurabilidad() == (durabilidad - 2.6666f));
+
+	}
+*/
+	//Pruebas Hacha de metal
 	@Test
 	public void dadaUnHachaDeMetal_CuandoSeCrea_DeberiaTenerDurabilidad400YFuerza10() {
 		Herramienta hacha = new Hacha(new Metal());
 		assertTrue(hacha.getDurabilidad()==400);
 		assertTrue(hacha.getFuerza()==10);
 	}
-	
+
+	//Pruebas Pico de metal
 	@Test
 	public void dadoUnPicoDeMetal_CuandoSeCrea_DeberiaTenerDurabilidad400YFuerza12() {
 		Herramienta pico = new Pico(new Metal());
 		assertTrue(pico.getDurabilidad()==400);
 		assertTrue(pico.getFuerza()==12);
 	}
-	
+
+	//Pruebas Pico fino
 	@Test
 	public void dadoUnPicoFino_CuandoSeCrea_DeberiaTenerDurabilidad1000YFuerza20() {
 		Herramienta picoFino = new PicoFino(new Metal()); //paquie aca
