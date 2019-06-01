@@ -1,8 +1,8 @@
 package fiuba.algo3.tp2.integracion.entrega1;
 
 import fiuba.algo3.tp2.*;
-import static org.junit.Assert.*;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class HerramientaTest {
 
