@@ -10,6 +10,6 @@ notifications:
             - cefernandez@fi.uba.ar
             - lore64210@gmail.com
             - ben.inneo@gmail.com
-            - aye.lopez.bizon@hotmail.com
+            - alopezbizon@fi.uba.ar
         on_success: always
         on_failure: always
