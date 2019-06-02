@@ -13,6 +13,8 @@ import fiuba.algo3.tp2.material.MaterialDestruidoNoSePuedeGolpearException;
 import fiuba.algo3.tp2.material.Metal;
 import fiuba.algo3.tp2.material.Piedra;
 
+import java.math.BigDecimal;
+
 public class MaterialTest {
 
 	@Test
@@ -52,7 +54,7 @@ public class MaterialTest {
 		Herramienta hachaPiedra = HerramientaFactory.newHachaDePiedra();
 		Herramienta hachaMetal = HerramientaFactory.newHachaDeMetal();
 		
-		Integer durabilidadPiedra = piedra.getDurabilidad();
+		BigDecimal durabilidadPiedra = piedra.getDurabilidad();
 		assertEquals(new Integer(30), durabilidadPiedra);
 		
 		// Se golpea varias veces la piedra con las distintas hachas
@@ -83,7 +85,7 @@ public class MaterialTest {
 		Material metal = new Metal();
 		Herramienta picoMadera = HerramientaFactory.newPicoDeMadera();
 		
-		Integer durabilidadMetal = metal.getDurabilidad();
+		BigDecimal durabilidadMetal = metal.getDurabilidad();
 		assertEquals(new Integer(50), durabilidadMetal);
 		
 		// Se golpea varias veces el metal con el pico 

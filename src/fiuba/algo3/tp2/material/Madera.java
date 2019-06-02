@@ -2,9 +2,11 @@ package fiuba.algo3.tp2.material;
 
 import fiuba.algo3.tp2.herramienta.golpe.Golpe;
 
+import java.math.BigDecimal;
+
 public class Madera extends Material {
 	
-	private static final Integer durabilidadInicial = 10;
+	private static final BigDecimal durabilidadInicial = new BigDecimal(10);
 	
 	public Madera() {
 		super(durabilidadInicial);

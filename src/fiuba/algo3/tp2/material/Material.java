@@ -4,28 +4,28 @@ import java.math.BigDecimal;
 
 public abstract class Material implements Golpeable {
 
-	protected Integer durabilidad;
+	protected BigDecimal durabilidad;
 	
-	public Material(Integer durabilidad) {
+	public Material(BigDecimal durabilidad) {
 		this.durabilidad = durabilidad;
 	}
 	
-	public Integer getDurabilidad() {
+	public BigDecimal getDurabilidad() {
 		return durabilidad;
 	}
 	
 	public void reducirDurabilidad(BigDecimal danio) throws MaterialDestruidoNoSePuedeGolpearException {
 		
-		if(durabilidad == 0) {
+		if(durabilidad.equals(0)) {
 			throw new MaterialDestruidoNoSePuedeGolpearException();
 		}
 		
-		durabilidad = durabilidad.subtra danio;
+		durabilidad = durabilidad.subtract(danio);
 		
 		// La durabilidad no puede ser negativa, 
 		// si el danio es mayor a la durabilidad se setea en 0
-		if(durabilidad < 0) {
-			durabilidad = 0;
+		if(durabilidad.compareTo(new BigDecimal(0)) < 0){
+			durabilidad = new BigDecimal(0);
 		}
 	}
 }
