@@ -9,10 +9,6 @@ public class Jugador {
 
     private Inventario inventario = new Inventario();
 
-    public Jugador() {
-        this.inventario.crearHachaDeMadera();
-    }
-
     public BigDecimal getDurabilidadDelHachaDeMadera() {
         return this.inventario.getDurabilidadDelHachaDeMadera();
     }
@@ -21,7 +17,6 @@ public class Jugador {
         try {
             this.inventario.golpearConHachaDeMadera(material);
         } catch (MaterialDestruidoNoSePuedeGolpearException e) {
-            this.inventario.recoger(material);
         }
     }
 }
