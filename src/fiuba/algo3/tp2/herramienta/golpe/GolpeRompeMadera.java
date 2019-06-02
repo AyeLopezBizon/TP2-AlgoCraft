@@ -42,4 +42,9 @@ public class GolpeRompeMadera implements Golpe {
 	public void golpear(Diamante diamante) throws MaterialDestruidoNoSePuedeGolpearException {
 		// No se reduce la durabilidad del diamante
 	}
+	
+	@Override
+	public Integer getFuerza() {
+		return fuerza;
+	}
 }

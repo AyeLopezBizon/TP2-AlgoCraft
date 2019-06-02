@@ -18,4 +18,6 @@ public interface Golpe {
 	void golpear(Metal metal) throws MaterialDestruidoNoSePuedeGolpearException;
 
 	void golpear(Diamante diamante) throws MaterialDestruidoNoSePuedeGolpearException;
+	
+	Integer getFuerza();
 }

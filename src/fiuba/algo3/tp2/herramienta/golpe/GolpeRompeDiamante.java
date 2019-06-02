@@ -44,4 +44,9 @@ public class GolpeRompeDiamante implements Golpe {
 		
 		diamante.reducirDurabilidad(fuerza);
 	}
+
+	@Override
+	public Integer getFuerza() {
+		return fuerza;
+	}
 }

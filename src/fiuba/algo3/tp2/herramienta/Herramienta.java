@@ -19,6 +19,10 @@ public abstract class Herramienta {
 		return durabilidad.getValor();
 	}
 	
+	public Integer getFuerza() {
+		return golpe.getFuerza();
+	}
+	
 	public void golpear(Material material) 
 			throws MaterialDestruidoNoSePuedeGolpearException {
 		
