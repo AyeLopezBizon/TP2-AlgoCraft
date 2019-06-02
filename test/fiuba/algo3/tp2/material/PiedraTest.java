@@ -1,5 +1,5 @@
 package fiuba.algo3.tp2.material;
-
+/*
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
@@ -32,3 +32,4 @@ public class PiedraTest {
 		verify(golpe, times(1)).golpear((Piedra)piedra);
 	}
 }
+*/

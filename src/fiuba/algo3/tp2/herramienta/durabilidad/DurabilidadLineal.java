@@ -4,10 +4,10 @@ import java.math.BigDecimal;
 
 public class DurabilidadLineal implements Durabilidad {
 
-	private Integer durabilidadInicial;
+	private BigDecimal durabilidadInicial;
 	private BigDecimal tasaDesgaste;
 
-	public DurabilidadLineal(Integer durabilidadInicial, BigDecimal tasaDesgaste) {
+	public DurabilidadLineal(BigDecimal durabilidadInicial, BigDecimal tasaDesgaste) {
 		
 		this.durabilidadInicial = durabilidadInicial;
 		this.tasaDesgaste = tasaDesgaste;
@@ -15,13 +15,13 @@ public class DurabilidadLineal implements Durabilidad {
 
 	@Override
 	public void reducir() {
-		// TODO Auto-generated method stub
+		durabilidadInicial = durabilidadInicial.subtract(tasaDesgaste);
 	}
 
 	@Override
-	public float getValor() {
-		// TODO Auto-generated method stub
-		return 0;
+	public BigDecimal getValor() {
+
+		return durabilidadInicial;
 	}
 
 }

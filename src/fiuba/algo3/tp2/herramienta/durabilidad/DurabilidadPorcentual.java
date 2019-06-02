@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.herramienta.durabilidad;
 
+import java.math.BigDecimal;
+
 public class DurabilidadPorcentual implements Durabilidad {
 
 	public DurabilidadPorcentual(Integer durabilidadInicial, Integer porcentajeAReducir) {
@@ -13,9 +15,9 @@ public class DurabilidadPorcentual implements Durabilidad {
 	}
 
 	@Override
-	public float getValor() {
+	public BigDecimal getValor() {
 		// TODO Auto-generated method stub
-		return 0;
+		return new BigDecimal(0);
 	}
 
 }

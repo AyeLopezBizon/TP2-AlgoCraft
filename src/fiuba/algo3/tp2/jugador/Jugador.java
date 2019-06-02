@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.jugador;
 
+import java.math.BigDecimal;
+
 public class Jugador {
 
     private Inventario inventario = new Inventario();;
@@ -8,7 +10,7 @@ public class Jugador {
         this.inventario.crearHachaDeMadera();
     }
 
-    public float getDurabilidadDelHachaDeMadera() {
+    public BigDecimal getDurabilidadDelHachaDeMadera() {
         return this.inventario.getDurabilidadDelHachaDeMadera();
     }
 }

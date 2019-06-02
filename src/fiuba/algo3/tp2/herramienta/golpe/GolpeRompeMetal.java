@@ -7,12 +7,18 @@ import fiuba.algo3.tp2.material.MaterialDestruidoNoSePuedeGolpearException;
 import fiuba.algo3.tp2.material.Metal;
 import fiuba.algo3.tp2.material.Piedra;
 
+import java.math.BigDecimal;
+
 public class GolpeRompeMetal implements Golpe {
 
-	private Integer fuerza;
+	private BigDecimal fuerza;
 
-	public GolpeRompeMetal(Integer fuerza) {
+	public GolpeRompeMetal(BigDecimal fuerza) {
 		this.fuerza = fuerza;
+	}
+
+	public BigDecimal getFuerza() {
+		return fuerza;
 	}
 
 	@Override

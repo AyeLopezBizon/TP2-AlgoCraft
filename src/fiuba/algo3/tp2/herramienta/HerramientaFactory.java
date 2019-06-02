@@ -20,23 +20,23 @@ import fiuba.algo3.tp2.herramienta.golpe.GolpeRompePiedra;
 public class HerramientaFactory {
 
 	public static Herramienta newHachaDeMadera() {
-		return new Hacha(new DurabilidadLineal(100, new BigDecimal(2)), new GolpeRompeMadera(2));
+		return new Hacha(new DurabilidadLineal(new BigDecimal(100), new BigDecimal(2)), new GolpeRompeMadera(2));
 	}
 
 	public static Herramienta newHachaDePiedra() {
-		return new Hacha(new DurabilidadLineal(200, new BigDecimal(5)), new GolpeRompeMadera(5));
+		return new Hacha(new DurabilidadLineal(new BigDecimal(200), new BigDecimal(5)), new GolpeRompeMadera(5));
 	}
 
 	public static Herramienta newHachaDeMetal() {
-		return new Hacha(new DurabilidadLineal(400, new BigDecimal(5)), new GolpeRompeMadera(10));
+		return new Hacha(new DurabilidadLineal(new BigDecimal(400), new BigDecimal(5)), new GolpeRompeMadera(10));
 	}
 
 	public static Herramienta newPicoDeMadera() {
-		return new Pico(new DurabilidadLineal(100, new BigDecimal(2)), new GolpeRompePiedra(2));
+		return new Pico(new DurabilidadLineal(new BigDecimal(100), new BigDecimal(2)), new GolpeRompePiedra(2));
 	}
 
 	public static Herramienta newPicoDePiedra() {
-		return new Pico(new DurabilidadLineal(200, 
+		return new Pico(new DurabilidadLineal(new BigDecimal(200),
 				new BigDecimal(4).divide(new BigDecimal(1.5), RoundingMode.HALF_UP)), new GolpeRompeMetal(4));
 	}
 

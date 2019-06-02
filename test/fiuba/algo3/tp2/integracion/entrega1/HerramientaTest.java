@@ -1,64 +1,74 @@
 package fiuba.algo3.tp2.integracion.entrega1;
-/*
+
+import fiuba.algo3.tp2.herramienta.Herramienta;
+import fiuba.algo3.tp2.herramienta.HerramientaFactory;
+import fiuba.algo3.tp2.material.*;
+import org.junit.Test;
+
+import java.math.BigDecimal;
+
+import static org.junit.Assert.assertEquals;
+
 public class HerramientaTest {
 
 	//Pruebas Hacha de madera
 	@Test
 	public void dadaUnHachaDeMadera_CuandoSeCrea_DeberiaTenerDurabilidad100YFuerza2() {
-		Herramienta hacha = new Hacha(new MaderaHerramienta());
-		assertTrue(hacha.getDurabilidad()==100);
-		assertTrue(hacha.getFuerza()==2);
+		Herramienta hachaDeMadera = HerramientaFactory.newHachaDeMadera();
+
+		assertEquals(new BigDecimal(100), hachaDeMadera.getDurabilidad());
+		assertEquals(new BigDecimal(2), hachaDeMadera.getFuerza());
 	}
 
 	@Test
-	public void dadaUnHachaDeMadera_CuandoSeUsaUnaVezContraMaderaCubo_DeberiaDisminuirLaDurabilidadEn2(){
-		Herramienta hacha = new Hacha(new MaderaHerramienta());
+	public void dadaUnHachaDeMadera_CuandoSeUsaUnaVezContraMadera_DeberiaDisminuirLaDurabilidadEn2() throws MaterialDestruidoNoSePuedeGolpearException {
+		Herramienta hachaDeMadera = HerramientaFactory.newHachaDeMadera();
 		Material maderaCubo = new Madera();
 
-		float durabilidad = hacha.getDurabilidad();
+		BigDecimal durabilidad = hachaDeMadera.getDurabilidad();
 
-		hacha.golpear(maderaCubo);
+		hachaDeMadera.golpear(maderaCubo);
 
-		assertEquals(hacha.getDurabilidad(), durabilidad - 2, 0.0);
+		assertEquals(durabilidad.subtract(new BigDecimal(2)), hachaDeMadera.getDurabilidad());
 	}
 
 	@Test
-	public void dadaUnHachaDeMadera_CuandoSeUsaUnaVezContraPiedraCubo_DeberiaDisminuirLaDurabilidadEn2(){
+	public void dadaUnHachaDeMadera_CuandoSeUsaUnaVezContraPiedra_DeberiaDisminuirLaDurabilidadEn2() throws MaterialDestruidoNoSePuedeGolpearException {
 
-		Herramienta hacha = new Hacha(new MaderaHerramienta());
-		Material piedraCubo = new PiedraCubo();
+		Herramienta hachaDeMadera = HerramientaFactory.newHachaDeMadera();
+		Material piedraCubo = new Piedra();
 
-		float durabilidad = hacha.getDurabilidad();
+		BigDecimal durabilidad = hachaDeMadera.getDurabilidad();
 
-		hacha.golpear(piedraCubo);
+		hachaDeMadera.golpear(piedraCubo);
 
-		assertEquals(hacha.getDurabilidad(), durabilidad - 2, 0.0);
+		assertEquals(durabilidad.subtract(new BigDecimal(2)), hachaDeMadera.getDurabilidad());
 	}
 
 	@Test
-	public void dadaUnHachaDeMadera_CuandoSeUsaUnaVezContraMetalCubo_DeberiaDisminuirLaDurabilidadEn2(){
-		Herramienta hacha = new Hacha(new MaderaHerramienta());
-		Material metalCubo = new MetalCubo();
+	public void dadaUnHachaDeMadera_CuandoSeUsaUnaVezContraMetal_DeberiaDisminuirLaDurabilidadEn2() throws MaterialDestruidoNoSePuedeGolpearException {
+		Herramienta hachaDeMadera = HerramientaFactory.newHachaDeMadera();
+		Material metalCubo = new Metal();
 
-		float durabilidad = hacha.getDurabilidad();
+		BigDecimal durabilidad = hachaDeMadera.getDurabilidad();
 
-		hacha.golpear(metalCubo);
+		hachaDeMadera.golpear(metalCubo);
 
-		assertEquals(hacha.getDurabilidad(), durabilidad - 2, 0.0);
+		assertEquals(durabilidad.subtract(new BigDecimal(2)), hachaDeMadera.getDurabilidad());
 	}
 
 	@Test
-	public void dadaUnHachaDeMadera_CuandoSeUsaUnaVezContraDiamanteCubo_DeberiaDisminuirLaDurabilidadEn2(){
-		Herramienta hacha = new Hacha(new MaderaHerramienta());
-		Material diamanteCubo = new DiamanteCubo();
+	public void dadaUnHachaDeMadera_CuandoSeUsaUnaVezContraDiamante_DeberiaDisminuirLaDurabilidadEn2() throws MaterialDestruidoNoSePuedeGolpearException {
+		Herramienta hachaDeMadera = HerramientaFactory.newHachaDeMadera();
+		Material diamanteCubo = new Diamante();
 
-		float durabilidad = hacha.getDurabilidad();
+		BigDecimal durabilidad = hachaDeMadera.getDurabilidad();
 
-		hacha.golpear(diamanteCubo);
+		hachaDeMadera.golpear(diamanteCubo);
 
-		assertEquals(hacha.getDurabilidad(), durabilidad - 2, 0.0);
+		assertEquals(durabilidad.subtract(new BigDecimal(2)), hachaDeMadera.getDurabilidad());
 	}
-
+/*
 	//Pruebas Pico de madera
 	@Test
 	public void dadoUnPicoDeMadera_CuandoSeCrea_DeberiaTenerDurabilidad100YFuerza2() {
@@ -125,56 +135,56 @@ public class HerramientaTest {
 		assertTrue(hacha.getDurabilidad()==200);
 		assertTrue(hacha.getFuerza()==5);
 	}
-
+*/
 	@Test
-	public void dadaUnHachaDePiedra_CuandoSeUsaUnaVezContraMaderaCubo_DeberiaDisminuirLaDurabilidadEn5(){
-		Herramienta hacha = new Hacha(new PiedraHerramienta(5));
+	public void dadaUnHachaDePiedra_CuandoSeUsaUnaVezContraMadera_DeberiaDisminuirLaDurabilidadEn5() throws MaterialDestruidoNoSePuedeGolpearException {
+		Herramienta hachaDePiedra = HerramientaFactory.newHachaDePiedra();
 		Material maderaCubo = new Madera();
 
-		float durabilidad = hacha.getDurabilidad();
+		BigDecimal durabilidad = hachaDePiedra.getDurabilidad();
 
-		hacha.golpear(maderaCubo);
+		hachaDePiedra.golpear(maderaCubo);
 
-		assertEquals(hacha.getDurabilidad(), durabilidad - 5, 0.0);
+		assertEquals(durabilidad.subtract(new BigDecimal(5)), hachaDePiedra.getDurabilidad());
 	}
 
 	@Test
-	public void dadaUnHachaDePiedra_CuandoSeUsaUnaVezContraPiedraCubo_DeberiaDisminuirLaDurabilidadEn5(){
+	public void dadaUnHachaDePiedra_CuandoSeUsaUnaVezContraPiedra_DeberiaDisminuirLaDurabilidadEn5() throws MaterialDestruidoNoSePuedeGolpearException {
 
-		Herramienta hacha = new Hacha(new PiedraHerramienta(5));
-		Material piedraCubo = new PiedraCubo();
+		Herramienta hachaDePiedra = HerramientaFactory.newHachaDePiedra();
+		Material piedraCubo = new Piedra();
 
-		float durabilidad = hacha.getDurabilidad();
+		BigDecimal durabilidad = hachaDePiedra.getDurabilidad();
 
-		hacha.golpear(piedraCubo);
+		hachaDePiedra.golpear(piedraCubo);
 
-		assertEquals(hacha.getDurabilidad(), durabilidad - 5, 0.0);
+		assertEquals(durabilidad.subtract(new BigDecimal(5)), hachaDePiedra.getDurabilidad());
 	}
 
 	@Test
-	public void dadaUnHachaDePiedra_CuandoSeUsaUnaVezContraMetalCubo_DeberiaDisminuirLaDurabilidadEn5(){
-		Herramienta hacha = new Hacha(new PiedraHerramienta(5));
-		Material metalCubo = new MetalCubo();
+	public void dadaUnHachaDePiedra_CuandoSeUsaUnaVezContraMetal_DeberiaDisminuirLaDurabilidadEn5() throws MaterialDestruidoNoSePuedeGolpearException {
+		Herramienta hachaDePiedra = HerramientaFactory.newHachaDePiedra();
+		Material metalCubo = new Metal();
 
-		float durabilidad = hacha.getDurabilidad();
+		BigDecimal durabilidad = hachaDePiedra.getDurabilidad();
 
-		hacha.golpear(metalCubo);
+		hachaDePiedra.golpear(metalCubo);
 
-		assertEquals(hacha.getDurabilidad(), durabilidad - 5, 0.0);
+		assertEquals(durabilidad.subtract(new BigDecimal(5)), hachaDePiedra.getDurabilidad());
 	}
 
 	@Test
-	public void dadaUnHachaDePiedra_CuandoSeUsaUnaVezContraDiamanteCubo_DeberiaDisminuirLaDurabilidadEn5(){
-		Herramienta hacha = new Hacha(new PiedraHerramienta(5));
-		Material diamanteCubo = new DiamanteCubo();
+	public void dadaUnHachaDePiedra_CuandoSeUsaUnaVezContraDiamante_DeberiaDisminuirLaDurabilidadEn5() throws MaterialDestruidoNoSePuedeGolpearException {
+		Herramienta hachaDePiedra = HerramientaFactory.newHachaDePiedra();
+		Material diamanteCubo = new Diamante();
 
-		float durabilidad = hacha.getDurabilidad();
+		BigDecimal durabilidad = hachaDePiedra.getDurabilidad();
 
-		hacha.golpear(diamanteCubo);
+		hachaDePiedra.golpear(diamanteCubo);
 
-		assertEquals(hacha.getDurabilidad(), durabilidad - 5, 0.0);
+		assertEquals(durabilidad.subtract(new BigDecimal(5)), hachaDePiedra.getDurabilidad());
 	}
-
+/*
 	//Pruebas Pico de piedra
 	@Test
 	public void dadoUnPicoDePiedra_CuandoSeCrea_DeberiaTenerDurabilidad200YFuerza4(){
@@ -205,8 +215,60 @@ public class HerramientaTest {
 		assertTrue(hacha.getDurabilidad()==400);
 		assertTrue(hacha.getFuerza()==10);
 	}
+*/
+	@Test
+	public void dadaUnHachaDeMetal_CuandoSeUsaUnaVezContraMadera_DeberiaDisminuirLaDurabilidadEn5() throws MaterialDestruidoNoSePuedeGolpearException {
 
-	//Pruebas Pico de metal
+		Herramienta hachaDeMetal = HerramientaFactory.newHachaDeMetal();
+		Material madera = new Madera();
+
+		BigDecimal durabilidad = hachaDeMetal.getDurabilidad();
+
+		hachaDeMetal.golpear(madera);
+
+		assertEquals(durabilidad.subtract(new BigDecimal(5)) , hachaDeMetal.getDurabilidad());
+	}
+
+	@Test
+	public void dadaUnHachaDeMetal_CuandoSeUsaUnaVezContraPiedra_DeberiaDisminuirLaDurabilidadEn5() throws MaterialDestruidoNoSePuedeGolpearException {
+
+		Herramienta hachaDeMetal = HerramientaFactory.newHachaDeMetal();
+		Material piedra = new Piedra();
+
+		BigDecimal durabilidad = hachaDeMetal.getDurabilidad();
+
+		hachaDeMetal.golpear(piedra);
+
+		assertEquals(durabilidad.subtract(new BigDecimal(5)), hachaDeMetal.getDurabilidad());
+	}
+
+	@Test
+	public void dadaUnHachaDeMetal_CuandoSeUsaUnaVezContraMetal_DeberiaDisminuirLaDurabilidadEn5() throws MaterialDestruidoNoSePuedeGolpearException {
+
+		Herramienta hachaDeMetal = HerramientaFactory.newHachaDeMetal();
+		Material metal = new Metal();
+
+		BigDecimal durabilidad = hachaDeMetal.getDurabilidad();
+
+		hachaDeMetal.golpear(metal);
+
+		assertEquals(durabilidad.subtract(new BigDecimal(5)) , hachaDeMetal.getDurabilidad());
+	}
+
+	@Test
+	public void dadaUnHachaDeMetal_CuandoSeUsaUnaVezContraDiamante_DeberiaDisminuirLaDurabilidadEn5() throws MaterialDestruidoNoSePuedeGolpearException {
+
+		Herramienta hachaDeMetal = HerramientaFactory.newHachaDeMetal();
+		Material diamante = new Diamante();
+
+		BigDecimal durabilidad = hachaDeMetal.getDurabilidad();
+
+		hachaDeMetal.golpear(diamante);
+
+		assertEquals(durabilidad.subtract(new BigDecimal(5)), hachaDeMetal.getDurabilidad());
+	}
+
+/*	//Pruebas Pico de metal
 	@Test
 	public void dadoUnPicoDeMetal_CuandoSeCrea_DeberiaTenerDurabilidad400YFuerza12() {
 		Herramienta pico = new Pico(new MetalHerramienta());
@@ -221,6 +283,5 @@ public class HerramientaTest {
 		assertTrue(picoFino.getDurabilidad()==1000);
 		assertTrue(picoFino.getFuerza()==20);
 	}
-	
-}
 */
+}
