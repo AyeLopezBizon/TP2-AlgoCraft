@@ -1,14 +1,12 @@
 package fiuba.algo3.tp2.herramienta;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
 import fiuba.algo3.tp2.material.Diamante;
 import fiuba.algo3.tp2.material.Madera;
 import fiuba.algo3.tp2.material.Material;
-import fiuba.algo3.tp2.material.MaterialDestruidoNoSePuedeGolpearException;
 import fiuba.algo3.tp2.material.Metal;
 import fiuba.algo3.tp2.material.Piedra;
 

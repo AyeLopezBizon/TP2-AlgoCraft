@@ -23,6 +23,6 @@ public abstract class Herramienta {
 			throws MaterialDestruidoNoSePuedeGolpearException {
 		
 		durabilidad.reducir();
-		material.golpearCon(golpe);
+		golpe.golpear(material);
 	}
 }
