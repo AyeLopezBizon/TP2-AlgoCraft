@@ -15,5 +15,9 @@ public abstract class Durabilidad {
 	public BigDecimal getValor() {
 		return this.valor;
 	}
+<<<<<<< HEAD
 }
 
+=======
+}
+>>>>>>> refs/remotes/origin/develop

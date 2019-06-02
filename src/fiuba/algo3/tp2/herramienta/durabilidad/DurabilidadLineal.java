@@ -13,7 +13,13 @@ public class DurabilidadLineal extends Durabilidad {
 
 	@Override
 	public void reducir() {
+<<<<<<< HEAD
 
 		this.valor = this.valor.subtract(this.tasaDesgaste);
 	}
 }
+=======
+		this.valor = this.valor.subtract(this.tasaDesgaste);
+	}
+}
+>>>>>>> refs/remotes/origin/develop
