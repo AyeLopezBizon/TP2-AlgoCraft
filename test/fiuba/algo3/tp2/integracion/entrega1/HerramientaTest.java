@@ -2,6 +2,8 @@ package fiuba.algo3.tp2.integracion.entrega1;
 
 import static org.junit.Assert.*;
 
+import java.math.BigDecimal;
+
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
@@ -74,7 +76,7 @@ public class HerramientaTest {
 	public void dadoUnPicoDeMadera_CuandoSeCrea_DeberiaTenerDurabilidad100YFuerza2() {
 		
 		Herramienta pico = HerramientaFactory.newPicoDeMadera();
-		assertEquals(pico.getDurabilidad(),100, 0.0); 
+		assertEquals(pico.getDurabilidad().intValue(),100); 
 		assertEquals(pico.getFuerza(),(Integer)2);
 	}
 
@@ -85,13 +87,13 @@ public class HerramientaTest {
 		Herramienta pico = HerramientaFactory.newPicoDeMadera();
 		Material maderaCubo = new Madera();
 
-		float durabilidad = pico.getDurabilidad();
+		float durabilidad = pico.getDurabilidad().floatValue();
 		
 		
 		pico.golpear(maderaCubo);
 		
 		
-		assertEquals(pico.getDurabilidad(), durabilidad - 2, 0.0);
+		assertEquals(pico.getDurabilidad().floatValue(), durabilidad - 2, 0.0);
 	}
 
 	@Test
@@ -100,11 +102,11 @@ public class HerramientaTest {
 
 		Herramienta pico = HerramientaFactory.newPicoDeMadera();
 		Material piedra = new Piedra();
-		float durabilidad = pico.getDurabilidad();
+		float durabilidad = pico.getDurabilidad().floatValue();
 		
 		pico.golpear(piedra);
 		
-		assertEquals(pico.getDurabilidad(), durabilidad - 2, 0.0);
+		assertEquals(pico.getDurabilidad().floatValue(), durabilidad - 2, 0.0);
 	}
 
 	@Test
@@ -113,11 +115,11 @@ public class HerramientaTest {
 
 		Herramienta pico = HerramientaFactory.newPicoDeMadera();
 		Material metal = new Metal();
-		float durabilidad = pico.getDurabilidad();
+		float durabilidad = pico.getDurabilidad().floatValue();
 
 		pico.golpear(metal);
 		
-		assertEquals(pico.getDurabilidad(), durabilidad - 2, 0.0);
+		assertEquals(pico.getDurabilidad().floatValue(), durabilidad - 2, 0.0);
 	}
 
 	@Test
@@ -126,11 +128,11 @@ public class HerramientaTest {
 
 		Herramienta pico = HerramientaFactory.newPicoDeMadera();
 		Material diamante = new Diamante();
-		float durabilidad = pico.getDurabilidad();
+		float durabilidad = pico.getDurabilidad().floatValue();
 
 		pico.golpear(diamante);
 
-		assertEquals(pico.getDurabilidad(), durabilidad - 2, 0.0);
+		assertEquals(pico.getDurabilidad().floatValue(), durabilidad - 2, 0.0);
 	}
 /*
 	//Pruebas Hacha de piedra

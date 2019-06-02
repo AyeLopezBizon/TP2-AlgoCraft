@@ -5,6 +5,8 @@ import fiuba.algo3.tp2.material.MaterialDestruidoNoSePuedeGolpearException;
 import fiuba.algo3.tp2.herramienta.durabilidad.Durabilidad;
 import fiuba.algo3.tp2.herramienta.golpe.Golpe;
 
+import java.math.BigDecimal;
+
 public abstract class Herramienta {
 	
 	protected Durabilidad durabilidad;
@@ -15,7 +17,7 @@ public abstract class Herramienta {
 		this.golpe = golpe;
 	}
 
-	public float getDurabilidad() {
+	public BigDecimal getDurabilidad() {
 		return durabilidad.getValor();
 	}
 	
