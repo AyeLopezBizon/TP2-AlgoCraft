@@ -1,21 +1,15 @@
 package fiuba.algo3.tp2.herramienta.durabilidad;
 
-public class DurabilidadRupturaAbrupta implements Durabilidad {
+import java.math.BigDecimal;
 
-	public DurabilidadRupturaAbrupta(Integer durabilidadInicial, Integer cantidadDeUsosAntesDeRuptura) {
-		// TODO Auto-generated constructor stub
+public class DurabilidadRupturaAbrupta extends Durabilidad {
+
+	public DurabilidadRupturaAbrupta(BigDecimal valorInicial, BigDecimal cantidadDeUsosAntesDeRuptura) {
+		super(valorInicial);
 	}
 
 	@Override
 	public void reducir() {
 		// TODO Auto-generated method stub
-
 	}
-
-	@Override
-	public float getValor() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }

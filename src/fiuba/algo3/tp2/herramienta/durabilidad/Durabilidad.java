@@ -1,8 +1,18 @@
 package fiuba.algo3.tp2.herramienta.durabilidad;
 
-public interface Durabilidad {
+import java.math.BigDecimal;
 
-	void reducir();
+public abstract class Durabilidad {
 
-	float getValor();
+	protected BigDecimal valor;
+
+	public Durabilidad(BigDecimal valorInicial) {
+		this.valor = valorInicial;
+	}
+
+	public abstract void reducir();
+
+	public BigDecimal getValor() {
+		return this.valor;
+	}
 }
