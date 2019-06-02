@@ -21,31 +21,31 @@ public class GolpeRompeDiamante implements Golpe {
 		return fuerza;
 	}
 
-	@Override
+
 	public void golpear(Golpeable material) throws MaterialDestruidoNoSePuedeGolpearException {
 		
 		material.golpearCon(this);
 	}
 
-	@Override
+
 	public void golpear(Madera madera) throws MaterialDestruidoNoSePuedeGolpearException {
 		
 		madera.reducirDurabilidad(fuerza);
 	}
 
-	@Override
+
 	public void golpear(Piedra piedra) throws MaterialDestruidoNoSePuedeGolpearException {
 		
 		piedra.reducirDurabilidad(fuerza);
 	}
 
-	@Override
+
 	public void golpear(Metal metal) throws MaterialDestruidoNoSePuedeGolpearException {
 		
 		metal.reducirDurabilidad(fuerza);
 	}
 
-	@Override
+
 	public void golpear(Diamante diamante) throws MaterialDestruidoNoSePuedeGolpearException {
 		
 		diamante.reducirDurabilidad(fuerza);

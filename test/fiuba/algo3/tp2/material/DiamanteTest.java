@@ -10,6 +10,8 @@ import org.junit.Test;
 import fiuba.algo3.tp2.herramienta.golpe.Golpe;
 import fiuba.algo3.tp2.herramienta.golpe.GolpeRompeDiamante;
 
+import java.math.BigDecimal;
+
 public class DiamanteTest {
 	
 	@Test
@@ -17,7 +19,7 @@ public class DiamanteTest {
 		
 		Diamante diamante = new Diamante();
 		
-		assertEquals(new Integer(100), diamante.getDurabilidad());
+		assertEquals(new BigDecimal(100), diamante.getDurabilidad());
 	}
 	
 	@Test

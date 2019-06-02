@@ -10,6 +10,8 @@ import org.junit.Test;
 import fiuba.algo3.tp2.herramienta.golpe.Golpe;
 import fiuba.algo3.tp2.herramienta.golpe.GolpeRompeMetal;
 
+import java.math.BigDecimal;
+
 public class MetalTest {
 
 	@Test
@@ -17,7 +19,7 @@ public class MetalTest {
 		
 		Metal metal = new Metal();
 		
-		assertEquals(new Integer(50), metal.getDurabilidad());
+		assertEquals(new BigDecimal(50), metal.getDurabilidad());
 	}
 	
 	@Test

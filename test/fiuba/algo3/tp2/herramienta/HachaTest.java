@@ -10,6 +10,8 @@ import fiuba.algo3.tp2.material.Material;
 import fiuba.algo3.tp2.material.Metal;
 import fiuba.algo3.tp2.material.Piedra;
 
+import java.math.BigDecimal;
+
 public class HachaTest {
 
 	@Test
@@ -21,7 +23,7 @@ public class HachaTest {
 		
 		hachaMadera.golpear(madera);
 		
-		assertEquals(new Integer(8), madera.getDurabilidad());
+		assertEquals(new BigDecimal(8), madera.getDurabilidad());
 	}
 	
 	@Test
@@ -33,7 +35,7 @@ public class HachaTest {
 		
 		hachaPiedra.golpear(madera);
 		
-		assertEquals(new Integer(5), madera.getDurabilidad());
+		assertEquals(new BigDecimal(5), madera.getDurabilidad());
 	}
 	
 	@Test
@@ -45,7 +47,7 @@ public class HachaTest {
 		
 		hachaMetal.golpear(madera);
 		
-		assertEquals(new Integer(0), madera.getDurabilidad());
+		assertEquals(new BigDecimal(0), madera.getDurabilidad());
 	}
 	
 	@Test
@@ -57,7 +59,7 @@ public class HachaTest {
 		
 		hachaMadera.golpear(piedra);
 		
-		assertEquals(new Integer(30), piedra.getDurabilidad());
+		assertEquals(new BigDecimal(30), piedra.getDurabilidad());
 	}
 	
 	@Test
@@ -69,7 +71,7 @@ public class HachaTest {
 		
 		hachaPiedra.golpear(piedra);
 		
-		assertEquals(new Integer(30), piedra.getDurabilidad());
+		assertEquals(new BigDecimal(30), piedra.getDurabilidad());
 	}
 	
 	@Test
@@ -81,7 +83,7 @@ public class HachaTest {
 		
 		hachaMetal.golpear(piedra);
 		
-		assertEquals(new Integer(30), piedra.getDurabilidad());
+		assertEquals(new BigDecimal(30), piedra.getDurabilidad());
 	}
 	
 	@Test
@@ -93,7 +95,7 @@ public class HachaTest {
 		
 		hachaMadera.golpear(metal);
 		
-		assertEquals(new Integer(50), metal.getDurabilidad());
+		assertEquals(new BigDecimal(50), metal.getDurabilidad());
 	}
 	
 	@Test
@@ -105,7 +107,7 @@ public class HachaTest {
 		
 		hachaMadera.golpear(diamante);
 		
-		assertEquals(new Integer(100), diamante.getDurabilidad());
+		assertEquals(new BigDecimal(100), diamante.getDurabilidad());
 	}
 	
 	@Test
@@ -117,7 +119,7 @@ public class HachaTest {
 		
 		hachaPiedra.golpear(diamante);
 		
-		assertEquals(new Integer(100), diamante.getDurabilidad());
+		assertEquals(new BigDecimal(100), diamante.getDurabilidad());
 	}
 	
 	@Test
@@ -129,6 +131,6 @@ public class HachaTest {
 		
 		hachaMetal.golpear(diamante);
 		
-		assertEquals(new Integer(100), diamante.getDurabilidad());
+		assertEquals(new BigDecimal(100), diamante.getDurabilidad());
 	}
 }

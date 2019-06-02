@@ -10,6 +10,8 @@ import org.junit.Test;
 import fiuba.algo3.tp2.herramienta.golpe.Golpe;
 import fiuba.algo3.tp2.herramienta.golpe.GolpeRompeMadera;
 
+import java.math.BigDecimal;
+
 public class MaderaTest {
 
 	@Test
@@ -17,7 +19,7 @@ public class MaderaTest {
 		
 		Madera madera = new Madera();
 		
-		assertEquals(new Integer(10), madera.getDurabilidad());
+		assertEquals(new BigDecimal(10), madera.getDurabilidad());
 	}
 	
 	@Test

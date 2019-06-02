@@ -10,6 +10,8 @@ import fiuba.algo3.tp2.material.Metal;
 import fiuba.algo3.tp2.material.Piedra;
 import fiuba.algo3.tp2.material.Diamante;
 
+import java.math.BigDecimal;
+
 public class PicoFinoTest {
 	
 	@Test
@@ -21,7 +23,7 @@ public class PicoFinoTest {
 		
 		picoFino.golpear(madera);
 		
-		assertEquals(new Integer(0), madera.getDurabilidad());
+		assertEquals(new BigDecimal(0), madera.getDurabilidad());
 	}
 	
 	@Test
@@ -33,7 +35,7 @@ public class PicoFinoTest {
 		
 		picoFino.golpear(piedra);
 		
-		assertEquals(new Integer(10), piedra.getDurabilidad());
+		assertEquals(new BigDecimal(10), piedra.getDurabilidad());
 	}
 	
 	@Test
@@ -45,7 +47,7 @@ public class PicoFinoTest {
 		
 		picoFino.golpear(metal);
 		
-		assertEquals(new Integer(30), metal.getDurabilidad());
+		assertEquals(new BigDecimal(30), metal.getDurabilidad());
 	}
 	
 	@Test
@@ -57,6 +59,6 @@ public class PicoFinoTest {
 		
 		picoFino.golpear(diamante);
 		
-		assertEquals(new Integer(80), diamante.getDurabilidad());
+		assertEquals(new BigDecimal(80), diamante.getDurabilidad());
 	}
 }

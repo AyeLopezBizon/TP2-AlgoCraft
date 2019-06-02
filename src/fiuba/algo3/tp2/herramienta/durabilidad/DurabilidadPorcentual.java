@@ -6,7 +6,6 @@ public class DurabilidadPorcentual extends Durabilidad {
 
 	public DurabilidadPorcentual(BigDecimal valorInicial, BigDecimal porcentajeAReducir) {
 		super(valorInicial);
-<<<<<<< HEAD
 	}
 
 	public BigDecimal getValor() {
@@ -15,12 +14,6 @@ public class DurabilidadPorcentual extends Durabilidad {
 	}
 
 	public void reducir(){
-=======
-	}
 
-	@Override
-	public void reducir() {
->>>>>>> refs/remotes/origin/develop
-		// TODO Auto-generated method stub
 	}
 }

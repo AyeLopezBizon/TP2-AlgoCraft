@@ -12,7 +12,6 @@ public class Madera extends Material {
 		super(durabilidadInicial);
 	}
 
-	@Override
 	public void golpearCon(Golpe golpe) throws MaterialDestruidoNoSePuedeGolpearException {
 		golpe.golpear(this);
 	}

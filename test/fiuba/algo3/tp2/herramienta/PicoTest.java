@@ -10,6 +10,8 @@ import fiuba.algo3.tp2.material.Material;
 import fiuba.algo3.tp2.material.Metal;
 import fiuba.algo3.tp2.material.Piedra;
 
+import java.math.BigDecimal;
+
 public class PicoTest {
 
 	@Test
@@ -21,7 +23,7 @@ public class PicoTest {
 		
 		picoMadera.golpear(madera);
 		
-		assertEquals(new Integer(10), madera.getDurabilidad());
+		assertEquals(new BigDecimal(10), madera.getDurabilidad());
 	}
 	
 	@Test
@@ -33,7 +35,7 @@ public class PicoTest {
 		
 		picoPiedra.golpear(madera);
 		
-		assertEquals(new Integer(10), madera.getDurabilidad());
+		assertEquals(new BigDecimal(10), madera.getDurabilidad());
 	}
 	
 	@Test
@@ -45,7 +47,7 @@ public class PicoTest {
 		
 		picoMetal.golpear(madera);
 		
-		assertEquals(new Integer(10), madera.getDurabilidad());
+		assertEquals(new BigDecimal(10), madera.getDurabilidad());
 	}
 	
 	@Test
@@ -57,7 +59,7 @@ public class PicoTest {
 		
 		picoMadera.golpear(piedra);
 		
-		assertEquals(new Integer(28), piedra.getDurabilidad());
+		assertEquals(new BigDecimal(28), piedra.getDurabilidad());
 	}
 	
 	@Test
@@ -69,7 +71,7 @@ public class PicoTest {
 		
 		picoPiedra.golpear(piedra);
 		
-		assertEquals(new Integer(26), piedra.getDurabilidad());
+		assertEquals(new BigDecimal(26), piedra.getDurabilidad());
 	}
 	
 	@Test
@@ -81,7 +83,7 @@ public class PicoTest {
 		
 		picoMetal.golpear(piedra);
 		
-		assertEquals(new Integer(18), piedra.getDurabilidad());
+		assertEquals(new BigDecimal(18), piedra.getDurabilidad());
 	}
 	
 	@Test
@@ -93,7 +95,7 @@ public class PicoTest {
 		
 		picoMadera.golpear(metal);
 		
-		assertEquals(new Integer(50), metal.getDurabilidad());
+		assertEquals(new BigDecimal(50), metal.getDurabilidad());
 	}
 	
 	@Test
@@ -105,7 +107,7 @@ public class PicoTest {
 		
 		picoPiedra.golpear(metal);
 		
-		assertEquals(new Integer(46), metal.getDurabilidad());
+		assertEquals(new BigDecimal(46), metal.getDurabilidad());
 	}
 	
 	@Test
@@ -117,7 +119,7 @@ public class PicoTest {
 		
 		picoMetal.golpear(metal);
 		
-		assertEquals(new Integer(38), metal.getDurabilidad());
+		assertEquals(new BigDecimal(38), metal.getDurabilidad());
 	}
 	
 	@Test
@@ -129,7 +131,7 @@ public class PicoTest {
 		
 		picoMadera.golpear(diamante);
 		
-		assertEquals(new Integer(100), diamante.getDurabilidad());
+		assertEquals(new BigDecimal(100), diamante.getDurabilidad());
 	}
 	
 	@Test
@@ -141,7 +143,7 @@ public class PicoTest {
 		
 		picoPiedra.golpear(diamante);
 		
-		assertEquals(new Integer(100), diamante.getDurabilidad());
+		assertEquals(new BigDecimal(100), diamante.getDurabilidad());
 	}
 	
 	@Test
@@ -153,6 +155,6 @@ public class PicoTest {
 		
 		picoMetal.golpear(diamante);
 		
-		assertEquals(new Integer(100), diamante.getDurabilidad());
+		assertEquals(new BigDecimal(100), diamante.getDurabilidad());
 	}
 }

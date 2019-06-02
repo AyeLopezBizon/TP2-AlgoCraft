@@ -9,8 +9,7 @@ public class Piedra extends Material {
 	public Piedra() {
 		super(new BigDecimal(30));
 	}
-	
-	@Override
+
 	public void golpearCon(Golpe golpe) throws MaterialDestruidoNoSePuedeGolpearException {
 		golpe.golpear(this);
 	}

@@ -6,11 +6,6 @@ import fiuba.algo3.tp2.material.Material;
 import fiuba.algo3.tp2.material.MaterialDestruidoNoSePuedeGolpearException;
 
 import java.math.BigDecimal;
-<<<<<<< HEAD
-
-import java.math.BigDecimal;
-=======
->>>>>>> refs/remotes/origin/develop
 
 public class Inventario {
 
@@ -27,10 +22,7 @@ public class Inventario {
     public void golpearConHachaDeMadera(Material material) throws MaterialDestruidoNoSePuedeGolpearException {
         this.herramientaInicial.golpear(material);
     }
-<<<<<<< HEAD
 
     public void recoger(Material material) {
     }
-=======
->>>>>>> refs/remotes/origin/develop
 }
