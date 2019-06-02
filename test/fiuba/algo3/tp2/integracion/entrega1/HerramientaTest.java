@@ -89,9 +89,7 @@ public class HerramientaTest {
 
 		float durabilidad = pico.getDurabilidad().floatValue();
 		
-		
-		pico.golpear(maderaCubo);
-		
+		pico.golpear(maderaCubo);		
 		
 		assertEquals(pico.getDurabilidad().floatValue(), durabilidad - 2, 0.0);
 	}
