@@ -37,3 +37,5 @@ libs
 *.swp
 *.bak
 metadata/
+
+\.metadata/

@@ -43,7 +43,7 @@ public class MaterialTest {
 		} catch(Exception exception) {
 			assertEquals(MaterialDestruidoNoSePuedeGolpearException.class, exception.getClass());
 		}
-		
+
 		 */
 	}
 	
