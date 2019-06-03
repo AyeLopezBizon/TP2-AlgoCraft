@@ -11,6 +11,7 @@ import fiuba.algo3.tp2.material.Metal;
 import fiuba.algo3.tp2.material.Piedra;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class PicoTest {
 
@@ -91,29 +92,66 @@ public class PicoTest {
 		assertEquals(new BigDecimal(200), picoDePiedra.getDurabilidad()); 
 		assertEquals(new BigDecimal(4), picoDePiedra.getFuerza());
 	}
-	
-	/*
+
 	@Test
-	public void dadoUnPicodePiedra_CuandoSeUsaUnaVezContraMadera_DeberiaDesminuirlaDurabilidadEn2Coma6()
-	throws Exception{
-		Herramienta pico = HerramientaFactory.newPicoDePiedra();
+	public void dadoUnPicoDePiedra_CuandoSeUsaUnaVezContraMadera_DeberiaDisminuirLaDurabilidadEn2Coma6()
+			throws Exception{
+
+		Herramienta picoDePiedra = HerramientaFactory.newPicoDePiedra();
 		Material madera = new Madera();
+		BigDecimal durabilidad = picoDePiedra.getDurabilidad();
+		BigDecimal desgaste = picoDePiedra.getFuerza().divide(new BigDecimal(1.5), 2, RoundingMode.HALF_UP);
 
-		BigDecimal durabilidad = pico.getDurabilidad();
+		picoDePiedra.golpear(madera);
 
-		pico.golpear(madera);
-		
-		assertEquals(pico.getDurabilidad(), new BigDecimal(197.3334));
-
+		assertEquals(picoDePiedra.getDurabilidad(), durabilidad.subtract(desgaste));
 	}
-	 */
-	
+
+	@Test
+	public void dadoUnPicoDePiedra_CuandoSeUsaUnaVezContraPiedra_DeberiaDisminuirLaDurabilidadEn2Coma6()
+			throws Exception{
+
+		Herramienta picoDePiedra = HerramientaFactory.newPicoDePiedra();
+		Material piedra = new Piedra();
+		BigDecimal durabilidad = picoDePiedra.getDurabilidad();
+		BigDecimal desgaste = picoDePiedra.getFuerza().divide(new BigDecimal(1.5), 2, RoundingMode.HALF_UP);
+
+		picoDePiedra.golpear(piedra);
+
+		assertEquals(picoDePiedra.getDurabilidad(), durabilidad.subtract(desgaste));
+	}
+
+	@Test
+	public void dadoUnPicoDePiedra_CuandoSeUsaUnaVezContraMetal_DeberiaDisminuirLaDurabilidadEn2Coma6()
+			throws Exception{
+
+		Herramienta picoDePiedra = HerramientaFactory.newPicoDePiedra();
+		Material metal = new Metal();
+		BigDecimal durabilidad = picoDePiedra.getDurabilidad();
+		BigDecimal desgaste = picoDePiedra.getFuerza().divide(new BigDecimal(1.5), 2, RoundingMode.HALF_UP);
+
+		picoDePiedra.golpear(metal);
+
+		assertEquals(picoDePiedra.getDurabilidad(), durabilidad.subtract(desgaste));
+	}
+
+	@Test
+	public void dadoUnPicoDePiedra_CuandoSeUsaUnaVezContraDiamante_DeberiaDisminuirLaDurabilidadEn2Coma6()
+			throws Exception{
+
+		Herramienta picoDePiedra = HerramientaFactory.newPicoDePiedra();
+		Material diamante = new Diamante();
+		BigDecimal durabilidad = picoDePiedra.getDurabilidad();
+		BigDecimal desgaste = picoDePiedra.getFuerza().divide(new BigDecimal(1.5), 2, RoundingMode.HALF_UP);
+
+		picoDePiedra.golpear(diamante);
+
+		assertEquals(picoDePiedra.getDurabilidad(), durabilidad.subtract(desgaste));
+	}
+
 	/**************************
 	 * PRUBAS PICO DE METAL   *
 	 **************************/
-	/*
-	 * TODO
-	 * 
 	@Test
 	public void cuandoSeCreaUnPicoDeMetal_DeberiaTenerDurabilidad400YFuerza12() {
 		
@@ -122,16 +160,69 @@ public class PicoTest {
 		assertEquals(new BigDecimal(400), picoDeMetal.getDurabilidad()); 
 		assertEquals(new BigDecimal(12), picoDeMetal.getFuerza());
 	}
-	 */
-	
-	/*
-	//Pruebas Pico de metal
-	@Test
-	public void dadoUnPicoDeMetal_CuandoSeCrea_DeberiaTenerDurabilidad400YFuerza12() {
-		Herramienta pico = HerramientaFactory.newPicoDeMetal();
-		assertEquals(pico.getDurabilidad(), new BigDecimal(400));
-		assertEquals(pico.getFuerza(), new BigDecimal(12));
-	}
-	 */
 
+	@Test
+	public void dadoUnPicoDeMetal_CuandoSeUsaUnaVezContraMadera_DeberiaDisminuirLaDurabilidadEn12()
+			throws Exception{
+
+		Herramienta picoDeMetal = HerramientaFactory.newPicoDeMetal();
+		Material madera = new Madera();
+		BigDecimal durabilidad = picoDeMetal.getDurabilidad();
+
+		picoDeMetal.golpear(madera);
+
+		assertEquals(picoDeMetal.getDurabilidad(), durabilidad.subtract(new BigDecimal(12)));
+	}
+
+	@Test
+	public void dadoUnPicoDeMetal_CuandoSeUsaUnaVezContraPiedra_DeberiaDisminuirLaDurabilidadEn12()
+			throws Exception{
+
+		Herramienta picoDeMetal = HerramientaFactory.newPicoDeMetal();
+		Material piedra = new Piedra();
+		BigDecimal durabilidad = picoDeMetal.getDurabilidad();
+
+		picoDeMetal.golpear(piedra);
+
+		assertEquals(picoDeMetal.getDurabilidad(), durabilidad.subtract(new BigDecimal(12)));
+	}
+
+	@Test
+	public void dadoUnPicoDeMetal_CuandoSeUsaUnaVezContraMetal_DeberiaDisminuirLaDurabilidadEn12()
+			throws Exception{
+
+		Herramienta picoDeMetal = HerramientaFactory.newPicoDeMetal();
+		Material metal = new Metal();
+		BigDecimal durabilidad = picoDeMetal.getDurabilidad();
+
+		picoDeMetal.golpear(metal);
+
+		assertEquals(picoDeMetal.getDurabilidad(), durabilidad.subtract(new BigDecimal(12)));
+	}
+
+	@Test
+	public void dadoUnPicoDeMetal_CuandoSeUsaUnaVezContraDiamante_DeberiaDisminuirLaDurabilidadEn12()
+			throws Exception{
+
+		Herramienta picoDeMetal = HerramientaFactory.newPicoDeMetal();
+		Material diamante = new Diamante();
+		BigDecimal durabilidad = picoDeMetal.getDurabilidad();
+
+		picoDeMetal.golpear(diamante);
+
+		assertEquals(picoDeMetal.getDurabilidad(), durabilidad.subtract(new BigDecimal(12)));
+	}
+
+	@Test
+	public void dadoUnPicoDeMetal_CuandoSeUsa10VecesContraMateriales_DeberiaRomperseYDisminuirLaDurabilidadA0()
+			throws Exception{
+
+		Herramienta picoDeMetal = HerramientaFactory.newPicoDeMetal();
+		Material madera = new Madera();
+
+		for(int i = 0; i < 10; i++)
+			picoDeMetal.golpear(madera);
+
+		assertEquals(picoDeMetal.getDurabilidad(), new BigDecimal(0));
+	}
 }
