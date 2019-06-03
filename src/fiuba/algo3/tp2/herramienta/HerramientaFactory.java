@@ -45,6 +45,6 @@ public class HerramientaFactory {
 	}
 
 	public static Herramienta newPicoFino() {
-		return new PicoFino(new DurabilidadPorcentual(new BigDecimal(2000), new BigDecimal(10)), new GolpeRompeDiamante(new BigDecimal(20)));
+		return new PicoFino(new DurabilidadPorcentual(new BigDecimal(1000), new BigDecimal(10)), new GolpeRompeDiamante(new BigDecimal(20)));
 	}
 }

@@ -108,6 +108,18 @@ public class MaderaTest {
 		assertEquals(new BigDecimal(10), madera.getDurabilidad());
 	}
 
+	@Test
+	public void cuandoSeGolpeaMaderaConPicoFino_DeberiaReducirLaDurabilidadDelMaterialEn20()
+			throws Exception {
+
+		Herramienta picoFino = HerramientaFactory.newPicoFino();
+		Material madera = new Madera();
+
+		picoFino.golpear(madera);
+
+		assertEquals(new BigDecimal(0), madera.getDurabilidad());
+	}
+
 	//@Test
 	//public void dadaUnaMaderaDestruida_CuandoSeGolpeaConUnGolpeRompeMadera_DeberiaLanzarMaterialDestruidoNoSePuedeGolpearException() {
 		

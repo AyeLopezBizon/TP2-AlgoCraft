@@ -4,13 +4,11 @@ import java.math.BigDecimal;
 
 public class DurabilidadPorcentual extends Durabilidad {
 
+	private BigDecimal porcentajeAReducir;
+
 	public DurabilidadPorcentual(BigDecimal valorInicial, BigDecimal porcentajeAReducir) {
 		super(valorInicial);
-	}
-
-	public BigDecimal getValor() {
-		// TODO Auto-generated method stub
-		return new BigDecimal(0);
+		this.porcentajeAReducir = porcentajeAReducir;
 	}
 
 	public void reducir(){

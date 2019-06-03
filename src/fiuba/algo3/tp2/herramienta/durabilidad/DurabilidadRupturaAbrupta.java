@@ -4,15 +4,18 @@ import java.math.BigDecimal;
 
 public class DurabilidadRupturaAbrupta extends Durabilidad {
 
+	private BigDecimal usos;
+
 	public DurabilidadRupturaAbrupta(BigDecimal valorInicial, BigDecimal cantidadDeUsosAntesDeRuptura) {
 		super(valorInicial);
-	}
-
-	public BigDecimal getValor() {
-		return new BigDecimal(0);
+		usos = cantidadDeUsosAntesDeRuptura;
 	}
 
 	public void reducir() {
-		// TODO Auto-generated method stub
+		usos = usos.subtract(new BigDecimal(1));
+
+		if(usos.compareTo(new BigDecimal(0)) <= 0){
+			this.valor = new BigDecimal(0);
+		}
 	}
 }

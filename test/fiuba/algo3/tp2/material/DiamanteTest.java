@@ -108,4 +108,16 @@ public class DiamanteTest {
 		assertEquals(new BigDecimal(100), diamante.getDurabilidad());
 	}
 
+	@Test
+	public void cuandoSeGolpeaDiamanteConPicoFino_DeberiaReducirLaDurabilidadDelMaterialEn20()
+			throws Exception {
+
+		Herramienta picoFino = HerramientaFactory.newPicoFino();
+		Material diamante = new Diamante();
+
+		picoFino.golpear(diamante);
+
+		assertEquals(new BigDecimal(80), diamante.getDurabilidad());
+	}
+
 }

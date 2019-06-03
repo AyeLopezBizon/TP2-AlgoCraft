@@ -107,4 +107,16 @@ public class PiedraTest {
 
 		assertEquals(new BigDecimal(18), piedra.getDurabilidad());
 	}
+
+	@Test
+	public void cuandoSeGolpeaPiedraConPicoFino_DeberiaReducirLaDurabilidadDelMaterialEn20()
+			throws Exception {
+
+		Herramienta picoFino = HerramientaFactory.newPicoFino();
+		Material piedra = new Piedra();
+
+		picoFino.golpear(piedra);
+
+		assertEquals(new BigDecimal(10), piedra.getDurabilidad());
+	}
 }

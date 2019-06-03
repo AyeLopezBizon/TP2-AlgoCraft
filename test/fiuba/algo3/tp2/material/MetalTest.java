@@ -105,4 +105,16 @@ public class MetalTest {
 
 		assertEquals(new BigDecimal(38), metal.getDurabilidad());
 	}
+
+	@Test
+	public void cuandoSeGolpeaMetalConPicoFino_DeberiaReducirLaDurabilidadDelMaterialEn20()
+			throws Exception {
+
+		Herramienta picoFino = HerramientaFactory.newPicoFino();
+		Material metal = new Metal();
+
+		picoFino.golpear(metal);
+
+		assertEquals(new BigDecimal(30), metal.getDurabilidad());
+	}
 }
