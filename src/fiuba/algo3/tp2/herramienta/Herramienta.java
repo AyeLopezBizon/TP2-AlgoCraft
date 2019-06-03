@@ -1,7 +1,6 @@
 package fiuba.algo3.tp2.herramienta;
 
-import fiuba.algo3.tp2.material.Material;
-import fiuba.algo3.tp2.material.MaterialDestruidoNoSePuedeGolpearException;
+import fiuba.algo3.tp2.material.*;
 import fiuba.algo3.tp2.herramienta.durabilidad.Durabilidad;
 import fiuba.algo3.tp2.herramienta.golpe.Golpe;
 
@@ -24,11 +23,21 @@ public abstract class Herramienta {
 	public void golpear(Material material) 
 			throws MaterialDestruidoNoSePuedeGolpearException {
 		
-		durabilidad.reducir();
-		golpe.golpear(material);
+	//	durabilidad.reducir();
+	//	golpe.golpear(material);
+
+		material.reducir(this);
 	}
 
 	public BigDecimal getFuerza() {
 		return golpe.getFuerza();
 	}
+
+	public abstract void reducirDurabilidad(Madera madera) throws MaterialDestruidoNoSePuedeGolpearException;
+
+	public abstract void reducirDurabilidad(Piedra piedra) throws MaterialDestruidoNoSePuedeGolpearException;
+
+	public abstract void reducirDurabilidad(Metal metal) throws MaterialDestruidoNoSePuedeGolpearException;
+
+	public abstract void reducirDurabilidad(Diamante diamante) throws MaterialDestruidoNoSePuedeGolpearException;
 }

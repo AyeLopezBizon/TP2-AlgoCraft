@@ -10,12 +10,24 @@ public class PicoFino extends Herramienta {
 		super(durabilidad, golpe);
 	}
 
-	@Override
-	public void golpear(Material material)
-			throws MaterialDestruidoNoSePuedeGolpearException {
+	public void reducirDurabilidad(Madera madera) throws MaterialDestruidoNoSePuedeGolpearException {
 
-		//durabilidad.reducir();
-		//Falta el caso de diamante en el que si se reduce la durabilidad.
-		golpe.golpear(material);
+		golpe.golpear(madera);
+	}
+
+	public void reducirDurabilidad(Piedra piedra) throws MaterialDestruidoNoSePuedeGolpearException {
+
+		golpe.golpear(piedra);
+	}
+
+	public void reducirDurabilidad(Metal metal) throws MaterialDestruidoNoSePuedeGolpearException {
+
+		golpe.golpear(metal);
+	}
+
+	public void reducirDurabilidad(Diamante diamante) throws MaterialDestruidoNoSePuedeGolpearException {
+
+		durabilidad.reducir();
+		golpe.golpear(diamante);
 	}
 }
