@@ -12,6 +12,6 @@ public class DurabilidadPorcentual extends Durabilidad {
 	}
 
 	public void reducir(){
-
+		valor = valor.subtract(valor.divide(porcentajeAReducir));
 	}
 }

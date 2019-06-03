@@ -26,4 +26,58 @@ public class PicoFinoTest {
 		assertEquals(picoFino.getDurabilidad(), new BigDecimal(1000));
 		assertEquals(picoFino.getFuerza(), new BigDecimal(20));
 	}
+
+	@Test
+	public void dadoUnPicoFino_CuandoSeUsaUnaVezContraMadera_NoDeberiaDisminuirLaDurabilidad()
+			throws Exception {
+
+		Herramienta picoFino = HerramientaFactory.newPicoFino();
+		Material madera = new Madera();
+
+		BigDecimal durabilidad = picoFino.getDurabilidad();
+
+		picoFino.golpear(madera);
+
+		assertEquals(durabilidad, picoFino.getDurabilidad());
+	}
+
+	@Test
+	public void dadoUnPicoFino_CuandoSeUsaUnaVezContraPiedra_NoDeberiaDisminuirLaDurabilidad() throws Exception{
+
+		Herramienta picoFino = HerramientaFactory.newPicoFino();
+		Material piedra = new Piedra();
+
+		BigDecimal durabilidad = picoFino.getDurabilidad();
+
+		picoFino.golpear(piedra);
+
+		assertEquals(durabilidad, picoFino.getDurabilidad());
+	}
+
+	@Test
+	public void dadoUnPicoFino_CuandoSeUsaUnaVezContraMetal_NoDeberiaDismiuirLaDurabilidad() throws Exception{
+
+		Herramienta picoFino = HerramientaFactory.newPicoFino();
+		Material metal = new Metal();
+
+		BigDecimal durabilidad = picoFino.getDurabilidad();
+
+		picoFino.golpear(metal);
+
+		assertEquals(durabilidad, picoFino.getDurabilidad());
+	}
+/*
+	@Test
+	public void dadoUnPicoFino_CuandoSeUsaUnaVezContraDiamante_DeberiaDisminuirLaDurabilidadEn100() throws Exception{
+
+		Herramienta picoFino = HerramientaFactory.newPicoFino();
+		Material diamante = new Diamante();
+
+		BigDecimal durabilidad = picoFino.getDurabilidad();
+
+		picoFino.golpear(diamante);
+
+		assertEquals(durabilidad.subtract(new BigDecimal(100)), picoFino.getDurabilidad());
+	}
+ */
 }
