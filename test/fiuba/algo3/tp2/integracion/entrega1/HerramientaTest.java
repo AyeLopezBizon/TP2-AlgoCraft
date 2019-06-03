@@ -38,8 +38,6 @@ public class HerramientaTest {
 		assertEquals(new BigDecimal(400), hacha.getDurabilidad());
 		assertEquals(new BigDecimal(10), hacha.getFuerza());
 	}
-	/*
-	 * TODO
 	 
 	@Test
 	public void cuandoSeCreaUnPicoDeMetal_DeberiaTenerDurabilidad400YFuerza12() {
@@ -53,13 +51,12 @@ public class HerramientaTest {
 	@Test
 	public void cuandoSeCreaUnPicoFino_DeberiaTenerDurabilidad1000YFuerza20() {
 		
-		Herramienta picoFino = HerramientaFactory.newPicoDePiedra();
+		Herramienta picoFino = HerramientaFactory.newPicoFino();
 		
 		assertEquals(new BigDecimal(1000), picoFino.getDurabilidad());
 		assertEquals(new BigDecimal(20), picoFino.getFuerza());
 	}
-	*/
-	
+
 	@Test
 	public void cuandoSeUsaHachaContraMateriales_DeberiaReducirSuDurabilidadDeAcuerdoAlMaterialDelHacha() 
 			throws Exception {
