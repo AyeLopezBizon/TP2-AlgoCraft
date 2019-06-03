@@ -36,15 +36,13 @@ public class MaterialTest {
 		assertEquals(new BigDecimal(2), madera.getDurabilidad());
 		hachaMadera.golpear(madera);
 		assertEquals(new BigDecimal(0), madera.getDurabilidad());
-		/*
+		
 		try {
 			hachaMadera.golpear(madera);
-			fail("Should throw MaterialDestruidoNoSePuedeGolpearException");
+			fail("Deberia lanzar MaterialDestruidoNoSePuedeGolpearException");
 		} catch(Exception exception) {
 			assertEquals(MaterialDestruidoNoSePuedeGolpearException.class, exception.getClass());
 		}
-
-		 */
 	}
 	
 	@Test

@@ -14,6 +14,22 @@ import java.math.BigDecimal;
 
 public class PicoFinoTest {
 	
+	/**************************
+	 *    PRUBAS PICO FINO    *
+	 **************************/
+	/*
+	 * TODO
+	 * 
+	 @Test
+	public void cuandoSeCreaPicoFino_DeberiaTenerDurabilidad1000YFuerza20() {
+		
+		Herramienta picoFino = HerramientaFactory.newPicoDePiedra();
+		
+		assertEquals(picoFino.getDurabilidad(), new BigDecimal(1000));
+		assertEquals(picoFino.getFuerza(), new BigDecimal(20));
+	}
+	 */
+	
 	@Test
 	public void cuandoSeGolpeaMaderaConPicoFino_DeberiaReducirLaDurabilidadDelMaterialEn20() 
 			throws Exception {

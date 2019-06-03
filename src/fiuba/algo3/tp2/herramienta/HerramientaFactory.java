@@ -37,7 +37,7 @@ public class HerramientaFactory {
 
 	public static Herramienta newPicoDePiedra() {
 		return new Pico(new DurabilidadLineal(new BigDecimal(200),
-				new BigDecimal(4).divide(new BigDecimal(1.5), RoundingMode.HALF_UP)), new GolpeRompeMetal(new BigDecimal(4)));
+				new BigDecimal(4).divide(new BigDecimal(1.5), 2, RoundingMode.HALF_UP)), new GolpeRompeMetal(new BigDecimal(4)));
 	}
 
 	public static Herramienta newPicoDeMetal() {

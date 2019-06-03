@@ -16,7 +16,7 @@ public abstract class Material implements Golpeable {
 	
 	public void reducirDurabilidad(BigDecimal danio) throws MaterialDestruidoNoSePuedeGolpearException {
 		
-		if(durabilidad.equals(0)) {
+		if(durabilidad.equals(new BigDecimal(0))) {
 			throw new MaterialDestruidoNoSePuedeGolpearException();
 		}
 		
