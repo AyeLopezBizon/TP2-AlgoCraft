@@ -17,8 +17,6 @@ public class Jugador {
         try {
             this.inventario.golpearConHachaDeMadera(material);
         } catch (MaterialDestruidoNoSePuedeGolpearException e) {
-            this.inventario.recoger(material);
         }
     }
-
 }

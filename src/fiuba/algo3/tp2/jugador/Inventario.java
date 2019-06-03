@@ -22,7 +22,4 @@ public class Inventario {
     public void golpearConHachaDeMadera(Material material) throws MaterialDestruidoNoSePuedeGolpearException {
         this.herramientaInicial.golpear(material);
     }
-
-    public void recoger(Material material) {
-    }
 }
