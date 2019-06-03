@@ -76,55 +76,6 @@ public class HachaTest {
 		assertEquals(durabilidad.subtract(new BigDecimal(2)), hachaDeMadera.getDurabilidad());
 	}
 
-	@Test
-	public void cuandoSeGolpeaMaderaConHachaDeMadera_DeberiaReducirLaDurabilidadDeLaMaderaEn2() 
-			throws Exception {
-		
-		Herramienta hachaMadera = HerramientaFactory.newHachaDeMadera();
-		Material madera = new Madera();
-		
-		hachaMadera.golpear(madera);
-		
-		assertEquals(new BigDecimal(8), madera.getDurabilidad());
-	}
-	
-	@Test
-	public void cuandoSeGolpeaPiedraConHachaDeMadera_NoSeDeberiaReducirLaDurabilidadDelMaterial() 
-			throws Exception {
-		
-		Herramienta hachaMadera = HerramientaFactory.newHachaDeMadera();
-		Material piedra = new Piedra();
-		
-		hachaMadera.golpear(piedra);
-		
-		assertEquals(new BigDecimal(30), piedra.getDurabilidad());
-	}
-	
-	@Test
-	public void cuandoSeGolpeaMetalConHachaDeMadera_NoSeDeberiaReducirLaDurabilidadDelMaterial() 
-			throws Exception {
-		
-		Herramienta hachaMadera = HerramientaFactory.newHachaDeMadera();
-		Material metal = new Metal();
-		
-		hachaMadera.golpear(metal);
-		
-		assertEquals(new BigDecimal(50), metal.getDurabilidad());
-	}
-	
-	@Test
-	public void cuandoSeGolpeaDiamanteConHachaDeMadera_NoSeDeberiaReducirLaDurabilidadDelMaterial() 
-			throws Exception {
-		
-		Herramienta hachaMadera = HerramientaFactory.newHachaDeMadera();
-		Material diamante = new Diamante();
-		
-		hachaMadera.golpear(diamante);
-		
-		assertEquals(new BigDecimal(100), diamante.getDurabilidad());
-	}
-	
-	
 	/**************************
 	 * PRUBAS HACHA DE PIEDRA *
 	 **************************/
@@ -189,43 +140,6 @@ public class HachaTest {
 		assertEquals(durabilidad.subtract(new BigDecimal(5)), hachaDePiedra.getDurabilidad());
 	}
 	
-	@Test
-	public void cuandoSeGolpeaMaderaConHachaDePiedra_DeberiaReducirLaDurabilidadDeLaMaderaEn5() 
-			throws Exception {
-		
-		Herramienta hachaPiedra = HerramientaFactory.newHachaDePiedra();
-		Material madera = new Madera();
-		
-		hachaPiedra.golpear(madera);
-		
-		assertEquals(new BigDecimal(5), madera.getDurabilidad());
-	}
-	
-	@Test
-	public void cuandoSeGolpeaPiedraConHachaDePiedra_NoSeDeberiaReducirLaDurabilidadDelMaterial() 
-			throws Exception {
-		
-		Herramienta hachaPiedra = HerramientaFactory.newHachaDePiedra();
-		Material piedra = new Piedra();
-		
-		hachaPiedra.golpear(piedra);
-		
-		assertEquals(new BigDecimal(30), piedra.getDurabilidad());
-	}
-	
-	@Test
-	public void cuandoSeGolpeaDiamanteConHachaDePiedra_NoSeDeberiaReducirLaDurabilidadDelMaterial() 
-			throws Exception {
-		
-		Herramienta hachaPiedra = HerramientaFactory.newHachaDePiedra();
-		Material diamante = new Diamante();
-		
-		hachaPiedra.golpear(diamante);
-		
-		assertEquals(new BigDecimal(100), diamante.getDurabilidad());
-	}
-	
-	
 	/**************************
 	 * PRUBAS HACHA DE METAL  *
 	 **************************/
@@ -288,41 +202,5 @@ public class HachaTest {
 		hachaDeMetal.golpear(diamante);
 
 		assertEquals(durabilidad.subtract(new BigDecimal(5)), hachaDeMetal.getDurabilidad());
-	}
-	
-	@Test
-	public void cuandoSeGolpeaMaderaConHachaDeMetal_DeberiaReducirLaDurabilidadDeLaMaderaEn10() 
-			throws Exception {
-		
-		Herramienta hachaMetal = HerramientaFactory.newHachaDeMetal();
-		Material madera = new Madera();
-		
-		hachaMetal.golpear(madera);
-		
-		assertEquals(new BigDecimal(0), madera.getDurabilidad());
-	}
-	
-	@Test
-	public void cuandoSeGolpeaPiedraConHachaDeMetal_NoSeDeberiaReducirLaDurabilidadDelMaterial() 
-			throws Exception {
-		
-		Herramienta hachaMetal = HerramientaFactory.newHachaDeMetal();
-		Material piedra = new Piedra();
-		
-		hachaMetal.golpear(piedra);
-		
-		assertEquals(new BigDecimal(30), piedra.getDurabilidad());
-	}
-	
-	@Test
-	public void cuandoSeGolpeaDiamanteConHachaDeMetal_NoSeDeberiaReducirLaDurabilidadDelMaterial() 
-			throws Exception {
-		
-		Herramienta hachaMetal = HerramientaFactory.newHachaDeMetal();
-		Material diamante = new Diamante();
-		
-		hachaMetal.golpear(diamante);
-		
-		assertEquals(new BigDecimal(100), diamante.getDurabilidad());
 	}
 }
