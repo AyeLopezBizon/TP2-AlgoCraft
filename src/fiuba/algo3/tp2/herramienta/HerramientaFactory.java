@@ -41,7 +41,7 @@ public class HerramientaFactory {
 	}
 
 	public static Herramienta newPicoDeMetal() {
-		return new Pico(new DurabilidadRupturaAbrupta(new BigDecimal(400), new BigDecimal(10)), new GolpeRompeMetal(new BigDecimal(12)));
+		return new Pico(new DurabilidadRupturaAbrupta(new BigDecimal(400), new BigDecimal(12), 10), new GolpeRompeMetal(new BigDecimal(12)));
 	}
 
 	public static Herramienta newPicoFino() {
