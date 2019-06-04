@@ -1,14 +1,20 @@
 package fiuba.algo3.tp2.integracion.entrega1;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 import org.junit.Test;
 
-import fiuba.algo3.tp2.herramienta.*;
-import fiuba.algo3.tp2.material.*;
+import fiuba.algo3.tp2.herramienta.Herramienta;
+import fiuba.algo3.tp2.herramienta.HerramientaFactory;
+import fiuba.algo3.tp2.material.Diamante;
+import fiuba.algo3.tp2.material.Madera;
+import fiuba.algo3.tp2.material.Material;
+import fiuba.algo3.tp2.material.Metal;
+import fiuba.algo3.tp2.material.Piedra;
 
 public class HerramientaTest {
 	
@@ -257,10 +263,7 @@ public class HerramientaTest {
 		picoDeMetal.golpear(madera);
 		assertEquals(new BigDecimal(0), picoDeMetal.getDurabilidad());
 	}
-
-	/*
-	 * TODO
-	 
+	
 	@Test
 	public void cuandoSeUsaPicoFinoContraDiamante_DeberiaReducirSuDurabilidad() 
 			throws Exception {
@@ -271,22 +274,21 @@ public class HerramientaTest {
 		BigDecimal durabilidadAntesDeGolpe = picoFino.getDurabilidad();
 		picoFino.golpear(diamante);
 		assertEquals(durabilidadAntesDeGolpe
-						.subtract(durabilidadAntesDeGolpe.multiply(new BigDecimal("0.1"))), 
-				picoFino.getDurabilidad());
+						.subtract(durabilidadAntesDeGolpe.multiply(new BigDecimal("0.1")))
+						.compareTo(picoFino.getDurabilidad()), 0);
 		
 		durabilidadAntesDeGolpe = picoFino.getDurabilidad();
 		picoFino.golpear(diamante);
 		assertEquals(durabilidadAntesDeGolpe
-						.subtract(durabilidadAntesDeGolpe.multiply(new BigDecimal("0.1"))), 
-				picoFino.getDurabilidad());
+				.subtract(durabilidadAntesDeGolpe.multiply(new BigDecimal("0.1")))
+				.compareTo(picoFino.getDurabilidad()), 0);
 		
 		durabilidadAntesDeGolpe = picoFino.getDurabilidad();
 		picoFino.golpear(diamante);
 		assertEquals(durabilidadAntesDeGolpe
-						.subtract(durabilidadAntesDeGolpe.multiply(new BigDecimal("0.1"))), 
-				picoFino.getDurabilidad());
+				.subtract(durabilidadAntesDeGolpe.multiply(new BigDecimal("0.1")))
+				.compareTo(picoFino.getDurabilidad()), 0);
 	}
-	*/
 	
 	@Test
 	public void cuandoSeUsaPicoFinoContraMaterialesExceptoDiamante_NoDeberiaReducirSuDurabilidad() 
