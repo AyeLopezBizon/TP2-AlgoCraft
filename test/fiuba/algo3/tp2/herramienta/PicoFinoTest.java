@@ -66,7 +66,7 @@ public class PicoFinoTest {
 
 		assertEquals(durabilidad, picoFino.getDurabilidad());
 	}
-/*
+
 	@Test
 	public void dadoUnPicoFino_CuandoSeUsaUnaVezContraDiamante_DeberiaDisminuirLaDurabilidadEn100() throws Exception{
 
@@ -79,5 +79,4 @@ public class PicoFinoTest {
 
 		assertEquals(durabilidad.subtract(new BigDecimal(100)), picoFino.getDurabilidad());
 	}
- */
 }

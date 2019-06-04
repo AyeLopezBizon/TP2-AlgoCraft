@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.material;
 
+import fiuba.algo3.tp2.herramienta.Herramienta;
+
 import java.math.BigDecimal;
 
 public abstract class Material implements Golpeable {
@@ -28,4 +30,6 @@ public abstract class Material implements Golpeable {
 			durabilidad = new BigDecimal(0);
 		}
 	}
+
+	public abstract void reducir(Herramienta herramienta) throws MaterialDestruidoNoSePuedeGolpearException;
 }
