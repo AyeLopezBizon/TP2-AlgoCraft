@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import fiuba.algo3.tp2.herramienta.golpe.Golpe;
 import fiuba.algo3.tp2.herramienta.golpe.GolpeRompeMetal;
+import fiuba.algo3.tp2.herramienta.golpe.Golpeable;
 
 import java.math.BigDecimal;
 

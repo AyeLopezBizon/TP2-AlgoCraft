@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.integracion.entrega1;
+package fiuba.algo3.tp2.integracion;
 
 import fiuba.algo3.tp2.material.*;
 import fiuba.algo3.tp2.jugador.Jugador;

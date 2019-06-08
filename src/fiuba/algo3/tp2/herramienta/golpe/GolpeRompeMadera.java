@@ -5,7 +5,6 @@ import fiuba.algo3.tp2.material.MaterialDestruidoNoSePuedeGolpearException;
 import fiuba.algo3.tp2.material.Metal;
 import fiuba.algo3.tp2.material.Piedra;
 import fiuba.algo3.tp2.material.Diamante;
-import fiuba.algo3.tp2.material.Golpeable;
 
 import java.math.BigDecimal;
 

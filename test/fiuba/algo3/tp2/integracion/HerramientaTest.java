@@ -1,7 +1,6 @@
-package fiuba.algo3.tp2.integracion.entrega1;
+package fiuba.algo3.tp2.integracion;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -226,40 +225,29 @@ public class HerramientaTest {
 		Material piedra = new Piedra();
 		Material metal = new Metal();
 		Material diamante = new Diamante();
-
-		BigDecimal decrementoDurabilidad = picoDeMetal.getFuerza();
-		BigDecimal durabilidadAntesDeGolpe;
+		
+		BigDecimal durabilidadAntesDeGolpe = picoDeMetal.getDurabilidad();
 
 		// Golpeamos 2 veces cada material
 		for(int i = 0; i < 2; i++) {
 
-			durabilidadAntesDeGolpe = picoDeMetal.getDurabilidad();
-
 			picoDeMetal.golpear(madera);
-			assertEquals(durabilidadAntesDeGolpe.subtract(decrementoDurabilidad), picoDeMetal.getDurabilidad());
-
-			durabilidadAntesDeGolpe = picoDeMetal.getDurabilidad();
+			assertEquals(durabilidadAntesDeGolpe, picoDeMetal.getDurabilidad());
 
 			picoDeMetal.golpear(piedra);
-			assertEquals(durabilidadAntesDeGolpe.subtract(decrementoDurabilidad), picoDeMetal.getDurabilidad());
-
-			durabilidadAntesDeGolpe = picoDeMetal.getDurabilidad();
+			assertEquals(durabilidadAntesDeGolpe, picoDeMetal.getDurabilidad());
 
 			picoDeMetal.golpear(metal);
-			assertEquals(durabilidadAntesDeGolpe.subtract(decrementoDurabilidad), picoDeMetal.getDurabilidad());
-
-			durabilidadAntesDeGolpe = picoDeMetal.getDurabilidad();
+			assertEquals(durabilidadAntesDeGolpe, picoDeMetal.getDurabilidad());
 
 			picoDeMetal.golpear(diamante);
-			assertEquals(durabilidadAntesDeGolpe.subtract(decrementoDurabilidad), picoDeMetal.getDurabilidad());
+			assertEquals(durabilidadAntesDeGolpe, picoDeMetal.getDurabilidad());
 		}
 
 		// Ahora 2 veces mas y en la ultima la durabilidad tiene que ser 0
-		durabilidadAntesDeGolpe = picoDeMetal.getDurabilidad();
-
 		picoDeMetal.golpear(madera);
-		assertEquals(durabilidadAntesDeGolpe.subtract(decrementoDurabilidad), picoDeMetal.getDurabilidad());
-
+		assertEquals(durabilidadAntesDeGolpe, picoDeMetal.getDurabilidad());
+		
 		picoDeMetal.golpear(madera);
 		assertEquals(new BigDecimal(0), picoDeMetal.getDurabilidad());
 	}

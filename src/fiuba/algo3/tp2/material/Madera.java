@@ -17,7 +17,7 @@ public class Madera extends Material {
 		golpe.golpear(this);
 	}
 
-	public void reducir(Herramienta herramienta) throws MaterialDestruidoNoSePuedeGolpearException {
+	public void serGolpeadoPor(Herramienta herramienta) throws MaterialDestruidoNoSePuedeGolpearException {
 
 		herramienta.reducirDurabilidad(this);
 	}

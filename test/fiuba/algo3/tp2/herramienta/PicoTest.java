@@ -171,7 +171,7 @@ public class PicoTest {
 
 		picoDeMetal.golpear(madera);
 
-		assertEquals(picoDeMetal.getDurabilidad(), durabilidad.subtract(new BigDecimal(12)));
+		assertEquals(picoDeMetal.getDurabilidad(), durabilidad);
 	}
 
 	@Test
@@ -184,7 +184,7 @@ public class PicoTest {
 
 		picoDeMetal.golpear(piedra);
 
-		assertEquals(picoDeMetal.getDurabilidad(), durabilidad.subtract(new BigDecimal(12)));
+		assertEquals(picoDeMetal.getDurabilidad(), durabilidad);
 	}
 
 	@Test
@@ -197,7 +197,7 @@ public class PicoTest {
 
 		picoDeMetal.golpear(metal);
 
-		assertEquals(picoDeMetal.getDurabilidad(), durabilidad.subtract(new BigDecimal(12)));
+		assertEquals(picoDeMetal.getDurabilidad(), durabilidad);
 	}
 
 	@Test
@@ -210,7 +210,7 @@ public class PicoTest {
 
 		picoDeMetal.golpear(diamante);
 
-		assertEquals(picoDeMetal.getDurabilidad(), durabilidad.subtract(new BigDecimal(12)));
+		assertEquals(picoDeMetal.getDurabilidad(), durabilidad);
 	}
 
 	@Test

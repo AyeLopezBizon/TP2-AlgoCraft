@@ -26,7 +26,7 @@ public abstract class Herramienta {
 	//	durabilidad.reducir();
 	//	golpe.golpear(material);
 
-		material.reducir(this);
+		material.serGolpeadoPor(this);
 	}
 
 	public BigDecimal getFuerza() {

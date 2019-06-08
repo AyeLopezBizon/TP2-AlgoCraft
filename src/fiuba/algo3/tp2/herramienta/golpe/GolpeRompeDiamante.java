@@ -1,7 +1,6 @@
 package fiuba.algo3.tp2.herramienta.golpe;
 
 import fiuba.algo3.tp2.material.Diamante;
-import fiuba.algo3.tp2.material.Golpeable;
 import fiuba.algo3.tp2.material.Madera;
 import fiuba.algo3.tp2.material.MaterialDestruidoNoSePuedeGolpearException;
 import fiuba.algo3.tp2.material.Metal;

@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.integracion.entrega1;
+package fiuba.algo3.tp2.integracion;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
