@@ -9,17 +9,25 @@ import fiuba.algo3.tp2.material.Piedra;
 
 import java.math.BigDecimal;
 
-public interface Golpe {
+public abstract class  Golpe {
 
-	BigDecimal getFuerza();
+	protected BigDecimal fuerza;
 
-	void golpear(Golpeable material) throws MaterialDestruidoNoSePuedeGolpearException;
-	
-	void golpear(Madera madera) throws MaterialDestruidoNoSePuedeGolpearException;
+	public Golpe(BigDecimal fuerza) {
+		this.fuerza = fuerza;
+	}
 
-	void golpear(Piedra piedra) throws MaterialDestruidoNoSePuedeGolpearException;
+	public BigDecimal getFuerza() {
+		return fuerza;
+	}
 
-	void golpear(Metal metal) throws MaterialDestruidoNoSePuedeGolpearException;
+	public abstract void golpear(Golpeable material) throws MaterialDestruidoNoSePuedeGolpearException;
 
-	void golpear(Diamante diamante) throws MaterialDestruidoNoSePuedeGolpearException;
+	public abstract void golpear(Madera madera) throws MaterialDestruidoNoSePuedeGolpearException;
+
+	public abstract void golpear(Piedra piedra) throws MaterialDestruidoNoSePuedeGolpearException;
+
+	public abstract void golpear(Metal metal) throws MaterialDestruidoNoSePuedeGolpearException;
+
+	public abstract void golpear(Diamante diamante) throws MaterialDestruidoNoSePuedeGolpearException;
 }

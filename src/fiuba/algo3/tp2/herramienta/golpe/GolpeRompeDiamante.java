@@ -9,45 +9,29 @@ import fiuba.algo3.tp2.material.Piedra;
 
 import java.math.BigDecimal;
 
-public class GolpeRompeDiamante implements Golpe {
-	
-	private BigDecimal fuerza;
-	
+public class GolpeRompeDiamante extends Golpe {
+
 	public GolpeRompeDiamante(BigDecimal fuerza) {
-		this.fuerza = fuerza;
+		super(fuerza);
 	}
-
-	public BigDecimal getFuerza() {
-		return fuerza;
-	}
-
 
 	public void golpear(Golpeable material) throws MaterialDestruidoNoSePuedeGolpearException {
-		
 		material.golpearCon(this);
 	}
 
-
 	public void golpear(Madera madera) throws MaterialDestruidoNoSePuedeGolpearException {
-		
 		madera.reducirDurabilidad(fuerza);
 	}
 
-
 	public void golpear(Piedra piedra) throws MaterialDestruidoNoSePuedeGolpearException {
-		
 		piedra.reducirDurabilidad(fuerza);
 	}
 
-
 	public void golpear(Metal metal) throws MaterialDestruidoNoSePuedeGolpearException {
-		
 		metal.reducirDurabilidad(fuerza);
 	}
 
-
 	public void golpear(Diamante diamante) throws MaterialDestruidoNoSePuedeGolpearException {
-		
 		diamante.reducirDurabilidad(fuerza);
 	}
 }
