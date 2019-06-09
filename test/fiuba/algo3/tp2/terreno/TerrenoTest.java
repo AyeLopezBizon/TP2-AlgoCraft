@@ -1,0 +1,128 @@
+package fiuba.algo3.tp2.terreno;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
+
+import fiuba.algo3.tp2.jugador.Jugador;
+import fiuba.algo3.tp2.terreno.casillero.CasilleroNoEncontradoException;
+
+public class TerrenoTest {
+
+	@Test
+	public void dadoUnTerrenoDe100ColumnasY200Filas_CuandoSePosicionaUnJugadorEnLaPosicionColumna1YFila1_ElCasilleroDeEsaPosicionDeberiaContenerElJugador() 
+			throws Exception {
+		
+		Terreno terreno = new Terreno(100, 200);
+		Posicionable jugador = new Jugador();
+		Posicion posicion = new Posicion(1,1);
+		
+		terreno.ocuparCasillero(jugador, posicion);
+		
+		assertEquals(jugador, terreno.obtenerCasillero(new Posicion(1,1)).obtenerPosicionable());
+	}
+	
+	@Test
+	public void dadoUnTerrenoDe100ColumnasY200Filas_CuandoSePosicionaUnJugadorEnLaPosicionColumna100YFila200_ElCasilleroDeEsaPosicionDeberiaContenerElJugador() 
+			throws Exception {
+		
+		Terreno terreno = new Terreno(100, 200);
+		Posicionable jugador = new Jugador();
+		Posicion posicion = new Posicion(100,200);
+		
+		terreno.ocuparCasillero(jugador, posicion);
+		
+		assertEquals(jugador, terreno.obtenerCasillero(new Posicion(100,200)).obtenerPosicionable());
+	}
+	
+	@Test
+	public void dadoUnTerrenoDe100ColumnasY200Filas_CuandoSePosicionaUnJugadorEnLaPosicionColumna1YFila200_ElCasilleroDeEsaPosicionDeberiaContenerElJugador() 
+			throws Exception {
+		
+		Terreno terreno = new Terreno(100, 200);
+		Posicionable jugador = new Jugador();
+		Posicion posicion = new Posicion(1,200);
+		
+		terreno.ocuparCasillero(jugador, posicion);
+		
+		assertEquals(jugador, terreno.obtenerCasillero(new Posicion(1,200)).obtenerPosicionable());
+	}
+	
+	@Test
+	public void dadoUnTerrenoDe100ColumnasY200Filas_CuandoSePosicionaUnJugadorEnLaPosicionColumna100YFila1_ElCasilleroDeEsaPosicionDeberiaContenerElJugador() 
+			throws Exception {
+		
+		Terreno terreno = new Terreno(100, 200);
+		Posicionable jugador = new Jugador();
+		Posicion posicion = new Posicion(100,1);
+		
+		terreno.ocuparCasillero(jugador, posicion);
+		
+		assertEquals(jugador, terreno.obtenerCasillero(new Posicion(100,1)).obtenerPosicionable());
+	}
+	
+	@Test
+	public void dadoUnTerrenoDe100ColumnasY200Filas_CuandoSePosicionaUnJugadorEnLaPosicionColumna0YFila1_DeberiaLanzarCasilleroNoEncontradoException() 
+			throws Exception {
+		
+		Terreno terreno = new Terreno(100, 200);
+		Posicionable jugador = new Jugador();
+		Posicion posicion = new Posicion(0,1);
+		
+		try {
+			terreno.ocuparCasillero(jugador, posicion);
+			fail("Deberia lanzar CasilleroNoEncontradoException");
+		}catch(Exception exception) {
+			assertEquals(CasilleroNoEncontradoException.class, exception.getClass());
+		}
+	}
+	
+	@Test
+	public void dadoUnTerrenoDe100ColumnasY200Filas_CuandoSePosicionaUnJugadorEnLaPosicionColumna101YFila200_DeberiaLanzarCasilleroNoEncontradoException() 
+			throws Exception {
+		
+		Terreno terreno = new Terreno(100, 200);
+		Posicionable jugador = new Jugador();
+		Posicion posicion = new Posicion(101,200);
+		
+		try {
+			terreno.ocuparCasillero(jugador, posicion);
+			fail("Deberia lanzar CasilleroNoEncontradoException");
+		}catch(Exception exception) {
+			assertEquals(CasilleroNoEncontradoException.class, exception.getClass());
+		}
+	}
+	
+	@Test
+	public void dadoUnTerrenoDe100ColumnasY200Filas_CuandoSePosicionaUnJugadorEnLaPosicionColumna1YFila201_DeberiaLanzarCasilleroNoEncontradoException() 
+			throws Exception {
+		
+		Terreno terreno = new Terreno(100, 200);
+		Posicionable jugador = new Jugador();
+		Posicion posicion = new Posicion(1,201);
+		
+		try {
+			terreno.ocuparCasillero(jugador, posicion);
+			fail("Deberia lanzar CasilleroNoEncontradoException");
+		}catch(Exception exception) {
+			assertEquals(CasilleroNoEncontradoException.class, exception.getClass());
+		}
+	}
+	
+	@Test
+	public void dadoUnTerrenoDe100ColumnasY200Filas_CuandoSePosicionaUnJugadorEnLaPosicionColumna101YFila1_DeberiaLanzarCasilleroNoEncontradoException() 
+			throws Exception {
+		
+		Terreno terreno = new Terreno(100, 200);
+		Posicionable jugador = new Jugador();
+		Posicion posicion = new Posicion(101,1);
+		
+		try {
+			terreno.ocuparCasillero(jugador, posicion);
+			fail("Deberia lanzar CasilleroNoEncontradoException");
+		}catch(Exception exception) {
+			assertEquals(CasilleroNoEncontradoException.class, exception.getClass());
+		}
+	}
+}

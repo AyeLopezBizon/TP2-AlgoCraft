@@ -11,37 +11,42 @@ import fiuba.algo3.tp2.terreno.Posicion;
 import fiuba.algo3.tp2.terreno.Posicionable;
 import fiuba.algo3.tp2.terreno.Terreno;
 import fiuba.algo3.tp2.terreno.casillero.CasilleroOcupadoException;
-/*
+
 public class TerrenoTest {
 	
 	@Test
-	public void cuandoSeOcupaUnCasilleroVacioConUnJugador_AlObtenerElPosicionableDelCasilleroDeberiaDevolverElJugador() {
+	public void cuandoSeOcupaUnCasilleroVacioConUnJugador_AlObtenerElPosicionableDelCasilleroDeberiaDevolverElJugador() 
+			throws Exception {
 		
 		Terreno terreno = new Terreno(100, 200);
 		Posicionable jugador = new Jugador();
 		Posicion posicion = new Posicion(5, 3);
 		
 		terreno.ocuparCasillero(jugador, posicion);
-		Posicionable posicionableEnCasillero = terreno.getCasillero(posicion).getPosicionable();
+		Posicionable posicionableEnCasillero = 
+				terreno.obtenerCasillero(posicion).obtenerPosicionable();
 		
 		assertEquals(jugador, posicionableEnCasillero);
 	}
 	
 	@Test
-	public void cuandoSeOcupaUnCasilleroVacioConUnaMadera_AlObtenerElPosicionableDelCasilleroDeberiaDevolverLaMadera() {
+	public void cuandoSeOcupaUnCasilleroVacioConUnaMadera_AlObtenerElPosicionableDelCasilleroDeberiaDevolverLaMadera() 
+			throws Exception {
 		
 		Terreno terreno = new Terreno(100, 200);
 		Posicionable madera = new Madera();
 		Posicion posicion = new Posicion(5, 3);
 		
 		terreno.ocuparCasillero(madera, posicion);
-		Posicionable posicionableEnCasillero = terreno.getCasillero(posicion).getPosicionable();
+		Posicionable posicionableEnCasillero = 
+				terreno.obtenerCasillero(posicion).obtenerPosicionable();
 		
 		assertEquals(madera, posicionableEnCasillero);
 	}
 	
 	@Test
-	public void dadoUnCasilleroOcupadoConUnJugador_CuandoSeOcupaElMismoCasilleroConUnaMadera_DeberiaLanzarCasilleroOcupadoException() {
+	public void dadoUnCasilleroOcupadoConUnJugador_CuandoSeOcupaElMismoCasilleroConUnaMadera_DeberiaLanzarCasilleroOcupadoException() 
+			throws Exception {
 		
 		Terreno terreno = new Terreno(100, 200);
 		Posicionable jugador = new Jugador();
@@ -59,7 +64,8 @@ public class TerrenoTest {
 	}
 	
 	@Test
-	public void dadoUnCasilleroOcupadoConUnaMadera_CuandoSeOcupaElMismoCasilleroConUnJugador_DeberiaLanzarCasilleroOcupadoException() {
+	public void dadoUnCasilleroOcupadoConUnaMadera_CuandoSeOcupaElMismoCasilleroConUnJugador_DeberiaLanzarCasilleroOcupadoException() 
+			throws Exception {
 		
 		Terreno terreno = new Terreno(100, 200);
 		Posicionable madera = new Madera();
@@ -74,7 +80,5 @@ public class TerrenoTest {
 		} catch(Exception exception) {
 			assertEquals(CasilleroOcupadoException.class, exception.getClass());
 		}
-	}
-	
+	}	
 }
-*/

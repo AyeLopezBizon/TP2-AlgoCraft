@@ -22,9 +22,9 @@ public class Casillero {
 		return posicion.esIgualA(this.posicion);
 	}
 
-	public void ocuparCasillero(Posicionable jugador) 
+	public void ocuparCasillero(Posicionable posicionable) 
 			throws CasilleroOcupadoException {
 		
-		espacio = espacio.ocupar(jugador);
+		espacio = espacio.ocupar(posicionable);
 	}
 }

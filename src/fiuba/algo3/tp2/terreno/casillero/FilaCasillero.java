@@ -17,10 +17,14 @@ public class FilaCasillero {
 		
 		this.numeroFila = numeroFila;
 		this.cantidadDeCasilleros = cantidadDeCasilleros;
-		this.casilleros = new ArrayList<Casillero>();
+		inicializarCasilleros();
+	}
+
+	private void inicializarCasilleros() {
 		
+		casilleros = new ArrayList<Casillero>();
 		for(int numeroColumna = 1; numeroColumna <= cantidadDeCasilleros; numeroColumna++) {
-			this.casilleros.add(new Casillero(new Posicion(numeroColumna, numeroFila)));
+			casilleros.add(new Casillero(new Posicion(numeroColumna, numeroFila)));
 		}
 	}
 
