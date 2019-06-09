@@ -26,5 +26,6 @@ public class Casillero {
 			throws CasilleroOcupadoException {
 		
 		espacio = espacio.ocupar(posicionable);
+		posicionable.posicionar(posicion);
 	}
 }

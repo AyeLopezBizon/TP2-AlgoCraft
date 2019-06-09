@@ -6,11 +6,13 @@ import fiuba.algo3.tp2.herramienta.Herramienta;
 import fiuba.algo3.tp2.herramienta.HerramientaDesgastadaNoSePuedeUsarException;
 import fiuba.algo3.tp2.herramienta.golpe.Golpe;
 import fiuba.algo3.tp2.herramienta.golpe.Golpeable;
+import fiuba.algo3.tp2.terreno.Posicion;
 import fiuba.algo3.tp2.terreno.Posicionable;
 
 public abstract class Material implements Golpeable, Posicionable {
-
+	
 	protected BigDecimal durabilidad;
+	private Posicion posicion;
 	
 	public Material(BigDecimal durabilidad) {
 		this.durabilidad = durabilidad;
@@ -36,6 +38,16 @@ public abstract class Material implements Golpeable, Posicionable {
 		}
 	}
 
+	@Override
+	public void posicionar(Posicion posicion) {
+		this.posicion = posicion;
+	}
+
+	@Override
+	public Posicion obtenerPosicion() {
+		return posicion;
+	}
+	
 	public abstract void golpearCon(Golpe golpe) throws MaterialDestruidoNoSePuedeGolpearException;
 
 	public abstract void serGolpeadoPor(Herramienta herramienta)
