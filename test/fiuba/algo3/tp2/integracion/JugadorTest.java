@@ -10,65 +10,192 @@ import static org.junit.Assert.assertEquals;
 public class JugadorTest {
 
     @Test
-    public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaConDurabilidad100() {
+    public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnaMaderaYReducirLaDurabilidadDelMaterialEn2() throws MaterialDestruidoNoSePuedeGolpearException {
+
         Jugador jugador = new Jugador();
-        BigDecimal durabilidadDeUnHachaDeMadera = new BigDecimal(100);
-        assertEquals(jugador.getDurabilidadDelHachaDeMadera(),durabilidadDeUnHachaDeMadera);
+        Material material = new Madera();
+
+        BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
+        BigDecimal durabilidadDelMaterialEsperada = durabilidadDelMaterialInicial.subtract(BigDecimal.valueOf(2));
+
+        jugador.golpear(material);
+
+        assertEquals(durabilidadDelMaterialEsperada, material.getDurabilidad());
     }
 
     @Test
-    public void cuandoSeCreaUnJugador_DeberiaGolpearConSuHachaDeMaderaUnaMaderaYQueLaDurabilidadDelHachaBajeA98YLaDeLaMaderaA8() {
+    public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnaMadera5VecesYQueNoSeDestruyaElMaterial() throws MaterialDestruidoNoSePuedeGolpearException {
+
         Jugador jugador = new Jugador();
-        Material madera = new Madera();
+        Material material = new Madera();
 
-        BigDecimal durabilidadDeUnHachaDeMadera = new BigDecimal(98);
-        BigDecimal durabilidadDeLaMadera = new BigDecimal(8);
+        BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
+        BigDecimal durabilidadDelMaterialEsperada = durabilidadDelMaterialInicial.subtract(BigDecimal.valueOf(10));
 
-        jugador.golpearConHachaDeMadera(madera);
+        jugador.golpear(material);
+        jugador.golpear(material);
+        jugador.golpear(material);
+        jugador.golpear(material);
+        jugador.golpear(material);
 
-        assertEquals(jugador.getDurabilidadDelHachaDeMadera(), durabilidadDeUnHachaDeMadera);
-        assertEquals(madera.getDurabilidad(), durabilidadDeLaMadera);
+        assertEquals(durabilidadDelMaterialEsperada, material.getDurabilidad());
+    }
+
+    @Test(expected = MaterialDestruidoNoSePuedeGolpearException.class)
+    public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnaMadera6VecesYDestruirElMaterial() throws MaterialDestruidoNoSePuedeGolpearException {
+
+        Jugador jugador = new Jugador();
+        Material material = new Madera();
+
+        jugador.golpear(material);
+        jugador.golpear(material);
+        jugador.golpear(material);
+        jugador.golpear(material);
+        jugador.golpear(material);
+
+        // Al sexto golpe se lanza Excepcion MaterialDestruidoNoSePuedeGolpearException.
+        jugador.golpear(material);
+    }
+/*
+    @Test(expected = HerramientaDesgastadaNoSePuedeUsarException.class)
+    public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearMaderas51VecesYDesgastarse () throws MaterialDestruidoNoSePuedeGolpearException {
+
+        Jugador jugador = new Jugador();
+
+        for(int i = 0; i < 10; i++) {
+            Material material = new Madera();
+            jugador.golpear(material);
+            jugador.golpear(material);
+            jugador.golpear(material);
+            jugador.golpear(material);
+            jugador.golpear(material);
+        }
+
+        Material material = new Madera();
+        jugador.golpear(material);
+    }
+*/
+    @Test
+    public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnaPiedraYNoReducirLaDurabilidadDelMaterial() throws MaterialDestruidoNoSePuedeGolpearException {
+
+        Jugador jugador = new Jugador();
+        Material material = new Piedra();
+
+        BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
+
+        jugador.golpear(material);
+
+        assertEquals(durabilidadDelMaterialInicial, material.getDurabilidad());
     }
 
     @Test
-    public void cuandoSeCreaUnJugador_DeberiaGolpearConSuHachaDeMaderaUnaPiedraYQueLaDurabilidadDelHachaBajeA98YLaDeLaPiedraNoBaje() {
+    public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnaPiedra50VecesAntesDeDesgastarseYNoDestruirElMaterial() throws MaterialDestruidoNoSePuedeGolpearException {
+
         Jugador jugador = new Jugador();
-        Material piedra = new Piedra();
+        Material material = new Piedra();
 
-        BigDecimal durabilidadDeUnHachaDeMadera = new BigDecimal(98);
-        BigDecimal durabilidadDeLaPiedra = new BigDecimal(30);
+        BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
 
-        jugador.golpearConHachaDeMadera(piedra);
+        for(int i = 0; i < 50; i++)
+            jugador.golpear(material);
 
-        assertEquals(jugador.getDurabilidadDelHachaDeMadera(), durabilidadDeUnHachaDeMadera);
-        assertEquals(piedra.getDurabilidad(), durabilidadDeLaPiedra);
+        assertEquals(durabilidadDelMaterialInicial, material.getDurabilidad());
+    }
+/*
+    @Test(expected = HerramientaDesgastadaNoSePuedeUsarException.class)
+    public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnaPiedra51VecesYDesgastarse() throws MaterialDestruidoNoSePuedeGolpearException {
+
+        Jugador jugador = new Jugador();
+        Material material = new Piedra();
+
+        BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
+
+        for(int i = 0; i < 50; i++)
+            jugador.golpear(material);
+
+        jugador.golpear(material);
+    }
+*/
+    @Test
+    public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnMetalYNoReducirLaDurabilidadDelMaterial() throws MaterialDestruidoNoSePuedeGolpearException {
+
+        Jugador jugador = new Jugador();
+        Material material = new Metal();
+
+        BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
+
+        jugador.golpear(material);
+
+        assertEquals(durabilidadDelMaterialInicial, material.getDurabilidad());
     }
 
     @Test
-    public void cuandoSeCreaUnJugador_DeberiaGolpearConSuHachaDeMaderaUnMetalYQueLaDurabilidadDelHachaBajeA98YLaDelMetalNoBaje() {
+    public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnMetal50VecesAntesDeDesgastarseYNoDestruirElMaterial() throws MaterialDestruidoNoSePuedeGolpearException {
+
         Jugador jugador = new Jugador();
-        Material metal = new Metal();
+        Material material = new Metal();
 
-        BigDecimal durabilidadDeUnHachaDeMadera = new BigDecimal(98);
-        BigDecimal durabilidadDelMetal = new BigDecimal(50);
+        BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
 
-        jugador.golpearConHachaDeMadera(metal);
+        for(int i = 0; i < 50; i++)
+            jugador.golpear(material);
 
-        assertEquals(jugador.getDurabilidadDelHachaDeMadera(), durabilidadDeUnHachaDeMadera);
-        assertEquals(metal.getDurabilidad(), durabilidadDelMetal);
+        assertEquals(durabilidadDelMaterialInicial, material.getDurabilidad());
+    }
+/*
+    @Test(expected = HerramientaDesgastadaNoSePuedeUsarException.class)
+    public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnMetal51VecesYDesgastarse() throws MaterialDestruidoNoSePuedeGolpearException {
+
+        Jugador jugador = new Jugador();
+        Material material = new Metal();
+
+        BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
+
+        for(int i = 0; i < 50; i++)
+            jugador.golpear(material);
+
+        jugador.golpear(material);
+    }
+*/
+    @Test
+    public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnDiamanteYNoReducirLaDurabilidadDelMaterial() throws MaterialDestruidoNoSePuedeGolpearException {
+
+        Jugador jugador = new Jugador();
+        Material material = new Diamante();
+
+        BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
+
+        jugador.golpear(material);
+
+        assertEquals(durabilidadDelMaterialInicial, material.getDurabilidad());
     }
 
     @Test
-    public void cuandoSeCreaUnJugador_DeberiaGolpearConSuHachaDeMaderaUnDiamanteYQueLaDurabilidadDelHachaBajeA98YLaDelDiamanteNoBaje() {
+    public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnDiamante50VecesAntesDeDesgastarseYNoDestruirElMaterial() throws MaterialDestruidoNoSePuedeGolpearException {
+
         Jugador jugador = new Jugador();
-        Material diamante = new Diamante();
+        Material material = new Diamante();
 
-        BigDecimal durabilidadDeUnHachaDeMadera = new BigDecimal(98);
-        BigDecimal durabilidadDelDiamante = new BigDecimal(100);
+        BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
 
-        jugador.golpearConHachaDeMadera(diamante);
+        for(int i = 0; i < 50; i++)
+            jugador.golpear(material);
 
-        assertEquals(jugador.getDurabilidadDelHachaDeMadera(), durabilidadDeUnHachaDeMadera);
-        assertEquals(diamante.getDurabilidad(), durabilidadDelDiamante);
+        assertEquals(durabilidadDelMaterialInicial, material.getDurabilidad());
     }
+/*
+    @Test(expected = HerramientaDesgastadaNoSePuedeUsarException.class)
+    public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnDiamante51VecesYDesgastarse() throws MaterialDestruidoNoSePuedeGolpearException {
+
+        Jugador jugador = new Jugador();
+        Material material = new Diamante();
+
+        BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
+
+        for(int i = 0; i < 50; i++)
+            jugador.golpear(material);
+
+        jugador.golpear(material);
+    }
+ */
 }
