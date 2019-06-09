@@ -35,8 +35,8 @@ public class Terreno {
 	public void ocuparCasillero(Posicionable jugador, Posicion posicion) 
 			throws CasilleroOcupadoException, CasilleroNoEncontradoException {
 		
-		Casillero casillero = buscarCasillero(posicion);
-		casillero.ocuparCasillero(jugador);
+		FilaCasillero filaCasillero = buscarFilaCasillero(posicion);
+		filaCasillero.ocuparCasillero(jugador, posicion);
 	}
 
 	public Casillero obtenerCasillero(Posicion posicion) 
