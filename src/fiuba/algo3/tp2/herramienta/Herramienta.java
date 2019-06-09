@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2.herramienta;
 
+import fiuba.algo3.tp2.herramienta.durabilidad.DurabilidadDesgastadaNoSePuedeReducirException;
 import fiuba.algo3.tp2.material.*;
 import fiuba.algo3.tp2.herramienta.durabilidad.Durabilidad;
 import fiuba.algo3.tp2.herramienta.golpe.Golpe;
@@ -19,25 +20,63 @@ public abstract class Herramienta {
 	public BigDecimal getDurabilidad() {
 		return durabilidad.getValor();
 	}
-	
-	public void golpear(Material material) 
-			throws MaterialDestruidoNoSePuedeGolpearException {
-		
-	//	durabilidad.reducir();
-	//	golpe.golpear(material);
-
-		material.serGolpeadoPor(this);
-	}
 
 	public BigDecimal getFuerza() {
 		return golpe.getFuerza();
 	}
 
-	public abstract void reducirDurabilidad(Madera madera) throws MaterialDestruidoNoSePuedeGolpearException;
+	public void golpear(Material material)
+			throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
 
-	public abstract void reducirDurabilidad(Piedra piedra) throws MaterialDestruidoNoSePuedeGolpearException;
+		material.serGolpeadoPor(this);
+	}
 
-	public abstract void reducirDurabilidad(Metal metal) throws MaterialDestruidoNoSePuedeGolpearException;
+	public void reducirDurabilidad(Madera madera)
+			throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
 
-	public abstract void reducirDurabilidad(Diamante diamante) throws MaterialDestruidoNoSePuedeGolpearException;
+		try {
+			durabilidad.reducir();
+		} catch (DurabilidadDesgastadaNoSePuedeReducirException e) {
+			throw new HerramientaDesgastadaNoSePuedeUsarException();
+		}
+
+		golpe.golpear(madera);
+	}
+
+	public void reducirDurabilidad(Piedra piedra)
+			throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
+
+		try {
+			durabilidad.reducir();
+		} catch (DurabilidadDesgastadaNoSePuedeReducirException e) {
+			throw new HerramientaDesgastadaNoSePuedeUsarException();
+		}
+
+		golpe.golpear(piedra);
+	}
+
+	public void reducirDurabilidad(Metal metal)
+			throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
+
+		try {
+			durabilidad.reducir();
+		} catch (DurabilidadDesgastadaNoSePuedeReducirException e) {
+			throw new HerramientaDesgastadaNoSePuedeUsarException();
+		}
+
+		golpe.golpear(metal);
+	}
+
+	public void reducirDurabilidad(Diamante diamante)
+			throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
+
+		try {
+			durabilidad.reducir();
+		}
+		catch (DurabilidadDesgastadaNoSePuedeReducirException e) {
+			throw new HerramientaDesgastadaNoSePuedeUsarException();
+		}
+
+		golpe.golpear(diamante);
+	}
 }

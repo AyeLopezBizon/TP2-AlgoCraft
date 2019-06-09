@@ -11,7 +11,10 @@ public class DurabilidadRupturaAbrupta extends Durabilidad {
 		this.usos = cantidadDeUsosAntesDeRuptura;
 	}
 
-	public void reducir() {
+	public void reducir() throws DurabilidadDesgastadaNoSePuedeReducirException {
+		if(this.valor.equals(new BigDecimal(0)))
+			throw new DurabilidadDesgastadaNoSePuedeReducirException();
+
 		this.usos -= 1;
 
 		if (this.usos <= 0)

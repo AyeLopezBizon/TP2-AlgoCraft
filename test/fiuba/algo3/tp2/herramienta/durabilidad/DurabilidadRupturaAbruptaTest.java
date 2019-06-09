@@ -17,7 +17,8 @@ public class DurabilidadRupturaAbruptaTest {
 	}
 	
 	@Test
-	public void cuandoSeCreaUnaDurabilidadRupturaAbruptaConDurabilidadInicial100_CuandoSeReduce1Vez_NoDeberiaReducirSuDurabilidad() {
+	public void cuandoSeCreaUnaDurabilidadRupturaAbruptaConDurabilidadInicial100_CuandoSeReduce1Vez_NoDeberiaReducirSuDurabilidad()
+			throws DurabilidadDesgastadaNoSePuedeReducirException {
 		
 		Durabilidad durabilidadAbrupta = new DurabilidadRupturaAbrupta(new BigDecimal(100), 10);
 		
@@ -27,7 +28,8 @@ public class DurabilidadRupturaAbruptaTest {
 	}
 	
 	@Test
-	public void cuandoSeCreaUnaDurabilidadRupturaAbruptaConDurabilidadInicial100_CuandoSeReduce9Veces_NoDeberiaReducirSuDurabilidad() {
+	public void cuandoSeCreaUnaDurabilidadRupturaAbruptaConDurabilidadInicial100_CuandoSeReduce9Veces_NoDeberiaReducirSuDurabilidad()
+			throws DurabilidadDesgastadaNoSePuedeReducirException {
 		
 		Durabilidad durabilidadAbrupta = new DurabilidadRupturaAbrupta(new BigDecimal(100), 10);
 		
@@ -45,7 +47,8 @@ public class DurabilidadRupturaAbruptaTest {
 	}
 	
 	@Test
-	public void cuandoSeCreaUnaDurabilidadRupturaAbruptaConDurabilidadInicial100QueYaFueReducida9Veces_CuandoSeReduce1VezMas_DeberiaReducirSuDurabilidadA0() {
+	public void cuandoSeCreaUnaDurabilidadRupturaAbruptaConDurabilidadInicial100QueYaFueReducida9Veces_CuandoSeReduce1VezMas_DeberiaReducirSuDurabilidadA0()
+			throws DurabilidadDesgastadaNoSePuedeReducirException {
 		
 		Durabilidad durabilidadAbrupta = new DurabilidadRupturaAbrupta(new BigDecimal(100), 10);
 		

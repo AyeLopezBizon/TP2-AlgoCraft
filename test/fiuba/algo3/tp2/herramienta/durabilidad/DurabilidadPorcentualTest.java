@@ -17,7 +17,8 @@ public class DurabilidadPorcentualTest {
 	}
 	
 	@Test
-	public void dadaUnaDurabilidadPorcentualConDurabilidadInicial1000_CuandoSeReduce1Vez_DeberiaReducirSuDurabilidadEn100() {
+	public void dadaUnaDurabilidadPorcentualConDurabilidadInicial1000_CuandoSeReduce1Vez_DeberiaReducirSuDurabilidadEn100()
+			throws DurabilidadDesgastadaNoSePuedeReducirException {
 		
 		Durabilidad durabilidadPorcentual = new DurabilidadPorcentual(new BigDecimal(1000), new BigDecimal(10));
 		
@@ -27,7 +28,8 @@ public class DurabilidadPorcentualTest {
 	}
 
 	@Test
-	public void dadaUnaDurabilidadPorcentualConDurabilidadInicial1000_SuDurabilidadLuegoDeReducir3VecesDeberiaSer729() {
+	public void dadaUnaDurabilidadPorcentualConDurabilidadInicial1000_SuDurabilidadLuegoDeReducir3VecesDeberiaSer729()
+			throws DurabilidadDesgastadaNoSePuedeReducirException {
 		
 		Durabilidad durabilidadPorcentual = new DurabilidadPorcentual(new BigDecimal(1000), new BigDecimal(10));
 		

@@ -11,23 +11,14 @@ public class PicoFino extends Herramienta {
 	}
 
 	public void reducirDurabilidad(Madera madera) throws MaterialDestruidoNoSePuedeGolpearException {
-
 		golpe.golpear(madera);
 	}
 
 	public void reducirDurabilidad(Piedra piedra) throws MaterialDestruidoNoSePuedeGolpearException {
-
 		golpe.golpear(piedra);
 	}
 
 	public void reducirDurabilidad(Metal metal) throws MaterialDestruidoNoSePuedeGolpearException {
-
 		golpe.golpear(metal);
-	}
-
-	public void reducirDurabilidad(Diamante diamante) throws MaterialDestruidoNoSePuedeGolpearException {
-
-		durabilidad.reducir();
-		golpe.golpear(diamante);
 	}
 }

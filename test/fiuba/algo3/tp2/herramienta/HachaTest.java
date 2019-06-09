@@ -28,7 +28,9 @@ public class HachaTest {
 	}
 	
 	@Test
-	public void dadaUnHachaDeMadera_CuandoSeUsaUnaVezContraMadera_DeberiaDisminuirLaDurabilidadEn2() throws MaterialDestruidoNoSePuedeGolpearException {
+	public void dadaUnHachaDeMadera_CuandoSeUsaUnaVezContraMadera_DeberiaDisminuirLaDurabilidadEn2()
+			throws Exception {
+
 		Herramienta hachaDeMadera = HerramientaFactory.newHachaDeMadera();
 		Material maderaCubo = new Madera();
 
@@ -40,7 +42,8 @@ public class HachaTest {
 	}
 
 	@Test
-	public void dadaUnHachaDeMadera_CuandoSeUsaUnaVezContraPiedra_DeberiaDisminuirLaDurabilidadEn2() throws MaterialDestruidoNoSePuedeGolpearException {
+	public void dadaUnHachaDeMadera_CuandoSeUsaUnaVezContraPiedra_DeberiaDisminuirLaDurabilidadEn2()
+			throws Exception {
 
 		Herramienta hachaDeMadera = HerramientaFactory.newHachaDeMadera();
 		Material piedraCubo = new Piedra();
@@ -53,7 +56,9 @@ public class HachaTest {
 	}
 
 	@Test
-	public void dadaUnHachaDeMadera_CuandoSeUsaUnaVezContraMetal_DeberiaDisminuirLaDurabilidadEn2() throws MaterialDestruidoNoSePuedeGolpearException {
+	public void dadaUnHachaDeMadera_CuandoSeUsaUnaVezContraMetal_DeberiaDisminuirLaDurabilidadEn2()
+			throws Exception {
+
 		Herramienta hachaDeMadera = HerramientaFactory.newHachaDeMadera();
 		Material metalCubo = new Metal();
 
@@ -65,7 +70,9 @@ public class HachaTest {
 	}
 
 	@Test
-	public void dadaUnHachaDeMadera_CuandoSeUsaUnaVezContraDiamante_DeberiaDisminuirLaDurabilidadEn2() throws MaterialDestruidoNoSePuedeGolpearException {
+	public void dadaUnHachaDeMadera_CuandoSeUsaUnaVezContraDiamante_DeberiaDisminuirLaDurabilidadEn2()
+			throws Exception {
+
 		Herramienta hachaDeMadera = HerramientaFactory.newHachaDeMadera();
 		Material diamanteCubo = new Diamante();
 
@@ -89,9 +96,9 @@ public class HachaTest {
 	}
 
 	@Test
-	public void dadaUnHachaDePiedra_CuandoSeUsaUnaVezContraMadera_DeberiaDisminuirLaDurabilidadEn5() 
+	public void dadaUnHachaDePiedra_CuandoSeUsaUnaVezContraMadera_DeberiaDisminuirLaDurabilidadEn5()
 			throws Exception {
-		
+
 		Herramienta hachaDePiedra = HerramientaFactory.newHachaDePiedra();
 		Material madera = new Madera();
 		BigDecimal durabilidad = hachaDePiedra.getDurabilidad();
@@ -102,7 +109,7 @@ public class HachaTest {
 	}
 
 	@Test
-	public void dadaUnHachaDePiedra_CuandoSeUsaUnaVezContraPiedra_DeberiaDisminuirLaDurabilidadEn5() 
+	public void dadaUnHachaDePiedra_CuandoSeUsaUnaVezContraPiedra_DeberiaDisminuirLaDurabilidadEn5()
 			throws Exception {
 
 		Herramienta hachaDePiedra = HerramientaFactory.newHachaDePiedra();
@@ -115,9 +122,9 @@ public class HachaTest {
 	}
 
 	@Test
-	public void dadaUnHachaDePiedra_CuandoSeUsaUnaVezContraMetal_DeberiaDisminuirLaDurabilidadEn5() 
+	public void dadaUnHachaDePiedra_CuandoSeUsaUnaVezContraMetal_DeberiaDisminuirLaDurabilidadEn5()
 			throws Exception {
-		
+
 		Herramienta hachaDePiedra = HerramientaFactory.newHachaDePiedra();
 		Material metal = new Metal();
 		BigDecimal durabilidad = hachaDePiedra.getDurabilidad();
@@ -128,9 +135,9 @@ public class HachaTest {
 	}
 
 	@Test
-	public void dadaUnHachaDePiedra_CuandoSeUsaUnaVezContraDiamante_DeberiaDisminuirLaDurabilidadEn5() 
+	public void dadaUnHachaDePiedra_CuandoSeUsaUnaVezContraDiamante_DeberiaDisminuirLaDurabilidadEn5()
 			throws Exception {
-		
+
 		Herramienta hachaDePiedra = HerramientaFactory.newHachaDePiedra();
 		Material diamante = new Diamante();
 		BigDecimal durabilidad = hachaDePiedra.getDurabilidad();
@@ -153,7 +160,7 @@ public class HachaTest {
 	}
 	
 	@Test
-	public void dadaUnHachaDeMetal_CuandoSeUsaUnaVezContraMadera_DeberiaDisminuirLaDurabilidadEn5() 
+	public void dadaUnHachaDeMetal_CuandoSeUsaUnaVezContraMadera_DeberiaDisminuirLaDurabilidadEn5()
 			throws Exception {
 
 		Herramienta hachaDeMetal = HerramientaFactory.newHachaDeMetal();
@@ -166,7 +173,7 @@ public class HachaTest {
 	}
 
 	@Test
-	public void dadaUnHachaDeMetal_CuandoSeUsaUnaVezContraPiedra_DeberiaDisminuirLaDurabilidadEn5() 
+	public void dadaUnHachaDeMetal_CuandoSeUsaUnaVezContraPiedra_DeberiaDisminuirLaDurabilidadEn5()
 			throws Exception {
 
 		Herramienta hachaDeMetal = HerramientaFactory.newHachaDeMetal();
@@ -179,7 +186,7 @@ public class HachaTest {
 	}
 
 	@Test
-	public void dadaUnHachaDeMetal_CuandoSeUsaUnaVezContraMetal_DeberiaDisminuirLaDurabilidadEn5() 
+	public void dadaUnHachaDeMetal_CuandoSeUsaUnaVezContraMetal_DeberiaDisminuirLaDurabilidadEn5()
 			throws Exception {
 
 		Herramienta hachaDeMetal = HerramientaFactory.newHachaDeMetal();
@@ -192,7 +199,7 @@ public class HachaTest {
 	}
 
 	@Test
-	public void dadaUnHachaDeMetal_CuandoSeUsaUnaVezContraDiamante_DeberiaDisminuirLaDurabilidadEn5() 
+	public void dadaUnHachaDeMetal_CuandoSeUsaUnaVezContraDiamante_DeberiaDisminuirLaDurabilidadEn5()
 			throws Exception {
 
 		Herramienta hachaDeMetal = HerramientaFactory.newHachaDeMetal();

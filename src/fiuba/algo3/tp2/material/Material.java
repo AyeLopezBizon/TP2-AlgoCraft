@@ -1,6 +1,8 @@
 package fiuba.algo3.tp2.material;
 
 import fiuba.algo3.tp2.herramienta.Herramienta;
+import fiuba.algo3.tp2.herramienta.HerramientaDesgastadaNoSePuedeUsarException;
+import fiuba.algo3.tp2.herramienta.golpe.Golpe;
 import fiuba.algo3.tp2.herramienta.golpe.Golpeable;
 
 import java.math.BigDecimal;
@@ -17,7 +19,8 @@ public abstract class Material implements Golpeable {
 		return durabilidad;
 	}
 	
-	public void reducirDurabilidad(BigDecimal danio) throws MaterialDestruidoNoSePuedeGolpearException {
+	public void reducirDurabilidad(BigDecimal danio)
+			throws MaterialDestruidoNoSePuedeGolpearException {
 		
 		if(durabilidad.equals(new BigDecimal(0))) {
 			throw new MaterialDestruidoNoSePuedeGolpearException();
@@ -32,5 +35,8 @@ public abstract class Material implements Golpeable {
 		}
 	}
 
-	public abstract void serGolpeadoPor(Herramienta herramienta) throws MaterialDestruidoNoSePuedeGolpearException;
+	public abstract void golpearCon(Golpe golpe) throws MaterialDestruidoNoSePuedeGolpearException;
+
+	public abstract void serGolpeadoPor(Herramienta herramienta)
+			throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException;
 }

@@ -10,10 +10,9 @@ public abstract class Durabilidad {
 		this.valor = valorInicial;
 	}
 
-	public abstract void reducir();
-
 	public BigDecimal getValor() {
 		return this.valor;
 	}
 
+	public abstract void reducir() throws DurabilidadDesgastadaNoSePuedeReducirException;
 }
