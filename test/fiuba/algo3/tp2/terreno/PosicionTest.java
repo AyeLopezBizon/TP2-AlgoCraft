@@ -55,7 +55,51 @@ public class PosicionTest {
 	public void dadaUnaPosicionConNumeroDeFila4YNumeroDeColumna10_LaPosicionNoDeberiaPertenecerALaFila5() {
 		
 		Posicion posicion = new Posicion(10, 4);
-		
-		assertTrue(posicion.perteneceAFila(5));
+
+		assertFalse(posicion.perteneceAFila(5));
+	}
+
+	@Test
+	public void dadaUnaPosicionConNumeroDeFila10YNumeroDeColumna10_DeberiaTenerNumeroDeFila10YColumna11LuegoDeAvanzarColumna() {
+
+		Posicion posicion = new Posicion(10, 10);
+		Posicion posicionEsperada = new Posicion(11, 10);
+
+		posicion.avanzarColumna();
+
+		assertTrue(posicionEsperada.esIgualA(posicion));
+	}
+
+	@Test
+	public void dadaUnaPosicionConNumeroDeFila10YNumeroDeColumna10_DeberiaTenerNumeroDeFila10YColumna9LuegoDeRetrocederColumna() {
+
+		Posicion posicion = new Posicion(10, 10);
+		Posicion posicionEsperada = new Posicion(9, 10);
+
+		posicion.retrocederColumna();
+
+		assertTrue(posicionEsperada.esIgualA(posicion));
+	}
+
+	@Test
+	public void dadaUnaPosicionConNumeroDeFila10YNumeroDeColumna10_DeberiaTenerNumeroDeFila11YColumna10LuegoDeAvanzarFila() {
+
+		Posicion posicion = new Posicion(10, 10);
+		Posicion posicionEsperada = new Posicion(10, 11);
+
+		posicion.avanzarFila();
+
+		assertTrue(posicionEsperada.esIgualA(posicion));
+	}
+
+	@Test
+	public void dadaUnaPosicionConNumeroDeFila10YNumeroDeColumna10_DeberiaTenerNumeroDeFila9YColumna10LuegoDeRetrocederFila() {
+
+		Posicion posicion = new Posicion(10, 10);
+		Posicion posicionEsperada = new Posicion(10, 9);
+
+		posicion.retrocederFila();
+
+		assertTrue(posicionEsperada.esIgualA(posicion));
 	}
 }
