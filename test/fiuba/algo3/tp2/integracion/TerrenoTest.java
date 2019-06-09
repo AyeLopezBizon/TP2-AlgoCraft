@@ -11,9 +11,9 @@ import fiuba.algo3.tp2.terreno.Posicion;
 import fiuba.algo3.tp2.terreno.Posicionable;
 import fiuba.algo3.tp2.terreno.Terreno;
 import fiuba.algo3.tp2.terreno.casillero.CasilleroOcupadoException;
-
+/*
 public class TerrenoTest {
-	/*
+	
 	@Test
 	public void cuandoSeOcupaUnCasilleroVacioConUnJugador_AlObtenerElPosicionableDelCasilleroDeberiaDevolverElJugador() {
 		
@@ -75,5 +75,6 @@ public class TerrenoTest {
 			assertEquals(CasilleroOcupadoException.class, exception.getClass());
 		}
 	}
-	*/
+	
 }
+*/
