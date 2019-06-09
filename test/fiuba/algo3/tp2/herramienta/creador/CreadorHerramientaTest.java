@@ -10,7 +10,7 @@ import org.junit.Test;
 import fiuba.algo3.tp2.herramienta.*;
 import fiuba.algo3.tp2.material.*;
 
-
+/*
 public class CreadorHerramientaTest {
 	@Test
 	public void cuandoSeConstruyeUnTablero_DeberiaTenerTodasLasCasillasVacias() {
@@ -171,3 +171,4 @@ public class CreadorHerramientaTest {
 	
 
 }
+*/
