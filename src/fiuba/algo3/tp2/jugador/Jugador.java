@@ -4,8 +4,9 @@ import fiuba.algo3.tp2.herramienta.Herramienta;
 import fiuba.algo3.tp2.herramienta.HerramientaDesgastadaNoSePuedeUsarException;
 import fiuba.algo3.tp2.material.Material;
 import fiuba.algo3.tp2.material.MaterialDestruidoNoSePuedeGolpearException;
+import fiuba.algo3.tp2.terreno.Posicionable;
 
-public class Jugador {
+public class Jugador implements Posicionable {
 
     private Herramienta herramientaActiva;
     private Inventario inventario = new Inventario();
