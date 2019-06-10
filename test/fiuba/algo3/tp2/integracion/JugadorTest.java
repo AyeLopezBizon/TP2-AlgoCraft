@@ -77,6 +77,8 @@ public class JugadorTest {
         }
 
         Material material = new Madera();
+
+        // Al golpe 51 el se lanza Excepcion HerramientaDesgastadaNoSePuedeUsarException.
         jugador.golpear(material);
     }
 
@@ -116,11 +118,10 @@ public class JugadorTest {
         Jugador jugador = new Jugador();
         Material material = new Piedra();
 
-        BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
-
         for(int i = 0; i < 50; i++)
             jugador.golpear(material);
 
+        // Al golpe 51 el se lanza Excepcion HerramientaDesgastadaNoSePuedeUsarException.
         jugador.golpear(material);
     }
 
@@ -160,11 +161,10 @@ public class JugadorTest {
         Jugador jugador = new Jugador();
         Material material = new Metal();
 
-        BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
-
         for(int i = 0; i < 50; i++)
             jugador.golpear(material);
 
+        // Al golpe 51 el se lanza Excepcion HerramientaDesgastadaNoSePuedeUsarException.
         jugador.golpear(material);
     }
 
@@ -203,8 +203,6 @@ public class JugadorTest {
 
         Jugador jugador = new Jugador();
         Material material = new Diamante();
-
-        BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
 
         for(int i = 0; i < 50; i++)
             jugador.golpear(material);

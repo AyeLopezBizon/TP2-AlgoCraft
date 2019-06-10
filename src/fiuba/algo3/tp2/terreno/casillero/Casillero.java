@@ -28,4 +28,8 @@ public class Casillero {
 		espacio = espacio.ocupar(posicionable);
 		posicionable.posicionar(posicion);
 	}
+
+	public void desocuparCasillero() {
+		this.espacio = new EspacioCasilleroLibre();
+	}
 }

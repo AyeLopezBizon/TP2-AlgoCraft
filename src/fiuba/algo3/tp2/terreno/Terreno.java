@@ -82,4 +82,11 @@ public class Terreno {
 		}
 		return filaCasilleroADevolver;
 	}
+
+	public void desocuparCasillero(Posicion posicion)
+			throws CasilleroNoEncontradoException {
+
+		FilaCasillero filaCasillero = buscarFilaCasillero(posicion);
+		filaCasillero.desocuparCasillero(posicion);
+	}
 }
