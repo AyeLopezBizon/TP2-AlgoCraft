@@ -5,8 +5,7 @@ import fiuba.algo3.tp2.terreno.Posicion;
 public class MovimientoDiagonalSuperiorDerecha implements Movimiento {
 
     @Override
-    public void mover(Posicion posicion) {
-        posicion.retrocederFila();
-        posicion.avanzarColumna();
+    public Posicion mover(Posicion posicion) {
+        return posicion.avanzarFila().avanzarColumna();
     }
 }

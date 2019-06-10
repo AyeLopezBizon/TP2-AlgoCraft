@@ -8,12 +8,12 @@ import static org.junit.Assert.assertTrue;
 public class MovimientoDiagonalSuperiorDerechaTest {
 
     @Test
-    public void dadoUnMovimientoDiagonalSuperiorDerecha_LaPosicionRetrocedeUnaFilaYAvanzaUnaColumna () {
+    public void dadoUnMovimientoDiagonalSuperiorDerecha_LaPosicionAvanzaUnaFilaYAvanzaUnaColumna () {
         Movimiento movimiento = new MovimientoDiagonalSuperiorDerecha();
         Posicion posicion = new Posicion(10,10);
-        Posicion posicionEsperada = new Posicion(11,9);
+        Posicion posicionEsperada = new Posicion(11,11);
 
-        movimiento.mover(posicion);
+        posicion = movimiento.mover(posicion);
 
         assertTrue(posicionEsperada.esIgualA(posicion));
     }

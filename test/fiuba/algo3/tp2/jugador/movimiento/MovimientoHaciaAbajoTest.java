@@ -11,9 +11,9 @@ public class MovimientoHaciaAbajoTest {
     public void dadoUnMovimientoHaciaAbajo_LaPosicionAvanzaUnaFila () {
         Movimiento movimiento = new MovimientoHaciaAbajo();
         Posicion posicion = new Posicion(10,10);
-        Posicion posicionEsperada = new Posicion(10,11);
+        Posicion posicionEsperada = new Posicion(10,9);
 
-        movimiento.mover(posicion);
+        posicion = movimiento.mover(posicion);
 
         assertTrue(posicionEsperada.esIgualA(posicion));
     }

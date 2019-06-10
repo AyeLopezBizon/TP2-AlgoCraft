@@ -18,7 +18,7 @@ import java.math.BigDecimal;
 import static org.junit.Assert.assertEquals;
 
 public class JugadorTest {
-
+	
     @Test
     public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnaMaderaYReducirLaDurabilidadDelMaterialEn2()
             throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
@@ -254,7 +254,7 @@ public class JugadorTest {
         assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
         assertEquals(jugador, casilleroFinal.obtenerPosicionable());
     }
-/*
+    
     @Test(expected = CasilleroNoEncontradoException.class)
     public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna10Fila1_NoDeberiaPoderMoverseALaDerecha()
             throws CasilleroNoEncontradoException, CasilleroOcupadoException {
@@ -267,5 +267,4 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimientoHaciaDerecha, terreno);
     }
-*/
 }

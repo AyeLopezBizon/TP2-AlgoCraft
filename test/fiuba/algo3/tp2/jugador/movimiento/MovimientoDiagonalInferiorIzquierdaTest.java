@@ -11,9 +11,9 @@ public class MovimientoDiagonalInferiorIzquierdaTest {
     public void dadoUnMovimientoDiagonalInferiorIzquierda_LaPosicionAvanzaUnaFilaYRetrocedeUnaColumna () {
         Movimiento movimiento = new MovimientoDiagonalInferiorIzquierda();
         Posicion posicion = new Posicion(10,10);
-        Posicion posicionEsperada = new Posicion(9,11);
+        Posicion posicionEsperada = new Posicion(9,9);
 
-        movimiento.mover(posicion);
+        posicion = movimiento.mover(posicion);
 
         assertTrue(posicionEsperada.esIgualA(posicion));
     }

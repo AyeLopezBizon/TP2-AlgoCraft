@@ -62,7 +62,7 @@ public class Jugador implements Posicionable {
 			throws CasilleroNoEncontradoException, CasilleroOcupadoException {
 
 		terreno.desocuparCasillero(this.posicion);
-		movimiento.mover(this.posicion);
+		this.posicion = movimiento.mover(this.posicion);
 		terreno.ocuparCasillero(this, this.posicion);
     }
 }

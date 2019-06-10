@@ -20,19 +20,19 @@ public class Posicion {
 		return numeroFila.equals(numeroDeFila);
 	}
 
-	public void avanzarColumna() {
-		this.numeroColumna += 1;
+	public Posicion avanzarColumna() {
+		return new Posicion(this.numeroColumna + 1, this.numeroFila);
 	}
 
-	public void retrocederColumna() {
-		this.numeroColumna -= 1;
+	public Posicion retrocederColumna() {
+		return new Posicion(this.numeroColumna - 1, this.numeroFila);
 	}
 
-	public void avanzarFila() {
-		this.numeroFila += 1;
+	public Posicion avanzarFila() {
+		return new Posicion(this.numeroColumna, this.numeroFila + 1);
 	}
 
-	public void retrocederFila() {
-		this.numeroFila -= 1;
+	public Posicion retrocederFila() {
+		return new Posicion(this.numeroColumna, this.numeroFila - 1);
 	}
 }

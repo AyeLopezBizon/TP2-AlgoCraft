@@ -65,7 +65,7 @@ public class PosicionTest {
 		Posicion posicion = new Posicion(10, 10);
 		Posicion posicionEsperada = new Posicion(11, 10);
 
-		posicion.avanzarColumna();
+		posicion = posicion.avanzarColumna();
 
 		assertTrue(posicionEsperada.esIgualA(posicion));
 	}
@@ -76,7 +76,7 @@ public class PosicionTest {
 		Posicion posicion = new Posicion(10, 10);
 		Posicion posicionEsperada = new Posicion(9, 10);
 
-		posicion.retrocederColumna();
+		posicion = posicion.retrocederColumna();
 
 		assertTrue(posicionEsperada.esIgualA(posicion));
 	}
@@ -87,7 +87,7 @@ public class PosicionTest {
 		Posicion posicion = new Posicion(10, 10);
 		Posicion posicionEsperada = new Posicion(10, 11);
 
-		posicion.avanzarFila();
+		posicion = posicion.avanzarFila();
 
 		assertTrue(posicionEsperada.esIgualA(posicion));
 	}
@@ -98,7 +98,7 @@ public class PosicionTest {
 		Posicion posicion = new Posicion(10, 10);
 		Posicion posicionEsperada = new Posicion(10, 9);
 
-		posicion.retrocederFila();
+		posicion = posicion.retrocederFila();
 
 		assertTrue(posicionEsperada.esIgualA(posicion));
 	}

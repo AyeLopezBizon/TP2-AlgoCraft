@@ -13,7 +13,7 @@ public class MovimientoHaciaDerechaTest {
         Posicion posicion = new Posicion(10,10);
         Posicion posicionEsperada = new Posicion(11,10);
 
-        movimiento.mover(posicion);
+        posicion = movimiento.mover(posicion);
 
         assertTrue(posicionEsperada.esIgualA(posicion));
     }
