@@ -67,4 +67,9 @@ public class FilaCasillero {
 		}
 		return contieneCasillero;
 	}
+
+	public void desocuparCasillero(Posicion posicion) throws CasilleroNoEncontradoException {
+		Casillero casillero = buscarCasillero(posicion);
+		casillero.desocuparCasillero();
+	}
 }

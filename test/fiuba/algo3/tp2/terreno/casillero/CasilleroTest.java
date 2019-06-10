@@ -75,4 +75,17 @@ public class CasilleroTest {
 			assertEquals(CasilleroOcupadoException.class, exception.getClass());
 		}
 	}
+
+	@Test
+	public void cuandoSeDesocupaUnCasilleroOcupado_DeberiaPasarAContenerUnPosicionableVacio() throws CasilleroOcupadoException {
+
+		Posicion posicion = new Posicion(5, 5);
+		Casillero casillero = new Casillero(posicion);
+		Posicionable jugador = new Jugador();
+
+		casillero.ocuparCasillero(jugador);
+		casillero.desocuparCasillero();
+
+		assertEquals(PosicionableVacio.class, casillero.obtenerPosicionable().getClass());
+	}
 }

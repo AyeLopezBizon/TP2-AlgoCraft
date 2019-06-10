@@ -17,6 +17,22 @@ public class Posicion {
 	}
 
 	public Boolean perteneceAFila(Integer numeroDeFila) {
-		return numeroFila.equals(numeroFila);
+		return numeroFila.equals(numeroDeFila);
+	}
+
+	public Posicion avanzarColumna() {
+		return new Posicion(this.numeroColumna + 1, this.numeroFila);
+	}
+
+	public Posicion retrocederColumna() {
+		return new Posicion(this.numeroColumna - 1, this.numeroFila);
+	}
+
+	public Posicion avanzarFila() {
+		return new Posicion(this.numeroColumna, this.numeroFila + 1);
+	}
+
+	public Posicion retrocederFila() {
+		return new Posicion(this.numeroColumna, this.numeroFila - 1);
 	}
 }

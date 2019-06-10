@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import fiuba.algo3.tp2.terreno.PosicionableVacio;
 import org.junit.Test;
 
 import fiuba.algo3.tp2.jugador.Jugador;
@@ -117,5 +118,19 @@ public class FilaCasilleroTest {
 		FilaCasillero filaCasillero = new FilaCasillero(1, 50);
 		
 		assertFalse(filaCasillero.contieneCasillero(new Posicion(51, 1)));
+	}
+
+	@Test
+	public void dadaUnaFilaCasilleroCon50Casilleros_CuandoSeDesocupaElCasillero1ConUnJugador_ElCasilleroDeberiaContenerUnPosicionableVacio()
+			throws Exception {
+
+		FilaCasillero filaCasillero = new FilaCasillero(1, 50);
+		Posicion posicion = new Posicion(1,1);
+		Posicionable jugador = new Jugador();
+
+		filaCasillero.ocuparCasillero(jugador, posicion);
+		filaCasillero.desocuparCasillero(posicion);
+
+		assertEquals(PosicionableVacio.class, filaCasillero.obtenerCasillero(posicion).obtenerPosicionable().getClass());
 	}
 }

@@ -3,6 +3,8 @@ package fiuba.algo3.tp2.integracion;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import fiuba.algo3.tp2.terreno.PosicionableVacio;
+import fiuba.algo3.tp2.terreno.casillero.CasilleroNoEncontradoException;
 import org.junit.Test;
 
 import fiuba.algo3.tp2.jugador.Jugador;
@@ -80,5 +82,20 @@ public class TerrenoTest {
 		} catch(Exception exception) {
 			assertEquals(CasilleroOcupadoException.class, exception.getClass());
 		}
-	}	
+	}
+
+	@Test
+	public void dadoUnCasilleroOcupadoConUnJugador_CuandoSeDesocupaElCasillero_ElCasilleroDeberiaContenerUnPosicionableVacio()
+			throws CasilleroOcupadoException, CasilleroNoEncontradoException {
+
+		Terreno terreno = new Terreno(100, 100);
+		Posicion posicion = new Posicion(5, 5);
+		Posicionable jugador = new Jugador();
+
+		terreno.ocuparCasillero(jugador, posicion);
+		terreno.desocuparCasillero(posicion);
+		Posicionable posicionableEnCasillero = terreno.obtenerCasillero(posicion).obtenerPosicionable();
+
+		assertEquals(PosicionableVacio.class, posicionableEnCasillero.getClass());
+	}
 }
