@@ -9,7 +9,7 @@ public class CreadorHerramienta {
 	Tablero tablero;
 	Tablero[] tablerosPredeterminados;
 	
-	CreadorHerramienta(Tablero tablero){
+	public CreadorHerramienta(Tablero tablero){
 		this.tablero=tablero;
 		tablerosPredeterminados = new Tablero[7];
 		tablerosPredeterminados[0] = TableroFactory.newTableroHachaMadera();

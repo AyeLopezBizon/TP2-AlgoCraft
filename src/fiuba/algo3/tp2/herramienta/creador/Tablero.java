@@ -9,7 +9,7 @@ public class Tablero {
 	
 	Material[] material;
 	
-	Tablero(){
+	public Tablero(){
 		material=new Material[9];
 		for(int i=0;i<9;i++) {
 			this.material[i]= new Vacio();	
