@@ -1,11 +1,9 @@
 package fiuba.algo3.tp2.integracion;
 
 import fiuba.algo3.tp2.herramienta.HerramientaDesgastadaNoSePuedeUsarException;
-import fiuba.algo3.tp2.jugador.movimiento.Movimiento;
-import fiuba.algo3.tp2.jugador.movimiento.MovimientoHaciaDerecha;
+import fiuba.algo3.tp2.jugador.movimiento.*;
 import fiuba.algo3.tp2.material.*;
 import fiuba.algo3.tp2.jugador.Jugador;
-
 import fiuba.algo3.tp2.terreno.Posicion;
 import fiuba.algo3.tp2.terreno.Posicionable;
 import fiuba.algo3.tp2.terreno.PosicionableVacio;
@@ -13,6 +11,7 @@ import fiuba.algo3.tp2.terreno.Terreno;
 import fiuba.algo3.tp2.terreno.casillero.Casillero;
 import fiuba.algo3.tp2.terreno.casillero.CasilleroNoEncontradoException;
 import fiuba.algo3.tp2.terreno.casillero.CasilleroOcupadoException;
+
 import org.junit.Test;
 import java.math.BigDecimal;
 import static org.junit.Assert.assertEquals;
@@ -235,36 +234,659 @@ public class JugadorTest {
         assertEquals(jugador, objetoEnCasillero);
     }
 
+    /********************************************************************
+     * MOVIMIENTOS DE JUGADOR EN ESQUINA INFERIOR IZQUIERDA DEL TABLERO *
+     ********************************************************************/
+
     @Test
-    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna1Fila1_DeberiaPoderMoverseALaDerecha()
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna1Fila1_DeberiaPoderMoverseHaciaLaDerecha()
             throws CasilleroNoEncontradoException, CasilleroOcupadoException {
 
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(1,1);
         Posicion posicionFinal = new Posicion(2,1);
         Jugador jugador = new Jugador();
-        Movimiento movimientoHaciaDerecha = new MovimientoHaciaDerecha();
+        Movimiento movimiento = new MovimientoHaciaDerecha();
 
         Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
         Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimientoHaciaDerecha, terreno);
+        jugador.mover(movimiento, terreno);
 
         assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
         assertEquals(jugador, casilleroFinal.obtenerPosicionable());
     }
-    
+
+    @Test
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna1Fila1_DeberiaPoderMoverseALaDiagonalSuperiorDerecha()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(1,1);
+        Posicion posicionFinal = new Posicion(2,2);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoDiagonalSuperiorDerecha();
+
+        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
+        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+
+        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+    }
+
+    @Test
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna1Fila1_DeberiaPoderMoverseHaciaArriba()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(1,1);
+        Posicion posicionFinal = new Posicion(1,2);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoHaciaArriba();
+
+        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
+        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+
+        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+    }
+
     @Test(expected = CasilleroNoEncontradoException.class)
-    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna10Fila1_NoDeberiaPoderMoverseALaDerecha()
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna1Fila1_NoDeberiaPoderMoverseALaDiagonalSuperiorIzquierda()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(1, 1);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoDiagonalSuperiorIzquierda();
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test(expected = CasilleroNoEncontradoException.class)
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna1Fila1_NoDeberiaPoderMoverseHaciaLaIzquierda()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(1, 1);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoHaciaIzquierda();
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test(expected = CasilleroNoEncontradoException.class)
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna1Fila1_NoDeberiaPoderMoverseALaDiagonalInferiorIzquierda()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(1, 1);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoDiagonalInferiorIzquierda();
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test(expected = CasilleroNoEncontradoException.class)
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna1Fila1_NoDeberiaPoderMoverseHaciaAbajo()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(1, 1);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoHaciaAbajo();
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test(expected = CasilleroNoEncontradoException.class)
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna1Fila1_NoDeberiaPoderMoverseALaDiagonalInferiorDerecha()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(1, 1);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoDiagonalInferiorDerecha();
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+    }
+
+    /******************************************************************
+     * MOVIMIENTOS DE JUGADOR EN ESQUINA INFERIOR DERECHA DEL TABLERO *
+     ******************************************************************/
+
+    @Test(expected = CasilleroNoEncontradoException.class)
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna10Fila1_NoDeberiaPoderMoverseHaciaLaDerecha()
             throws CasilleroNoEncontradoException, CasilleroOcupadoException {
 
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(10, 1);
         Jugador jugador = new Jugador();
-        Movimiento movimientoHaciaDerecha = new MovimientoHaciaDerecha();
+        Movimiento movimiento = new MovimientoHaciaDerecha();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimientoHaciaDerecha, terreno);
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test(expected = CasilleroNoEncontradoException.class)
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna10Fila1_NoDeberiaPoderMoverseALaDiagonalSuperiorDerecha()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(10, 1);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoDiagonalSuperiorDerecha();
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna10Fila1_DeberiaPoderMoverseHaciaArriba()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(10,1);
+        Posicion posicionFinal = new Posicion(10,2);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoHaciaArriba();
+
+        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
+        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+
+        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+    }
+
+    @Test
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna10Fila1_DeberiaPoderMoverseALaDiagonalSuperiorIzquierda()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(10,1);
+        Posicion posicionFinal = new Posicion(9,2);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoDiagonalSuperiorIzquierda();
+
+        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
+        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+
+        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+    }
+
+    @Test
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna10Fila1_DeberiaPoderMoverseHaciaLaIzquierda()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(10,1);
+        Posicion posicionFinal = new Posicion(9,1);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoHaciaIzquierda();
+
+        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
+        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+
+        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+    }
+
+    @Test(expected = CasilleroNoEncontradoException.class)
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna10Fila1_NoDeberiaPoderMoverseALaDiagonalInferiorIzquierda()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(10, 1);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoDiagonalInferiorIzquierda();
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test(expected = CasilleroNoEncontradoException.class)
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna10Fila1_NoDeberiaPoderMoverseHaciaAbajo()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(10, 1);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoHaciaAbajo();
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test(expected = CasilleroNoEncontradoException.class)
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna10Fila1_NoDeberiaPoderMoverseALaDiagonalInferiorDerecha()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(10, 1);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoDiagonalInferiorDerecha();
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+    }
+
+    /******************************************************************
+     * MOVIMIENTOS DE JUGADOR EN ESQUINA SUPERIOR DERECHA DEL TABLERO *
+     ******************************************************************/
+
+    @Test(expected = CasilleroNoEncontradoException.class)
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna10Fila10_NoDeberiaPoderMoverseHaciaLaDerecha()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(10, 10);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoHaciaDerecha();
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test(expected = CasilleroNoEncontradoException.class)
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna10Fila10_NoDeberiaPoderMoverseALaDiagonalSuperiorDerecha()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(10, 10);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoDiagonalSuperiorDerecha();
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test(expected = CasilleroNoEncontradoException.class)
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna10Fila10_NoDeberiaPoderMoverseHaciaArriba()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(10, 10);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoHaciaArriba();
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test(expected = CasilleroNoEncontradoException.class)
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna10Fila10_NoDeberiaPoderMoverseALaDiagonalSuperiorIzquierda()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(10, 10);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoDiagonalSuperiorIzquierda();
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna10Fila10_DeberiaPoderMoverseHaciaLaIzquierda()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(10,10);
+        Posicion posicionFinal = new Posicion(9,10);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoHaciaIzquierda();
+
+        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
+        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+
+        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+    }
+
+    @Test
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna10Fila10_DeberiaPoderMoverseALaDiagonalInferiorIzquierda()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(10,10);
+        Posicion posicionFinal = new Posicion(9,9);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoDiagonalInferiorIzquierda();
+
+        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
+        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+
+        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+    }
+
+    @Test
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna10Fila10_DeberiaPoderMoverseHaciaAbajo()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(10,10);
+        Posicion posicionFinal = new Posicion(10,9);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoHaciaAbajo();
+
+        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
+        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+
+        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+    }
+
+    @Test(expected = CasilleroNoEncontradoException.class)
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna10Fila10_NoDeberiaPoderMoverseALaDiagonalInferiorDerecha()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(10, 10);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoDiagonalInferiorDerecha();
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+    }
+
+    /********************************************************************
+     * MOVIMIENTOS DE JUGADOR EN ESQUINA SUPERIOR IZQUIERDA DEL TABLERO *
+     ********************************************************************/
+
+    @Test
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna1Fila10_DeberiaPoderMoverseHaciaLaDerecha()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(1,10);
+        Posicion posicionFinal = new Posicion(2,10);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoHaciaDerecha();
+
+        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
+        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+
+        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+    }
+
+    @Test(expected = CasilleroNoEncontradoException.class)
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna1Fila10_NoDeberiaPoderMoverseALaDiagonalSuperiorDerecha()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(1, 10);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoDiagonalSuperiorDerecha();
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test(expected = CasilleroNoEncontradoException.class)
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna1Fila10_NoDeberiaPoderMoverseHaciaArriba()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(1, 10);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoHaciaArriba();
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test(expected = CasilleroNoEncontradoException.class)
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna1Fila10_NoDeberiaPoderMoverseALaDiagonalSuperiorIzquierda()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(1, 10);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoDiagonalSuperiorIzquierda();
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test(expected = CasilleroNoEncontradoException.class)
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna1Fila10_NoDeberiaPoderMoverseHaciaLaIzquierda()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(1, 10);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoHaciaIzquierda();
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test(expected = CasilleroNoEncontradoException.class)
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna1Fila10_NoDeberiaPoderMoverseALaDiagonalInferiorIzquierda()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(1, 10);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoDiagonalInferiorIzquierda();
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna1Fila10_DeberiaPoderMoverseHaciaAbajo()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(1,10);
+        Posicion posicionFinal = new Posicion(1,9);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoHaciaAbajo();
+
+        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
+        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+
+        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+    }
+
+    @Test
+    public void dadoUnJugadorEnUnTerrenoVacioDe10x10yEnPosicionColumna1Fila10_DeberiaPoderMoverseALaDiagonalInferiorDerecha()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(10, 10);
+        Posicion posicionInicial = new Posicion(1,10);
+        Posicion posicionFinal = new Posicion(2,9);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoDiagonalInferiorDerecha();
+
+        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
+        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+
+        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+    }
+
+    /***************************************************
+     * MOVIMIENTOS DE JUGADOR CON MATERIALES ALREDEDOR *
+     ***************************************************/
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void dadoUnJugadorEnUnTerrenoConUnMaterialASuDerecha_NoDeberiaPoderMoverseEnEsaDireccion()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(3, 3);
+        Posicion posicionJugador = new Posicion(2, 2);
+        Posicion posicionMaterial = new Posicion(3, 2);
+        Movimiento movimiento = new MovimientoHaciaDerecha();
+        Jugador jugador = new Jugador();
+        Material material = new Madera();
+
+        terreno.ocuparCasillero(jugador, posicionJugador);
+        terreno.ocuparCasillero(material, posicionMaterial);
+
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void dadoUnJugadorEnUnTerrenoConUnMaterialASuDiagonalSuperiorDerecha_NoDeberiaPoderMoverseEnEsaDireccion()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(3, 3);
+        Posicion posicionJugador = new Posicion(2, 2);
+        Posicion posicionMaterial = new Posicion(3, 3);
+        Movimiento movimiento = new MovimientoDiagonalSuperiorDerecha();
+        Jugador jugador = new Jugador();
+        Material material = new Madera();
+
+        terreno.ocuparCasillero(jugador, posicionJugador);
+        terreno.ocuparCasillero(material, posicionMaterial);
+
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void dadoUnJugadorEnUnTerrenoConUnMaterialArriba_NoDeberiaPoderMoverseEnEsaDireccion()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(3, 3);
+        Posicion posicionJugador = new Posicion(2, 2);
+        Posicion posicionMaterial = new Posicion(2, 3);
+        Movimiento movimiento = new MovimientoHaciaArriba();
+        Jugador jugador = new Jugador();
+        Material material = new Piedra();
+
+        terreno.ocuparCasillero(jugador, posicionJugador);
+        terreno.ocuparCasillero(material, posicionMaterial);
+
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void dadoUnJugadorEnUnTerrenoConUnMaterialASuDiagonalSuperiorIzquierda_NoDeberiaPoderMoverseEnEsaDireccion()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(3, 3);
+        Posicion posicionJugador = new Posicion(2, 2);
+        Posicion posicionMaterial = new Posicion(1, 3);
+        Movimiento movimiento = new MovimientoDiagonalSuperiorIzquierda();
+        Jugador jugador = new Jugador();
+        Material material = new Piedra();
+
+        terreno.ocuparCasillero(jugador, posicionJugador);
+        terreno.ocuparCasillero(material, posicionMaterial);
+
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void dadoUnJugadorEnUnTerrenoConUnMaterialASuIzquierda_NoDeberiaPoderMoverseEnEsaDireccion()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(3, 3);
+        Posicion posicionJugador = new Posicion(2, 2);
+        Posicion posicionMaterial = new Posicion(1, 2);
+        Movimiento movimiento = new MovimientoHaciaIzquierda();
+        Jugador jugador = new Jugador();
+        Material material = new Metal();
+
+        terreno.ocuparCasillero(jugador, posicionJugador);
+        terreno.ocuparCasillero(material, posicionMaterial);
+
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void dadoUnJugadorEnUnTerrenoConUnMaterialASuDiagonalInferiorIzquierda_NoDeberiaPoderMoverseEnEsaDireccion()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(3, 3);
+        Posicion posicionJugador = new Posicion(2, 2);
+        Posicion posicionMaterial = new Posicion(1, 1);
+        Movimiento movimiento = new MovimientoDiagonalInferiorIzquierda();
+        Jugador jugador = new Jugador();
+        Material material = new Metal();
+
+        terreno.ocuparCasillero(jugador, posicionJugador);
+        terreno.ocuparCasillero(material, posicionMaterial);
+
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void dadoUnJugadorEnUnTerrenoConUnMaterialAbajo_NoDeberiaPoderMoverseEnEsaDireccion()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(3, 3);
+        Posicion posicionJugador = new Posicion(2, 2);
+        Posicion posicionMaterial = new Posicion(2, 1);
+        Movimiento movimiento = new MovimientoHaciaAbajo();
+        Jugador jugador = new Jugador();
+        Material material = new Diamante();
+
+        terreno.ocuparCasillero(jugador, posicionJugador);
+        terreno.ocuparCasillero(material, posicionMaterial);
+
+        jugador.mover(movimiento, terreno);
+    }
+
+    @Test(expected = CasilleroOcupadoException.class)
+    public void dadoUnJugadorEnUnTerrenoConUnMaterialASuDiagonalInferiorDerecha_NoDeberiaPoderMoverseEnEsaDireccion()
+            throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+
+        Terreno terreno = new Terreno(3, 3);
+        Posicion posicionJugador = new Posicion(2, 2);
+        Posicion posicionMaterial = new Posicion(3, 1);
+        Movimiento movimiento = new MovimientoDiagonalInferiorDerecha();
+        Jugador jugador = new Jugador();
+        Material material = new Diamante();
+
+        terreno.ocuparCasillero(jugador, posicionJugador);
+        terreno.ocuparCasillero(material, posicionMaterial);
+
+        jugador.mover(movimiento, terreno);
     }
 }
