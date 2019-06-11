@@ -9,7 +9,7 @@ public class CreadorHerramienta {
 	Tablero tablero;
 	Tablero[] tablerosPredeterminados;
 	
-	public CreadorHerramienta(Tablero tablero){
+	public CreadorHerramienta(Tablero tablero) throws PosicionIncorrectaException{
 		this.tablero=tablero;
 		tablerosPredeterminados = new Tablero[7];
 		tablerosPredeterminados[0] = TableroFactory.newTableroHachaMadera();
@@ -21,7 +21,7 @@ public class CreadorHerramienta {
 		tablerosPredeterminados[6] = TableroFactory.newTableroPicoFino();			
 	}
 	
-	public Herramienta crearHerramienta() throws MaterialesMalPosicionadosException {
+	public Herramienta crearHerramienta() throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 		Herramienta herramienta;
 		
 		herramienta = comparar();
@@ -29,7 +29,7 @@ public class CreadorHerramienta {
 		return herramienta;
 	}
 	
-	private Herramienta comparar() throws MaterialesMalPosicionadosException {
+	private Herramienta comparar() throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 		Herramienta herramienta = null;
 		
 		for(int i=0;i<7;i++){

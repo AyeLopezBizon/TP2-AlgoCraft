@@ -4,7 +4,7 @@ import fiuba.algo3.tp2.material.*;
 
 public class TableroFactory {
 
-	public static Tablero newTableroHachaMadera() {
+	public static Tablero newTableroHachaMadera() throws PosicionIncorrectaException {
 		Tablero tablero= new TableroHachaMadera();
 		tablero.setMaterial(new Madera(), 1);
 		tablero.setMaterial(new Madera(), 2);
@@ -14,7 +14,7 @@ public class TableroFactory {
 		return tablero;
 	}
 	
-	public static Tablero newTableroHachaPiedra() {
+	public static Tablero newTableroHachaPiedra() throws PosicionIncorrectaException {
 		Tablero tablero= new TableroHachaPiedra();
 		tablero.setMaterial(new Piedra(), 1);
 		tablero.setMaterial(new Piedra(), 2);
@@ -24,7 +24,7 @@ public class TableroFactory {
 		return tablero;
 	}
 	
-	public static Tablero newTableroHachaMetal() {
+	public static Tablero newTableroHachaMetal() throws PosicionIncorrectaException {
 		Tablero tablero= new TableroHachaMetal();
 		tablero.setMaterial(new Metal(), 1);
 		tablero.setMaterial(new Metal(), 2);
@@ -34,7 +34,7 @@ public class TableroFactory {
 		return tablero;
 	}
 	
-	public static Tablero newTableroPicoMadera() {
+	public static Tablero newTableroPicoMadera() throws PosicionIncorrectaException {
 		Tablero tablero= new TableroPicoMadera();
 		tablero.setMaterial(new Madera(), 1);
 		tablero.setMaterial(new Madera(), 2);
@@ -44,7 +44,7 @@ public class TableroFactory {
 		return tablero;
 	}
 	
-	public static Tablero newTableroPicoPiedra() {
+	public static Tablero newTableroPicoPiedra() throws PosicionIncorrectaException {
 		Tablero tablero= new TableroPicoPiedra();
 		tablero.setMaterial(new Piedra(), 1);
 		tablero.setMaterial(new Piedra(), 2);
@@ -54,7 +54,7 @@ public class TableroFactory {
 		return tablero;
 	}
 	
-	public static Tablero newTableroPicoMetal() {
+	public static Tablero newTableroPicoMetal() throws PosicionIncorrectaException {
 		Tablero tablero= new TableroPicoMetal();
 		tablero.setMaterial(new Metal(), 1);
 		tablero.setMaterial(new Metal(), 2);
@@ -64,7 +64,7 @@ public class TableroFactory {
 		return tablero;
 	}
 	
-	public static Tablero newTableroPicoFino() {
+	public static Tablero newTableroPicoFino() throws PosicionIncorrectaException {
 		Tablero tablero= new TableroPicoFino();
 		tablero.setMaterial(new Metal(), 1);
 		tablero.setMaterial(new Metal(), 2);

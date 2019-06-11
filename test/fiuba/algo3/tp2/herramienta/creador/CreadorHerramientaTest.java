@@ -9,7 +9,8 @@ import fiuba.algo3.tp2.material.*;
 public class CreadorHerramientaTest {
 	
 	@Test(expected = MaterialesMalPosicionadosException.class)
-	public void dadoUnCreadorConTableroVacio_CrearHerramientaDevuelveUnaExcepcion() throws MaterialesMalPosicionadosException {
+	public void dadoUnCreadorConTableroVacio_CrearHerramientaDevuelveUnaExcepcion()
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 
 		Tablero tablero = new Tablero();
 		CreadorHerramienta creador = new CreadorHerramienta(tablero);
@@ -18,7 +19,8 @@ public class CreadorHerramientaTest {
 	}
 
 	@Test(expected = MaterialesMalPosicionadosException.class)
-	public void dadoUnCreadorConTableroConUnElemento_CrearHerramientaDevuelveUnaExcepcion() throws MaterialesMalPosicionadosException {
+	public void dadoUnCreadorConTableroConUnElemento_CrearHerramientaDevuelveUnaExcepcion()
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 
 		Tablero tablero = new Tablero();
 		CreadorHerramienta creador = new CreadorHerramienta(tablero);
@@ -29,7 +31,8 @@ public class CreadorHerramientaTest {
 	}
 
 	@Test(expected = MaterialesMalPosicionadosException.class)
-	public void dadoUnCreadorConTableroConDosElementos_CrearHerramientaDevuelveUnaExcepcion() throws MaterialesMalPosicionadosException {
+	public void dadoUnCreadorConTableroConDosElementos_CrearHerramientaDevuelveUnaExcepcion()
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 
 		Tablero tablero = new Tablero();
 		CreadorHerramienta creador = new CreadorHerramienta(tablero);
@@ -41,7 +44,8 @@ public class CreadorHerramientaTest {
 	}
 
 	@Test(expected = MaterialesMalPosicionadosException.class)
-	public void dadoUnCreadorConTableroNoVacio_CrearHerramientaDevuelveUnaExcepcion() throws MaterialesMalPosicionadosException {
+	public void dadoUnCreadorConTableroNoVacio_CrearHerramientaDevuelveUnaExcepcion()
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 
 		Tablero tablero = new Tablero();
 		CreadorHerramienta creador = new CreadorHerramienta(tablero);

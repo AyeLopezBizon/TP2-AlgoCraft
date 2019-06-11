@@ -8,7 +8,7 @@ import org.junit.Test;
 public class TableroTest {
 
 	@Test
-	public void cuandoSeConstruyeUnTablero_DeberiaTenerTodasLasCasillasVacias() {
+	public void cuandoSeConstruyeUnTablero_DeberiaTenerTodasLasCasillasVacias() throws PosicionIncorrectaException {
 		Tablero tablero = new Tablero();
 		
 		for(int i=1; i<10; i++) {
@@ -17,7 +17,7 @@ public class TableroTest {
 	}
 	
 	@Test
-	public void cuandoSeAgregaUnMaterialAlTablero_DeberiaAlmacenarloCorrectamente() {
+	public void cuandoSeAgregaUnMaterialAlTablero_DeberiaAlmacenarloCorrectamente() throws PosicionIncorrectaException {
 		Tablero tablero = new Tablero();
 		Material material = new Metal();
 		tablero.setMaterial(material, 1);
@@ -25,7 +25,7 @@ public class TableroTest {
 	}
 	
 	@Test
-	public void cuandoSeComparaConOtroTableroIgual_DeberiaDevolverTrue() {
+	public void cuandoSeComparaConOtroTableroIgual_DeberiaDevolverTrue() throws PosicionIncorrectaException {
 		Tablero tablero1 = new Tablero();
 		Tablero tablero2 = new Tablero();
 		
@@ -36,7 +36,7 @@ public class TableroTest {
 	}
 	
 	@Test
-	public void cuandoSeComparaConOtroTableroDistinto_DeberiaDevolverFalse() {
+	public void cuandoSeComparaConOtroTableroDistinto_DeberiaDevolverFalse() throws PosicionIncorrectaException {
 		Tablero tablero1 = new Tablero();
 		Tablero tablero2 = new Tablero();
 		
@@ -45,10 +45,12 @@ public class TableroTest {
 		
 		Assert.assertFalse(tablero1.comparar(tablero2));
 	}
-/*
-	@Test
-	public void cuandoSeAlmacenaEnUnaPosiconIncorrecta_DeberiaLanzarUnaExcepcion() {
-		
+
+	@Test(expected = PosicionIncorrectaException.class)
+	public void cuandoSeAlmacenaEnUnaPosiconIncorrecta_DeberiaLanzarUnaExcepcion() 
+			throws PosicionIncorrectaException {
+		Tablero tablero = new Tablero();
+		tablero.setMaterial(new Madera(), 20);
 	}
-	*/
+	
 }

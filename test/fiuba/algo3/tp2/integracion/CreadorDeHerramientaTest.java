@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.integracion;
 import fiuba.algo3.tp2.herramienta.Herramienta;
 import fiuba.algo3.tp2.herramienta.creador.CreadorHerramienta;
 import fiuba.algo3.tp2.herramienta.creador.MaterialesMalPosicionadosException;
+import fiuba.algo3.tp2.herramienta.creador.PosicionIncorrectaException;
 import fiuba.algo3.tp2.herramienta.creador.Tablero;
 import fiuba.algo3.tp2.material.Madera;
 import fiuba.algo3.tp2.material.Metal;
@@ -39,7 +40,7 @@ public class CreadorDeHerramientaTest {
 
 	@Test
 	public void cuandoAgreganLosMaterialesAlTableroParaConstruirUnHachaDePiedra_ElCreadorDeHerramientasDeberiaCrearUnHachaDePiedra()
-			throws MaterialesMalPosicionadosException {
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 		Tablero tablero = new Tablero();
 
 		tablero.setMaterial(new Piedra(),1);
@@ -61,7 +62,7 @@ public class CreadorDeHerramientaTest {
 
 	@Test
 	public void cuandoAgreganLosMaterialesAlTableroParaConstruirUnHachaDeMetal_ElCreadorDeHerramientasDeberiaCrearUnHachaDeMetal()
-			throws MaterialesMalPosicionadosException {
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 		Tablero tablero = new Tablero();
 
 
@@ -84,7 +85,7 @@ public class CreadorDeHerramientaTest {
 
 	@Test
 	public void cuandoAgreganLosMaterialesAlTableroParaConstruirUnPicoDeMadera_ElCreadorDeHerramientasDeberiaCrearUnUnPicoDeMadera()
-			throws MaterialesMalPosicionadosException {
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 		Tablero tablero = new Tablero();
 
 		tablero.setMaterial(new Madera(),1);
@@ -107,7 +108,7 @@ public class CreadorDeHerramientaTest {
 
 	@Test
 	public void cuandoAgreganLosMaterialesAlTableroParaConstruirUnUnPicoDePiedra_ElCreadorDeHerramientasDeberiaCrearUnUnPicoDePiedra()
-			throws MaterialesMalPosicionadosException {
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 		Tablero tablero = new Tablero();
 
 		tablero.setMaterial(new Piedra(),1);
@@ -129,7 +130,7 @@ public class CreadorDeHerramientaTest {
 
 	@Test
 	public void cuandoAgreganLosMaterialesAlTableroParaConstruirUnUnPicoDeMetal_ElCreadorDeHerramientasDeberiaCrearUnPicoDeMetal()
-			throws MaterialesMalPosicionadosException {
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 		Tablero tablero = new Tablero();
 
 		tablero.setMaterial(new Metal(),1);
@@ -151,7 +152,7 @@ public class CreadorDeHerramientaTest {
 
 	@Test
 	public void cuandoAgreganLosMaterialesAlTableroParaConstruirUnUnPicoFino_ElCreadorDeHerramientasDeberiaCrearUnPicoFino()
-			throws MaterialesMalPosicionadosException {
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 		Tablero tablero = new Tablero();
 
 		tablero.setMaterial(new Metal(),1);
@@ -172,8 +173,8 @@ public class CreadorDeHerramientaTest {
 	}
 
 	@Test(expected = MaterialesMalPosicionadosException.class)
-	public void cuandoAgreganLosMaterialesAlTableroEnUnaPosicionIncorrecta_ElCreadorDeHerramientasDeberiaLanzarUnaExcepcion()
-			throws MaterialesMalPosicionadosException {
+	public void cuandoAgreganLosMaterialesAlTableroEnUnaDisposicionIncorrecta_ElCreadorDeHerramientasDeberiaLanzarUnaExcepcion()
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 		Tablero tablero = new Tablero();
 
 		for (int i = 1; i < 10; i++) {
