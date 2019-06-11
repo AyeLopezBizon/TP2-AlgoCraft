@@ -23,24 +23,16 @@ public class CreadorHerramienta {
 	
 	public Herramienta crearHerramienta() throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 		Herramienta herramienta;
-		
 		herramienta = comparar();
-		
 		return herramienta;
 	}
 	
-	private Herramienta comparar() throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
-		Herramienta herramienta = null;
-		
+	private Herramienta comparar() throws MaterialesMalPosicionadosException, PosicionIncorrectaException {		
 		for(int i=0;i<7;i++){
 			if(tablerosPredeterminados[i].comparar(tablero)){
-				herramienta=tablerosPredeterminados[i].crearHerramienta();
+				return tablerosPredeterminados[i].crearHerramienta();
 			}
 		}
-		if(herramienta==null) {
-			throw new MaterialesMalPosicionadosException();
-		}
-		return herramienta;
-		
+		throw new MaterialesMalPosicionadosException();		
 	}
 }
