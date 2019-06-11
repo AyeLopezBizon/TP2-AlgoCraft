@@ -9,27 +9,11 @@ import fiuba.algo3.tp2.terreno.casillero.CasilleroOcupadoException;
 import fiuba.algo3.tp2.terreno.casillero.FilaCasillero;
 
 public class Terreno {
-
-	private static Terreno instance;
 	
 	private Integer cantidadDeColumnas;
 	private Integer cantidadDeFilas;
 	private Collection<FilaCasillero> filasCasilleros;
 	
-	
-	public synchronized static Terreno createInstance(Integer cantidadColumnasTerreno, Integer cantidadFilasTerreno) {
-		
-		if(instance == null) {
-			instance = new Terreno(cantidadColumnasTerreno, cantidadFilasTerreno);
-		}
-		
-		return instance;
-	}
-	
-	public static Terreno getInstance() {
-		
-		return instance;
-	}
 	
 	public Terreno(Integer cantidadDeColumnas, Integer cantidadDeFilas) {
 		

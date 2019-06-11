@@ -6,11 +6,11 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import fiuba.algo3.tp2.juego.Juego;
+import fiuba.algo3.tp2.material.Diamante;
 import fiuba.algo3.tp2.material.Madera;
 import fiuba.algo3.tp2.material.Metal;
 import fiuba.algo3.tp2.material.Piedra;
 import fiuba.algo3.tp2.terreno.Posicion;
-import fiuba.algo3.tp2.material.Diamante;
 
 public class JuegoTest {
 	
@@ -18,7 +18,7 @@ public class JuegoTest {
 	public void cuandoSeCreaUnJuego_DeberiaCrearseUnTerrenoConteniendoUnJugadorEnLaPosicionColumna1YFila1() 
 			throws Exception {
 		
-		Juego juego = Juego.getInstance();
+		Juego juego = new Juego();
 		
 		assertTrue(new Posicion(1,1).esIgualA(juego.obtenerJugador().obtenerPosicion()));
 	}
@@ -27,7 +27,7 @@ public class JuegoTest {
 	public void cuandoSeCreaUnJuego_DeberiaCrearseMaderaEnLasPosicionesCorrespondientes() 
 			throws Exception {
 		
-		Juego juego = Juego.getInstance();
+		Juego juego = new Juego();
 		
 		assertEquals(Madera.class, juego.obtenerPosicionable(new Posicion(3, 3)).getClass());
 		assertEquals(Madera.class, juego.obtenerPosicionable(new Posicion(4, 3)).getClass());
@@ -53,7 +53,7 @@ public class JuegoTest {
 	public void cuandoSeCreaUnJuego_DeberiaCrearsePiedraEnLasPosicionesCorrespondientes() 
 			throws Exception {
 		
-		Juego juego = Juego.getInstance();
+		Juego juego = new Juego();
 		
 		assertEquals(Piedra.class, juego.obtenerPosicionable(new Posicion(8, 8)).getClass());
 		assertEquals(Piedra.class, juego.obtenerPosicionable(new Posicion(9, 8)).getClass());
@@ -81,7 +81,7 @@ public class JuegoTest {
 	public void cuandoSeCreaUnJuego_DeberiaCrearseMetalEnLasPosicionesCorrespondientes() 
 			throws Exception {
 		
-		Juego juego = Juego.getInstance();
+		Juego juego = new Juego();
 		
 		assertEquals(Metal.class, juego.obtenerPosicionable(new Posicion(2, 10)).getClass());
 		assertEquals(Metal.class, juego.obtenerPosicionable(new Posicion(3, 10)).getClass());
@@ -98,7 +98,7 @@ public class JuegoTest {
 	public void cuandoSeCreaUnJuego_DeberiaCrearseDiamanteEnLasPosicionesCorrespondientes() 
 			throws Exception {
 		
-		Juego juego = Juego.getInstance();
+		Juego juego = new Juego();
 		
 		assertEquals(Diamante.class, juego.obtenerPosicionable(new Posicion(6, 16)).getClass());
 		assertEquals(Diamante.class, juego.obtenerPosicionable(new Posicion(7, 16)).getClass());

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import fiuba.algo3.tp2.jugador.Jugador;
+import fiuba.algo3.tp2.material.Diamante;
 import fiuba.algo3.tp2.material.Madera;
 import fiuba.algo3.tp2.material.Metal;
 import fiuba.algo3.tp2.material.Piedra;
@@ -12,7 +13,6 @@ import fiuba.algo3.tp2.terreno.Posicionable;
 import fiuba.algo3.tp2.terreno.Terreno;
 import fiuba.algo3.tp2.terreno.casillero.CasilleroNoEncontradoException;
 import fiuba.algo3.tp2.terreno.casillero.CasilleroOcupadoException;
-import fiuba.algo3.tp2.material.Diamante;
 
 public class Juego {
 	
@@ -88,30 +88,10 @@ public class Juego {
 	private Terreno terreno;
 	
 	
-	public static Juego getInstance() 
-			throws NoSePudoInicializarJuegoException {
+	public Juego() throws NoSePudoInicializarJuegoException {
 		
-		if(instance == null) {
-			instance = createInstance();
-		}
-		
-		return instance;
-	}
-	
-	private synchronized static Juego createInstance() 
-			throws NoSePudoInicializarJuegoException {
-		
-		if(instance == null) {
-			instance = new Juego();
-		}
-		
-		return instance;
-	}
-	
-	private Juego() throws NoSePudoInicializarJuegoException {
-		
-		terreno = Terreno.createInstance(CANTIDAD_COLUMNAS_TERRENO, CANTIDAD_FILAS_TERRENO);
-		jugador = Jugador.getInstance();
+		terreno = new Terreno(CANTIDAD_COLUMNAS_TERRENO, CANTIDAD_FILAS_TERRENO);
+		jugador = new Jugador();
 		
 		posicionarJugador();
 		posicionarMateriales();

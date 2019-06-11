@@ -13,29 +13,10 @@ import fiuba.algo3.tp2.terreno.casillero.CasilleroOcupadoException;
 
 public class Jugador implements Posicionable {
 	
-	private static Jugador instance;
-	
     private Herramienta herramientaActiva;
     private Inventario inventario;
     private Posicion posicion;
     
-	public static Jugador getInstance() {
-		
-		if(instance == null) {
-			instance = createInstance();
-		}
-		
-		return instance;
-	}
-	
-	private synchronized static Jugador createInstance() {
-		
-		if(instance == null) {
-			instance = new Jugador();
-		}
-		
-		return instance;
-	}
     
     public Jugador() {
     	this.inventario = new Inventario();
