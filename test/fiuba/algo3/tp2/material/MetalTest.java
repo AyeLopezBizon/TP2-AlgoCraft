@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.material;
+/*package fiuba.algo3.tp2.material;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -119,3 +119,4 @@ public class MetalTest {
 		assertEquals(new BigDecimal(30), metal.getDurabilidad());
 	}
 }
+*/

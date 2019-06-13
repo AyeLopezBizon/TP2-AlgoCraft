@@ -8,13 +8,14 @@ import fiuba.algo3.tp2.material.*;
 public class Tablero {
 	
 	Material[] material;
-	
+
 	public Tablero(){
-		material=new Material[9];
-		for(int i=0;i<9;i++) {
-			this.material[i]= new Vacio();	
+
+		material = new Material[9];
+
+		for(int i = 0; i < 9; i++) {
+			this.material[i]= new Vacio();
 		}
-		
 	}
 	
 	public void setMaterial(Material material, int posicion) throws PosicionIncorrectaException {
@@ -48,8 +49,8 @@ public class Tablero {
 	public Material[] getMateriales() {
 		return material;
 	}
-	
+
 	public Herramienta crearHerramienta() {
-		return HerramientaFactory.newHachaDeMadera();
+		return null;
 	}
 }

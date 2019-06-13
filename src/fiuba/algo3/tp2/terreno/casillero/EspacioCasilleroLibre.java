@@ -1,7 +1,7 @@
 package fiuba.algo3.tp2.terreno.casillero;
 
+import fiuba.algo3.tp2.material.Vacio;
 import fiuba.algo3.tp2.terreno.Posicionable;
-import fiuba.algo3.tp2.terreno.PosicionableVacio;
 
 public class EspacioCasilleroLibre extends EspacioCasillero {
 
@@ -9,7 +9,7 @@ public class EspacioCasilleroLibre extends EspacioCasillero {
 	
 	
 	public EspacioCasilleroLibre() {
-		this.posicionable = new PosicionableVacio();
+		this.posicionable = new Vacio();
 	}
 	
 	@Override

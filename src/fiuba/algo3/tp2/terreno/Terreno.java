@@ -19,10 +19,10 @@ public class Terreno {
 		
 		this.cantidadDeColumnas = cantidadDeColumnas;
 		this.cantidadDeFilas = cantidadDeFilas;
-		inicializarFilasCailleros();
+		inicializarFilasCasilleros();
 	}
 
-	private void inicializarFilasCailleros() {
+	private void inicializarFilasCasilleros() {
 		
 		filasCasilleros = new ArrayList<FilaCasillero>();
 		for(int numeroFila = 1; numeroFila <= cantidadDeFilas; numeroFila++) {

@@ -3,7 +3,7 @@ package fiuba.algo3.tp2.integracion;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import fiuba.algo3.tp2.terreno.PosicionableVacio;
+import fiuba.algo3.tp2.material.Vacio;
 import fiuba.algo3.tp2.terreno.casillero.CasilleroNoEncontradoException;
 import org.junit.Test;
 
@@ -96,6 +96,6 @@ public class TerrenoTest {
 		terreno.desocuparCasillero(posicion);
 		Posicionable posicionableEnCasillero = terreno.obtenerCasillero(posicion).obtenerPosicionable();
 
-		assertEquals(PosicionableVacio.class, posicionableEnCasillero.getClass());
+		assertEquals(Vacio.class, posicionableEnCasillero.getClass());
 	}
 }

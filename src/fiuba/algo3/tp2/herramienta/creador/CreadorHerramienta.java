@@ -6,11 +6,12 @@ import fiuba.algo3.tp2.herramienta.*;
 
 public class CreadorHerramienta {
 	
-	Tablero tablero;
-	Tablero[] tablerosPredeterminados;
+	private Tablero tablero;
+	private Tablero[] tablerosPredeterminados;
 	
 	public CreadorHerramienta(Tablero tablero) throws PosicionIncorrectaException{
-		this.tablero=tablero;
+		this.tablero = tablero;
+
 		tablerosPredeterminados = new Tablero[7];
 		tablerosPredeterminados[0] = TableroFactory.newTableroHachaMadera();
 		tablerosPredeterminados[1] = TableroFactory.newTableroHachaPiedra();

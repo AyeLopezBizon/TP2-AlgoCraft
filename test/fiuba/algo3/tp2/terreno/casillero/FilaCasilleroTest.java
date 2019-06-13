@@ -5,7 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import fiuba.algo3.tp2.terreno.PosicionableVacio;
+import fiuba.algo3.tp2.material.Vacio;
 import org.junit.Test;
 
 import fiuba.algo3.tp2.jugador.Jugador;
@@ -131,6 +131,6 @@ public class FilaCasilleroTest {
 		filaCasillero.ocuparCasillero(jugador, posicion);
 		filaCasillero.desocuparCasillero(posicion);
 
-		assertEquals(PosicionableVacio.class, filaCasillero.obtenerCasillero(posicion).obtenerPosicionable().getClass());
+		assertEquals(Vacio.class, filaCasillero.obtenerCasillero(posicion).obtenerPosicionable().getClass());
 	}
 }

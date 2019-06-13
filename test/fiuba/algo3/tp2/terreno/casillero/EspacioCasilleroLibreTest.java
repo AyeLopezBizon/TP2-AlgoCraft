@@ -2,11 +2,11 @@ package fiuba.algo3.tp2.terreno.casillero;
 
 import static org.junit.Assert.assertEquals;
 
+import fiuba.algo3.tp2.material.Vacio;
 import org.junit.Test;
 
 import fiuba.algo3.tp2.jugador.Jugador;
 import fiuba.algo3.tp2.terreno.Posicionable;
-import fiuba.algo3.tp2.terreno.PosicionableVacio;
 
 public class EspacioCasilleroLibreTest {
 
@@ -15,7 +15,7 @@ public class EspacioCasilleroLibreTest {
 		
 		EspacioCasillero espacio = new EspacioCasilleroLibre();
 		
-		assertEquals(PosicionableVacio.class, espacio.obtenerPosicionable().getClass());
+		assertEquals(Vacio.class, espacio.obtenerPosicionable().getClass());
 	}
 	
 	@Test

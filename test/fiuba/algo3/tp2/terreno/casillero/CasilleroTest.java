@@ -5,12 +5,12 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import fiuba.algo3.tp2.material.Vacio;
 import org.junit.Test;
 
 import fiuba.algo3.tp2.jugador.Jugador;
 import fiuba.algo3.tp2.terreno.Posicion;
 import fiuba.algo3.tp2.terreno.Posicionable;
-import fiuba.algo3.tp2.terreno.PosicionableVacio;
 import fiuba.algo3.tp2.material.Madera;
 
 public class CasilleroTest {
@@ -40,7 +40,7 @@ public class CasilleroTest {
 		Posicion posicion = new Posicion(5, 3);
 		Casillero casillero = new Casillero(posicion);
 		
-		assertEquals(PosicionableVacio.class, casillero.obtenerPosicionable().getClass());
+		assertEquals(Vacio.class, casillero.obtenerPosicionable().getClass());
 	}
 	
 	@Test
@@ -86,6 +86,6 @@ public class CasilleroTest {
 		casillero.ocuparCasillero(jugador);
 		casillero.desocuparCasillero();
 
-		assertEquals(PosicionableVacio.class, casillero.obtenerPosicionable().getClass());
+		assertEquals(Vacio.class, casillero.obtenerPosicionable().getClass());
 	}
 }

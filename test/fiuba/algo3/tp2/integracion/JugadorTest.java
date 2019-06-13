@@ -6,7 +6,6 @@ import fiuba.algo3.tp2.material.*;
 import fiuba.algo3.tp2.jugador.Jugador;
 import fiuba.algo3.tp2.terreno.Posicion;
 import fiuba.algo3.tp2.terreno.Posicionable;
-import fiuba.algo3.tp2.terreno.PosicionableVacio;
 import fiuba.algo3.tp2.terreno.Terreno;
 import fiuba.algo3.tp2.terreno.casillero.Casillero;
 import fiuba.algo3.tp2.terreno.casillero.CasilleroNoEncontradoException;
@@ -254,7 +253,7 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
         assertEquals(jugador, casilleroFinal.obtenerPosicionable());
     }
 
@@ -274,7 +273,7 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
         assertEquals(jugador, casilleroFinal.obtenerPosicionable());
     }
 
@@ -294,7 +293,7 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
         assertEquals(jugador, casilleroFinal.obtenerPosicionable());
     }
 
@@ -409,7 +408,7 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
         assertEquals(jugador, casilleroFinal.obtenerPosicionable());
     }
 
@@ -429,7 +428,7 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
         assertEquals(jugador, casilleroFinal.obtenerPosicionable());
     }
 
@@ -449,7 +448,7 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
         assertEquals(jugador, casilleroFinal.obtenerPosicionable());
     }
 
@@ -564,7 +563,7 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
         assertEquals(jugador, casilleroFinal.obtenerPosicionable());
     }
 
@@ -584,7 +583,7 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
         assertEquals(jugador, casilleroFinal.obtenerPosicionable());
     }
 
@@ -604,7 +603,7 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
         assertEquals(jugador, casilleroFinal.obtenerPosicionable());
     }
 
@@ -641,7 +640,7 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
         assertEquals(jugador, casilleroFinal.obtenerPosicionable());
     }
 
@@ -726,7 +725,7 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
         assertEquals(jugador, casilleroFinal.obtenerPosicionable());
     }
 
@@ -746,7 +745,7 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(PosicionableVacio.class, casilleroInicial.obtenerPosicionable().getClass());
+        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
         assertEquals(jugador, casilleroFinal.obtenerPosicionable());
     }
 
