@@ -4,15 +4,16 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import fiuba.algo3.tp2.material.Vacio;
-import fiuba.algo3.tp2.terreno.casillero.CasilleroNoEncontradoException;
+import fiuba.algo3.tp2.matriz.casillero.CasilleroNoEncontradoException;
+import fiuba.algo3.tp2.matriz.casillero.CasilleroOcupadoException;
+import fiuba.algo3.tp2.matriz.posicion.Posicion;
+import fiuba.algo3.tp2.matriz.posicion.Posicionable;
+
 import org.junit.Test;
 
 import fiuba.algo3.tp2.jugador.Jugador;
 import fiuba.algo3.tp2.material.Madera;
-import fiuba.algo3.tp2.terreno.Posicion;
-import fiuba.algo3.tp2.terreno.Posicionable;
 import fiuba.algo3.tp2.terreno.Terreno;
-import fiuba.algo3.tp2.terreno.casillero.CasilleroOcupadoException;
 
 public class TerrenoTest {
 	
@@ -26,7 +27,7 @@ public class TerrenoTest {
 		
 		terreno.ocuparCasillero(jugador, posicion);
 		Posicionable posicionableEnCasillero = 
-				terreno.obtenerCasillero(posicion).obtenerPosicionable();
+				terreno.obtenerPosicionable(posicion);
 		
 		assertEquals(jugador, posicionableEnCasillero);
 	}
@@ -41,7 +42,7 @@ public class TerrenoTest {
 		
 		terreno.ocuparCasillero(madera, posicion);
 		Posicionable posicionableEnCasillero = 
-				terreno.obtenerCasillero(posicion).obtenerPosicionable();
+				terreno.obtenerPosicionable(posicion);
 		
 		assertEquals(madera, posicionableEnCasillero);
 	}
@@ -94,7 +95,7 @@ public class TerrenoTest {
 
 		terreno.ocuparCasillero(jugador, posicion);
 		terreno.desocuparCasillero(posicion);
-		Posicionable posicionableEnCasillero = terreno.obtenerCasillero(posicion).obtenerPosicionable();
+		Posicionable posicionableEnCasillero = terreno.obtenerPosicionable(posicion);
 
 		assertEquals(Vacio.class, posicionableEnCasillero.getClass());
 	}

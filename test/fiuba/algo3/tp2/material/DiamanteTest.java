@@ -5,15 +5,15 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import fiuba.algo3.tp2.herramienta.Herramienta;
-import fiuba.algo3.tp2.herramienta.HerramientaFactory;
+import java.math.BigDecimal;
+
 import org.junit.Test;
 
+import fiuba.algo3.tp2.herramienta.Herramienta;
+import fiuba.algo3.tp2.herramienta.HerramientaFactory;
 import fiuba.algo3.tp2.herramienta.golpe.Golpe;
 import fiuba.algo3.tp2.herramienta.golpe.GolpeRompeDiamante;
 import fiuba.algo3.tp2.herramienta.golpe.Golpeable;
-
-import java.math.BigDecimal;
 
 public class DiamanteTest {
 	

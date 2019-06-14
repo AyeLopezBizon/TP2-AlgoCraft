@@ -5,11 +5,11 @@ import fiuba.algo3.tp2.herramienta.HerramientaDesgastadaNoSePuedeUsarException;
 import fiuba.algo3.tp2.jugador.movimiento.Movimiento;
 import fiuba.algo3.tp2.material.Material;
 import fiuba.algo3.tp2.material.MaterialDestruidoNoSePuedeGolpearException;
-import fiuba.algo3.tp2.terreno.Posicion;
-import fiuba.algo3.tp2.terreno.Posicionable;
+import fiuba.algo3.tp2.matriz.casillero.CasilleroNoEncontradoException;
+import fiuba.algo3.tp2.matriz.casillero.CasilleroOcupadoException;
+import fiuba.algo3.tp2.matriz.posicion.Posicion;
+import fiuba.algo3.tp2.matriz.posicion.Posicionable;
 import fiuba.algo3.tp2.terreno.Terreno;
-import fiuba.algo3.tp2.terreno.casillero.CasilleroNoEncontradoException;
-import fiuba.algo3.tp2.terreno.casillero.CasilleroOcupadoException;
 
 public class Jugador implements Posicionable {
 	
