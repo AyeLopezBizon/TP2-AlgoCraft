@@ -35,4 +35,12 @@ public class Posicion {
 	public Posicion retrocederFila() {
 		return new Posicion(this.numeroColumna, this.numeroFila - 1);
 	}
+
+	public Integer obtenerNumFilas() {
+		return numeroFila;
+	}
+
+	public Integer obtenerNumColumnas() {
+		return numeroColumna;
+	}
 }

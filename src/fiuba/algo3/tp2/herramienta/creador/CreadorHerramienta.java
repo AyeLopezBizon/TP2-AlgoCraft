@@ -1,37 +1,45 @@
 package fiuba.algo3.tp2.herramienta.creador;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import fiuba.algo3.tp2.herramienta.*;
+import fiuba.algo3.tp2.matriz.casillero.CasilleroNoEncontradoException;
+import fiuba.algo3.tp2.matriz.casillero.CasilleroOcupadoException;
 
 public class CreadorHerramienta {
 	
 	private MesaDeTrabajo mesaDeTrabajo;
-	private MesaDeTrabajo[] mesasDeTrabajosPredeterminadas;
+	private Collection<MesaDeTrabajo> mesasDeTrabajoPredeterminadas;
 	
-	public CreadorHerramienta(MesaDeTrabajo mesaDeTrabajo) throws PosicionIncorrectaException{
+	public CreadorHerramienta(MesaDeTrabajo mesaDeTrabajo) 
+			throws PosicionIncorrectaException, CasilleroOcupadoException, CasilleroNoEncontradoException{
 		this.mesaDeTrabajo = mesaDeTrabajo;
-
-		mesasDeTrabajosPredeterminadas = new MesaDeTrabajo[7];
-		mesasDeTrabajosPredeterminadas[0] = new MesaDeTrabajoHachaMadera();
-		mesasDeTrabajosPredeterminadas[1] = new MesaDeTrabajoHachaPiedra();
-		mesasDeTrabajosPredeterminadas[2] = new MesaDeTrabajoHachaMetal();
-		mesasDeTrabajosPredeterminadas[3] = new MesaDeTrabajoPicoMadera();
-		mesasDeTrabajosPredeterminadas[4] = new MesaDeTrabajoPicoPiedra();
-		mesasDeTrabajosPredeterminadas[5] = new MesaDeTrabajoPicoMetal();
-		mesasDeTrabajosPredeterminadas[6] = new MesaDeTrabajoPicoFino();			
+		mesasDeTrabajoPredeterminadas = new ArrayList<MesaDeTrabajo>();
+		mesasDeTrabajoPredeterminadas.add( new MesaDeTrabajoHachaMadera());
+		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoHachaPiedra());
+		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoHachaMetal());
+		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoPicoMadera()) ;
+		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoPicoPiedra()) ;
+		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoPicoMetal()) ;
+		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoPicoFino());			
 	}
 	
-	public Herramienta crearHerramienta() throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
+	public Herramienta crearHerramienta() 
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException, CasilleroNoEncontradoException {
 		if(!mesaDeTrabajoEstaBienArmada()) {
 			throw new MaterialesMalPosicionadosException();
 		}
 		return mesaDeTrabajo.crearHerramienta();
 	}
 	
-	private boolean mesaDeTrabajoEstaBienArmada() throws MaterialesMalPosicionadosException, PosicionIncorrectaException {		
+	private boolean mesaDeTrabajoEstaBienArmada() 
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException, CasilleroNoEncontradoException {		
 		boolean valor = false;		
-		for(int i=0;i<7;i++){
-			if(mesasDeTrabajosPredeterminadas[i].comparar(mesaDeTrabajo)){
-				mesaDeTrabajo = mesasDeTrabajosPredeterminadas[i];
+		
+		for(MesaDeTrabajo mesaDeTrabajo : mesasDeTrabajoPredeterminadas) {
+			if(mesaDeTrabajo.comparar(this.mesaDeTrabajo)) {
+				this.mesaDeTrabajo = mesaDeTrabajo;
 				valor = true;
 			}
 		}
