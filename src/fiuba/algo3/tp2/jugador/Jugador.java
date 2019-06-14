@@ -29,6 +29,10 @@ public class Jugador implements OcupanteTerreno {
 
         this.herramientaActiva.golpear(material);
     }
+    
+    public void lanzarGolpe(OcupanteTerreno ocupanteTerreno) {
+    	ocupanteTerreno.recibirGolpe(this);
+    }
 
 	@Override
 	public Posicion obtenerPosicion() {
