@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import fiuba.algo3.tp2.jugador.Jugador;
 import fiuba.algo3.tp2.material.Madera;
-import fiuba.algo3.tp2.material.Vacio;
 import fiuba.algo3.tp2.matriz.posicion.Posicion;
 import fiuba.algo3.tp2.matriz.posicion.Posicionable;
 
@@ -19,7 +18,7 @@ public class FilaCasilleroTest {
 	public void dadaUnaFilaCasilleroCon50Casilleros_CuandoSeOcupaElCasillero1ConUnJugador_ElCasilleroDeberiaContenerElJugador() 
 			throws Exception {
 		
-		FilaCasillero filaCasillero = new FilaCasillero(1, 50);
+		FilaCasillero<Posicionable> filaCasillero = new FilaCasillero<Posicionable>(1, 50);
 		Posicionable jugador = new Jugador();
 		
 		filaCasillero.ocuparCasillero(jugador, new Posicion(1, 1));
@@ -31,7 +30,7 @@ public class FilaCasilleroTest {
 	public void dadaUnaFilaCasilleroCon50Casilleros_CuandoSeOcupaElCasillero50ConUnJugador_ElCasilleroDeberiaContenerElJugador() 
 			throws Exception {
 		
-		FilaCasillero filaCasillero = new FilaCasillero(1, 50);
+		FilaCasillero<Posicionable> filaCasillero = new FilaCasillero<Posicionable>(1, 50);
 		Posicionable jugador = new Jugador();
 		
 		filaCasillero.ocuparCasillero(jugador, new Posicion(50, 1));
@@ -43,7 +42,7 @@ public class FilaCasilleroTest {
 	public void dadaUnaFilaCasilleroCon50Casilleros_CuandoSeOcupaElCasillero0ConUnJugador_DeberiaLanzarCasilleroNoEncontradoException() 
 			throws Exception {
 		
-		FilaCasillero filaCasillero = new FilaCasillero(1, 50);
+		FilaCasillero<Posicionable> filaCasillero = new FilaCasillero<Posicionable>(1, 50);
 		Posicionable jugador = new Jugador();
 		
 		try {
@@ -58,7 +57,7 @@ public class FilaCasilleroTest {
 	public void dadaUnaFilaCasilleroCon50Casilleros_CuandoSeOcupaElCasillero51ConUnJugador_DeberiaLanzarCasilleroNoEncontradoException() 
 			throws Exception {
 		
-		FilaCasillero filaCasillero = new FilaCasillero(1, 50);
+		FilaCasillero<Posicionable> filaCasillero = new FilaCasillero<Posicionable>(1, 50);
 		Posicionable jugador = new Jugador();
 		
 		try {
@@ -73,7 +72,7 @@ public class FilaCasilleroTest {
 	public void dadaUnaFilaCasilleroCon50CasillerosQueTieneOcupadoElCasillero1_CuandoSeOcupaElCasillero1ConUnJugador_DeberiaLanzarCasilleroOcupadoException() 
 			throws Exception {
 		
-		FilaCasillero filaCasillero = new FilaCasillero(1, 50);
+		FilaCasillero<Posicionable> filaCasillero = new FilaCasillero<Posicionable>(1, 50);
 		Posicionable madera = new Madera();
 		filaCasillero.ocuparCasillero(madera, new Posicion(1, 1));
 		
@@ -91,7 +90,7 @@ public class FilaCasilleroTest {
 	@Test
 	public void dadaUnaFilaCasilleroConNumeroFila1Con50Casilleros_DeberiaContenerElCasilleroConPosicionNumeroFila1YNumeroColumna1() {
 		
-		FilaCasillero filaCasillero = new FilaCasillero(1, 50);
+		FilaCasillero<Posicionable> filaCasillero = new FilaCasillero<Posicionable>(1, 50);
 		
 		assertTrue(filaCasillero.contieneCasillero(new Posicion(1, 1)));
 	}
@@ -99,7 +98,7 @@ public class FilaCasilleroTest {
 	@Test
 	public void dadaUnaFilaCasilleroConNumeroFila1Con50Casilleros_DeberiaContenerElCasilleroConPosicionNumeroFila1YNumeroColumna50() {
 		
-		FilaCasillero filaCasillero = new FilaCasillero(1, 50);
+		FilaCasillero<Posicionable> filaCasillero = new FilaCasillero<Posicionable>(1, 50);
 		
 		assertTrue(filaCasillero.contieneCasillero(new Posicion(50, 1)));
 	}
@@ -107,7 +106,7 @@ public class FilaCasilleroTest {
 	@Test
 	public void dadaUnaFilaCasilleroConNumeroFila1Con50Casilleros_NoDeberiaContenerElCasilleroConPosicionNumeroFila2YNumeroColumna1() {
 		
-		FilaCasillero filaCasillero = new FilaCasillero(1, 50);
+		FilaCasillero<Posicionable> filaCasillero = new FilaCasillero<Posicionable>(1, 50);
 		
 		assertFalse(filaCasillero.contieneCasillero(new Posicion(1, 5)));
 	}
@@ -115,7 +114,7 @@ public class FilaCasilleroTest {
 	@Test
 	public void dadaUnaFilaCasilleroConNumeroFila1Con50Casilleros_NoDeberiaContenerElCasilleroConPosicionNumeroFila1YNumeroColumna51() {
 		
-		FilaCasillero filaCasillero = new FilaCasillero(1, 50);
+		FilaCasillero<Posicionable> filaCasillero = new FilaCasillero<Posicionable>(1, 50);
 		
 		assertFalse(filaCasillero.contieneCasillero(new Posicion(51, 1)));
 	}
@@ -124,13 +123,17 @@ public class FilaCasilleroTest {
 	public void dadaUnaFilaCasilleroCon50Casilleros_CuandoSeDesocupaElCasillero1ConUnJugador_ElCasilleroDeberiaContenerUnPosicionableVacio()
 			throws Exception {
 
-		FilaCasillero filaCasillero = new FilaCasillero(1, 50);
+		FilaCasillero<Posicionable> filaCasillero = new FilaCasillero<Posicionable>(1, 50);
 		Posicion posicion = new Posicion(1,1);
 		Posicionable jugador = new Jugador();
 
 		filaCasillero.ocuparCasillero(jugador, posicion);
 		filaCasillero.desocuparCasillero(posicion);
-
-		assertEquals(Vacio.class, filaCasillero.obtenerCasillero(posicion).obtenerPosicionable().getClass());
+		
+		try {
+			filaCasillero.obtenerCasillero(posicion).obtenerPosicionable();
+		} catch(Exception e) {
+			assertEquals(CasilleroVacioException.class, e.getClass());
+		}
 	}
 }

@@ -12,10 +12,11 @@ import fiuba.algo3.tp2.matriz.posicion.Posicionable;
 public class EspacioCasilleroOcupadoTest {
 	
 	@Test
-	public void dadoUnEspacioCasilleroOcupadoConUnJugador_CuandoSeObtieneElContenidoDelEspacio_DeberiaDevolverElJugador() {
+	public void dadoUnEspacioCasilleroOcupadoConUnJugador_CuandoSeObtieneElContenidoDelEspacio_DeberiaDevolverElJugador() 
+			throws Exception {
 		
 		Posicionable jugador = new Jugador();
-		EspacioCasillero espacio = new EspacioCasilleroOcupado(jugador);
+		EspacioCasillero<Posicionable> espacio = new EspacioCasilleroOcupado<Posicionable>(jugador);
 		
 		assertEquals(jugador, espacio.obtenerPosicionable());
 	}
@@ -24,7 +25,7 @@ public class EspacioCasilleroOcupadoTest {
 	public void cuandoSeOcupaUnEspacioCasilleroOcupado_DeberiaLanzarCasilleroOcupadoException() {
 		
 		Posicionable jugador = new Jugador();
-		EspacioCasillero espacio = new EspacioCasilleroOcupado(jugador);
+		EspacioCasillero<Posicionable> espacio = new EspacioCasilleroOcupado<Posicionable>(jugador);
 		
 		Posicionable madera = new Madera();
 		try {

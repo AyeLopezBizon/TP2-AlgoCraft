@@ -7,11 +7,12 @@ import fiuba.algo3.tp2.material.Material;
 import fiuba.algo3.tp2.material.MaterialDestruidoNoSePuedeGolpearException;
 import fiuba.algo3.tp2.matriz.casillero.CasilleroNoEncontradoException;
 import fiuba.algo3.tp2.matriz.casillero.CasilleroOcupadoException;
+import fiuba.algo3.tp2.matriz.casillero.CasilleroVacioException;
 import fiuba.algo3.tp2.matriz.posicion.Posicion;
-import fiuba.algo3.tp2.matriz.posicion.Posicionable;
+import fiuba.algo3.tp2.terreno.OcupanteTerreno;
 import fiuba.algo3.tp2.terreno.Terreno;
 
-public class Jugador implements Posicionable {
+public class Jugador implements OcupanteTerreno {
 	
     private Herramienta herramientaActiva;
     private Inventario inventario;
@@ -40,10 +41,15 @@ public class Jugador implements Posicionable {
 	}
 
     public void mover(Movimiento movimiento, Terreno terreno)
-			throws CasilleroNoEncontradoException, CasilleroOcupadoException {
+			throws CasilleroNoEncontradoException, CasilleroOcupadoException, CasilleroVacioException {
 
 		terreno.desocuparCasillero(this.posicion);
 		this.posicion = movimiento.mover(this.posicion);
 		terreno.ocuparCasillero(this, this.posicion);
     }
+
+	@Override
+	public void recibirGolpe(Jugador jugador) {
+		// No pasa nada
+	}
 }
