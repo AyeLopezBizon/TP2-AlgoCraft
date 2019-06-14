@@ -22,10 +22,10 @@ public class CreadorHerramientaTest {
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 
 		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
-		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
-
+		
 		mesaDeTrabajo.setMaterial(new Madera(), 1);
-
+		
+		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 		creador.crearHerramienta();
 	}
 
@@ -34,11 +34,11 @@ public class CreadorHerramientaTest {
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 
 		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
-		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 
 		mesaDeTrabajo.setMaterial(new Madera(), 1);
 		mesaDeTrabajo.setMaterial(new Madera(), 9);
 
+		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 		creador.crearHerramienta();
 	}
 
@@ -47,12 +47,12 @@ public class CreadorHerramientaTest {
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 
 		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
-		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 
 		for(int i = 1; i < 10; i++) {
 			mesaDeTrabajo.setMaterial(new Madera(), i);
 		}
-
+		
+		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 		creador.crearHerramienta();
 	}
 }
