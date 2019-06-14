@@ -11,7 +11,7 @@ public class CreadorHerramientaTest {
 	public void dadoUnCreadorConMesaDeTrabajoVacia_CrearHerramientaDevuelveUnaExcepcion()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 
-		MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 
 		creador.crearHerramienta();
@@ -21,7 +21,7 @@ public class CreadorHerramientaTest {
 	public void dadoUnCreadorConMesaDeTrabajoConUnElemento_CrearHerramientaDevuelveUnaExcepcion()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 
-		MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 
 		mesaDeTrabajo.setMaterial(new Madera(), 1);
@@ -33,7 +33,7 @@ public class CreadorHerramientaTest {
 	public void dadoUnCreadorConMesaDeTrabajoConDosElementos_CrearHerramientaDevuelveUnaExcepcion()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 
-		MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 
 		mesaDeTrabajo.setMaterial(new Madera(), 1);
@@ -46,7 +46,7 @@ public class CreadorHerramientaTest {
 	public void dadoUnCreadorConMesaDeTrabajoNoVacia_CrearHerramientaDevuelveUnaExcepcion()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 
-		MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 
 		for(int i = 1; i < 10; i++) {

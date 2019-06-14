@@ -3,7 +3,7 @@ package fiuba.algo3.tp2.herramienta.creador;
 import fiuba.algo3.tp2.herramienta.*;
 import fiuba.algo3.tp2.material.*;
 
-public class MesaDeTrabajo {
+public abstract class MesaDeTrabajo {
 	
 	Material[] material;
 
@@ -11,9 +11,7 @@ public class MesaDeTrabajo {
 
 		material = new Material[9];
 
-		for(int i = 0; i < 9; i++) {
-			this.material[i]= new Vacio();
-		}
+		
 	}
 	
 	public void setMaterial(Material material, int posicion) throws PosicionIncorrectaException {
@@ -48,7 +46,5 @@ public class MesaDeTrabajo {
 		return material;
 	}
 
-	public Herramienta crearHerramienta() {
-		return null;
-	}
+	public abstract Herramienta crearHerramienta();
 }

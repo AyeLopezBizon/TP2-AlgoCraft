@@ -1,25 +1,23 @@
 package fiuba.algo3.tp2.herramienta.creador;
 
-import java.math.BigDecimal;
-
 import fiuba.algo3.tp2.herramienta.*;
 
 public class CreadorHerramienta {
 	
-	private MesaDeTrabajo mesaDeTrabajo;
+	private MesaDeTrabajoVacia mesaDeTrabajo;
 	private MesaDeTrabajo[] mesasDeTrabajosPredeterminadas;
 	
-	public CreadorHerramienta(MesaDeTrabajo mesaDeTrabajo) throws PosicionIncorrectaException{
+	public CreadorHerramienta(MesaDeTrabajoVacia mesaDeTrabajo) throws PosicionIncorrectaException{
 		this.mesaDeTrabajo = mesaDeTrabajo;
 
 		mesasDeTrabajosPredeterminadas = new MesaDeTrabajo[7];
-		mesasDeTrabajosPredeterminadas[0] = MesaDeTrabajoFactory.newMesaDeTrabajoHachaMadera();
-		mesasDeTrabajosPredeterminadas[1] = MesaDeTrabajoFactory.newMesaDeTrabajoHachaPiedra();
-		mesasDeTrabajosPredeterminadas[2] = MesaDeTrabajoFactory.newMesaDeTrabajoHachaMetal();
-		mesasDeTrabajosPredeterminadas[3] = MesaDeTrabajoFactory.newMesaDeTrabajoPicoMadera();
-		mesasDeTrabajosPredeterminadas[4] = MesaDeTrabajoFactory.newMesaDeTrabajoPicoPiedra();
-		mesasDeTrabajosPredeterminadas[5] = MesaDeTrabajoFactory.newMesaDeTrabajoPicoMetal();
-		mesasDeTrabajosPredeterminadas[6] = MesaDeTrabajoFactory.newMesaDeTrabajoPicoFino();			
+		mesasDeTrabajosPredeterminadas[0] = new MesaDeTrabajoHachaMadera();
+		mesasDeTrabajosPredeterminadas[1] = new MesaDeTrabajoHachaPiedra();
+		mesasDeTrabajosPredeterminadas[2] = new MesaDeTrabajoHachaMetal();
+		mesasDeTrabajosPredeterminadas[3] = new MesaDeTrabajoPicoMadera();
+		mesasDeTrabajosPredeterminadas[4] = new MesaDeTrabajoPicoPiedra();
+		mesasDeTrabajosPredeterminadas[5] = new MesaDeTrabajoPicoMetal();
+		mesasDeTrabajosPredeterminadas[6] = new MesaDeTrabajoPicoFino();			
 	}
 	
 	public Herramienta crearHerramienta() throws MaterialesMalPosicionadosException, PosicionIncorrectaException {

@@ -5,6 +5,7 @@ import fiuba.algo3.tp2.herramienta.creador.CreadorHerramienta;
 import fiuba.algo3.tp2.herramienta.creador.MaterialesMalPosicionadosException;
 import fiuba.algo3.tp2.herramienta.creador.PosicionIncorrectaException;
 import fiuba.algo3.tp2.herramienta.creador.MesaDeTrabajo;
+import fiuba.algo3.tp2.herramienta.creador.MesaDeTrabajoVacia;
 import fiuba.algo3.tp2.material.Madera;
 import fiuba.algo3.tp2.material.Metal;
 import fiuba.algo3.tp2.material.Piedra;
@@ -19,7 +20,7 @@ public class CreadorDeHerramientaTest {
 	@Test
 	public void cuandoAgreganLosMaterialesAlaMesaDeTrabajoParaConstruirUnHachaDeMadera_ElCreadorDeHerramientasDeberiaCrearUnHachaDeMadera()
 			throws Exception{
-		MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 		mesaDeTrabajo.setMaterial(new Madera(),1);
 		mesaDeTrabajo.setMaterial(new Madera(),2);
@@ -41,7 +42,7 @@ public class CreadorDeHerramientaTest {
 	@Test
 	public void cuandoAgreganLosMaterialesALaMesaDeTrabajoParaConstruirUnHachaDePiedra_ElCreadorDeHerramientasDeberiaCrearUnHachaDePiedra()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
-		MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 		mesaDeTrabajo.setMaterial(new Piedra(),1);
 		mesaDeTrabajo.setMaterial(new Piedra(),2);
@@ -63,7 +64,7 @@ public class CreadorDeHerramientaTest {
 	@Test
 	public void cuandoAgreganLosMaterialesALaMesaDeTrabajoParaConstruirUnHachaDeMetal_ElCreadorDeHerramientasDeberiaCrearUnHachaDeMetal()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
-		MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 
 		mesaDeTrabajo.setMaterial(new Metal(),1);
@@ -86,7 +87,7 @@ public class CreadorDeHerramientaTest {
 	@Test
 	public void cuandoAgreganLosMaterialesALaMesaDeTrabajoParaConstruirUnPicoDeMadera_ElCreadorDeHerramientasDeberiaCrearUnUnPicoDeMadera()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
-		MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 		mesaDeTrabajo.setMaterial(new Madera(),1);
 		mesaDeTrabajo.setMaterial(new Madera(),2);
@@ -109,7 +110,7 @@ public class CreadorDeHerramientaTest {
 	@Test
 	public void cuandoAgreganLosMaterialesALaMesaDeTrabajoParaConstruirUnUnPicoDePiedra_ElCreadorDeHerramientasDeberiaCrearUnUnPicoDePiedra()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
-		MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 		mesaDeTrabajo.setMaterial(new Piedra(),1);
 		mesaDeTrabajo.setMaterial(new Piedra(),2);
@@ -131,7 +132,7 @@ public class CreadorDeHerramientaTest {
 	@Test
 	public void cuandoAgreganLosMaterialesALaMesaDeTrabajoParaConstruirUnUnPicoDeMetal_ElCreadorDeHerramientasDeberiaCrearUnPicoDeMetal()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
-		MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 		mesaDeTrabajo.setMaterial(new Metal(),1);
 		mesaDeTrabajo.setMaterial(new Metal(),2);
@@ -153,7 +154,7 @@ public class CreadorDeHerramientaTest {
 	@Test
 	public void cuandoAgreganLosMaterialesALaMesaDeTrabajoParaConstruirUnUnPicoFino_ElCreadorDeHerramientasDeberiaCrearUnPicoFino()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
-		MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 		mesaDeTrabajo.setMaterial(new Metal(),1);
 		mesaDeTrabajo.setMaterial(new Metal(),2);
@@ -175,7 +176,7 @@ public class CreadorDeHerramientaTest {
 	@Test(expected = MaterialesMalPosicionadosException.class)
 	public void cuandoAgreganLosMaterialesALaMesaDeTrabajoEnUnaDisposicionIncorrecta_ElCreadorDeHerramientasDeberiaLanzarUnaExcepcion()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
-		MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 		for (int i = 1; i < 10; i++) {
 			mesaDeTrabajo.setMaterial(new Metal(), i);
