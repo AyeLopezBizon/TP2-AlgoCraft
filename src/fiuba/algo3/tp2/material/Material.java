@@ -6,8 +6,8 @@ import fiuba.algo3.tp2.herramienta.Herramienta;
 import fiuba.algo3.tp2.herramienta.HerramientaDesgastadaNoSePuedeUsarException;
 import fiuba.algo3.tp2.herramienta.golpe.Golpe;
 import fiuba.algo3.tp2.herramienta.golpe.Golpeable;
-import fiuba.algo3.tp2.terreno.Posicion;
-import fiuba.algo3.tp2.terreno.Posicionable;
+import fiuba.algo3.tp2.matriz.posicion.Posicion;
+import fiuba.algo3.tp2.matriz.posicion.Posicionable;
 
 public abstract class Material implements Golpeable, Posicionable {
 	

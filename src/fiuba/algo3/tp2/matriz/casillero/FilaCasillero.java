@@ -1,10 +1,10 @@
-package fiuba.algo3.tp2.terreno.casillero;
+package fiuba.algo3.tp2.matriz.casillero;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-import fiuba.algo3.tp2.terreno.Posicion;
-import fiuba.algo3.tp2.terreno.Posicionable;
+import fiuba.algo3.tp2.matriz.posicion.Posicion;
+import fiuba.algo3.tp2.matriz.posicion.Posicionable;
 
 public class FilaCasillero {
 

@@ -1,12 +1,12 @@
-package fiuba.algo3.tp2.terreno.casillero;
+package fiuba.algo3.tp2.matriz.casillero;
 
 import static org.junit.Assert.assertEquals;
 
-import fiuba.algo3.tp2.material.Vacio;
 import org.junit.Test;
 
 import fiuba.algo3.tp2.jugador.Jugador;
-import fiuba.algo3.tp2.terreno.Posicionable;
+import fiuba.algo3.tp2.material.Vacio;
+import fiuba.algo3.tp2.matriz.posicion.Posicionable;
 
 public class EspacioCasilleroLibreTest {
 

@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.terreno.casillero;
+package fiuba.algo3.tp2.matriz.casillero;
 
 public class CasilleroNoEncontradoException extends Exception {
 	
