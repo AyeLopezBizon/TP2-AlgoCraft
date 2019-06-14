@@ -4,10 +4,10 @@ import fiuba.algo3.tp2.herramienta.*;
 
 public class CreadorHerramienta {
 	
-	private MesaDeTrabajoVacia mesaDeTrabajo;
+	private MesaDeTrabajo mesaDeTrabajo;
 	private MesaDeTrabajo[] mesasDeTrabajosPredeterminadas;
 	
-	public CreadorHerramienta(MesaDeTrabajoVacia mesaDeTrabajo) throws PosicionIncorrectaException{
+	public CreadorHerramienta(MesaDeTrabajo mesaDeTrabajo) throws PosicionIncorrectaException{
 		this.mesaDeTrabajo = mesaDeTrabajo;
 
 		mesasDeTrabajosPredeterminadas = new MesaDeTrabajo[7];
@@ -21,17 +21,20 @@ public class CreadorHerramienta {
 	}
 	
 	public Herramienta crearHerramienta() throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
-		Herramienta herramienta;
-		herramienta = comparar();
-		return herramienta;
+		if(!mesaDeTrabajoEstaBienArmada()) {
+			throw new MaterialesMalPosicionadosException();
+		}
+		return mesaDeTrabajo.crearHerramienta();
 	}
 	
-	private Herramienta comparar() throws MaterialesMalPosicionadosException, PosicionIncorrectaException {		
+	private boolean mesaDeTrabajoEstaBienArmada() throws MaterialesMalPosicionadosException, PosicionIncorrectaException {		
+		boolean valor = false;		
 		for(int i=0;i<7;i++){
 			if(mesasDeTrabajosPredeterminadas[i].comparar(mesaDeTrabajo)){
-				return mesasDeTrabajosPredeterminadas[i].crearHerramienta();
+				mesaDeTrabajo = mesasDeTrabajosPredeterminadas[i];
+				valor = true;
 			}
 		}
-		throw new MaterialesMalPosicionadosException();		
+		return valor;		
 	}
 }

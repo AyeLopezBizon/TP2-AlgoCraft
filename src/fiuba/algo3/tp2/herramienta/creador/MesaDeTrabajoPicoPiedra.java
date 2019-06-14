@@ -5,7 +5,7 @@ import fiuba.algo3.tp2.herramienta.HerramientaFactory;
 import fiuba.algo3.tp2.material.Madera;
 import fiuba.algo3.tp2.material.Piedra;
 
-public class MesaDeTrabajoPicoPiedra extends MesaDeTrabajoVacia {
+public class MesaDeTrabajoPicoPiedra extends MesaDeTrabajo{
 
 	public MesaDeTrabajoPicoPiedra() {
 		super();

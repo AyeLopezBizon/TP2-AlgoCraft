@@ -8,10 +8,10 @@ public abstract class MesaDeTrabajo {
 	Material[] material;
 
 	public MesaDeTrabajo(){
-
 		material = new Material[9];
-
-		
+		for(int i = 0; i < 9; i++) {
+			this.material[i]= new Vacio();
+		}		
 	}
 	
 	public void setMaterial(Material material, int posicion) throws PosicionIncorrectaException {

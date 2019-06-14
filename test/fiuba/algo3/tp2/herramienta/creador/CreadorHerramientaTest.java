@@ -11,7 +11,7 @@ public class CreadorHerramientaTest {
 	public void dadoUnCreadorConMesaDeTrabajoVacia_CrearHerramientaDevuelveUnaExcepcion()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 
-		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
+		MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajoVacia();
 		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 
 		creador.crearHerramienta();
