@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.terreno;
+package fiuba.algo3.tp2.matriz.posicion;
 
 public class Posicion {
 

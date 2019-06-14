@@ -10,7 +10,7 @@ import fiuba.algo3.tp2.material.Diamante;
 import fiuba.algo3.tp2.material.Madera;
 import fiuba.algo3.tp2.material.Metal;
 import fiuba.algo3.tp2.material.Piedra;
-import fiuba.algo3.tp2.terreno.Posicion;
+import fiuba.algo3.tp2.matriz.posicion.Posicion;
 
 public class JuegoTest {
 	

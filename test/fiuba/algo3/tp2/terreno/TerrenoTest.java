@@ -6,7 +6,9 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 import fiuba.algo3.tp2.jugador.Jugador;
-import fiuba.algo3.tp2.terreno.casillero.CasilleroNoEncontradoException;
+import fiuba.algo3.tp2.matriz.casillero.CasilleroNoEncontradoException;
+import fiuba.algo3.tp2.matriz.posicion.Posicion;
+import fiuba.algo3.tp2.matriz.posicion.Posicionable;
 
 public class TerrenoTest {
 
@@ -20,7 +22,7 @@ public class TerrenoTest {
 		
 		terreno.ocuparCasillero(jugador, posicion);
 		
-		assertEquals(jugador, terreno.obtenerCasillero(new Posicion(1,1)).obtenerPosicionable());
+		assertEquals(jugador, terreno.obtenerPosicionable(new Posicion(1,1)));
 	}
 	
 	@Test
@@ -33,7 +35,7 @@ public class TerrenoTest {
 		
 		terreno.ocuparCasillero(jugador, posicion);
 		
-		assertEquals(jugador, terreno.obtenerCasillero(new Posicion(100,200)).obtenerPosicionable());
+		assertEquals(jugador, terreno.obtenerPosicionable(new Posicion(100,200)));
 	}
 	
 	@Test
@@ -46,7 +48,7 @@ public class TerrenoTest {
 		
 		terreno.ocuparCasillero(jugador, posicion);
 		
-		assertEquals(jugador, terreno.obtenerCasillero(new Posicion(1,200)).obtenerPosicionable());
+		assertEquals(jugador, terreno.obtenerPosicionable(new Posicion(1,200)));
 	}
 	
 	@Test
@@ -59,7 +61,7 @@ public class TerrenoTest {
 		
 		terreno.ocuparCasillero(jugador, posicion);
 		
-		assertEquals(jugador, terreno.obtenerCasillero(new Posicion(100,1)).obtenerPosicionable());
+		assertEquals(jugador, terreno.obtenerPosicionable(new Posicion(100,1)));
 	}
 	
 	@Test

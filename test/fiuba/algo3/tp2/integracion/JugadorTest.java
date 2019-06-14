@@ -1,19 +1,34 @@
 package fiuba.algo3.tp2.integracion;
 
-import fiuba.algo3.tp2.herramienta.HerramientaDesgastadaNoSePuedeUsarException;
-import fiuba.algo3.tp2.jugador.movimiento.*;
-import fiuba.algo3.tp2.material.*;
-import fiuba.algo3.tp2.jugador.Jugador;
-import fiuba.algo3.tp2.terreno.Posicion;
-import fiuba.algo3.tp2.terreno.Posicionable;
-import fiuba.algo3.tp2.terreno.Terreno;
-import fiuba.algo3.tp2.terreno.casillero.Casillero;
-import fiuba.algo3.tp2.terreno.casillero.CasilleroNoEncontradoException;
-import fiuba.algo3.tp2.terreno.casillero.CasilleroOcupadoException;
+import static org.junit.Assert.assertEquals;
+
+import java.math.BigDecimal;
 
 import org.junit.Test;
-import java.math.BigDecimal;
-import static org.junit.Assert.assertEquals;
+
+import fiuba.algo3.tp2.herramienta.HerramientaDesgastadaNoSePuedeUsarException;
+import fiuba.algo3.tp2.jugador.Jugador;
+import fiuba.algo3.tp2.jugador.movimiento.Movimiento;
+import fiuba.algo3.tp2.jugador.movimiento.MovimientoDiagonalInferiorDerecha;
+import fiuba.algo3.tp2.jugador.movimiento.MovimientoDiagonalInferiorIzquierda;
+import fiuba.algo3.tp2.jugador.movimiento.MovimientoDiagonalSuperiorDerecha;
+import fiuba.algo3.tp2.jugador.movimiento.MovimientoDiagonalSuperiorIzquierda;
+import fiuba.algo3.tp2.jugador.movimiento.MovimientoHaciaAbajo;
+import fiuba.algo3.tp2.jugador.movimiento.MovimientoHaciaArriba;
+import fiuba.algo3.tp2.jugador.movimiento.MovimientoHaciaDerecha;
+import fiuba.algo3.tp2.jugador.movimiento.MovimientoHaciaIzquierda;
+import fiuba.algo3.tp2.material.Diamante;
+import fiuba.algo3.tp2.material.Madera;
+import fiuba.algo3.tp2.material.Material;
+import fiuba.algo3.tp2.material.MaterialDestruidoNoSePuedeGolpearException;
+import fiuba.algo3.tp2.material.Metal;
+import fiuba.algo3.tp2.material.Piedra;
+import fiuba.algo3.tp2.material.Vacio;
+import fiuba.algo3.tp2.matriz.casillero.CasilleroNoEncontradoException;
+import fiuba.algo3.tp2.matriz.casillero.CasilleroOcupadoException;
+import fiuba.algo3.tp2.matriz.posicion.Posicion;
+import fiuba.algo3.tp2.matriz.posicion.Posicionable;
+import fiuba.algo3.tp2.terreno.Terreno;
 
 public class JugadorTest {
 	
@@ -226,11 +241,8 @@ public class JugadorTest {
         Posicionable jugador = new Jugador();
 
         terreno.ocuparCasillero(jugador, posicion);
-
-        Casillero casillero = terreno.obtenerCasillero(posicion);
-        Posicionable objetoEnCasillero = casillero.obtenerPosicionable();
-
-        assertEquals(jugador, objetoEnCasillero);
+        
+        assertEquals(jugador, terreno.obtenerPosicionable(posicion));
     }
 
     /********************************************************************
@@ -246,15 +258,12 @@ public class JugadorTest {
         Posicion posicionFinal = new Posicion(2,1);
         Jugador jugador = new Jugador();
         Movimiento movimiento = new MovimientoHaciaDerecha();
-
-        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
-        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
-
+        
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
-
-        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
-        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+        
+        assertEquals(Vacio.class, terreno.obtenerPosicionable(posicionInicial).getClass());
+        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
     }
 
     @Test
@@ -267,14 +276,11 @@ public class JugadorTest {
         Jugador jugador = new Jugador();
         Movimiento movimiento = new MovimientoDiagonalSuperiorDerecha();
 
-        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
-        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
-
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
-        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+        assertEquals(Vacio.class, terreno.obtenerPosicionable(posicionInicial).getClass());
+        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
     }
 
     @Test
@@ -287,14 +293,11 @@ public class JugadorTest {
         Jugador jugador = new Jugador();
         Movimiento movimiento = new MovimientoHaciaArriba();
 
-        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
-        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
-
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
-        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+        assertEquals(Vacio.class, terreno.obtenerPosicionable(posicionInicial).getClass());
+        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -402,14 +405,11 @@ public class JugadorTest {
         Jugador jugador = new Jugador();
         Movimiento movimiento = new MovimientoHaciaArriba();
 
-        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
-        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
-
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
-        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+        assertEquals(Vacio.class, terreno.obtenerPosicionable(posicionInicial).getClass());
+        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
     }
 
     @Test
@@ -422,14 +422,11 @@ public class JugadorTest {
         Jugador jugador = new Jugador();
         Movimiento movimiento = new MovimientoDiagonalSuperiorIzquierda();
 
-        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
-        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
-
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
-        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+        assertEquals(Vacio.class, terreno.obtenerPosicionable(posicionInicial).getClass());
+        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
     }
 
     @Test
@@ -442,14 +439,11 @@ public class JugadorTest {
         Jugador jugador = new Jugador();
         Movimiento movimiento = new MovimientoHaciaIzquierda();
 
-        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
-        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
-
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
-        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+        assertEquals(Vacio.class, terreno.obtenerPosicionable(posicionInicial).getClass());
+        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -557,14 +551,11 @@ public class JugadorTest {
         Jugador jugador = new Jugador();
         Movimiento movimiento = new MovimientoHaciaIzquierda();
 
-        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
-        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
-
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
-        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+        assertEquals(Vacio.class, terreno.obtenerPosicionable(posicionInicial).getClass());
+        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
     }
 
     @Test
@@ -577,14 +568,11 @@ public class JugadorTest {
         Jugador jugador = new Jugador();
         Movimiento movimiento = new MovimientoDiagonalInferiorIzquierda();
 
-        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
-        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
-
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
-        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+        assertEquals(Vacio.class, terreno.obtenerPosicionable(posicionInicial).getClass());
+        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
     }
 
     @Test
@@ -597,14 +585,11 @@ public class JugadorTest {
         Jugador jugador = new Jugador();
         Movimiento movimiento = new MovimientoHaciaAbajo();
 
-        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
-        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
-
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
-        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+        assertEquals(Vacio.class, terreno.obtenerPosicionable(posicionInicial).getClass());
+        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -634,14 +619,11 @@ public class JugadorTest {
         Jugador jugador = new Jugador();
         Movimiento movimiento = new MovimientoHaciaDerecha();
 
-        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
-        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
-
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
-        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+        assertEquals(Vacio.class, terreno.obtenerPosicionable(posicionInicial).getClass());
+        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -719,14 +701,11 @@ public class JugadorTest {
         Jugador jugador = new Jugador();
         Movimiento movimiento = new MovimientoHaciaAbajo();
 
-        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
-        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
-
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
-        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+        assertEquals(Vacio.class, terreno.obtenerPosicionable(posicionInicial).getClass());
+        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
     }
 
     @Test
@@ -739,14 +718,11 @@ public class JugadorTest {
         Jugador jugador = new Jugador();
         Movimiento movimiento = new MovimientoDiagonalInferiorDerecha();
 
-        Casillero casilleroInicial = terreno.obtenerCasillero(posicionInicial);
-        Casillero casilleroFinal = terreno.obtenerCasillero(posicionFinal);
-
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        assertEquals(Vacio.class, casilleroInicial.obtenerPosicionable().getClass());
-        assertEquals(jugador, casilleroFinal.obtenerPosicionable());
+        assertEquals(Vacio.class, terreno.obtenerPosicionable(posicionInicial).getClass());
+        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
     }
 
     /***************************************************

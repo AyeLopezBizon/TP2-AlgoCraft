@@ -1,7 +1,8 @@
 package fiuba.algo3.tp2.jugador.movimiento;
 
-import fiuba.algo3.tp2.terreno.Posicion;
 import org.junit.Test;
+
+import fiuba.algo3.tp2.matriz.posicion.Posicion;
 
 import static org.junit.Assert.assertTrue;
 

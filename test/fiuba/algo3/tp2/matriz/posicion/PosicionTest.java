@@ -1,9 +1,11 @@
-package fiuba.algo3.tp2.terreno;
+package fiuba.algo3.tp2.matriz.posicion;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+
+import fiuba.algo3.tp2.matriz.posicion.Posicion;
 
 public class PosicionTest {
 	
