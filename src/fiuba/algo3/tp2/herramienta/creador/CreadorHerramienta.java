@@ -6,20 +6,20 @@ import fiuba.algo3.tp2.herramienta.*;
 
 public class CreadorHerramienta {
 	
-	private Tablero tablero;
-	private Tablero[] tablerosPredeterminados;
+	private MesaDeTrabajo mesaDeTrabajo;
+	private MesaDeTrabajo[] mesasDeTrabajosPredeterminadas;
 	
-	public CreadorHerramienta(Tablero tablero) throws PosicionIncorrectaException{
-		this.tablero = tablero;
+	public CreadorHerramienta(MesaDeTrabajo mesaDeTrabajo) throws PosicionIncorrectaException{
+		this.mesaDeTrabajo = mesaDeTrabajo;
 
-		tablerosPredeterminados = new Tablero[7];
-		tablerosPredeterminados[0] = TableroFactory.newTableroHachaMadera();
-		tablerosPredeterminados[1] = TableroFactory.newTableroHachaPiedra();
-		tablerosPredeterminados[2] = TableroFactory.newTableroHachaMetal();
-		tablerosPredeterminados[3] = TableroFactory.newTableroPicoMadera();
-		tablerosPredeterminados[4] = TableroFactory.newTableroPicoPiedra();
-		tablerosPredeterminados[5] = TableroFactory.newTableroPicoMetal();
-		tablerosPredeterminados[6] = TableroFactory.newTableroPicoFino();			
+		mesasDeTrabajosPredeterminadas = new MesaDeTrabajo[7];
+		mesasDeTrabajosPredeterminadas[0] = MesaDeTrabajoFactory.newMesaDeTrabajoHachaMadera();
+		mesasDeTrabajosPredeterminadas[1] = MesaDeTrabajoFactory.newMesaDeTrabajoHachaPiedra();
+		mesasDeTrabajosPredeterminadas[2] = MesaDeTrabajoFactory.newMesaDeTrabajoHachaMetal();
+		mesasDeTrabajosPredeterminadas[3] = MesaDeTrabajoFactory.newMesaDeTrabajoPicoMadera();
+		mesasDeTrabajosPredeterminadas[4] = MesaDeTrabajoFactory.newMesaDeTrabajoPicoPiedra();
+		mesasDeTrabajosPredeterminadas[5] = MesaDeTrabajoFactory.newMesaDeTrabajoPicoMetal();
+		mesasDeTrabajosPredeterminadas[6] = MesaDeTrabajoFactory.newMesaDeTrabajoPicoFino();			
 	}
 	
 	public Herramienta crearHerramienta() throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
@@ -30,8 +30,8 @@ public class CreadorHerramienta {
 	
 	private Herramienta comparar() throws MaterialesMalPosicionadosException, PosicionIncorrectaException {		
 		for(int i=0;i<7;i++){
-			if(tablerosPredeterminados[i].comparar(tablero)){
-				return tablerosPredeterminados[i].crearHerramienta();
+			if(mesasDeTrabajosPredeterminadas[i].comparar(mesaDeTrabajo)){
+				return mesasDeTrabajosPredeterminadas[i].crearHerramienta();
 			}
 		}
 		throw new MaterialesMalPosicionadosException();		

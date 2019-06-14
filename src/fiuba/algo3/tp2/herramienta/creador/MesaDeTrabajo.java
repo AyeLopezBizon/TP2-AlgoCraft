@@ -1,15 +1,13 @@
 package fiuba.algo3.tp2.herramienta.creador;
 
-import java.util.Arrays;
-
 import fiuba.algo3.tp2.herramienta.*;
 import fiuba.algo3.tp2.material.*;
 
-public class Tablero {
+public class MesaDeTrabajo {
 	
 	Material[] material;
 
-	public Tablero(){
+	public MesaDeTrabajo(){
 
 		material = new Material[9];
 
@@ -34,11 +32,11 @@ public class Tablero {
 		return material[posicion-1];
 	}
 	
-	public boolean comparar(Tablero tablero) throws PosicionIncorrectaException {
+	public boolean comparar(MesaDeTrabajo mesaDeTrabajo) throws PosicionIncorrectaException {
 		boolean valor = true;
 		
 		for(int i=0;i<9;i++) {
-			if(!material[i].getClass().equals(tablero.getCasilla(i+1).getClass())) {
+			if(!material[i].getClass().equals(mesaDeTrabajo.getCasilla(i+1).getClass())) {
 				valor=false;
 			}
 		}

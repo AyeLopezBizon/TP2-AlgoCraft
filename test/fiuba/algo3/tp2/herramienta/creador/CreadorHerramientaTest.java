@@ -1,6 +1,5 @@
 package fiuba.algo3.tp2.herramienta.creador;
 
-import java.math.BigDecimal;
 import org.junit.Assert;
 import org.junit.Test;
 import fiuba.algo3.tp2.herramienta.*;
@@ -9,49 +8,49 @@ import fiuba.algo3.tp2.material.*;
 public class CreadorHerramientaTest {
 	
 	@Test(expected = MaterialesMalPosicionadosException.class)
-	public void dadoUnCreadorConTableroVacio_CrearHerramientaDevuelveUnaExcepcion()
+	public void dadoUnCreadorConMesaDeTrabajoVacia_CrearHerramientaDevuelveUnaExcepcion()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 
-		Tablero tablero = new Tablero();
-		CreadorHerramienta creador = new CreadorHerramienta(tablero);
+		MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 
 		creador.crearHerramienta();
 	}
 
 	@Test(expected = MaterialesMalPosicionadosException.class)
-	public void dadoUnCreadorConTableroConUnElemento_CrearHerramientaDevuelveUnaExcepcion()
+	public void dadoUnCreadorConMesaDeTrabajoConUnElemento_CrearHerramientaDevuelveUnaExcepcion()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 
-		Tablero tablero = new Tablero();
-		CreadorHerramienta creador = new CreadorHerramienta(tablero);
+		MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 
-		tablero.setMaterial(new Madera(), 1);
+		mesaDeTrabajo.setMaterial(new Madera(), 1);
 
 		creador.crearHerramienta();
 	}
 
 	@Test(expected = MaterialesMalPosicionadosException.class)
-	public void dadoUnCreadorConTableroConDosElementos_CrearHerramientaDevuelveUnaExcepcion()
+	public void dadoUnCreadorConMesaDeTrabajoConDosElementos_CrearHerramientaDevuelveUnaExcepcion()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 
-		Tablero tablero = new Tablero();
-		CreadorHerramienta creador = new CreadorHerramienta(tablero);
+		MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 
-		tablero.setMaterial(new Madera(), 1);
-		tablero.setMaterial(new Madera(), 9);
+		mesaDeTrabajo.setMaterial(new Madera(), 1);
+		mesaDeTrabajo.setMaterial(new Madera(), 9);
 
 		creador.crearHerramienta();
 	}
 
 	@Test(expected = MaterialesMalPosicionadosException.class)
-	public void dadoUnCreadorConTableroNoVacio_CrearHerramientaDevuelveUnaExcepcion()
+	public void dadoUnCreadorConMesaDeTrabajoNoVacia_CrearHerramientaDevuelveUnaExcepcion()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
 
-		Tablero tablero = new Tablero();
-		CreadorHerramienta creador = new CreadorHerramienta(tablero);
+		MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 
 		for(int i = 1; i < 10; i++) {
-			tablero.setMaterial(new Madera(), i);
+			mesaDeTrabajo.setMaterial(new Madera(), i);
 		}
 
 		creador.crearHerramienta();
