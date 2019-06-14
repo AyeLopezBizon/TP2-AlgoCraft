@@ -243,7 +243,7 @@ public class JugadorTest {
 
         terreno.ocuparCasillero(jugador, posicion);
         
-        assertEquals(jugador, terreno.obtenerPosicionable(posicion));
+        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicion));
     }
 
     /********************************************************************
@@ -264,12 +264,12 @@ public class JugadorTest {
         jugador.mover(movimiento, terreno);
         
         try {
-        	terreno.obtenerPosicionable(posicionInicial);
+        	terreno.obtenerOcupanteTerreno(posicionInicial);
         	fail("Deberia lanzar CasilleroVacioException");
         }catch(Exception e) {
         	assertEquals(CasilleroVacioException.class, e.getClass());
         }
-        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
+        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
     }
 
     @Test
@@ -286,11 +286,11 @@ public class JugadorTest {
         jugador.mover(movimiento, terreno);
 
         try {
-        	terreno.obtenerPosicionable(posicionInicial);
+        	terreno.obtenerOcupanteTerreno(posicionInicial);
         	fail("Deberia lanzar CasilleroVacioException");
         }catch(Exception e) {
         	assertEquals(CasilleroVacioException.class, e.getClass());
-        }        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
+        }        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
     }
 
     @Test
@@ -307,12 +307,12 @@ public class JugadorTest {
         jugador.mover(movimiento, terreno);
 
         try {
-        	terreno.obtenerPosicionable(posicionInicial);
+        	terreno.obtenerOcupanteTerreno(posicionInicial);
         	fail("Deberia lanzar CasilleroVacioException");
         }catch(Exception e) {
         	assertEquals(CasilleroVacioException.class, e.getClass());
         }
-        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
+        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -424,11 +424,11 @@ public class JugadorTest {
         jugador.mover(movimiento, terreno);
 
         try {
-        	terreno.obtenerPosicionable(posicionInicial);
+        	terreno.obtenerOcupanteTerreno(posicionInicial);
         	fail("Deberia lanzar CasilleroVacioException");
         }catch(Exception e) {
         	assertEquals(CasilleroVacioException.class, e.getClass());
-        }        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
+        }        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
     }
 
     @Test
@@ -445,13 +445,13 @@ public class JugadorTest {
         jugador.mover(movimiento, terreno);
         
         try {
-        	terreno.obtenerPosicionable(posicionInicial);
+        	terreno.obtenerOcupanteTerreno(posicionInicial);
         	fail("Deberia lanzar CasilleroVacioException");
         }catch(Exception e) {
         	assertEquals(CasilleroVacioException.class, e.getClass());
         }
         
-        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
+        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
     }
 
     @Test
@@ -468,12 +468,12 @@ public class JugadorTest {
         jugador.mover(movimiento, terreno);
 
         try {
-        	terreno.obtenerPosicionable(posicionInicial);
+        	terreno.obtenerOcupanteTerreno(posicionInicial);
         	fail("Deberia lanzar CasilleroVacioException");
         }catch(Exception e) {
         	assertEquals(CasilleroVacioException.class, e.getClass());
         }
-        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
+        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -585,12 +585,12 @@ public class JugadorTest {
         jugador.mover(movimiento, terreno);
 
         try {
-        	terreno.obtenerPosicionable(posicionInicial);
+        	terreno.obtenerOcupanteTerreno(posicionInicial);
         	fail("Deberia lanzar CasilleroVacioException");
         }catch(Exception e) {
         	assertEquals(CasilleroVacioException.class, e.getClass());
         }
-        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
+        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
     }
 
     @Test
@@ -607,12 +607,12 @@ public class JugadorTest {
         jugador.mover(movimiento, terreno);
 
         try {
-        	terreno.obtenerPosicionable(posicionInicial);
+        	terreno.obtenerOcupanteTerreno(posicionInicial);
         	fail("Deberia lanzar CasilleroVacioException");
         }catch(Exception e) {
         	assertEquals(CasilleroVacioException.class, e.getClass());
         }
-        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
+        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
     }
 
     @Test
@@ -629,12 +629,12 @@ public class JugadorTest {
         jugador.mover(movimiento, terreno);
 
         try {
-        	terreno.obtenerPosicionable(posicionInicial);
+        	terreno.obtenerOcupanteTerreno(posicionInicial);
         	fail("Deberia lanzar CasilleroVacioException");
         }catch(Exception e) {
         	assertEquals(CasilleroVacioException.class, e.getClass());
         }
-        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
+        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -668,12 +668,12 @@ public class JugadorTest {
         jugador.mover(movimiento, terreno);
 
         try {
-        	terreno.obtenerPosicionable(posicionInicial);
+        	terreno.obtenerOcupanteTerreno(posicionInicial);
         	fail("Deberia lanzar CasilleroVacioException");
         }catch(Exception e) {
         	assertEquals(CasilleroVacioException.class, e.getClass());
         }
-        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
+        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -755,12 +755,12 @@ public class JugadorTest {
         jugador.mover(movimiento, terreno);
 
         try {
-        	terreno.obtenerPosicionable(posicionInicial);
+        	terreno.obtenerOcupanteTerreno(posicionInicial);
         	fail("Deberia lanzar CasilleroVacioException");
         }catch(Exception e) {
         	assertEquals(CasilleroVacioException.class, e.getClass());
         }
-        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
+        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
     }
 
     @Test
@@ -777,12 +777,12 @@ public class JugadorTest {
         jugador.mover(movimiento, terreno);
 
         try {
-        	terreno.obtenerPosicionable(posicionInicial);
+        	terreno.obtenerOcupanteTerreno(posicionInicial);
         	fail("Deberia lanzar CasilleroVacioException");
         }catch(Exception e) {
         	assertEquals(CasilleroVacioException.class, e.getClass());
         }
-        assertEquals(jugador, terreno.obtenerPosicionable(posicionFinal));
+        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
     }
 
     /***************************************************

@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.herramienta.juego;
+package fiuba.algo3.tp2.juego;
 
 import fiuba.algo3.tp2.juego.Juego;
 import fiuba.algo3.tp2.juego.NoSePudoInicializarJuegoException;

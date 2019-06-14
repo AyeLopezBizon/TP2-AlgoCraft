@@ -12,7 +12,7 @@ import fiuba.algo3.tp2.matriz.casillero.CasilleroNoEncontradoException;
 import fiuba.algo3.tp2.matriz.casillero.CasilleroOcupadoException;
 import fiuba.algo3.tp2.matriz.casillero.CasilleroVacioException;
 import fiuba.algo3.tp2.matriz.posicion.Posicion;
-import fiuba.algo3.tp2.matriz.posicion.Posicionable;
+import fiuba.algo3.tp2.terreno.OcupanteTerreno;
 import fiuba.algo3.tp2.terreno.Terreno;
 
 public class Juego {
@@ -163,9 +163,9 @@ public class Juego {
 		return terreno;
 	}
 
-	public Posicionable obtenerPosicionable(Posicion posicion) 
+	public OcupanteTerreno obtenerOcupanteTerreno(Posicion posicion) 
 			throws CasilleroNoEncontradoException, CasilleroVacioException {
 		
-		return terreno.obtenerPosicionable(posicion);
+		return terreno.obtenerOcupanteTerreno(posicion);
 	}
 }

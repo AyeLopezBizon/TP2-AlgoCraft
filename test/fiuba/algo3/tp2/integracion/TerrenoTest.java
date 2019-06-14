@@ -26,7 +26,7 @@ public class TerrenoTest {
 		
 		terreno.ocuparCasillero(jugador, posicion);
 		Posicionable posicionableEnCasillero = 
-				terreno.obtenerPosicionable(posicion);
+				terreno.obtenerOcupanteTerreno(posicion);
 		
 		assertEquals(jugador, posicionableEnCasillero);
 	}
@@ -41,7 +41,7 @@ public class TerrenoTest {
 		
 		terreno.ocuparCasillero(madera, posicion);
 		Posicionable posicionableEnCasillero = 
-				terreno.obtenerPosicionable(posicion);
+				terreno.obtenerOcupanteTerreno(posicion);
 		
 		assertEquals(madera, posicionableEnCasillero);
 	}
@@ -96,7 +96,7 @@ public class TerrenoTest {
 		terreno.desocuparCasillero(posicion);
 		
 		try {
-			terreno.obtenerPosicionable(posicion);
+			terreno.obtenerOcupanteTerreno(posicion);
 			fail("Deberia lanzar CasilleroVacioException");
 		}catch(Exception e) {
 			assertEquals(CasilleroVacioException.class, e.getClass());

@@ -21,7 +21,7 @@ public class TerrenoTest {
 		
 		terreno.ocuparCasillero(jugador, posicion);
 		
-		assertEquals(jugador, terreno.obtenerPosicionable(new Posicion(1,1)));
+		assertEquals(jugador, terreno.obtenerOcupanteTerreno(new Posicion(1,1)));
 	}
 	
 	@Test
@@ -34,7 +34,7 @@ public class TerrenoTest {
 		
 		terreno.ocuparCasillero(jugador, posicion);
 		
-		assertEquals(jugador, terreno.obtenerPosicionable(new Posicion(100,200)));
+		assertEquals(jugador, terreno.obtenerOcupanteTerreno(new Posicion(100,200)));
 	}
 	
 	@Test
@@ -47,7 +47,7 @@ public class TerrenoTest {
 		
 		terreno.ocuparCasillero(jugador, posicion);
 		
-		assertEquals(jugador, terreno.obtenerPosicionable(new Posicion(1,200)));
+		assertEquals(jugador, terreno.obtenerOcupanteTerreno(new Posicion(1,200)));
 	}
 	
 	@Test
@@ -60,7 +60,7 @@ public class TerrenoTest {
 		
 		terreno.ocuparCasillero(jugador, posicion);
 		
-		assertEquals(jugador, terreno.obtenerPosicionable(new Posicion(100,1)));
+		assertEquals(jugador, terreno.obtenerOcupanteTerreno(new Posicion(100,1)));
 	}
 	
 	@Test
