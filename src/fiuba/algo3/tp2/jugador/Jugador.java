@@ -47,10 +47,11 @@ public class Jugador implements OcupanteTerreno {
     public void mover(Movimiento movimiento, Terreno terreno)
 			throws CasilleroNoEncontradoException, CasilleroOcupadoException, CasilleroVacioException {
 
-		terreno.desocuparCasillero(this.posicion);
-		this.posicion = movimiento.mover(this.posicion);
-		terreno.ocuparCasillero(this, this.posicion);
-    }
+		Posicion posicionInicial = this.posicion;
+		Posicion posicionFinal = movimiento.mover(this.posicion);
+		terreno.ocuparCasillero(this, posicionFinal);
+		terreno.desocuparCasillero(posicionInicial);
+	}
 
 	@Override
 	public void recibirGolpe(Jugador jugador) {

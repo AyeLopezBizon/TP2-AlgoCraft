@@ -32,10 +32,14 @@ import fiuba.algo3.tp2.terreno.OcupanteTerreno;
 import fiuba.algo3.tp2.terreno.Terreno;
 
 public class JugadorTest {
+
+    /*************************************************
+     * JUGADOR CON HACHA DE MADERA GOLPEA UNA MADERA *
+     *************************************************/
 	
     @Test
     public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnaMaderaYReducirLaDurabilidadDelMaterialEn2()
-            throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
+            throws Exception {
 
         Jugador jugador = new Jugador();
         Material material = new Madera();
@@ -50,7 +54,7 @@ public class JugadorTest {
 
     @Test
     public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnaMadera5VecesYQueNoSeDestruyaElMaterial()
-            throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
+            throws Exception {
 
         Jugador jugador = new Jugador();
         Material material = new Madera();
@@ -69,7 +73,7 @@ public class JugadorTest {
 
     @Test(expected = MaterialDestruidoNoSePuedeGolpearException.class)
     public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnaMadera6VecesYDestruirElMaterial()
-            throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
+            throws Exception {
 
         Jugador jugador = new Jugador();
         Material material = new Madera();
@@ -86,7 +90,7 @@ public class JugadorTest {
 
     @Test(expected = HerramientaDesgastadaNoSePuedeUsarException.class)
     public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearMaderas51VecesYDesgastarse ()
-            throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
+            throws Exception {
 
         Jugador jugador = new Jugador();
 
@@ -101,13 +105,17 @@ public class JugadorTest {
 
         Material material = new Madera();
 
-        // Al golpe 51 el se lanza Excepcion HerramientaDesgastadaNoSePuedeUsarException.
+        // Al golpe 51 se lanza Excepcion HerramientaDesgastadaNoSePuedeUsarException.
         jugador.golpear(material);
     }
 
+    /*************************************************
+     * JUGADOR CON HACHA DE MADERA GOLPEA UNA PIEDRA *
+     *************************************************/
+
     @Test
     public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnaPiedraYNoReducirLaDurabilidadDelMaterial()
-            throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
+            throws Exception {
 
         Jugador jugador = new Jugador();
         Material material = new Piedra();
@@ -121,7 +129,7 @@ public class JugadorTest {
 
     @Test
     public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnaPiedra50VecesAntesDeDesgastarseYNoDestruirElMaterial()
-            throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
+            throws Exception {
 
         Jugador jugador = new Jugador();
         Material material = new Piedra();
@@ -136,7 +144,7 @@ public class JugadorTest {
 
     @Test(expected = HerramientaDesgastadaNoSePuedeUsarException.class)
     public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnaPiedra51VecesYDesgastarse()
-            throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
+            throws Exception {
 
         Jugador jugador = new Jugador();
         Material material = new Piedra();
@@ -144,13 +152,17 @@ public class JugadorTest {
         for(int i = 0; i < 50; i++)
             jugador.golpear(material);
 
-        // Al golpe 51 el se lanza Excepcion HerramientaDesgastadaNoSePuedeUsarException.
+        // Al golpe 51 se lanza Excepcion HerramientaDesgastadaNoSePuedeUsarException.
         jugador.golpear(material);
     }
 
+    /***********************************************
+     * JUGADOR CON HACHA DE MADERA GOLPEA UN METAL *
+     ***********************************************/
+
     @Test
     public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnMetalYNoReducirLaDurabilidadDelMaterial()
-            throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
+            throws Exception {
 
         Jugador jugador = new Jugador();
         Material material = new Metal();
@@ -164,7 +176,7 @@ public class JugadorTest {
 
     @Test
     public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnMetal50VecesAntesDeDesgastarseYNoDestruirElMaterial()
-            throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
+            throws Exception {
 
         Jugador jugador = new Jugador();
         Material material = new Metal();
@@ -179,7 +191,7 @@ public class JugadorTest {
 
     @Test(expected = HerramientaDesgastadaNoSePuedeUsarException.class)
     public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnMetal51VecesYDesgastarse()
-            throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
+            throws Exception {
 
         Jugador jugador = new Jugador();
         Material material = new Metal();
@@ -187,13 +199,17 @@ public class JugadorTest {
         for(int i = 0; i < 50; i++)
             jugador.golpear(material);
 
-        // Al golpe 51 el se lanza Excepcion HerramientaDesgastadaNoSePuedeUsarException.
+        // Al golpe 51 se lanza Excepcion HerramientaDesgastadaNoSePuedeUsarException.
         jugador.golpear(material);
     }
 
+    /**************************************************
+     * JUGADOR CON HACHA DE MADERA GOLPEA UN DIAMANTE *
+     **************************************************/
+
     @Test
     public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnDiamanteYNoReducirLaDurabilidadDelMaterial()
-            throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
+            throws Exception {
 
         Jugador jugador = new Jugador();
         Material material = new Diamante();
@@ -207,7 +223,7 @@ public class JugadorTest {
 
     @Test
     public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnDiamante50VecesAntesDeDesgastarseYNoDestruirElMaterial()
-            throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
+            throws Exception {
 
         Jugador jugador = new Jugador();
         Material material = new Diamante();
@@ -222,7 +238,7 @@ public class JugadorTest {
 
     @Test(expected = HerramientaDesgastadaNoSePuedeUsarException.class)
     public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnDiamante51VecesYDesgastarse()
-            throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
+            throws Exception {
 
         Jugador jugador = new Jugador();
         Material material = new Diamante();
@@ -232,6 +248,10 @@ public class JugadorTest {
 
         jugador.golpear(material);
     }
+
+    /**************************************************************************
+     * POSICION DE JUGADOR EN UN TERRENO Y DE LOS CASILLEROS LUEGO DE MOVERSE *
+     **************************************************************************/
 
     @Test
     public void dadoUnJugador_DeberiaPoderPosicionarseEnUnCasilleroDeUnTerreno()
@@ -244,6 +264,53 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicion);
         
         assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicion));
+    }
+
+    @Test
+    public void dadoUnJugadorQueIntentaMoverseAUnCasilleroOcupado_DeberiaQuedarseEnElCasilleroQueEstaba()
+            throws Exception {
+
+        Terreno terreno = new Terreno(3, 3);
+        Posicion posicionJugador = new Posicion(2,2);
+        Posicion posicionMaterial = new Posicion(3,2);
+        Movimiento movimiento = new MovimientoHaciaDerecha();
+        Jugador jugador = new Jugador();
+        Material material = new Diamante();
+
+        terreno.ocuparCasillero(jugador, posicionJugador);
+        terreno.ocuparCasillero(material, posicionMaterial);
+
+        try {
+            jugador.mover(movimiento, terreno);
+            fail("Deberia lanzar CasilleroOcupadoException");
+        } catch(CasilleroOcupadoException e) {
+        }
+
+        OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionJugador);
+        assertEquals(jugador, ocupanteTerreno);
+    }
+
+    @Test
+    public void dadoUnJugadorQueSeMueveAUnCasilleroDesocupado_DeberiaDejarDesocupadoElCasilleroEnElQueEstabaYOcupadoAlQueSeMovio()
+            throws Exception {
+
+        Terreno terreno = new Terreno(3, 3);
+        Posicion posicionInicial = new Posicion(2,2);
+        Posicion posicionFinal = new Posicion(3,2);
+        Jugador jugador = new Jugador();
+        Movimiento movimiento = new MovimientoHaciaDerecha();
+
+        terreno.ocuparCasillero(jugador, posicionInicial);
+        jugador.mover(movimiento, terreno);
+
+        try {
+            terreno.desocuparCasillero(posicionInicial);
+            fail("Deberia lanzar CasilleroVacioException");
+        } catch(CasilleroVacioException e) {
+        }
+
+        OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
+        assertEquals(jugador, ocupanteTerreno);
     }
 
     /********************************************************************
@@ -262,14 +329,9 @@ public class JugadorTest {
         
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
-        
-        try {
-        	terreno.obtenerOcupanteTerreno(posicionInicial);
-        	fail("Deberia lanzar CasilleroVacioException");
-        }catch(Exception e) {
-        	assertEquals(CasilleroVacioException.class, e.getClass());
-        }
-        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
+
+        OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
+        assertEquals(jugador, ocupanteTerreno);
     }
 
     @Test
@@ -285,12 +347,8 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        try {
-        	terreno.obtenerOcupanteTerreno(posicionInicial);
-        	fail("Deberia lanzar CasilleroVacioException");
-        }catch(Exception e) {
-        	assertEquals(CasilleroVacioException.class, e.getClass());
-        }        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
+        OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
+        assertEquals(jugador, ocupanteTerreno);
     }
 
     @Test
@@ -306,13 +364,8 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        try {
-        	terreno.obtenerOcupanteTerreno(posicionInicial);
-        	fail("Deberia lanzar CasilleroVacioException");
-        }catch(Exception e) {
-        	assertEquals(CasilleroVacioException.class, e.getClass());
-        }
-        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
+        OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
+        assertEquals(jugador, ocupanteTerreno);
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -423,12 +476,8 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        try {
-        	terreno.obtenerOcupanteTerreno(posicionInicial);
-        	fail("Deberia lanzar CasilleroVacioException");
-        }catch(Exception e) {
-        	assertEquals(CasilleroVacioException.class, e.getClass());
-        }        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
+        OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
+        assertEquals(jugador, ocupanteTerreno);
     }
 
     @Test
@@ -443,15 +492,9 @@ public class JugadorTest {
 
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
-        
-        try {
-        	terreno.obtenerOcupanteTerreno(posicionInicial);
-        	fail("Deberia lanzar CasilleroVacioException");
-        }catch(Exception e) {
-        	assertEquals(CasilleroVacioException.class, e.getClass());
-        }
-        
-        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
+
+        OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
+        assertEquals(jugador, ocupanteTerreno);
     }
 
     @Test
@@ -467,13 +510,8 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        try {
-        	terreno.obtenerOcupanteTerreno(posicionInicial);
-        	fail("Deberia lanzar CasilleroVacioException");
-        }catch(Exception e) {
-        	assertEquals(CasilleroVacioException.class, e.getClass());
-        }
-        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
+        OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
+        assertEquals(jugador, ocupanteTerreno);
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -584,13 +622,8 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        try {
-        	terreno.obtenerOcupanteTerreno(posicionInicial);
-        	fail("Deberia lanzar CasilleroVacioException");
-        }catch(Exception e) {
-        	assertEquals(CasilleroVacioException.class, e.getClass());
-        }
-        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
+        OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
+        assertEquals(jugador, ocupanteTerreno);
     }
 
     @Test
@@ -606,13 +639,8 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        try {
-        	terreno.obtenerOcupanteTerreno(posicionInicial);
-        	fail("Deberia lanzar CasilleroVacioException");
-        }catch(Exception e) {
-        	assertEquals(CasilleroVacioException.class, e.getClass());
-        }
-        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
+        OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
+        assertEquals(jugador, ocupanteTerreno);
     }
 
     @Test
@@ -628,13 +656,8 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        try {
-        	terreno.obtenerOcupanteTerreno(posicionInicial);
-        	fail("Deberia lanzar CasilleroVacioException");
-        }catch(Exception e) {
-        	assertEquals(CasilleroVacioException.class, e.getClass());
-        }
-        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
+        OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
+        assertEquals(jugador, ocupanteTerreno);
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -667,13 +690,8 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        try {
-        	terreno.obtenerOcupanteTerreno(posicionInicial);
-        	fail("Deberia lanzar CasilleroVacioException");
-        }catch(Exception e) {
-        	assertEquals(CasilleroVacioException.class, e.getClass());
-        }
-        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
+        OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
+        assertEquals(jugador, ocupanteTerreno);
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -754,13 +772,8 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        try {
-        	terreno.obtenerOcupanteTerreno(posicionInicial);
-        	fail("Deberia lanzar CasilleroVacioException");
-        }catch(Exception e) {
-        	assertEquals(CasilleroVacioException.class, e.getClass());
-        }
-        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
+        OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
+        assertEquals(jugador, ocupanteTerreno);
     }
 
     @Test
@@ -776,13 +789,8 @@ public class JugadorTest {
         terreno.ocuparCasillero(jugador, posicionInicial);
         jugador.mover(movimiento, terreno);
 
-        try {
-        	terreno.obtenerOcupanteTerreno(posicionInicial);
-        	fail("Deberia lanzar CasilleroVacioException");
-        }catch(Exception e) {
-        	assertEquals(CasilleroVacioException.class, e.getClass());
-        }
-        assertEquals(jugador, terreno.obtenerOcupanteTerreno(posicionFinal));
+        OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
+        assertEquals(jugador, ocupanteTerreno);
     }
 
     /***************************************************
