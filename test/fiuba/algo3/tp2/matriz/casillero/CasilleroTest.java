@@ -7,11 +7,10 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
+import fiuba.algo3.tp2.jugador.Jugador;
 import fiuba.algo3.tp2.material.Madera;
-import fiuba.algo3.tp2.material.Vacio;
 import fiuba.algo3.tp2.matriz.posicion.Posicion;
 import fiuba.algo3.tp2.matriz.posicion.Posicionable;
-import fiuba.algo3.tp2.jugador.Jugador;
 
 public class CasilleroTest {
 
@@ -19,7 +18,7 @@ public class CasilleroTest {
 	public void cuandoSeCreaUnCasilleroConPosicionNumeroFila3YNumeroColumna5_DeberiaTenerEsaPosicion() {
 		
 		Posicion posicion = new Posicion(5, 3);
-		Casillero casillero = new Casillero(posicion);
+		Casillero<Posicionable> casillero = new Casillero<Posicionable>(posicion);
 		
 		assertTrue(casillero.tienePosicion(new Posicion(5, 3)));
 	}
@@ -28,7 +27,7 @@ public class CasilleroTest {
 	public void cuandoSeCreaUnCasilleroConPosicionNumeroFila3YNumeroColumna5_NoDeberiaTenerLaPosicionNumeroFila4YNumeroColumna6() {
 		
 		Posicion posicion = new Posicion(5, 3);
-		Casillero casillero = new Casillero(posicion);
+		Casillero<Posicionable> casillero = new Casillero<Posicionable>(posicion);
 		
 		assertFalse(casillero.tienePosicion(new Posicion(6, 4)));
 	}
@@ -38,9 +37,14 @@ public class CasilleroTest {
 			throws Exception {
 		
 		Posicion posicion = new Posicion(5, 3);
-		Casillero casillero = new Casillero(posicion);
+		Casillero<Posicionable> casillero = new Casillero<Posicionable>(posicion);
 		
-		assertEquals(Vacio.class, casillero.obtenerPosicionable().getClass());
+		try {
+			casillero.obtenerPosicionable().getClass();
+			fail("Deberia lanzar CasilleroVacioException");
+		}catch(Exception e){
+			assertEquals(CasilleroVacioException.class, e.getClass());
+		}
 	}
 	
 	@Test
@@ -48,7 +52,7 @@ public class CasilleroTest {
 			throws Exception {
 		
 		Posicion posicion = new Posicion(5, 3);
-		Casillero casillero = new Casillero(posicion);
+		Casillero<Posicionable> casillero = new Casillero<Posicionable>(posicion);
 		Posicionable jugador = new Jugador();
 		
 		casillero.ocuparCasillero(jugador);
@@ -61,7 +65,7 @@ public class CasilleroTest {
 			throws Exception {
 		
 		Posicion posicion = new Posicion(5, 3);
-		Casillero casillero = new Casillero(posicion);
+		Casillero<Posicionable> casillero = new Casillero<Posicionable>(posicion);
 		Posicionable jugador = new Jugador();
 		
 		casillero.ocuparCasillero(jugador);
@@ -77,15 +81,21 @@ public class CasilleroTest {
 	}
 
 	@Test
-	public void cuandoSeDesocupaUnCasilleroOcupado_DeberiaPasarAContenerUnPosicionableVacio() throws CasilleroOcupadoException {
+	public void cuandoSeDesocupaUnCasilleroOcupado_DeberiaPasarAContenerUnPosicionableVacio() throws Exception {
 
 		Posicion posicion = new Posicion(5, 5);
-		Casillero casillero = new Casillero(posicion);
+		Casillero<Posicionable> casillero = new Casillero<Posicionable>(posicion);
 		Posicionable jugador = new Jugador();
 
 		casillero.ocuparCasillero(jugador);
 		casillero.desocuparCasillero();
-
-		assertEquals(Vacio.class, casillero.obtenerPosicionable().getClass());
+		
+		try {
+			casillero.desocuparCasillero();
+			fail("Deberia lanzar CasilleroVacioException");
+		}catch(Exception e){
+			assertEquals(CasilleroVacioException.class, e.getClass());
+		}
+		
 	}
 }

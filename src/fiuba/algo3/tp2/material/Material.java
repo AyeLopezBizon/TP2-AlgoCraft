@@ -6,10 +6,11 @@ import fiuba.algo3.tp2.herramienta.Herramienta;
 import fiuba.algo3.tp2.herramienta.HerramientaDesgastadaNoSePuedeUsarException;
 import fiuba.algo3.tp2.herramienta.golpe.Golpe;
 import fiuba.algo3.tp2.herramienta.golpe.Golpeable;
+import fiuba.algo3.tp2.jugador.Jugador;
 import fiuba.algo3.tp2.matriz.posicion.Posicion;
-import fiuba.algo3.tp2.matriz.posicion.Posicionable;
+import fiuba.algo3.tp2.terreno.OcupanteTerreno;
 
-public abstract class Material implements Golpeable, Posicionable {
+public abstract class Material implements Golpeable, OcupanteTerreno {
 	
 	protected BigDecimal durabilidad;
 	private Posicion posicion;
@@ -18,6 +19,16 @@ public abstract class Material implements Golpeable, Posicionable {
 		this.durabilidad = durabilidad;
 	}
 	
+	@Override
+	public void recibirGolpe(Jugador jugador) {
+		
+		try {
+			jugador.golpear(this);
+		}catch(Exception e) {
+			//TODO Tratar de manera correcta
+		}
+	}
+
 	public BigDecimal getDurabilidad() {
 		return durabilidad;
 	}

@@ -8,7 +8,6 @@ import org.junit.Test;
 import fiuba.algo3.tp2.jugador.Jugador;
 import fiuba.algo3.tp2.matriz.casillero.CasilleroNoEncontradoException;
 import fiuba.algo3.tp2.matriz.posicion.Posicion;
-import fiuba.algo3.tp2.matriz.posicion.Posicionable;
 
 public class TerrenoTest {
 
@@ -17,12 +16,12 @@ public class TerrenoTest {
 			throws Exception {
 		
 		Terreno terreno = new Terreno(100, 200);
-		Posicionable jugador = new Jugador();
+		OcupanteTerreno jugador = new Jugador();
 		Posicion posicion = new Posicion(1,1);
 		
 		terreno.ocuparCasillero(jugador, posicion);
 		
-		assertEquals(jugador, terreno.obtenerPosicionable(new Posicion(1,1)));
+		assertEquals(jugador, terreno.obtenerOcupanteTerreno(new Posicion(1,1)));
 	}
 	
 	@Test
@@ -30,12 +29,12 @@ public class TerrenoTest {
 			throws Exception {
 		
 		Terreno terreno = new Terreno(100, 200);
-		Posicionable jugador = new Jugador();
+		OcupanteTerreno jugador = new Jugador();
 		Posicion posicion = new Posicion(100,200);
 		
 		terreno.ocuparCasillero(jugador, posicion);
 		
-		assertEquals(jugador, terreno.obtenerPosicionable(new Posicion(100,200)));
+		assertEquals(jugador, terreno.obtenerOcupanteTerreno(new Posicion(100,200)));
 	}
 	
 	@Test
@@ -43,12 +42,12 @@ public class TerrenoTest {
 			throws Exception {
 		
 		Terreno terreno = new Terreno(100, 200);
-		Posicionable jugador = new Jugador();
+		OcupanteTerreno jugador = new Jugador();
 		Posicion posicion = new Posicion(1,200);
 		
 		terreno.ocuparCasillero(jugador, posicion);
 		
-		assertEquals(jugador, terreno.obtenerPosicionable(new Posicion(1,200)));
+		assertEquals(jugador, terreno.obtenerOcupanteTerreno(new Posicion(1,200)));
 	}
 	
 	@Test
@@ -56,12 +55,12 @@ public class TerrenoTest {
 			throws Exception {
 		
 		Terreno terreno = new Terreno(100, 200);
-		Posicionable jugador = new Jugador();
+		OcupanteTerreno jugador = new Jugador();
 		Posicion posicion = new Posicion(100,1);
 		
 		terreno.ocuparCasillero(jugador, posicion);
 		
-		assertEquals(jugador, terreno.obtenerPosicionable(new Posicion(100,1)));
+		assertEquals(jugador, terreno.obtenerOcupanteTerreno(new Posicion(100,1)));
 	}
 	
 	@Test
@@ -69,7 +68,7 @@ public class TerrenoTest {
 			throws Exception {
 		
 		Terreno terreno = new Terreno(100, 200);
-		Posicionable jugador = new Jugador();
+		OcupanteTerreno jugador = new Jugador();
 		Posicion posicion = new Posicion(0,1);
 		
 		try {
@@ -85,7 +84,7 @@ public class TerrenoTest {
 			throws Exception {
 		
 		Terreno terreno = new Terreno(100, 200);
-		Posicionable jugador = new Jugador();
+		OcupanteTerreno jugador = new Jugador();
 		Posicion posicion = new Posicion(101,200);
 		
 		try {
@@ -101,7 +100,7 @@ public class TerrenoTest {
 			throws Exception {
 		
 		Terreno terreno = new Terreno(100, 200);
-		Posicionable jugador = new Jugador();
+		OcupanteTerreno jugador = new Jugador();
 		Posicion posicion = new Posicion(1,201);
 		
 		try {
@@ -117,7 +116,7 @@ public class TerrenoTest {
 			throws Exception {
 		
 		Terreno terreno = new Terreno(100, 200);
-		Posicionable jugador = new Jugador();
+		OcupanteTerreno jugador = new Jugador();
 		Posicion posicion = new Posicion(101,1);
 		
 		try {

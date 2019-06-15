@@ -6,11 +6,11 @@ import java.util.Collection;
 import fiuba.algo3.tp2.matriz.posicion.Posicion;
 import fiuba.algo3.tp2.matriz.posicion.Posicionable;
 
-public class FilaCasillero {
+public class FilaCasillero<T extends Posicionable> {
 
 	private Integer numeroFila;
 	private Integer cantidadDeCasilleros;
-	private Collection<Casillero> casilleros;
+	private Collection<Casillero<T>> casilleros;
 	
 
 	public FilaCasillero(Integer numeroFila, Integer cantidadDeCasilleros) {
@@ -22,29 +22,29 @@ public class FilaCasillero {
 
 	private void inicializarCasilleros() {
 		
-		casilleros = new ArrayList<Casillero>();
+		casilleros = new ArrayList<Casillero<T>>();
 		for(int numeroColumna = 1; numeroColumna <= cantidadDeCasilleros; numeroColumna++) {
-			casilleros.add(new Casillero(new Posicion(numeroColumna, numeroFila)));
+			casilleros.add(new Casillero<T>(new Posicion(numeroColumna, numeroFila)));
 		}
 	}
 
-	public void ocuparCasillero(Posicionable jugador, Posicion posicion) 
+	public void ocuparCasillero(T jugador, Posicion posicion) 
 			throws CasilleroOcupadoException, CasilleroNoEncontradoException {
 		
-		Casillero casillero = buscarCasillero(posicion);
+		Casillero<T> casillero = buscarCasillero(posicion);
 		casillero.ocuparCasillero(jugador);
 	}
 
-	public Casillero obtenerCasillero(Posicion posicion) throws CasilleroNoEncontradoException {
+	public Casillero<T> obtenerCasillero(Posicion posicion) throws CasilleroNoEncontradoException {
 		
-		Casillero casillero = buscarCasillero(posicion);
+		Casillero<T> casillero = buscarCasillero(posicion);
 		return casillero;
 	}
 	
-	private Casillero buscarCasillero(Posicion posicion) throws CasilleroNoEncontradoException {
+	private Casillero<T> buscarCasillero(Posicion posicion) throws CasilleroNoEncontradoException {
 		
-		Casillero casilleroADevolver = null;
-		for(Casillero casillero : casilleros) {
+		Casillero<T> casilleroADevolver = null;
+		for(Casillero<T> casillero : casilleros) {
 			if(casillero.tienePosicion(posicion)) {
 				casilleroADevolver = casillero;
 			}
@@ -68,8 +68,10 @@ public class FilaCasillero {
 		return contieneCasillero;
 	}
 
-	public void desocuparCasillero(Posicion posicion) throws CasilleroNoEncontradoException {
-		Casillero casillero = buscarCasillero(posicion);
+	public void desocuparCasillero(Posicion posicion) 
+			throws CasilleroNoEncontradoException, CasilleroVacioException {
+		
+		Casillero<T> casillero = buscarCasillero(posicion);
 		casillero.desocuparCasillero();
 	}
 }

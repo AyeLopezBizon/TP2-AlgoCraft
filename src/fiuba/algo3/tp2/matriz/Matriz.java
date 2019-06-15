@@ -6,15 +6,16 @@ import java.util.Collection;
 import fiuba.algo3.tp2.matriz.casillero.Casillero;
 import fiuba.algo3.tp2.matriz.casillero.CasilleroNoEncontradoException;
 import fiuba.algo3.tp2.matriz.casillero.CasilleroOcupadoException;
+import fiuba.algo3.tp2.matriz.casillero.CasilleroVacioException;
 import fiuba.algo3.tp2.matriz.casillero.FilaCasillero;
 import fiuba.algo3.tp2.matriz.posicion.Posicion;
 import fiuba.algo3.tp2.matriz.posicion.Posicionable;
 
-public class Matriz {
+public class Matriz<T extends Posicionable> {
 
 	private Integer cantidadDeColumnas;
 	private Integer cantidadDeFilas;
-	private Collection<FilaCasillero> filasCasilleros;
+	private Collection<FilaCasillero<T>> filasCasilleros;
 	
 	public Matriz(Integer cantidadDeColumnas, Integer cantidadDeFilas) {
 		
@@ -25,45 +26,45 @@ public class Matriz {
 
 	private void inicializarFilasCasilleros() {
 		
-		filasCasilleros = new ArrayList<FilaCasillero>();
+		filasCasilleros = new ArrayList<FilaCasillero<T>>();
 		for(int numeroFila = 1; numeroFila <= cantidadDeFilas; numeroFila++) {
 			
-			filasCasilleros.add(new FilaCasillero(numeroFila, cantidadDeColumnas));
+			filasCasilleros.add(new FilaCasillero<T>(numeroFila, cantidadDeColumnas));
 		}
 	}
 
-	public void ocuparCasillero(Posicionable posicionable, Posicion posicion) 
-			throws CasilleroOcupadoException, CasilleroNoEncontradoException {
+	public void ocuparCasillero(T posicionable, Posicion posicion) 
+			throws CasilleroNoEncontradoException, CasilleroOcupadoException {
 		
-		FilaCasillero filaCasillero = buscarFilaCasillero(posicion);
+		FilaCasillero<T> filaCasillero = buscarFilaCasillero(posicion);
 		filaCasillero.ocuparCasillero(posicionable, posicion);
 	}
 	
-	public Posicionable obtenerPosicionable(Posicion posicion) 
-			throws CasilleroNoEncontradoException {
+	public T obtenerPosicionable(Posicion posicion) 
+			throws CasilleroNoEncontradoException, CasilleroVacioException {
 		
 		return buscarCasillero(posicion).obtenerPosicionable();
 	}
 	
 	public void desocuparCasillero(Posicion posicion)
-			throws CasilleroNoEncontradoException {
+			throws CasilleroNoEncontradoException, CasilleroVacioException {
 
-		FilaCasillero filaCasillero = buscarFilaCasillero(posicion);
+		FilaCasillero<T> filaCasillero = buscarFilaCasillero(posicion);
 		filaCasillero.desocuparCasillero(posicion);
 	}
 	
-	private Casillero buscarCasillero(Posicion posicion) 
+	private Casillero<T> buscarCasillero(Posicion posicion) 
 			throws CasilleroNoEncontradoException {
 		
-		FilaCasillero fila = buscarFilaCasillero(posicion);
+		FilaCasillero<T> fila = buscarFilaCasillero(posicion);
 		return fila.obtenerCasillero(posicion);
 	}
 
-	private FilaCasillero buscarFilaCasillero(Posicion posicion) 
+	private FilaCasillero<T> buscarFilaCasillero(Posicion posicion) 
 			throws CasilleroNoEncontradoException {
 		
-		FilaCasillero filaCasilleroADevolver = null;
-		for(FilaCasillero filaCasillero : filasCasilleros) {
+		FilaCasillero<T> filaCasilleroADevolver = null;
+		for(FilaCasillero<T> filaCasillero : filasCasilleros) {
 			if(filaCasillero.contieneCasillero(posicion)) {
 				filaCasilleroADevolver = filaCasillero;
 			}
