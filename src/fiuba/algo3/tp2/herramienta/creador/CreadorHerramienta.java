@@ -17,25 +17,29 @@ public class CreadorHerramienta {
 			throws  CasilleroOcupadoException, CasilleroNoEncontradoException{
 		this.mesaDeTrabajo = mesaDeTrabajo;
 		mesasDeTrabajoPredeterminadas = new ArrayList<>();
-		mesasDeTrabajoPredeterminadas.add( new MesaDeTrabajoHachaMadera());
+		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoHachaMadera());
 		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoHachaPiedra());
 		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoHachaMetal());
-		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoPicoMadera()) ;
-		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoPicoPiedra()) ;
-		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoPicoMetal()) ;
+		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoPicoMadera());
+		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoPicoPiedra());
+		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoPicoMetal());
 		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoPicoFino());			
 	}
 	
 	public Herramienta crearHerramienta()
-			throws MaterialesMalPosicionadosException, PosicionIncorrectaException, CasilleroNoEncontradoException, CasilleroVacioException {
+			throws MaterialesMalPosicionadosException, CasilleroNoEncontradoException, CasilleroVacioException, MesaDeTrabajoIncorrectaException {
 		if(!mesaDeTrabajoEstaBienArmada()) {
 			throw new MaterialesMalPosicionadosException();
 		}
-		return mesaDeTrabajo.crearHerramienta();
+		Herramienta herramientaADevolver = mesaDeTrabajo.crearHerramienta();
+
+		mesaDeTrabajo.limpiarMesaDeTrabajo();
+
+		return herramientaADevolver;
 	}
 	
 	private boolean mesaDeTrabajoEstaBienArmada()
-			throws PosicionIncorrectaException, CasilleroNoEncontradoException, CasilleroVacioException {
+			throws CasilleroNoEncontradoException {
 		
 		for(MesaDeTrabajo mesaDeTrabajo : mesasDeTrabajoPredeterminadas) {
 			if(mesaDeTrabajo.comparar(this.mesaDeTrabajo)) {

@@ -11,16 +11,10 @@ public class MesaDeTrabajoVacia extends MesaDeTrabajo{
 	public MesaDeTrabajoVacia() 
 			throws CasilleroOcupadoException, CasilleroNoEncontradoException {
 		super();
-		/*
-		for(int i = 1; i < 4; i++){
-			for(int j = 1; j < 4; j++){
-				materiales.ocuparCasillero(new Vacio(), new Posicion(new Integer(i), new Integer(j)));
-			}
-		}*/
 	}
 
 	@Override
-	public Herramienta crearHerramienta() {
-		return null;	//Nunca se llama a este metodo
+	public Herramienta crearHerramienta() throws MesaDeTrabajoIncorrectaException {
+		throw new MesaDeTrabajoIncorrectaException();
 	}
 }
