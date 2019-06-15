@@ -25,4 +25,19 @@ public class EspacioCasilleroOcupado<T extends Posicionable> extends EspacioCasi
 	public EspacioCasillero<T> desocupar() throws CasilleroVacioException {
 		return new EspacioCasilleroLibre<T>();
 	}
+
+	@Override
+	public boolean esIgualA(EspacioCasillero<T> espacioCasillero) {
+		return espacioCasillero.esIgualA(this);
+	}
+
+	@Override
+	public boolean esIgualA(EspacioCasilleroLibre<T> espacioCasillero) {
+		return false;
+	}
+
+	@Override
+	public boolean esIgualA(EspacioCasilleroOcupado<T> espacioCasillero) {
+		return this.posicionable.esIgualA(espacioCasillero.posicionable);
+	}
 }

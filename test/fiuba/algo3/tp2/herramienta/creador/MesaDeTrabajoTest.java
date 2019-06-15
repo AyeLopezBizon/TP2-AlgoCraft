@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.herramienta.creador;
 import fiuba.algo3.tp2.material.*;
 import fiuba.algo3.tp2.matriz.casillero.CasilleroNoEncontradoException;
 import fiuba.algo3.tp2.matriz.casillero.CasilleroOcupadoException;
+import fiuba.algo3.tp2.matriz.casillero.CasilleroVacioException;
 import fiuba.algo3.tp2.matriz.posicion.Posicion;
 
 import java.math.BigDecimal;
@@ -33,8 +34,8 @@ public class MesaDeTrabajoTest {
 	}
 	*/
 	@Test
-	public void cuandoSeComparaConOtraMesaDeTrabajoIgual_DeberiaDevolverTrue() 
-			throws PosicionIncorrectaException, CasilleroOcupadoException, CasilleroNoEncontradoException {
+	public void cuandoSeComparaConOtraMesaDeTrabajoIgual_DeberiaDevolverTrue()
+			throws PosicionIncorrectaException, CasilleroOcupadoException, CasilleroNoEncontradoException, CasilleroVacioException {
 		MesaDeTrabajo mesaDeTrabajo1 = new MesaDeTrabajoVacia();
 		MesaDeTrabajo mesaDeTrabajo2 = new MesaDeTrabajoVacia();
 		Posicion posicion = new Posicion(new Integer(1), new Integer(1));
@@ -45,8 +46,8 @@ public class MesaDeTrabajoTest {
 	}
 	
 	@Test
-	public void cuandoSeComparaConOtraMesaDeTrabajoDistinta_DeberiaDevolverFalse() 
-			throws PosicionIncorrectaException, CasilleroOcupadoException, CasilleroNoEncontradoException {
+	public void cuandoSeComparaConOtraMesaDeTrabajoDistinta_DeberiaDevolverFalse()
+			throws PosicionIncorrectaException, CasilleroOcupadoException, CasilleroNoEncontradoException, CasilleroVacioException {
 		MesaDeTrabajo mesaDeTrabajo1 = new MesaDeTrabajoVacia();
 		MesaDeTrabajo mesaDeTrabajo2 = new MesaDeTrabajoVacia();
 		Posicion posicion1 = new Posicion(new Integer(1), new Integer(1));

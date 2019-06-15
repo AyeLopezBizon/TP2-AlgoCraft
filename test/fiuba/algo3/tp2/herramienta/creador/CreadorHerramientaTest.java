@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2.herramienta.creador;
 
+import fiuba.algo3.tp2.matriz.casillero.CasilleroVacioException;
 import org.junit.Assert;
 import org.junit.Test;
 import fiuba.algo3.tp2.herramienta.*;
@@ -13,7 +14,7 @@ public class CreadorHerramientaTest {
 	@Test(expected = MaterialesMalPosicionadosException.class)
 	public void dadoUnCreadorConMesaDeTrabajoVacia_CrearHerramientaDevuelveUnaExcepcion()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException,
-			CasilleroOcupadoException, CasilleroNoEncontradoException {
+			CasilleroOcupadoException, CasilleroNoEncontradoException, CasilleroVacioException {
 
 		MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajoVacia();
 		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
@@ -24,7 +25,7 @@ public class CreadorHerramientaTest {
 	@Test(expected = MaterialesMalPosicionadosException.class)
 	public void dadoUnCreadorConMesaDeTrabajoConUnElemento_CrearHerramientaDevuelveUnaExcepcion()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException,
-			CasilleroOcupadoException, CasilleroNoEncontradoException {
+			CasilleroOcupadoException, CasilleroNoEncontradoException, CasilleroVacioException {
 
 		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 		
@@ -37,7 +38,7 @@ public class CreadorHerramientaTest {
 	@Test(expected = MaterialesMalPosicionadosException.class)
 	public void dadoUnCreadorConMesaDeTrabajoConDosElementos_CrearHerramientaDevuelveUnaExcepcion()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException,
-			CasilleroOcupadoException, CasilleroNoEncontradoException {
+			CasilleroOcupadoException, CasilleroNoEncontradoException, CasilleroVacioException {
 
 		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
@@ -51,7 +52,7 @@ public class CreadorHerramientaTest {
 	@Test(expected = MaterialesMalPosicionadosException.class)
 	public void dadoUnCreadorConMesaDeTrabajoNoVacia_CrearHerramientaDevuelveUnaExcepcion()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException,
-			CasilleroOcupadoException, CasilleroNoEncontradoException {
+			CasilleroOcupadoException, CasilleroNoEncontradoException, CasilleroVacioException {
 
 		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 

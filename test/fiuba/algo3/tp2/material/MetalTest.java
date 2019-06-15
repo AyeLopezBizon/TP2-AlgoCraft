@@ -1,10 +1,10 @@
 package fiuba.algo3.tp2.material;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;/*
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-
+*/
 import fiuba.algo3.tp2.herramienta.Herramienta;
 import fiuba.algo3.tp2.herramienta.HerramientaFactory;
 import org.junit.Test;
@@ -24,7 +24,7 @@ public class MetalTest {
 		
 		assertEquals(new BigDecimal(50), metal.getDurabilidad());
 	}
-	
+	/*
 	@Test
 	public void cuandoMetalEsGolpeadaConUnGolpeRompeMetal_DeberiaInvocarseElMetodoGolpearDelGolpe() 
 			throws Exception {
@@ -36,7 +36,7 @@ public class MetalTest {
 		
 		verify(golpe, times(1)).golpear((Metal)metal);
 	}
-
+*/
 	@Test
 	public void cuandoSeGolpeaMetalConHachaDeMadera_NoSeDeberiaReducirLaDurabilidadDelMaterial()
 			throws Exception {

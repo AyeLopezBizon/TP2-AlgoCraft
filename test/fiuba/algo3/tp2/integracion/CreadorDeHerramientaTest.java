@@ -12,6 +12,7 @@ import fiuba.algo3.tp2.material.Piedra;
 import fiuba.algo3.tp2.material.Vacio;
 import fiuba.algo3.tp2.matriz.casillero.CasilleroNoEncontradoException;
 import fiuba.algo3.tp2.matriz.casillero.CasilleroOcupadoException;
+import fiuba.algo3.tp2.matriz.casillero.CasilleroVacioException;
 import fiuba.algo3.tp2.matriz.posicion.Posicion;
 
 import org.junit.Assert;
@@ -46,7 +47,7 @@ public class CreadorDeHerramientaTest {
 	@Test
 	public void cuandoAgreganLosMaterialesALaMesaDeTrabajoParaConstruirUnHachaDePiedra_ElCreadorDeHerramientasDeberiaCrearUnHachaDePiedra()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException,
-			CasilleroOcupadoException, CasilleroNoEncontradoException {
+			CasilleroOcupadoException, CasilleroNoEncontradoException, CasilleroVacioException {
 		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 		mesaDeTrabajo.setMaterial(new Piedra(),new Posicion(new Integer(1), new Integer(1)));
@@ -69,7 +70,7 @@ public class CreadorDeHerramientaTest {
 	@Test
 	public void cuandoAgreganLosMaterialesALaMesaDeTrabajoParaConstruirUnHachaDeMetal_ElCreadorDeHerramientasDeberiaCrearUnHachaDeMetal()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException,
-			CasilleroOcupadoException, CasilleroNoEncontradoException {
+			CasilleroOcupadoException, CasilleroNoEncontradoException, CasilleroVacioException {
 		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 
@@ -93,7 +94,7 @@ public class CreadorDeHerramientaTest {
 	@Test
 	public void cuandoAgreganLosMaterialesALaMesaDeTrabajoParaConstruirUnPicoDeMadera_ElCreadorDeHerramientasDeberiaCrearUnUnPicoDeMadera()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException,
-			CasilleroOcupadoException, CasilleroNoEncontradoException {
+			CasilleroOcupadoException, CasilleroNoEncontradoException, CasilleroVacioException {
 		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 		mesaDeTrabajo.setMaterial(new Madera(),new Posicion(new Integer(1), new Integer(1)));
@@ -117,7 +118,7 @@ public class CreadorDeHerramientaTest {
 	@Test
 	public void cuandoAgreganLosMaterialesALaMesaDeTrabajoParaConstruirUnUnPicoDePiedra_ElCreadorDeHerramientasDeberiaCrearUnUnPicoDePiedra()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException,
-			CasilleroOcupadoException, CasilleroNoEncontradoException {
+			CasilleroOcupadoException, CasilleroNoEncontradoException, CasilleroVacioException {
 		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 		mesaDeTrabajo.setMaterial(new Piedra(),new Posicion(new Integer(1), new Integer(1)));
@@ -140,7 +141,7 @@ public class CreadorDeHerramientaTest {
 	@Test
 	public void cuandoAgreganLosMaterialesALaMesaDeTrabajoParaConstruirUnUnPicoDeMetal_ElCreadorDeHerramientasDeberiaCrearUnPicoDeMetal()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException,
-			CasilleroOcupadoException, CasilleroNoEncontradoException {
+			CasilleroOcupadoException, CasilleroNoEncontradoException, CasilleroVacioException {
 		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 		mesaDeTrabajo.setMaterial(new Metal(),new Posicion(new Integer(1), new Integer(1)));
@@ -163,7 +164,7 @@ public class CreadorDeHerramientaTest {
 	@Test
 	public void cuandoAgreganLosMaterialesALaMesaDeTrabajoParaConstruirUnUnPicoFino_ElCreadorDeHerramientasDeberiaCrearUnPicoFino()
 			throws MaterialesMalPosicionadosException, PosicionIncorrectaException,
-			CasilleroOcupadoException, CasilleroNoEncontradoException {
+			CasilleroOcupadoException, CasilleroNoEncontradoException, CasilleroVacioException {
 		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 		mesaDeTrabajo.setMaterial(new Metal(),new Posicion(new Integer(1), new Integer(1)));
@@ -185,8 +186,8 @@ public class CreadorDeHerramientaTest {
 
 	@Test(expected = MaterialesMalPosicionadosException.class)
 	public void cuandoAgreganLosMaterialesALaMesaDeTrabajoEnUnaDisposicionIncorrecta_ElCreadorDeHerramientasDeberiaLanzarUnaExcepcion()
-			throws MaterialesMalPosicionadosException, PosicionIncorrectaException, 
-			CasilleroOcupadoException, CasilleroNoEncontradoException {
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException,
+			CasilleroOcupadoException, CasilleroNoEncontradoException, CasilleroVacioException {
 		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 		for (int i = 1; i < 4; i++) {

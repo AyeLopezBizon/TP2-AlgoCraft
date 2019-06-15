@@ -6,6 +6,7 @@ import java.util.Collection;
 import fiuba.algo3.tp2.herramienta.*;
 import fiuba.algo3.tp2.matriz.casillero.CasilleroNoEncontradoException;
 import fiuba.algo3.tp2.matriz.casillero.CasilleroOcupadoException;
+import fiuba.algo3.tp2.matriz.casillero.CasilleroVacioException;
 
 public class CreadorHerramienta {
 	
@@ -13,9 +14,9 @@ public class CreadorHerramienta {
 	private Collection<MesaDeTrabajo> mesasDeTrabajoPredeterminadas;
 	
 	public CreadorHerramienta(MesaDeTrabajo mesaDeTrabajo) 
-			throws PosicionIncorrectaException, CasilleroOcupadoException, CasilleroNoEncontradoException{
+			throws  CasilleroOcupadoException, CasilleroNoEncontradoException{
 		this.mesaDeTrabajo = mesaDeTrabajo;
-		mesasDeTrabajoPredeterminadas = new ArrayList<MesaDeTrabajo>();
+		mesasDeTrabajoPredeterminadas = new ArrayList<>();
 		mesasDeTrabajoPredeterminadas.add( new MesaDeTrabajoHachaMadera());
 		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoHachaPiedra());
 		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoHachaMetal());
@@ -25,24 +26,24 @@ public class CreadorHerramienta {
 		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoPicoFino());			
 	}
 	
-	public Herramienta crearHerramienta() 
-			throws MaterialesMalPosicionadosException, PosicionIncorrectaException, CasilleroNoEncontradoException {
+	public Herramienta crearHerramienta()
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException, CasilleroNoEncontradoException, CasilleroVacioException {
 		if(!mesaDeTrabajoEstaBienArmada()) {
 			throw new MaterialesMalPosicionadosException();
 		}
 		return mesaDeTrabajo.crearHerramienta();
 	}
 	
-	private boolean mesaDeTrabajoEstaBienArmada() 
-			throws MaterialesMalPosicionadosException, PosicionIncorrectaException, CasilleroNoEncontradoException {		
-		boolean valor = false;		
+	private boolean mesaDeTrabajoEstaBienArmada()
+			throws PosicionIncorrectaException, CasilleroNoEncontradoException, CasilleroVacioException {
 		
 		for(MesaDeTrabajo mesaDeTrabajo : mesasDeTrabajoPredeterminadas) {
 			if(mesaDeTrabajo.comparar(this.mesaDeTrabajo)) {
 				this.mesaDeTrabajo = mesaDeTrabajo;
-				valor = true;
+				return true;
 			}
 		}
-		return valor;		
+
+		return false;
 	}
 }
