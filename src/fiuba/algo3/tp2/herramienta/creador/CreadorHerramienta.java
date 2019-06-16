@@ -1,39 +1,53 @@
 package fiuba.algo3.tp2.herramienta.creador;
 
-import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import fiuba.algo3.tp2.herramienta.*;
+import fiuba.algo3.tp2.matriz.casillero.CasilleroNoEncontradoException;
+import fiuba.algo3.tp2.matriz.casillero.CasilleroOcupadoException;
+import fiuba.algo3.tp2.matriz.casillero.CasilleroVacioException;
 
 public class CreadorHerramienta {
 	
-	private Tablero tablero;
-	private Tablero[] tablerosPredeterminados;
+	private MesaDeTrabajo mesaDeTrabajo;
+	private Collection<MesaDeTrabajo> mesasDeTrabajoPredeterminadas;
 	
-	public CreadorHerramienta(Tablero tablero) throws PosicionIncorrectaException{
-		this.tablero = tablero;
+	public CreadorHerramienta(MesaDeTrabajo mesaDeTrabajo) 
+			throws  CasilleroOcupadoException, CasilleroNoEncontradoException{
+		this.mesaDeTrabajo = mesaDeTrabajo;
+		mesasDeTrabajoPredeterminadas = new ArrayList<>();
+		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoHachaMadera());
+		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoHachaPiedra());
+		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoHachaMetal());
+		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoPicoMadera());
+		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoPicoPiedra());
+		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoPicoMetal());
+		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoPicoFino());			
+	}
+	
+	public Herramienta crearHerramienta()
+			throws MaterialesMalPosicionadosException, CasilleroNoEncontradoException, CasilleroVacioException, MesaDeTrabajoIncorrectaException {
+		if(!mesaDeTrabajoEstaBienArmada()) {
+			throw new MaterialesMalPosicionadosException();
+		}
+		Herramienta herramientaADevolver = mesaDeTrabajo.crearHerramienta();
 
-		tablerosPredeterminados = new Tablero[7];
-		tablerosPredeterminados[0] = TableroFactory.newTableroHachaMadera();
-		tablerosPredeterminados[1] = TableroFactory.newTableroHachaPiedra();
-		tablerosPredeterminados[2] = TableroFactory.newTableroHachaMetal();
-		tablerosPredeterminados[3] = TableroFactory.newTableroPicoMadera();
-		tablerosPredeterminados[4] = TableroFactory.newTableroPicoPiedra();
-		tablerosPredeterminados[5] = TableroFactory.newTableroPicoMetal();
-		tablerosPredeterminados[6] = TableroFactory.newTableroPicoFino();			
+		mesaDeTrabajo.limpiarMesaDeTrabajo();
+
+		return herramientaADevolver;
 	}
 	
-	public Herramienta crearHerramienta() throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
-		Herramienta herramienta;
-		herramienta = comparar();
-		return herramienta;
-	}
-	
-	private Herramienta comparar() throws MaterialesMalPosicionadosException, PosicionIncorrectaException {		
-		for(int i=0;i<7;i++){
-			if(tablerosPredeterminados[i].comparar(tablero)){
-				return tablerosPredeterminados[i].crearHerramienta();
+	private boolean mesaDeTrabajoEstaBienArmada()
+			throws CasilleroNoEncontradoException {
+		
+		for(MesaDeTrabajo mesaDeTrabajo : mesasDeTrabajoPredeterminadas) {
+			if(mesaDeTrabajo.comparar(this.mesaDeTrabajo)) {
+				this.mesaDeTrabajo = mesaDeTrabajo;
+				return true;
 			}
 		}
-		throw new MaterialesMalPosicionadosException();		
+
+		return false;
 	}
 }

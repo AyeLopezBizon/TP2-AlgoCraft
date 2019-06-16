@@ -1,14 +1,16 @@
 package fiuba.algo3.tp2.integracion;
 
 import fiuba.algo3.tp2.herramienta.Herramienta;
-import fiuba.algo3.tp2.herramienta.creador.CreadorHerramienta;
-import fiuba.algo3.tp2.herramienta.creador.MaterialesMalPosicionadosException;
-import fiuba.algo3.tp2.herramienta.creador.PosicionIncorrectaException;
-import fiuba.algo3.tp2.herramienta.creador.Tablero;
+import fiuba.algo3.tp2.herramienta.creador.*;
 import fiuba.algo3.tp2.material.Madera;
 import fiuba.algo3.tp2.material.Metal;
 import fiuba.algo3.tp2.material.Piedra;
 import fiuba.algo3.tp2.material.Vacio;
+import fiuba.algo3.tp2.matriz.casillero.CasilleroNoEncontradoException;
+import fiuba.algo3.tp2.matriz.casillero.CasilleroOcupadoException;
+import fiuba.algo3.tp2.matriz.casillero.CasilleroVacioException;
+import fiuba.algo3.tp2.matriz.posicion.Posicion;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -17,21 +19,21 @@ import java.math.BigDecimal;
 public class CreadorDeHerramientaTest {
 
 	@Test
-	public void cuandoAgreganLosMaterialesAlTableroParaConstruirUnHachaDeMadera_ElCreadorDeHerramientasDeberiaCrearUnHachaDeMadera()
+	public void cuandoAgreganLosMaterialesAlaMesaDeTrabajoParaConstruirUnHachaDeMadera_ElCreadorDeHerramientasDeberiaCrearUnHachaDeMadera()
 			throws Exception{
-		Tablero tablero = new Tablero();
+		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
-		tablero.setMaterial(new Madera(),1);
-		tablero.setMaterial(new Madera(),2);
-		tablero.setMaterial(new Vacio(), 3);
-		tablero.setMaterial(new Madera(),4);
-		tablero.setMaterial(new Madera(),5);
-		tablero.setMaterial(new Vacio(), 6);
-		tablero.setMaterial(new Vacio(), 7);
-		tablero.setMaterial(new Madera(),8);
-		tablero.setMaterial(new Vacio(), 9);
+		mesaDeTrabajo.agregarMaterial(new Madera(),new Posicion(new Integer(1), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new Madera(),new Posicion(new Integer(1), new Integer(2)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(1), new Integer(3)));
+		mesaDeTrabajo.agregarMaterial(new Madera(),new Posicion(new Integer(2), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new Madera(),new Posicion(new Integer(2), new Integer(2)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(2), new Integer(3)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(3), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new Madera(),new Posicion(new Integer(3), new Integer(2)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(3), new Integer(3)));
 
-		CreadorHerramienta creador = new CreadorHerramienta(tablero);
+		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 		Herramienta herramienta = creador.crearHerramienta();
 
 		Assert.assertEquals( new BigDecimal(100), herramienta.getDurabilidad());
@@ -39,21 +41,22 @@ public class CreadorDeHerramientaTest {
 	}
 
 	@Test
-	public void cuandoAgreganLosMaterialesAlTableroParaConstruirUnHachaDePiedra_ElCreadorDeHerramientasDeberiaCrearUnHachaDePiedra()
-			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
-		Tablero tablero = new Tablero();
+	public void cuandoAgreganLosMaterialesALaMesaDeTrabajoParaConstruirUnHachaDePiedra_ElCreadorDeHerramientasDeberiaCrearUnHachaDePiedra()
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException,
+			CasilleroOcupadoException, CasilleroNoEncontradoException, CasilleroVacioException, MesaDeTrabajoIncorrectaException {
+		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
-		tablero.setMaterial(new Piedra(),1);
-		tablero.setMaterial(new Piedra(),2);
-		tablero.setMaterial(new Vacio(), 3);
-		tablero.setMaterial(new Piedra(),4);
-		tablero.setMaterial(new Madera(),5);
-		tablero.setMaterial(new Vacio(), 6);
-		tablero.setMaterial(new Vacio(), 7);
-		tablero.setMaterial(new Madera(),8);
-		tablero.setMaterial(new Vacio(), 9);
+		mesaDeTrabajo.agregarMaterial(new Piedra(),new Posicion(new Integer(1), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new Piedra(),new Posicion(new Integer(1), new Integer(2)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(1), new Integer(3)));
+		mesaDeTrabajo.agregarMaterial(new Piedra(),new Posicion(new Integer(2), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new Madera(),new Posicion(new Integer(2), new Integer(2)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(2), new Integer(3)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(3), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new Madera(),new Posicion(new Integer(3), new Integer(2)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(3), new Integer(3)));
 
-		CreadorHerramienta creador = new CreadorHerramienta(tablero);
+		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 		Herramienta herramienta = creador.crearHerramienta();
 
 		Assert.assertEquals(new BigDecimal(200), herramienta.getDurabilidad());
@@ -61,22 +64,23 @@ public class CreadorDeHerramientaTest {
 	}
 
 	@Test
-	public void cuandoAgreganLosMaterialesAlTableroParaConstruirUnHachaDeMetal_ElCreadorDeHerramientasDeberiaCrearUnHachaDeMetal()
-			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
-		Tablero tablero = new Tablero();
+	public void cuandoAgreganLosMaterialesALaMesaDeTrabajoParaConstruirUnHachaDeMetal_ElCreadorDeHerramientasDeberiaCrearUnHachaDeMetal()
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException,
+			CasilleroOcupadoException, CasilleroNoEncontradoException, CasilleroVacioException, MesaDeTrabajoIncorrectaException {
+		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 
-		tablero.setMaterial(new Metal(),1);
-		tablero.setMaterial(new Metal(),2);
-		tablero.setMaterial(new Vacio(), 3);
-		tablero.setMaterial(new Metal(),4);
-		tablero.setMaterial(new Madera(),5);
-		tablero.setMaterial(new Vacio(), 6);
-		tablero.setMaterial(new Vacio(), 7);
-		tablero.setMaterial(new Madera(),8);
-		tablero.setMaterial(new Vacio(), 9);
+		mesaDeTrabajo.agregarMaterial(new Metal(),new Posicion(new Integer(1), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new Metal(),new Posicion(new Integer(1), new Integer(2)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(1), new Integer(3)));
+		mesaDeTrabajo.agregarMaterial(new Metal(), new Posicion(new Integer(2), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new Madera(),new Posicion(new Integer(2), new Integer(2)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(2), new Integer(3)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(3), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new Madera(),new Posicion(new Integer(3), new Integer(2)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(3), new Integer(3)));
 
-		CreadorHerramienta creador = new CreadorHerramienta(tablero);
+		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 		Herramienta herramienta = creador.crearHerramienta();
 
 		Assert.assertEquals(herramienta.getDurabilidad(), new BigDecimal(400));
@@ -84,21 +88,22 @@ public class CreadorDeHerramientaTest {
 	}
 
 	@Test
-	public void cuandoAgreganLosMaterialesAlTableroParaConstruirUnPicoDeMadera_ElCreadorDeHerramientasDeberiaCrearUnUnPicoDeMadera()
-			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
-		Tablero tablero = new Tablero();
+	public void cuandoAgreganLosMaterialesALaMesaDeTrabajoParaConstruirUnPicoDeMadera_ElCreadorDeHerramientasDeberiaCrearUnUnPicoDeMadera()
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException,
+			CasilleroOcupadoException, CasilleroNoEncontradoException, CasilleroVacioException, MesaDeTrabajoIncorrectaException {
+		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
-		tablero.setMaterial(new Madera(),1);
-		tablero.setMaterial(new Madera(),2);
-		tablero.setMaterial(new Madera(), 3);
-		tablero.setMaterial(new Vacio(),4);
-		tablero.setMaterial(new Madera(),5);
-		tablero.setMaterial(new Vacio(), 6);
-		tablero.setMaterial(new Vacio(), 7);
-		tablero.setMaterial(new Madera(),8);
-		tablero.setMaterial(new Vacio(), 9);
+		mesaDeTrabajo.agregarMaterial(new Madera(),new Posicion(new Integer(1), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new Madera(),new Posicion(new Integer(1), new Integer(2)));
+		mesaDeTrabajo.agregarMaterial(new Madera(), new Posicion(new Integer(1), new Integer(3)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(),new Posicion(new Integer(2), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new Madera(),new Posicion(new Integer(2), new Integer(2)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(2), new Integer(3)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(3), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new Madera(),new Posicion(new Integer(3), new Integer(2)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(3), new Integer(3)));
 
-		CreadorHerramienta creador = new CreadorHerramienta(tablero);
+		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 		Herramienta herramienta = creador.crearHerramienta();
 
 
@@ -107,21 +112,22 @@ public class CreadorDeHerramientaTest {
 	}
 
 	@Test
-	public void cuandoAgreganLosMaterialesAlTableroParaConstruirUnUnPicoDePiedra_ElCreadorDeHerramientasDeberiaCrearUnUnPicoDePiedra()
-			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
-		Tablero tablero = new Tablero();
+	public void cuandoAgreganLosMaterialesALaMesaDeTrabajoParaConstruirUnUnPicoDePiedra_ElCreadorDeHerramientasDeberiaCrearUnUnPicoDePiedra()
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException,
+			CasilleroOcupadoException, CasilleroNoEncontradoException, CasilleroVacioException, MesaDeTrabajoIncorrectaException {
+		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
-		tablero.setMaterial(new Piedra(),1);
-		tablero.setMaterial(new Piedra(),2);
-		tablero.setMaterial(new Piedra(), 3);
-		tablero.setMaterial(new Vacio(),4);
-		tablero.setMaterial(new Madera(),5);
-		tablero.setMaterial(new Vacio(), 6);
-		tablero.setMaterial(new Vacio(), 7);
-		tablero.setMaterial(new Madera(),8);
-		tablero.setMaterial(new Vacio(), 9);
+		mesaDeTrabajo.agregarMaterial(new Piedra(),new Posicion(new Integer(1), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new Piedra(),new Posicion(new Integer(1), new Integer(2)));
+		mesaDeTrabajo.agregarMaterial(new Piedra(), new Posicion(new Integer(1), new Integer(3)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(),new Posicion(new Integer(2), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new Madera(),new Posicion(new Integer(2), new Integer(2)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(2), new Integer(3)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(3), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new Madera(),new Posicion(new Integer(3), new Integer(2)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(3), new Integer(3)));
 
-		CreadorHerramienta creador = new CreadorHerramienta(tablero);
+		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 		Herramienta herramienta = creador.crearHerramienta();
 
 		Assert.assertEquals(new BigDecimal(200), herramienta.getDurabilidad());
@@ -129,21 +135,22 @@ public class CreadorDeHerramientaTest {
 	}
 
 	@Test
-	public void cuandoAgreganLosMaterialesAlTableroParaConstruirUnUnPicoDeMetal_ElCreadorDeHerramientasDeberiaCrearUnPicoDeMetal()
-			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
-		Tablero tablero = new Tablero();
+	public void cuandoAgreganLosMaterialesALaMesaDeTrabajoParaConstruirUnUnPicoDeMetal_ElCreadorDeHerramientasDeberiaCrearUnPicoDeMetal()
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException,
+			CasilleroOcupadoException, CasilleroNoEncontradoException, CasilleroVacioException, MesaDeTrabajoIncorrectaException {
+		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
-		tablero.setMaterial(new Metal(),1);
-		tablero.setMaterial(new Metal(),2);
-		tablero.setMaterial(new Metal(), 3);
-		tablero.setMaterial(new Vacio(),4);
-		tablero.setMaterial(new Madera(),5);
-		tablero.setMaterial(new Vacio(), 6);
-		tablero.setMaterial(new Vacio(), 7);
-		tablero.setMaterial(new Madera(),8);
-		tablero.setMaterial(new Vacio(), 9);
+		mesaDeTrabajo.agregarMaterial(new Metal(),new Posicion(new Integer(1), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new Metal(),new Posicion(new Integer(1), new Integer(2)));
+		mesaDeTrabajo.agregarMaterial(new Metal(), new Posicion(new Integer(1), new Integer(3)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(),new Posicion(new Integer(2), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new Madera(),new Posicion(new Integer(2), new Integer(2)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(2), new Integer(3)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(3), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new Madera(),new Posicion(new Integer(3), new Integer(2)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(3), new Integer(3)));
 
-		CreadorHerramienta creador = new CreadorHerramienta(tablero);
+		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 		Herramienta herramienta = creador.crearHerramienta();
 
 		Assert.assertEquals(new BigDecimal(400), herramienta.getDurabilidad());
@@ -151,21 +158,22 @@ public class CreadorDeHerramientaTest {
 	}
 
 	@Test
-	public void cuandoAgreganLosMaterialesAlTableroParaConstruirUnUnPicoFino_ElCreadorDeHerramientasDeberiaCrearUnPicoFino()
-			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
-		Tablero tablero = new Tablero();
+	public void cuandoAgreganLosMaterialesALaMesaDeTrabajoParaConstruirUnUnPicoFino_ElCreadorDeHerramientasDeberiaCrearUnPicoFino()
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException,
+			CasilleroOcupadoException, CasilleroNoEncontradoException, CasilleroVacioException, MesaDeTrabajoIncorrectaException {
+		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
-		tablero.setMaterial(new Metal(),1);
-		tablero.setMaterial(new Metal(),2);
-		tablero.setMaterial(new Metal(), 3);
-		tablero.setMaterial(new Piedra(),4);
-		tablero.setMaterial(new Madera(),5);
-		tablero.setMaterial(new Vacio(), 6);
-		tablero.setMaterial(new Vacio(), 7);
-		tablero.setMaterial(new Madera(),8);
-		tablero.setMaterial(new Vacio(), 9);
+		mesaDeTrabajo.agregarMaterial(new Metal(),new Posicion(new Integer(1), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new Metal(),new Posicion(new Integer(1), new Integer(2)));
+		mesaDeTrabajo.agregarMaterial(new Metal(), new Posicion(new Integer(1), new Integer(3)));
+		mesaDeTrabajo.agregarMaterial(new Piedra(),new Posicion(new Integer(2), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new Madera(),new Posicion(new Integer(2), new Integer(2)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(2), new Integer(3)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(3), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new Madera(),new Posicion(new Integer(3), new Integer(2)));
+		mesaDeTrabajo.agregarMaterial(new Vacio(), new Posicion(new Integer(3), new Integer(3)));
 
-		CreadorHerramienta creador = new CreadorHerramienta(tablero);
+		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 		Herramienta herramienta = creador.crearHerramienta();
 
 		Assert.assertEquals(new BigDecimal(1000), herramienta.getDurabilidad());
@@ -173,15 +181,18 @@ public class CreadorDeHerramientaTest {
 	}
 
 	@Test(expected = MaterialesMalPosicionadosException.class)
-	public void cuandoAgreganLosMaterialesAlTableroEnUnaDisposicionIncorrecta_ElCreadorDeHerramientasDeberiaLanzarUnaExcepcion()
-			throws MaterialesMalPosicionadosException, PosicionIncorrectaException {
-		Tablero tablero = new Tablero();
+	public void cuandoAgreganLosMaterialesALaMesaDeTrabajoEnUnaDisposicionIncorrecta_ElCreadorDeHerramientasDeberiaLanzarUnaExcepcion()
+			throws MaterialesMalPosicionadosException, PosicionIncorrectaException,
+			CasilleroOcupadoException, CasilleroNoEncontradoException, CasilleroVacioException, MesaDeTrabajoIncorrectaException {
+		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
-		for (int i = 1; i < 10; i++) {
-			tablero.setMaterial(new Metal(), i);
+		for (int i = 1; i < 4; i++) {
+			for (int j = 1; j < 4; j++) {
+				mesaDeTrabajo.agregarMaterial(new Metal(), new Posicion(i,j));
+			}
 		}
 
-		CreadorHerramienta creador = new CreadorHerramienta(tablero);
+		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
 		creador.crearHerramienta();
 	}
 }

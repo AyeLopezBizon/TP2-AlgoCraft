@@ -75,4 +75,18 @@ public class Matriz<T extends Posicionable> {
 		}
 		return filaCasilleroADevolver;
 	}
+
+	public boolean comparar(Matriz<T> otraMatriz) throws CasilleroNoEncontradoException {
+
+		for(int i = 1; i <= this.cantidadDeFilas; i++){
+			for(int j = 1; j <= this.cantidadDeColumnas; j++) {
+				Posicion posicion = new Posicion(i, j);
+				if(!this.buscarCasillero(posicion).esIgualA(otraMatriz.buscarCasillero(posicion))){
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
 }

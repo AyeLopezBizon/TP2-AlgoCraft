@@ -32,4 +32,8 @@ public class Casillero<T extends Posicionable> {
 	public void desocuparCasillero() throws CasilleroVacioException {
 		this.espacio = espacio.desocupar();
 	}
+
+	public boolean esIgualA(Casillero<T> casillero) {
+		return this.espacio.esIgualA(casillero.espacio);
+	}
 }
