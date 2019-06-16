@@ -31,6 +31,9 @@ public class CreadorHerramienta {
 		if(!mesaDeTrabajoEstaBienArmada()) {
 			throw new MaterialesMalPosicionadosException();
 		}
+		
+		asignarMesaDeTrabajoCorrespondiente();
+		
 		Herramienta herramientaADevolver = mesaDeTrabajo.crearHerramienta();
 
 		mesaDeTrabajo.limpiarMesaDeTrabajo();
@@ -43,11 +46,17 @@ public class CreadorHerramienta {
 		
 		for(MesaDeTrabajo mesaDeTrabajo : mesasDeTrabajoPredeterminadas) {
 			if(mesaDeTrabajo.comparar(this.mesaDeTrabajo)) {
-				this.mesaDeTrabajo = mesaDeTrabajo;
 				return true;
 			}
 		}
-
 		return false;
+	}
+	
+	private void asignarMesaDeTrabajoCorrespondiente() throws CasilleroNoEncontradoException {
+		for(MesaDeTrabajo mesaDeTrabajo : mesasDeTrabajoPredeterminadas) {
+			if(mesaDeTrabajo.comparar(this.mesaDeTrabajo)) {
+				this.mesaDeTrabajo = mesaDeTrabajo;			}
+		}
+			
 	}
 }
