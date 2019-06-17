@@ -113,7 +113,7 @@ public class Juego {
 			throws Exception {
 		
 		for(Posicion posicionMadera : POSICIONES_INICIALES_MADERA) {
-			Madera madera = new Madera();
+			Madera madera = new Madera(terreno);
 			terreno.ocuparCasillero(madera, posicionMadera);
 		}
 	}
@@ -122,7 +122,7 @@ public class Juego {
 			throws Exception {
 		
 		for(Posicion posicionPiedra : POSICIONES_INICIALES_PIEDRA) {
-			Piedra piedra = new Piedra();
+			Piedra piedra = new Piedra(terreno);
 			terreno.ocuparCasillero(piedra, posicionPiedra);
 		}
 	}
@@ -131,7 +131,7 @@ public class Juego {
 			throws Exception {
 		
 		for(Posicion posicionMetal : POSICIONES_INICIALES_METAL) {
-			Metal metal = new Metal();
+			Metal metal = new Metal(terreno);
 			terreno.ocuparCasillero(metal, posicionMetal);
 		}
 	}
@@ -140,7 +140,7 @@ public class Juego {
 			throws Exception {
 		
 		for(Posicion posicionDiamante : POSICIONES_INICIALES_DIAMANTE) {
-			Diamante diamante = new Diamante();
+			Diamante diamante = new Diamante(terreno);
 			terreno.ocuparCasillero(diamante, posicionDiamante);
 		}
 	}
