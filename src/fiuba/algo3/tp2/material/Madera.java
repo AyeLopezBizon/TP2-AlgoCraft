@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import fiuba.algo3.tp2.herramienta.Herramienta;
 import fiuba.algo3.tp2.herramienta.HerramientaDesgastadaNoSePuedeUsarException;
 import fiuba.algo3.tp2.herramienta.golpe.Golpe;
+import fiuba.algo3.tp2.unidadMaterial.UnidadMadera;
+import fiuba.algo3.tp2.unidadMaterial.UnidadMaterial;
 
 public class Madera extends Material {
 
@@ -20,5 +22,10 @@ public class Madera extends Material {
 			throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
 
 		herramienta.reducirDurabilidad(this);
+	}
+
+	@Override
+	protected UnidadMaterial obtenerUnidadMaterial() {
+		return new UnidadMadera();
 	}
 }

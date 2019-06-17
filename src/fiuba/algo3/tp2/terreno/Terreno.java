@@ -27,6 +27,7 @@ public class Terreno extends Observable {
 		
 		matrizTerreno.ocuparCasillero(posicionable, posicion);
 		posicionable.posicionar(posicion);
+		posicionable.setTerreno(this);
 		
 		this.setChanged();
 		notifyObservers(new Object[] { "ocuparCasillero", posicionable, posicion });

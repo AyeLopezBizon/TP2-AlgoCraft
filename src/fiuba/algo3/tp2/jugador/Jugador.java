@@ -3,6 +3,8 @@ package fiuba.algo3.tp2.jugador;
 import fiuba.algo3.tp2.herramienta.Herramienta;
 import fiuba.algo3.tp2.herramienta.HerramientaDesgastadaNoSePuedeUsarException;
 import fiuba.algo3.tp2.herramienta.HerramientaFactory;
+import fiuba.algo3.tp2.jugador.inventario.Almacenable;
+import fiuba.algo3.tp2.jugador.inventario.EspacioVacioException;
 import fiuba.algo3.tp2.jugador.inventario.Inventario;
 import fiuba.algo3.tp2.jugador.inventario.InventarioLlenoException;
 import fiuba.algo3.tp2.jugador.inventario.NoSePudoAlmacenarItemException;
@@ -15,8 +17,6 @@ import fiuba.algo3.tp2.matriz.casillero.CasilleroVacioException;
 import fiuba.algo3.tp2.matriz.posicion.Posicion;
 import fiuba.algo3.tp2.terreno.OcupanteTerreno;
 import fiuba.algo3.tp2.terreno.Terreno;
-import fiuba.algo3.tp2.jugador.inventario.Almacenable;
-import fiuba.algo3.tp2.jugador.inventario.EspacioVacioException;
 
 public class Jugador implements OcupanteTerreno {
 	
@@ -25,6 +25,7 @@ public class Jugador implements OcupanteTerreno {
     private Herramienta herramientaActiva;
     private Inventario inventario;
     private Posicion posicion;
+    private Terreno terreno;
     
     
     public Jugador() throws NoSePuedeInicializarJugador {
@@ -33,9 +34,11 @@ public class Jugador implements OcupanteTerreno {
     	Herramienta hachaDeMadera = HerramientaFactory.newHachaDeMadera();
     	try {
     		inventario.almacenar(hachaDeMadera);
-    	}catch(InventarioLlenoException | NoSePudoAlmacenarItemException e) {
+    		equipar(1);
+    	}catch(InventarioLlenoException | NoSePudoAlmacenarItemException | EspacioVacioException e) {
     		throw new NoSePuedeInicializarJugador(e);
     	}
+    	
     }
     
 	public void equipar(Integer numeroEspacioInventario) throws EspacioVacioException {
@@ -55,8 +58,9 @@ public class Jugador implements OcupanteTerreno {
         this.herramientaActiva.golpear(material);
     }
     
-    public void lanzarGolpe(OcupanteTerreno ocupanteTerreno) {
-    	ocupanteTerreno.recibirGolpe(this);
+    public void lanzarGolpe(DireccionGolpe direccionGolpe) 
+    		throws CasilleroNoEncontradoException, CasilleroVacioException {
+    	direccionGolpe.lanzarGolpe(posicion);
     }
 
 	@Override
@@ -81,5 +85,15 @@ public class Jugador implements OcupanteTerreno {
 	@Override
 	public void recibirGolpe(Jugador jugador) {
 		// No pasa nada
+	}
+
+	public void almacenar(Almacenable almacenable) 
+			throws InventarioLlenoException, NoSePudoAlmacenarItemException {
+		inventario.almacenar(almacenable);
+	}
+
+	@Override
+	public void setTerreno(Terreno terreno) {
+		this.terreno = terreno;
 	}
 }

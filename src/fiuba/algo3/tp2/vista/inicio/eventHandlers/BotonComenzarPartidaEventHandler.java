@@ -40,7 +40,7 @@ public class BotonComenzarPartidaEventHandler implements EventHandler<ActionEven
 		vistaTerreno.dibujarTerreno();
 		terreno.addObserver(vistaTerreno);
 		
-		EscenaJuego escenaJuego = new EscenaJuego(contenedorJuego, jugador, terreno);
+		EscenaJuego escenaJuego = new EscenaJuego(stage, contenedorJuego, jugador, terreno);
 		
 		AplicacionOnKeyPressEventHandler aplicacionOnKeyPressEventHandler = 
 				new AplicacionOnKeyPressEventHandler(escenaJuego);

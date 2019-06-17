@@ -6,4 +6,6 @@ import fiuba.algo3.tp2.matriz.posicion.Posicionable;
 public interface OcupanteTerreno extends Posicionable {
 
 	void recibirGolpe(Jugador jugador);
+
+	void setTerreno(Terreno terreno);
 }

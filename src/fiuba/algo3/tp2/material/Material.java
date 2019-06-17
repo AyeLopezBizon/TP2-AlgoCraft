@@ -9,9 +9,17 @@ import fiuba.algo3.tp2.herramienta.golpe.Golpeable;
 import fiuba.algo3.tp2.jugador.Jugador;
 import fiuba.algo3.tp2.matriz.posicion.Posicion;
 import fiuba.algo3.tp2.terreno.OcupanteTerreno;
+import fiuba.algo3.tp2.terreno.Terreno;
+import fiuba.algo3.tp2.unidadMaterial.UnidadMaterial;
 
 public abstract class Material implements Golpeable, OcupanteTerreno {
 	
+	@Override
+	public void setTerreno(Terreno terreno) {
+		this.terreno = terreno;
+	}
+
+	private Terreno terreno;
 	protected BigDecimal durabilidad;
 	private Posicion posicion;
 	
@@ -23,11 +31,19 @@ public abstract class Material implements Golpeable, OcupanteTerreno {
 	public void recibirGolpe(Jugador jugador) {
 		
 		try {
+			System.out.println("ASDASDASDASD");
 			jugador.golpear(this);
+			System.out.println(durabilidad);
+			if(durabilidad.equals(new BigDecimal(0))) {
+				terreno.desocuparCasillero(posicion);
+				jugador.almacenar(obtenerUnidadMaterial());
+			}
 		}catch(Exception e) {
 			//TODO Tratar de manera correcta
 		}
 	}
+
+	protected abstract UnidadMaterial obtenerUnidadMaterial();
 
 	public BigDecimal getDurabilidad() {
 		return durabilidad;
