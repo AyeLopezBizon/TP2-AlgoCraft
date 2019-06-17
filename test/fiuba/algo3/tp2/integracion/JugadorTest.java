@@ -42,6 +42,8 @@ public class JugadorTest {
             throws Exception {
 
         Jugador jugador = new Jugador();
+        jugador.equipar(1);
+        
         Material material = new Madera();
 
         BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
@@ -57,6 +59,8 @@ public class JugadorTest {
             throws Exception {
 
         Jugador jugador = new Jugador();
+        jugador.equipar(1);
+        
         Material material = new Madera();
 
         BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
@@ -76,6 +80,8 @@ public class JugadorTest {
             throws Exception {
 
         Jugador jugador = new Jugador();
+        jugador.equipar(1);
+        
         Material material = new Madera();
 
         jugador.golpear(material);
@@ -93,6 +99,7 @@ public class JugadorTest {
             throws Exception {
 
         Jugador jugador = new Jugador();
+        jugador.equipar(1);
 
         for(int i = 0; i < 10; i++) {
             Material material = new Madera();
@@ -118,6 +125,8 @@ public class JugadorTest {
             throws Exception {
 
         Jugador jugador = new Jugador();
+        jugador.equipar(1);
+        
         Material material = new Piedra();
 
         BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
@@ -132,6 +141,8 @@ public class JugadorTest {
             throws Exception {
 
         Jugador jugador = new Jugador();
+        jugador.equipar(1);
+        
         Material material = new Piedra();
 
         BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
@@ -147,6 +158,8 @@ public class JugadorTest {
             throws Exception {
 
         Jugador jugador = new Jugador();
+        jugador.equipar(1);
+        
         Material material = new Piedra();
 
         for(int i = 0; i < 50; i++)
@@ -165,6 +178,8 @@ public class JugadorTest {
             throws Exception {
 
         Jugador jugador = new Jugador();
+        jugador.equipar(1);
+        
         Material material = new Metal();
 
         BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
@@ -179,6 +194,8 @@ public class JugadorTest {
             throws Exception {
 
         Jugador jugador = new Jugador();
+        jugador.equipar(1);
+        
         Material material = new Metal();
 
         BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
@@ -194,6 +211,8 @@ public class JugadorTest {
             throws Exception {
 
         Jugador jugador = new Jugador();
+        jugador.equipar(1);
+        
         Material material = new Metal();
 
         for(int i = 0; i < 50; i++)
@@ -212,6 +231,8 @@ public class JugadorTest {
             throws Exception {
 
         Jugador jugador = new Jugador();
+        jugador.equipar(1);
+        
         Material material = new Diamante();
 
         BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
@@ -226,6 +247,8 @@ public class JugadorTest {
             throws Exception {
 
         Jugador jugador = new Jugador();
+        jugador.equipar(1);
+        
         Material material = new Diamante();
 
         BigDecimal durabilidadDelMaterialInicial = material.getDurabilidad();
@@ -241,6 +264,8 @@ public class JugadorTest {
             throws Exception {
 
         Jugador jugador = new Jugador();
+        jugador.equipar(1);
+        
         Material material = new Diamante();
 
         for(int i = 0; i < 50; i++)

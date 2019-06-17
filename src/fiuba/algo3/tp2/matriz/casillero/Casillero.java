@@ -1,9 +1,8 @@
 package fiuba.algo3.tp2.matriz.casillero;
 
 import fiuba.algo3.tp2.matriz.posicion.Posicion;
-import fiuba.algo3.tp2.matriz.posicion.Posicionable;
 
-public class Casillero<T extends Posicionable> {
+public class Casillero<T> {
 
 	private Posicion posicion;
 	private EspacioCasillero<T> espacio;
@@ -14,26 +13,21 @@ public class Casillero<T extends Posicionable> {
 		this.posicion = posicion;
 	}
 
-	public T obtenerPosicionable() throws CasilleroVacioException {
-		return espacio.obtenerPosicionable();
+	public T obtenerValor() throws CasilleroVacioException {
+		return espacio.obtenerValor();
 	}
 
 	public Boolean tienePosicion(Posicion posicion) {
 		return posicion.esIgualA(this.posicion);
 	}
 
-	public void ocuparCasillero(T posicionable) 
+	public void ocuparCasillero(T valor) 
 			throws CasilleroOcupadoException {
 		
-		espacio = espacio.ocupar(posicionable);
-		posicionable.posicionar(posicion);
+		espacio = espacio.ocupar(valor);
 	}
 
 	public void desocuparCasillero() throws CasilleroVacioException {
 		this.espacio = espacio.desocupar();
-	}
-
-	public boolean esIgualA(Casillero<T> casillero) {
-		return this.espacio.esIgualA(casillero.espacio);
 	}
 }

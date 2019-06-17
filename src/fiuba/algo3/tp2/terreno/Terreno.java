@@ -20,12 +20,13 @@ public class Terreno {
 			throws CasilleroOcupadoException, CasilleroNoEncontradoException {
 		
 		matrizTerreno.ocuparCasillero(posicionable, posicion);
+		posicionable.posicionar(posicion);
 	}
 
 	public OcupanteTerreno obtenerOcupanteTerreno(Posicion posicion) 
 			throws CasilleroNoEncontradoException, CasilleroVacioException {
 		
-		return matrizTerreno.obtenerPosicionable(posicion);
+		return matrizTerreno.obtenerValor(posicion);
 	}
 
 	public void desocuparCasillero(Posicion posicion)

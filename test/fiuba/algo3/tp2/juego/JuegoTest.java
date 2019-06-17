@@ -12,7 +12,7 @@ import static org.junit.Assert.assertTrue;
 public class JuegoTest {
 
 	@Test
-	public void AlObtenerJugadorDeJuego_DevuelveUnJugador() throws NoSePudoInicializarJuegoException {
+	public void AlObtenerJugadorDeJuego_DevuelveUnJugador() throws Exception {
 
 		Juego juego = new Juego();
 
@@ -20,7 +20,7 @@ public class JuegoTest {
 	}
 
 	@Test
-	public void AlObtenerTerrenoDeJuego_DevuelveUnTerreno() throws NoSePudoInicializarJuegoException {
+	public void AlObtenerTerrenoDeJuego_DevuelveUnTerreno() throws Exception {
 
 		Juego juego = new Juego();
 

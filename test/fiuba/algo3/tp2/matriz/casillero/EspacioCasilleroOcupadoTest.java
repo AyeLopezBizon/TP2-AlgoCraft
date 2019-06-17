@@ -18,11 +18,11 @@ public class EspacioCasilleroOcupadoTest {
 		Posicionable jugador = new Jugador();
 		EspacioCasillero<Posicionable> espacio = new EspacioCasilleroOcupado<Posicionable>(jugador);
 		
-		assertEquals(jugador, espacio.obtenerPosicionable());
+		assertEquals(jugador, espacio.obtenerValor());
 	}
 	
 	@Test
-	public void cuandoSeOcupaUnEspacioCasilleroOcupado_DeberiaLanzarCasilleroOcupadoException() {
+	public void cuandoSeOcupaUnEspacioCasilleroOcupado_DeberiaLanzarCasilleroOcupadoException() throws Exception {
 		
 		Posicionable jugador = new Jugador();
 		EspacioCasillero<Posicionable> espacio = new EspacioCasilleroOcupado<Posicionable>(jugador);

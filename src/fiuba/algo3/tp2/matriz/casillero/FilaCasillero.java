@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import fiuba.algo3.tp2.matriz.posicion.Posicion;
-import fiuba.algo3.tp2.matriz.posicion.Posicionable;
 
-public class FilaCasillero<T extends Posicionable> {
+public class FilaCasillero<T> {
 
 	private Integer numeroFila;
 	private Integer cantidadDeCasilleros;

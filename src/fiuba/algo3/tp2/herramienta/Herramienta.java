@@ -1,13 +1,20 @@
 package fiuba.algo3.tp2.herramienta;
 
-import fiuba.algo3.tp2.herramienta.durabilidad.DurabilidadDesgastadaNoSePuedeReducirException;
-import fiuba.algo3.tp2.material.*;
-import fiuba.algo3.tp2.herramienta.durabilidad.Durabilidad;
-import fiuba.algo3.tp2.herramienta.golpe.Golpe;
-
 import java.math.BigDecimal;
 
-public abstract class Herramienta {
+import fiuba.algo3.tp2.herramienta.durabilidad.Durabilidad;
+import fiuba.algo3.tp2.herramienta.durabilidad.DurabilidadDesgastadaNoSePuedeReducirException;
+import fiuba.algo3.tp2.herramienta.golpe.Golpe;
+import fiuba.algo3.tp2.jugador.Jugador;
+import fiuba.algo3.tp2.jugador.inventario.Almacenable;
+import fiuba.algo3.tp2.material.Diamante;
+import fiuba.algo3.tp2.material.Madera;
+import fiuba.algo3.tp2.material.Material;
+import fiuba.algo3.tp2.material.MaterialDestruidoNoSePuedeGolpearException;
+import fiuba.algo3.tp2.material.Metal;
+import fiuba.algo3.tp2.material.Piedra;
+
+public abstract class Herramienta implements Almacenable {
 	
 	protected Durabilidad durabilidad;
 	protected Golpe golpe;
@@ -15,6 +22,11 @@ public abstract class Herramienta {
 	public Herramienta(Durabilidad durabilidad, Golpe golpe) {
 		this.durabilidad = durabilidad;
 		this.golpe = golpe;
+	}
+
+	@Override
+	public void equiparEn(Jugador jugador) {
+		jugador.equipar(this);
 	}
 
 	public BigDecimal getDurabilidad() {

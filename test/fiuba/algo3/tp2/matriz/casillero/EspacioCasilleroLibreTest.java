@@ -16,7 +16,7 @@ public class EspacioCasilleroLibreTest {
 		EspacioCasillero<Posicionable> espacio = new EspacioCasilleroLibre<Posicionable>();
 		
 		try {
-			espacio.obtenerPosicionable();
+			espacio.obtenerValor();
 			fail("Deberia lanzar CasilleroVacioException");
 		}catch(Exception e) {
 			assertEquals(CasilleroVacioException.class, e.getClass());
@@ -33,6 +33,6 @@ public class EspacioCasilleroLibreTest {
 		
 		EspacioCasillero<Posicionable> espacioOcupado = espacio.ocupar(jugador);
 		
-		assertEquals(jugador, espacioOcupado.obtenerPosicionable());
+		assertEquals(jugador, espacioOcupado.obtenerValor());
 	}
 }

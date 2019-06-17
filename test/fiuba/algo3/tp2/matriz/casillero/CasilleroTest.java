@@ -40,7 +40,7 @@ public class CasilleroTest {
 		Casillero<Posicionable> casillero = new Casillero<Posicionable>(posicion);
 		
 		try {
-			casillero.obtenerPosicionable().getClass();
+			casillero.obtenerValor().getClass();
 			fail("Deberia lanzar CasilleroVacioException");
 		}catch(Exception e){
 			assertEquals(CasilleroVacioException.class, e.getClass());
@@ -57,7 +57,7 @@ public class CasilleroTest {
 		
 		casillero.ocuparCasillero(jugador);
 		
-		assertEquals(jugador, casillero.obtenerPosicionable());
+		assertEquals(jugador, casillero.obtenerValor());
 	}
 	
 	@Test

@@ -10,7 +10,6 @@ import fiuba.algo3.tp2.material.Metal;
 import fiuba.algo3.tp2.material.Piedra;
 import fiuba.algo3.tp2.matriz.casillero.CasilleroNoEncontradoException;
 import fiuba.algo3.tp2.matriz.casillero.CasilleroOcupadoException;
-import fiuba.algo3.tp2.matriz.casillero.CasilleroVacioException;
 import fiuba.algo3.tp2.matriz.posicion.Posicion;
 import fiuba.algo3.tp2.terreno.OcupanteTerreno;
 import fiuba.algo3.tp2.terreno.Terreno;
@@ -87,7 +86,7 @@ public class Juego {
 	private Terreno terreno;
 	
 	
-	public Juego() throws NoSePudoInicializarJuegoException {
+	public Juego() throws Exception {
 		
 		terreno = new Terreno(CANTIDAD_COLUMNAS_TERRENO, CANTIDAD_FILAS_TERRENO);
 		jugador = new Jugador();
@@ -96,7 +95,7 @@ public class Juego {
 		posicionarMateriales();
 	}
 
-	private void posicionarMateriales() throws NoSePudoInicializarJuegoException {
+	private void posicionarMateriales() throws Exception {
 		
 		try {
 			posicionarMadera();
@@ -109,7 +108,7 @@ public class Juego {
 	}
 
 	private void posicionarMadera() 
-			throws CasilleroOcupadoException, CasilleroNoEncontradoException {
+			throws Exception {
 		
 		for(Posicion posicionMadera : POSICIONES_INICIALES_MADERA) {
 			Madera madera = new Madera();
@@ -118,7 +117,7 @@ public class Juego {
 	}
 	
 	private void posicionarPiedra() 
-			throws CasilleroOcupadoException, CasilleroNoEncontradoException {
+			throws Exception {
 		
 		for(Posicion posicionPiedra : POSICIONES_INICIALES_PIEDRA) {
 			Piedra piedra = new Piedra();
@@ -127,7 +126,7 @@ public class Juego {
 	}
 	
 	private void posicionarMetal() 
-			throws CasilleroOcupadoException, CasilleroNoEncontradoException {
+			throws Exception {
 		
 		for(Posicion posicionMetal : POSICIONES_INICIALES_METAL) {
 			Metal metal = new Metal();
@@ -136,7 +135,7 @@ public class Juego {
 	}
 	
 	private void posicionarDiamante() 
-			throws CasilleroOcupadoException, CasilleroNoEncontradoException {
+			throws Exception {
 		
 		for(Posicion posicionDiamante : POSICIONES_INICIALES_DIAMANTE) {
 			Diamante diamante = new Diamante();
@@ -164,7 +163,7 @@ public class Juego {
 	}
 
 	public OcupanteTerreno obtenerOcupanteTerreno(Posicion posicion) 
-			throws CasilleroNoEncontradoException, CasilleroVacioException {
+			throws Exception {
 		
 		return terreno.obtenerOcupanteTerreno(posicion);
 	}

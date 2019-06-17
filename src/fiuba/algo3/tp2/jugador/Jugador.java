@@ -2,6 +2,10 @@ package fiuba.algo3.tp2.jugador;
 
 import fiuba.algo3.tp2.herramienta.Herramienta;
 import fiuba.algo3.tp2.herramienta.HerramientaDesgastadaNoSePuedeUsarException;
+import fiuba.algo3.tp2.herramienta.HerramientaFactory;
+import fiuba.algo3.tp2.jugador.inventario.Inventario;
+import fiuba.algo3.tp2.jugador.inventario.InventarioLlenoException;
+import fiuba.algo3.tp2.jugador.inventario.NoSePudoAlmacenarItemException;
 import fiuba.algo3.tp2.jugador.movimiento.Movimiento;
 import fiuba.algo3.tp2.material.Material;
 import fiuba.algo3.tp2.material.MaterialDestruidoNoSePuedeGolpearException;
@@ -9,21 +13,41 @@ import fiuba.algo3.tp2.matriz.casillero.CasilleroNoEncontradoException;
 import fiuba.algo3.tp2.matriz.casillero.CasilleroOcupadoException;
 import fiuba.algo3.tp2.matriz.casillero.CasilleroVacioException;
 import fiuba.algo3.tp2.matriz.posicion.Posicion;
-import fiuba.algo3.tp2.matriz.posicion.Posicionable;
 import fiuba.algo3.tp2.terreno.OcupanteTerreno;
 import fiuba.algo3.tp2.terreno.Terreno;
+import fiuba.algo3.tp2.jugador.inventario.Almacenable;
+import fiuba.algo3.tp2.jugador.inventario.EspacioVacioException;
 
 public class Jugador implements OcupanteTerreno {
+	
+	private static final Integer CAPACIDAD_INICIAL_INVENTARIO = 10;
 	
     private Herramienta herramientaActiva;
     private Inventario inventario;
     private Posicion posicion;
     
     
-    public Jugador() {
-    	this.inventario = new Inventario();
-        this.herramientaActiva = this.inventario.getHachaDeMadera();
+    public Jugador() throws NoSePuedeInicializarJugador {
+    	
+    	this.inventario = new Inventario(CAPACIDAD_INICIAL_INVENTARIO);
+    	Herramienta hachaDeMadera = HerramientaFactory.newHachaDeMadera();
+    	try {
+    		inventario.almacenar(hachaDeMadera);
+    	}catch(InventarioLlenoException | NoSePudoAlmacenarItemException e) {
+    		throw new NoSePuedeInicializarJugador(e);
+    	}
     }
+    
+	public void equipar(Integer numeroEspacioInventario) throws EspacioVacioException {
+		
+		Almacenable almacenable = inventario.obtenerAlmacenable(numeroEspacioInventario);
+		almacenable.equiparEn(this);
+		inventario.quitar(numeroEspacioInventario);
+	}
+	
+	public void equipar(Herramienta herramienta) {
+		herramientaActiva = herramienta;
+	}
 	
     public void golpear(Material material)
             throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
@@ -38,26 +62,6 @@ public class Jugador implements OcupanteTerreno {
 	@Override
 	public Posicion obtenerPosicion() {
 		return posicion;
-	}
-
-	@Override
-	public boolean esIgualA(Posicionable posicionable) {
-		return posicionable.esIgualA(this);
-	}
-
-	@Override
-	public boolean esIgualA(OcupanteTerreno ocupanteTerreno) {
-		return ocupanteTerreno.esIgualA(this);
-	}
-
-	@Override
-	public boolean esIgualA(Jugador jugador) {
-		return true;
-	}
-
-	@Override
-	public boolean esIgualA(Material material) {
-		return false;
 	}
 
 	@Override

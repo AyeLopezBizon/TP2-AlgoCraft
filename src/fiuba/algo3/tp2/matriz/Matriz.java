@@ -9,9 +9,8 @@ import fiuba.algo3.tp2.matriz.casillero.CasilleroOcupadoException;
 import fiuba.algo3.tp2.matriz.casillero.CasilleroVacioException;
 import fiuba.algo3.tp2.matriz.casillero.FilaCasillero;
 import fiuba.algo3.tp2.matriz.posicion.Posicion;
-import fiuba.algo3.tp2.matriz.posicion.Posicionable;
 
-public class Matriz<T extends Posicionable> {
+public class Matriz<T> {
 
 	private Integer cantidadDeColumnas;
 	private Integer cantidadDeFilas;
@@ -24,26 +23,17 @@ public class Matriz<T extends Posicionable> {
 		inicializarFilasCasilleros();
 	}
 
-	private void inicializarFilasCasilleros() {
-		
-		filasCasilleros = new ArrayList<FilaCasillero<T>>();
-		for(int numeroFila = 1; numeroFila <= cantidadDeFilas; numeroFila++) {
-			
-			filasCasilleros.add(new FilaCasillero<T>(numeroFila, cantidadDeColumnas));
-		}
-	}
-
-	public void ocuparCasillero(T posicionable, Posicion posicion) 
+	public void ocuparCasillero(T valor, Posicion posicion) 
 			throws CasilleroNoEncontradoException, CasilleroOcupadoException {
 		
 		FilaCasillero<T> filaCasillero = buscarFilaCasillero(posicion);
-		filaCasillero.ocuparCasillero(posicionable, posicion);
+		filaCasillero.ocuparCasillero(valor, posicion);
 	}
 	
-	public T obtenerPosicionable(Posicion posicion) 
+	public T obtenerValor(Posicion posicion) 
 			throws CasilleroNoEncontradoException, CasilleroVacioException {
 		
-		return buscarCasillero(posicion).obtenerPosicionable();
+		return buscarCasillero(posicion).obtenerValor();
 	}
 	
 	public void desocuparCasillero(Posicion posicion)
@@ -51,6 +41,15 @@ public class Matriz<T extends Posicionable> {
 
 		FilaCasillero<T> filaCasillero = buscarFilaCasillero(posicion);
 		filaCasillero.desocuparCasillero(posicion);
+	}
+	
+	private void inicializarFilasCasilleros() {
+		
+		filasCasilleros = new ArrayList<FilaCasillero<T>>();
+		for(int numeroFila = 1; numeroFila <= cantidadDeFilas; numeroFila++) {
+			
+			filasCasilleros.add(new FilaCasillero<T>(numeroFila, cantidadDeColumnas));
+		}
 	}
 	
 	private Casillero<T> buscarCasillero(Posicion posicion) 
@@ -74,19 +73,5 @@ public class Matriz<T extends Posicionable> {
 			throw new CasilleroNoEncontradoException();
 		}
 		return filaCasilleroADevolver;
-	}
-
-	public boolean comparar(Matriz<T> otraMatriz) throws CasilleroNoEncontradoException {
-
-		for(int i = 1; i <= this.cantidadDeFilas; i++){
-			for(int j = 1; j <= this.cantidadDeColumnas; j++) {
-				Posicion posicion = new Posicion(i, j);
-				if(!this.buscarCasillero(posicion).esIgualA(otraMatriz.buscarCasillero(posicion))){
-					return false;
-				}
-			}
-		}
-
-		return true;
 	}
 }

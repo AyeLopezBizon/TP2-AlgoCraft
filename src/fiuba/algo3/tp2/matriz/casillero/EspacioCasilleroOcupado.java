@@ -1,43 +1,26 @@
 package fiuba.algo3.tp2.matriz.casillero;
 
-import fiuba.algo3.tp2.matriz.posicion.Posicionable;
-
-public class EspacioCasilleroOcupado<T extends Posicionable> extends EspacioCasillero<T> {
+public class EspacioCasilleroOcupado<T> extends EspacioCasillero<T> {
 	
-	private T posicionable;
+	private T valor;
 
-	public EspacioCasilleroOcupado(T posicionable) {
+	public EspacioCasilleroOcupado(T valor) {
 		
-		this.posicionable = posicionable;
+		this.valor = valor;
 	}
 
 	@Override
-	public T obtenerPosicionable() {
-		return posicionable;
+	public T obtenerValor() {
+		return valor;
 	}
 
 	@Override
-	public EspacioCasillero<T> ocupar(T posicionable) throws CasilleroOcupadoException {
+	public EspacioCasillero<T> ocupar(T valor) throws CasilleroOcupadoException {
 		throw new CasilleroOcupadoException();
 	}
 
 	@Override
 	public EspacioCasillero<T> desocupar() throws CasilleroVacioException {
 		return new EspacioCasilleroLibre<T>();
-	}
-
-	@Override
-	public boolean esIgualA(EspacioCasillero<T> espacioCasillero) {
-		return espacioCasillero.esIgualA(this);
-	}
-
-	@Override
-	public boolean esIgualA(EspacioCasilleroLibre<T> espacioCasillero) {
-		return false;
-	}
-
-	@Override
-	public boolean esIgualA(EspacioCasilleroOcupado<T> espacioCasillero) {
-		return this.posicionable.esIgualA(espacioCasillero.posicionable);
 	}
 }

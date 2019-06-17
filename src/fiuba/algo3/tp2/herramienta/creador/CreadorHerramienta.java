@@ -3,10 +3,7 @@ package fiuba.algo3.tp2.herramienta.creador;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import fiuba.algo3.tp2.herramienta.*;
-import fiuba.algo3.tp2.matriz.casillero.CasilleroNoEncontradoException;
-import fiuba.algo3.tp2.matriz.casillero.CasilleroOcupadoException;
-import fiuba.algo3.tp2.matriz.casillero.CasilleroVacioException;
+import fiuba.algo3.tp2.herramienta.Herramienta;
 
 public class CreadorHerramienta {
 	
@@ -14,7 +11,8 @@ public class CreadorHerramienta {
 	private Collection<MesaDeTrabajo> mesasDeTrabajoPredeterminadas;
 	
 	public CreadorHerramienta(MesaDeTrabajo mesaDeTrabajo) 
-			throws  CasilleroOcupadoException, CasilleroNoEncontradoException{
+			throws NoSePuedeInicializarMesaDeTrabajoException{
+		
 		this.mesaDeTrabajo = mesaDeTrabajo;
 		mesasDeTrabajoPredeterminadas = new ArrayList<>();
 		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoHachaMadera());
@@ -27,7 +25,8 @@ public class CreadorHerramienta {
 	}
 	
 	public Herramienta crearHerramienta()
-			throws MaterialesMalPosicionadosException, CasilleroNoEncontradoException, CasilleroVacioException, MesaDeTrabajoIncorrectaException {
+			throws MaterialesMalPosicionadosException, NoSePuedeInicializarMesaDeTrabajoException, MesaDeTrabajoIncorrectaException {
+		
 		if(!mesaDeTrabajoEstaBienArmada()) {
 			throw new MaterialesMalPosicionadosException();
 		}
@@ -36,13 +35,12 @@ public class CreadorHerramienta {
 		
 		Herramienta herramientaADevolver = mesaDeTrabajo.crearHerramienta();
 
-		mesaDeTrabajo.limpiarMesaDeTrabajo();
+		mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 		return herramientaADevolver;
 	}
 	
-	private boolean mesaDeTrabajoEstaBienArmada()
-			throws CasilleroNoEncontradoException {
+	private boolean mesaDeTrabajoEstaBienArmada() {
 		
 		for(MesaDeTrabajo mesaDeTrabajo : mesasDeTrabajoPredeterminadas) {
 			if(mesaDeTrabajo.comparar(this.mesaDeTrabajo)) {
@@ -52,11 +50,11 @@ public class CreadorHerramienta {
 		return false;
 	}
 	
-	private void asignarMesaDeTrabajoCorrespondiente() throws CasilleroNoEncontradoException {
+	private void asignarMesaDeTrabajoCorrespondiente() {
+		
 		for(MesaDeTrabajo mesaDeTrabajo : mesasDeTrabajoPredeterminadas) {
 			if(mesaDeTrabajo.comparar(this.mesaDeTrabajo)) {
 				this.mesaDeTrabajo = mesaDeTrabajo;			}
 		}
-			
 	}
 }

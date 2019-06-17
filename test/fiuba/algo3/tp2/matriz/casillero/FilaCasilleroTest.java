@@ -23,7 +23,7 @@ public class FilaCasilleroTest {
 		
 		filaCasillero.ocuparCasillero(jugador, new Posicion(1, 1));
 		
-		assertEquals(jugador, filaCasillero.obtenerCasillero(new Posicion(1, 1)).obtenerPosicionable());
+		assertEquals(jugador, filaCasillero.obtenerCasillero(new Posicion(1, 1)).obtenerValor());
 	}
 	
 	@Test
@@ -35,7 +35,7 @@ public class FilaCasilleroTest {
 		
 		filaCasillero.ocuparCasillero(jugador, new Posicion(50, 1));
 		
-		assertEquals(jugador, filaCasillero.obtenerCasillero(new Posicion(50, 1)).obtenerPosicionable());
+		assertEquals(jugador, filaCasillero.obtenerCasillero(new Posicion(50, 1)).obtenerValor());
 	}
 
 	@Test
@@ -131,7 +131,7 @@ public class FilaCasilleroTest {
 		filaCasillero.desocuparCasillero(posicion);
 		
 		try {
-			filaCasillero.obtenerCasillero(posicion).obtenerPosicionable();
+			filaCasillero.obtenerCasillero(posicion).obtenerValor();
 		} catch(Exception e) {
 			assertEquals(CasilleroVacioException.class, e.getClass());
 		}

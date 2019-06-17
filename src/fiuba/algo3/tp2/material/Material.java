@@ -8,7 +8,6 @@ import fiuba.algo3.tp2.herramienta.golpe.Golpe;
 import fiuba.algo3.tp2.herramienta.golpe.Golpeable;
 import fiuba.algo3.tp2.jugador.Jugador;
 import fiuba.algo3.tp2.matriz.posicion.Posicion;
-import fiuba.algo3.tp2.matriz.posicion.Posicionable;
 import fiuba.algo3.tp2.terreno.OcupanteTerreno;
 
 public abstract class Material implements Golpeable, OcupanteTerreno {
@@ -64,28 +63,4 @@ public abstract class Material implements Golpeable, OcupanteTerreno {
 
 	public abstract void serGolpeadoPor(Herramienta herramienta)
 			throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException;
-
-	public boolean esIgualA(OcupanteTerreno ocupanteTerreno){
-		return ocupanteTerreno.esIgualA(this);
-	}
-
-	public boolean esIgualA(Jugador jugador){
-		return false;
-	}
-
-	public boolean esIgualA(Posicionable posicionable){
-		return posicionable.esIgualA(this);
-	}
-
-	public abstract boolean esIgualA(Material material);
-
-	public abstract boolean esIgualA(Madera madera);
-
-	public abstract boolean esIgualA(Piedra piedra);
-
-	public abstract boolean esIgualA(Metal metal);
-
-	public abstract boolean esIgualA(Diamante diamante);
-
-	public abstract boolean esIgualA(Vacio vacio);
 }
