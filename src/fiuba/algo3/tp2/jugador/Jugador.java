@@ -34,8 +34,7 @@ public class Jugador implements OcupanteTerreno {
     	Herramienta hachaDeMadera = HerramientaFactory.newHachaDeMadera();
     	try {
     		inventario.almacenar(hachaDeMadera);
-    		equipar(1);
-    	}catch(InventarioLlenoException | NoSePudoAlmacenarItemException | EspacioVacioException e) {
+    	}catch(InventarioLlenoException | NoSePudoAlmacenarItemException e) {
     		throw new NoSePuedeInicializarJugador(e);
     	}
     	
