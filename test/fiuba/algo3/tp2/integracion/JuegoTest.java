@@ -19,6 +19,7 @@ public class JuegoTest {
 			throws Exception {
 		
 		Juego juego = new Juego();
+		juego.inicializar();
 		
 		assertTrue(new Posicion(1,1).esIgualA(juego.obtenerJugador().obtenerPosicion()));
 	}
@@ -28,6 +29,7 @@ public class JuegoTest {
 			throws Exception {
 		
 		Juego juego = new Juego();
+		juego.inicializar();
 		
 		assertEquals(Madera.class, juego.obtenerOcupanteTerreno(new Posicion(3, 3)).getClass());
 		assertEquals(Madera.class, juego.obtenerOcupanteTerreno(new Posicion(4, 3)).getClass());
@@ -54,6 +56,7 @@ public class JuegoTest {
 			throws Exception {
 		
 		Juego juego = new Juego();
+		juego.inicializar();
 		
 		assertEquals(Piedra.class, juego.obtenerOcupanteTerreno(new Posicion(8, 8)).getClass());
 		assertEquals(Piedra.class, juego.obtenerOcupanteTerreno(new Posicion(9, 8)).getClass());
@@ -82,6 +85,7 @@ public class JuegoTest {
 			throws Exception {
 		
 		Juego juego = new Juego();
+		juego.inicializar();
 		
 		assertEquals(Metal.class, juego.obtenerOcupanteTerreno(new Posicion(2, 10)).getClass());
 		assertEquals(Metal.class, juego.obtenerOcupanteTerreno(new Posicion(3, 10)).getClass());
@@ -99,6 +103,7 @@ public class JuegoTest {
 			throws Exception {
 		
 		Juego juego = new Juego();
+		juego.inicializar();
 		
 		assertEquals(Diamante.class, juego.obtenerOcupanteTerreno(new Posicion(6, 16)).getClass());
 		assertEquals(Diamante.class, juego.obtenerOcupanteTerreno(new Posicion(7, 16)).getClass());

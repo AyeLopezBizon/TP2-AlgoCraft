@@ -16,8 +16,8 @@ import fiuba.algo3.tp2.terreno.Terreno;
 
 public class Juego {
 	
-	private static final Integer CANTIDAD_COLUMNAS_TERRENO = 50;
-	private static final Integer CANTIDAD_FILAS_TERRENO = 50;
+	private static final Integer CANTIDAD_COLUMNAS_TERRENO = 20;
+	private static final Integer CANTIDAD_FILAS_TERRENO = 20;
 	private static final Posicion POSICION_INICIAL_JUGADOR = new Posicion(1, 1);
 	private static final Collection<Posicion> POSICIONES_INICIALES_MADERA = Arrays.asList(new Posicion[] {
 			new Posicion(3, 3),
@@ -90,7 +90,9 @@ public class Juego {
 		
 		terreno = new Terreno(CANTIDAD_COLUMNAS_TERRENO, CANTIDAD_FILAS_TERRENO);
 		jugador = new Jugador();
-		
+	}
+	
+	public void inicializar() throws Exception {
 		posicionarJugador();
 		posicionarMateriales();
 	}

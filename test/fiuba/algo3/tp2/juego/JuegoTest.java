@@ -15,6 +15,7 @@ public class JuegoTest {
 	public void AlObtenerJugadorDeJuego_DevuelveUnJugador() throws Exception {
 
 		Juego juego = new Juego();
+		juego.inicializar();
 
 		assertEquals(Jugador.class, juego.obtenerJugador().getClass());
 	}
@@ -23,6 +24,7 @@ public class JuegoTest {
 	public void AlObtenerTerrenoDeJuego_DevuelveUnTerreno() throws Exception {
 
 		Juego juego = new Juego();
+		juego.inicializar();
 
 		assertEquals(Terreno.class, juego.obtenerTerreno().getClass());
 	}
