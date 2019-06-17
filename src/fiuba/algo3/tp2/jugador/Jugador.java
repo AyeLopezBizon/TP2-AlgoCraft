@@ -25,6 +25,7 @@ public class Jugador implements OcupanteTerreno {
     private Herramienta herramientaActiva;
     private Inventario inventario;
     private Posicion posicion;
+    private Terreno terreno;
     
     
     public Jugador() throws NoSePuedeInicializarJugador {
@@ -89,5 +90,10 @@ public class Jugador implements OcupanteTerreno {
 	public void almacenar(Almacenable almacenable) 
 			throws InventarioLlenoException, NoSePudoAlmacenarItemException {
 		inventario.almacenar(almacenable);
+	}
+
+	@Override
+	public void setTerreno(Terreno terreno) {
+		this.terreno = terreno;
 	}
 }

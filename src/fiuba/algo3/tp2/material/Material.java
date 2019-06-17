@@ -14,12 +14,16 @@ import fiuba.algo3.tp2.unidadMaterial.UnidadMaterial;
 
 public abstract class Material implements Golpeable, OcupanteTerreno {
 	
+	@Override
+	public void setTerreno(Terreno terreno) {
+		this.terreno = terreno;
+	}
+
 	private Terreno terreno;
 	protected BigDecimal durabilidad;
 	private Posicion posicion;
 	
-	public Material(Terreno terreno, BigDecimal durabilidad) {
-		this.terreno = terreno;
+	public Material(BigDecimal durabilidad) {
 		this.durabilidad = durabilidad;
 	}
 	

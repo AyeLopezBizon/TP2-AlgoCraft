@@ -5,14 +5,13 @@ import java.math.BigDecimal;
 import fiuba.algo3.tp2.herramienta.Herramienta;
 import fiuba.algo3.tp2.herramienta.HerramientaDesgastadaNoSePuedeUsarException;
 import fiuba.algo3.tp2.herramienta.golpe.Golpe;
-import fiuba.algo3.tp2.terreno.Terreno;
 import fiuba.algo3.tp2.unidadMaterial.UnidadMaterial;
 import fiuba.algo3.tp2.unidadMaterial.UnidadMetal;
 
 public class Metal extends Material {
 
-	public Metal(Terreno terreno) {
-		super(terreno, new BigDecimal(50));
+	public Metal() {
+		super(new BigDecimal(50));
 	}
 
 	public void golpearCon(Golpe golpe) throws MaterialDestruidoNoSePuedeGolpearException {
