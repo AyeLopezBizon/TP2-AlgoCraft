@@ -1,6 +1,8 @@
 package fiuba.algo3.tp2.modelo.material;
 
 import java.math.BigDecimal;
+import java.util.Observable;
+import java.util.Observer;
 
 import fiuba.algo3.tp2.modelo.herramienta.Herramienta;
 import fiuba.algo3.tp2.modelo.herramienta.HerramientaDesgastadaNoSePuedeUsarException;
@@ -12,7 +14,7 @@ import fiuba.algo3.tp2.modelo.terreno.OcupanteTerreno;
 import fiuba.algo3.tp2.modelo.terreno.Terreno;
 import fiuba.algo3.tp2.modelo.unidadMaterial.UnidadMaterial;
 
-public abstract class Material implements Golpeable, OcupanteTerreno {
+public abstract class Material extends Observable implements Golpeable, OcupanteTerreno {
 	
 	@Override
 	public void setTerreno(Terreno terreno) {
@@ -21,26 +23,41 @@ public abstract class Material implements Golpeable, OcupanteTerreno {
 
 	private Terreno terreno;
 	protected BigDecimal durabilidad;
+	private BigDecimal durabilidadMaxima;
 	private Posicion posicion;
 	
 	public Material(BigDecimal durabilidad) {
 		this.durabilidad = durabilidad;
+		this.durabilidadMaxima = durabilidad;
 	}
 	
+	@Override
+	public void addObserver(Observer observer) {
+		super.addObserver(observer);
+	}
+
+	@Override
+	public void removeObserver(Observer observer) {
+		super.deleteObserver(observer);
+	}
+
 	@Override
 	public void recibirGolpe(Jugador jugador) {
 		
 		try {
-			System.out.println("ASDASDASDASD");
 			jugador.golpear(this);
 			System.out.println(durabilidad);
-			if(durabilidad.equals(new BigDecimal(0))) {
+			if(estaRoto()) {
 				terreno.desocuparCasillero(posicion);
 				jugador.almacenar(obtenerUnidadMaterial());
 			}
 		}catch(Exception e) {
 			//TODO Tratar de manera correcta
 		}
+	}
+
+	private boolean estaRoto() {
+		return durabilidad.equals(new BigDecimal(0));
 	}
 
 	protected abstract UnidadMaterial obtenerUnidadMaterial();
@@ -63,6 +80,9 @@ public abstract class Material implements Golpeable, OcupanteTerreno {
 		if(durabilidad.compareTo(new BigDecimal(0)) < 0){
 			durabilidad = new BigDecimal(0);
 		}
+		
+		setChanged();
+		notifyObservers(new Object[] { "reducirDurabilidad", danio, durabilidad, durabilidadMaxima });
 	}
 
 	@Override

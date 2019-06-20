@@ -1,5 +1,8 @@
 package fiuba.algo3.tp2.modelo.jugador;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import fiuba.algo3.tp2.modelo.herramienta.Herramienta;
 import fiuba.algo3.tp2.modelo.herramienta.HerramientaDesgastadaNoSePuedeUsarException;
 import fiuba.algo3.tp2.modelo.herramienta.HerramientaFactory;
@@ -18,7 +21,7 @@ import fiuba.algo3.tp2.modelo.matriz.posicion.Posicion;
 import fiuba.algo3.tp2.modelo.terreno.OcupanteTerreno;
 import fiuba.algo3.tp2.modelo.terreno.Terreno;
 
-public class Jugador implements OcupanteTerreno {
+public class Jugador extends Observable implements OcupanteTerreno {
 	
 	private static final Integer CAPACIDAD_INICIAL_INVENTARIO = 10;
 	
@@ -94,5 +97,15 @@ public class Jugador implements OcupanteTerreno {
 	@Override
 	public void setTerreno(Terreno terreno) {
 		this.terreno = terreno;
+	}
+
+	@Override
+	public void addObserver(Observer obsever) {
+		super.addObserver(obsever);
+	}
+	
+	@Override
+	public void removeObserver(Observer obsever) {
+		super.deleteObserver(obsever);
 	}
 }

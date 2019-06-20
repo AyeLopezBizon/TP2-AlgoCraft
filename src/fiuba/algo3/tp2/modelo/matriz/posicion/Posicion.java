@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.modelo.matriz.posicion;
 
+import fiuba.algo3.tp2.modelo.matriz.casillero.FilaCasillero;
+
 public class Posicion {
 
 	private Integer numeroColumna;
@@ -10,14 +12,23 @@ public class Posicion {
 		this.numeroColumna = numeroColumna;
 		this.numeroFila = numeroFila;
 	}
-
+	
+	public Integer obtenerNumeroColumna() {
+		return numeroColumna;
+	}
+	
+	public Integer obtenerNumeroFila() {
+		return numeroFila;
+	}
+	
 	public Boolean esIgualA(Posicion otraPosicion) {
 		return numeroColumna.equals(otraPosicion.numeroColumna) 
 				&& numeroFila.equals(otraPosicion.numeroFila);
 	}
 
-	public Boolean perteneceAFila(Integer numeroDeFila) {
-		return numeroFila.equals(numeroDeFila);
+	public Boolean perteneceAFila(FilaCasillero<?> filaCasillero) {
+		return numeroFila.equals(filaCasillero.obtenerNumeroFila())
+				&& numeroColumna.compareTo(filaCasillero.obtenerLargo()) <= 0;
 	}
 
 	public Posicion avanzarColumna() {

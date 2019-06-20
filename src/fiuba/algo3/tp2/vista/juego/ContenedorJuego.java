@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.vista.juego;
 
-import fiuba.algo3.tp2.vista.juego.terreno.ContenedorTerreno;
+import fiuba.algo3.tp2.vista.terreno.ContenedorTerreno;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 

@@ -1,14 +1,13 @@
 package fiuba.algo3.tp2.modelo.terreno;
 
-import java.util.Observable;
-
 import fiuba.algo3.tp2.modelo.matriz.Matriz;
+import fiuba.algo3.tp2.modelo.matriz.casillero.Casillero;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroNoEncontradoException;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroOcupadoException;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroVacioException;
 import fiuba.algo3.tp2.modelo.matriz.posicion.Posicion;
 
-public class Terreno extends Observable {
+public class Terreno {
 	
 	private Integer cantidadDeFilas;
 	private Integer cantidadDeColumnas;
@@ -28,9 +27,6 @@ public class Terreno extends Observable {
 		matrizTerreno.ocuparCasillero(posicionable, posicion);
 		posicionable.posicionar(posicion);
 		posicionable.setTerreno(this);
-		
-		this.setChanged();
-		notifyObservers(new Object[] { "ocuparCasillero", posicionable, posicion });
 	}
 
 	public OcupanteTerreno obtenerOcupanteTerreno(Posicion posicion) 
@@ -43,9 +39,6 @@ public class Terreno extends Observable {
 			throws CasilleroNoEncontradoException, CasilleroVacioException {
 
 		matrizTerreno.desocuparCasillero(posicion);
-		
-		this.setChanged();
-		notifyObservers(new Object[] { "desocuparCasillero", posicion });
 	}
 
 	public Integer obtenerCantidadFilas() {
@@ -54,5 +47,9 @@ public class Terreno extends Observable {
 	
 	public Integer obtenerCantidadColumnas() {
 		return cantidadDeColumnas;
+	}
+
+	public Casillero<OcupanteTerreno> obtenerCasillero(Posicion posicion) throws CasilleroNoEncontradoException {
+		return matrizTerreno.obtenerCasillero(posicion);
 	}
 }

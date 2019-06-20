@@ -43,6 +43,10 @@ public class Matriz<T> {
 		filaCasillero.desocuparCasillero(posicion);
 	}
 	
+	public Casillero<T> obtenerCasillero(Posicion posicion) throws CasilleroNoEncontradoException {
+		return buscarCasillero(posicion);
+	}
+	
 	private void inicializarFilasCasilleros() {
 		
 		filasCasilleros = new ArrayList<FilaCasillero<T>>();

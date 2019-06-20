@@ -18,7 +18,11 @@ public class FilaCasillero<T> {
 		this.cantidadDeCasilleros = cantidadDeCasilleros;
 		inicializarCasilleros();
 	}
-
+	
+	public Integer obtenerNumeroFila() {
+		return numeroFila;
+	}
+	
 	private void inicializarCasilleros() {
 		
 		casilleros = new ArrayList<Casillero<T>>();
@@ -58,12 +62,7 @@ public class FilaCasillero<T> {
 
 	public Boolean contieneCasillero(Posicion posicion) {
 		
-		Boolean contieneCasillero = posicion.perteneceAFila(numeroFila);
-		try {
-			buscarCasillero(posicion);
-		} catch(CasilleroNoEncontradoException exception){
-			contieneCasillero = false;
-		}
+		Boolean contieneCasillero = posicion.perteneceAFila(this);
 		return contieneCasillero;
 	}
 
@@ -72,5 +71,9 @@ public class FilaCasillero<T> {
 		
 		Casillero<T> casillero = buscarCasillero(posicion);
 		casillero.desocuparCasillero();
+	}
+
+	public Integer obtenerLargo() {
+		return casilleros.size();
 	}
 }

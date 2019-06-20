@@ -5,8 +5,8 @@ import fiuba.algo3.tp2.modelo.jugador.Jugador;
 import fiuba.algo3.tp2.modelo.terreno.Terreno;
 import fiuba.algo3.tp2.vista.juego.ContenedorJuego;
 import fiuba.algo3.tp2.vista.juego.eventHandler.AplicacionOnKeyPressEventHandler;
-import fiuba.algo3.tp2.vista.juego.terreno.ContenedorTerreno;
-import fiuba.algo3.tp2.vista.juego.terreno.VistaTerreno;
+import fiuba.algo3.tp2.vista.terreno.ContenedorTerreno;
+import fiuba.algo3.tp2.vista.terreno.VistaTerreno;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
@@ -36,10 +36,7 @@ public class BotonComenzarPartidaEventHandler implements EventHandler<ActionEven
 		ContenedorTerreno contenedorTerreno = new ContenedorTerreno(terreno);		
 		ContenedorJuego contenedorJuego = new ContenedorJuego(stage, contenedorTerreno);
 		
-		VistaTerreno vistaTerreno = new VistaTerreno(terreno, contenedorTerreno);
-		vistaTerreno.dibujarTerreno();
-		terreno.addObserver(vistaTerreno);
-		
+		VistaTerreno vistaTerreno = new VistaTerreno(terreno, contenedorTerreno);		
 		EscenaJuego escenaJuego = new EscenaJuego(stage, contenedorJuego, jugador, terreno);
 		
 		AplicacionOnKeyPressEventHandler aplicacionOnKeyPressEventHandler = 

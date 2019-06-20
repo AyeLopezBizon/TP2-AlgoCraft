@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import fiuba.algo3.tp2.modelo.matriz.posicion.Posicion;
+import fiuba.algo3.tp2.modelo.matriz.casillero.FilaCasillero;
 
 public class PosicionTest {
 	
@@ -50,7 +50,7 @@ public class PosicionTest {
 		
 		Posicion posicion = new Posicion(10, 4);
 		
-		assertTrue(posicion.perteneceAFila(4));
+		assertTrue(posicion.perteneceAFila(new FilaCasillero<Posicionable>(4, 20)));
 	}
 	
 	@Test
@@ -58,7 +58,7 @@ public class PosicionTest {
 		
 		Posicion posicion = new Posicion(10, 4);
 
-		assertFalse(posicion.perteneceAFila(5));
+		assertFalse(posicion.perteneceAFila(new FilaCasillero<Posicionable>(5, 20)));
 	}
 
 	@Test
