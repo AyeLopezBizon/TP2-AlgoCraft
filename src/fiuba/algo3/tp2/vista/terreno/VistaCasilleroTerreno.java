@@ -43,6 +43,7 @@ public class VistaCasilleroTerreno extends Pane implements Observer {
 
 	private void limpiarCasillero() {
 		ocupanteTerreno.removeObserver(vistaOcupanteTerreno);
+		getChildren().clear();
 		setBackground(null);
 	}
 }

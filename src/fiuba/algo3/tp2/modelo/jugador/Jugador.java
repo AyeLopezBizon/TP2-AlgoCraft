@@ -63,6 +63,9 @@ public class Jugador extends Observable implements OcupanteTerreno {
     public void lanzarGolpe(DireccionGolpe direccionGolpe) 
     		throws CasilleroNoEncontradoException, CasilleroVacioException {
     	direccionGolpe.lanzarGolpe(posicion);
+    	
+    	setChanged();
+    	notifyObservers(new Object[] {"lanzarGolpe"});
     }
 
 	@Override
