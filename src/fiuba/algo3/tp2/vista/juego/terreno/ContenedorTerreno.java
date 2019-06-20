@@ -1,8 +1,8 @@
 package fiuba.algo3.tp2.vista.juego.terreno;
 
-import fiuba.algo3.tp2.matriz.posicion.Posicion;
-import fiuba.algo3.tp2.terreno.OcupanteTerreno;
-import fiuba.algo3.tp2.terreno.Terreno;
+import fiuba.algo3.tp2.modelo.matriz.posicion.Posicion;
+import fiuba.algo3.tp2.modelo.terreno.OcupanteTerreno;
+import fiuba.algo3.tp2.modelo.terreno.Terreno;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;

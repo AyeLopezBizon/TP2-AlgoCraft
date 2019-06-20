@@ -1,14 +1,14 @@
 package fiuba.algo3.tp2.vista.inicio.eventHandlers;
 
-import fiuba.algo3.tp2.jugador.Jugador;
-import fiuba.algo3.tp2.jugador.movimiento.MovimientoHaciaDerecha;
-import fiuba.algo3.tp2.matriz.casillero.CasilleroNoEncontradoException;
-import fiuba.algo3.tp2.matriz.casillero.CasilleroOcupadoException;
-import fiuba.algo3.tp2.matriz.casillero.CasilleroVacioException;
+import fiuba.algo3.tp2.modelo.jugador.Jugador;
+import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoHaciaDerecha;
+import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroNoEncontradoException;
+import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroOcupadoException;
+import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroVacioException;
+import fiuba.algo3.tp2.modelo.terreno.Terreno;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import fiuba.algo3.tp2.terreno.Terreno;
 
 public class TerrenoOnKeyPressedHandler implements EventHandler<KeyEvent> {
 	

@@ -3,30 +3,31 @@ package fiuba.algo3.tp2.vista.inicio.eventHandlers;
 import java.util.HashSet;
 import java.util.Set;
 
-import fiuba.algo3.tp2.jugador.Jugador;
-import fiuba.algo3.tp2.jugador.movimiento.MovimientoDiagonalInferiorDerecha;
-import fiuba.algo3.tp2.jugador.movimiento.MovimientoDiagonalInferiorIzquierda;
-import fiuba.algo3.tp2.jugador.movimiento.MovimientoDiagonalSuperiorDerecha;
-import fiuba.algo3.tp2.jugador.movimiento.MovimientoDiagonalSuperiorIzquierda;
-import fiuba.algo3.tp2.jugador.movimiento.MovimientoHaciaAbajo;
-import fiuba.algo3.tp2.jugador.movimiento.MovimientoHaciaArriba;
-import fiuba.algo3.tp2.jugador.movimiento.MovimientoHaciaDerecha;
-import fiuba.algo3.tp2.jugador.movimiento.MovimientoHaciaIzquierda;
-import fiuba.algo3.tp2.matriz.casillero.CasilleroNoEncontradoException;
-import fiuba.algo3.tp2.matriz.casillero.CasilleroOcupadoException;
-import fiuba.algo3.tp2.matriz.casillero.CasilleroVacioException;
-import fiuba.algo3.tp2.terreno.Terreno;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import fiuba.algo3.tp2.modelo.herramienta.golpe.DireccionGolpeAbajo;
+import fiuba.algo3.tp2.modelo.herramienta.golpe.DireccionGolpeArriba;
+import fiuba.algo3.tp2.modelo.herramienta.golpe.DireccionGolpeDerecha;
+import fiuba.algo3.tp2.modelo.herramienta.golpe.DireccionGolpeInferiorDerecha;
+import fiuba.algo3.tp2.modelo.herramienta.golpe.DireccionGolpeInferiorIzquierda;
+import fiuba.algo3.tp2.modelo.herramienta.golpe.DireccionGolpeIzquierda;
+import fiuba.algo3.tp2.modelo.herramienta.golpe.DireccionGolpeSuperiorDerecha;
+import fiuba.algo3.tp2.modelo.herramienta.golpe.DireccionGolpeSuperiorIzquierda;
+import fiuba.algo3.tp2.modelo.jugador.Jugador;
+import fiuba.algo3.tp2.modelo.jugador.inventario.EspacioVacioException;
+import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoDiagonalInferiorDerecha;
+import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoDiagonalInferiorIzquierda;
+import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoDiagonalSuperiorDerecha;
+import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoDiagonalSuperiorIzquierda;
+import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoHaciaAbajo;
+import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoHaciaArriba;
+import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoHaciaDerecha;
+import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoHaciaIzquierda;
+import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroNoEncontradoException;
+import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroOcupadoException;
+import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroVacioException;
+import fiuba.algo3.tp2.modelo.terreno.Terreno;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class EscenaJuego extends Scene {
@@ -52,7 +53,8 @@ public class EscenaJuego extends Scene {
 		this.teclasPresioandas.add(code);
 		try {
 			realizarAccion();
-		} catch (CasilleroNoEncontradoException | CasilleroOcupadoException | CasilleroVacioException e) {
+		} catch (CasilleroNoEncontradoException | CasilleroOcupadoException | 
+				CasilleroVacioException | EspacioVacioException e) {
 		}
 	}
 
@@ -61,20 +63,24 @@ public class EscenaJuego extends Scene {
 		this.teclasPresioandas.remove(code);
 	}
 	
-	private void realizarAccion() throws CasilleroNoEncontradoException, CasilleroOcupadoException, CasilleroVacioException {
+	private void realizarAccion() 
+			throws CasilleroNoEncontradoException, CasilleroOcupadoException, 
+			CasilleroVacioException, EspacioVacioException {
 		
-		if(teclasPresioandas.contains(KeyCode.TAB)) {
+		if(teclasPresioandas.contains(KeyCode.E)) {
+			jugador.equipar(1);
+		} else if(teclasPresioandas.contains(KeyCode.TAB)) {
 			// abrirInventario();
 		} else if(teclasPresioandas.contains(KeyCode.SPACE)) {
 			
 			if (teclasPresioandas.contains(KeyCode.UP) && teclasPresioandas.contains(KeyCode.RIGHT)) {
 				jugador.lanzarGolpe(new DireccionGolpeSuperiorDerecha(jugador, terreno));
 			} else if (teclasPresioandas.contains(KeyCode.UP) && teclasPresioandas.contains(KeyCode.LEFT)) {
-				jugador.lanzarGolpe(new DireccionGolpeSuperiorDerecha(jugador, terreno));
+				jugador.lanzarGolpe(new DireccionGolpeSuperiorIzquierda(jugador, terreno));
 			} else if (teclasPresioandas.contains(KeyCode.DOWN) && teclasPresioandas.contains(KeyCode.RIGHT)) {
-				jugador.lanzarGolpe(new DireccionGolpeSuperiorDerecha(jugador, terreno));
+				jugador.lanzarGolpe(new DireccionGolpeInferiorDerecha(jugador, terreno));
 			} else if (teclasPresioandas.contains(KeyCode.DOWN) && teclasPresioandas.contains(KeyCode.LEFT)) {
-				jugador.lanzarGolpe(new DireccionGolpeSuperiorDerecha(jugador, terreno));
+				jugador.lanzarGolpe(new DireccionGolpeInferiorIzquierda(jugador, terreno));
 			} else if (teclasPresioandas.contains(KeyCode.RIGHT)) {
 				System.out.println("GOLPE");
 				jugador.lanzarGolpe(new DireccionGolpeDerecha(jugador, terreno));

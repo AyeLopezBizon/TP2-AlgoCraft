@@ -7,29 +7,29 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
-import fiuba.algo3.tp2.herramienta.HerramientaDesgastadaNoSePuedeUsarException;
-import fiuba.algo3.tp2.jugador.Jugador;
-import fiuba.algo3.tp2.jugador.movimiento.Movimiento;
-import fiuba.algo3.tp2.jugador.movimiento.MovimientoDiagonalInferiorDerecha;
-import fiuba.algo3.tp2.jugador.movimiento.MovimientoDiagonalInferiorIzquierda;
-import fiuba.algo3.tp2.jugador.movimiento.MovimientoDiagonalSuperiorDerecha;
-import fiuba.algo3.tp2.jugador.movimiento.MovimientoDiagonalSuperiorIzquierda;
-import fiuba.algo3.tp2.jugador.movimiento.MovimientoHaciaAbajo;
-import fiuba.algo3.tp2.jugador.movimiento.MovimientoHaciaArriba;
-import fiuba.algo3.tp2.jugador.movimiento.MovimientoHaciaDerecha;
-import fiuba.algo3.tp2.jugador.movimiento.MovimientoHaciaIzquierda;
-import fiuba.algo3.tp2.material.Diamante;
-import fiuba.algo3.tp2.material.Madera;
-import fiuba.algo3.tp2.material.Material;
-import fiuba.algo3.tp2.material.MaterialDestruidoNoSePuedeGolpearException;
-import fiuba.algo3.tp2.material.Metal;
-import fiuba.algo3.tp2.material.Piedra;
-import fiuba.algo3.tp2.matriz.casillero.CasilleroNoEncontradoException;
-import fiuba.algo3.tp2.matriz.casillero.CasilleroOcupadoException;
-import fiuba.algo3.tp2.matriz.casillero.CasilleroVacioException;
-import fiuba.algo3.tp2.matriz.posicion.Posicion;
-import fiuba.algo3.tp2.terreno.OcupanteTerreno;
-import fiuba.algo3.tp2.terreno.Terreno;
+import fiuba.algo3.tp2.modelo.herramienta.HerramientaDesgastadaNoSePuedeUsarException;
+import fiuba.algo3.tp2.modelo.jugador.Jugador;
+import fiuba.algo3.tp2.modelo.jugador.movimiento.Movimiento;
+import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoDiagonalInferiorDerecha;
+import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoDiagonalInferiorIzquierda;
+import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoDiagonalSuperiorDerecha;
+import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoDiagonalSuperiorIzquierda;
+import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoHaciaAbajo;
+import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoHaciaArriba;
+import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoHaciaDerecha;
+import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoHaciaIzquierda;
+import fiuba.algo3.tp2.modelo.material.Diamante;
+import fiuba.algo3.tp2.modelo.material.Madera;
+import fiuba.algo3.tp2.modelo.material.Material;
+import fiuba.algo3.tp2.modelo.material.MaterialDestruidoNoSePuedeGolpearException;
+import fiuba.algo3.tp2.modelo.material.Metal;
+import fiuba.algo3.tp2.modelo.material.Piedra;
+import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroNoEncontradoException;
+import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroOcupadoException;
+import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroVacioException;
+import fiuba.algo3.tp2.modelo.matriz.posicion.Posicion;
+import fiuba.algo3.tp2.modelo.terreno.OcupanteTerreno;
+import fiuba.algo3.tp2.modelo.terreno.Terreno;
 
 public class JugadorTest {
 

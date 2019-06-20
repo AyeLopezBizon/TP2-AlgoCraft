@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.vista.inicio.eventHandlers;
 
-import fiuba.algo3.tp2.juego.Juego;
+import fiuba.algo3.tp2.modelo.juego.Juego;
 import fiuba.algo3.tp2.vista.juego.ContenedorJuego;
 import fiuba.algo3.tp2.vista.juego.terreno.ContenedorTerreno;
 import fiuba.algo3.tp2.vista.juego.terreno.VistaTerreno;

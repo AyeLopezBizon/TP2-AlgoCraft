@@ -3,15 +3,15 @@ package fiuba.algo3.tp2.vista.juego.terreno;
 import java.util.Observable;
 import java.util.Observer;
 
-import fiuba.algo3.tp2.matriz.posicion.Posicion;
-import fiuba.algo3.tp2.terreno.OcupanteTerreno;
-import fiuba.algo3.tp2.terreno.Terreno;
+import fiuba.algo3.tp2.modelo.matriz.posicion.Posicion;
+import fiuba.algo3.tp2.modelo.terreno.OcupanteTerreno;
+import fiuba.algo3.tp2.modelo.terreno.Terreno;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.RowConstraints;
 
 public class VistaTerreno implements Observer {
 	
-	public static int TAMANIO_NODO = 50;
+	public static int TAMANIO_NODO = 30;
 	
 	private Terreno terreno;
 	private ContenedorTerreno contenedorTerreno;

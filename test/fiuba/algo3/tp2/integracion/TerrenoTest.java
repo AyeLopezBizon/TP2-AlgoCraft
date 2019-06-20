@@ -5,14 +5,14 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-import fiuba.algo3.tp2.jugador.Jugador;
-import fiuba.algo3.tp2.material.Madera;
-import fiuba.algo3.tp2.matriz.casillero.CasilleroOcupadoException;
-import fiuba.algo3.tp2.matriz.casillero.CasilleroVacioException;
-import fiuba.algo3.tp2.matriz.posicion.Posicion;
-import fiuba.algo3.tp2.matriz.posicion.Posicionable;
-import fiuba.algo3.tp2.terreno.Terreno;
-import fiuba.algo3.tp2.terreno.OcupanteTerreno;
+import fiuba.algo3.tp2.modelo.jugador.Jugador;
+import fiuba.algo3.tp2.modelo.material.Madera;
+import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroOcupadoException;
+import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroVacioException;
+import fiuba.algo3.tp2.modelo.matriz.posicion.Posicion;
+import fiuba.algo3.tp2.modelo.matriz.posicion.Posicionable;
+import fiuba.algo3.tp2.modelo.terreno.OcupanteTerreno;
+import fiuba.algo3.tp2.modelo.terreno.Terreno;
 
 public class TerrenoTest {
 	

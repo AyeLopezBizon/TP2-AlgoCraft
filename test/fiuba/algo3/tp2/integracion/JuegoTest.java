@@ -5,12 +5,12 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import fiuba.algo3.tp2.juego.Juego;
-import fiuba.algo3.tp2.material.Diamante;
-import fiuba.algo3.tp2.material.Madera;
-import fiuba.algo3.tp2.material.Metal;
-import fiuba.algo3.tp2.material.Piedra;
-import fiuba.algo3.tp2.matriz.posicion.Posicion;
+import fiuba.algo3.tp2.modelo.juego.Juego;
+import fiuba.algo3.tp2.modelo.material.Diamante;
+import fiuba.algo3.tp2.modelo.material.Madera;
+import fiuba.algo3.tp2.modelo.material.Metal;
+import fiuba.algo3.tp2.modelo.material.Piedra;
+import fiuba.algo3.tp2.modelo.matriz.posicion.Posicion;
 
 public class JuegoTest {
 	

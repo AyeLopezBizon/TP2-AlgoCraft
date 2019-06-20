@@ -7,13 +7,13 @@ import java.math.RoundingMode;
 
 import org.junit.Test;
 
-import fiuba.algo3.tp2.herramienta.Herramienta;
-import fiuba.algo3.tp2.herramienta.HerramientaFactory;
-import fiuba.algo3.tp2.material.Diamante;
-import fiuba.algo3.tp2.material.Madera;
-import fiuba.algo3.tp2.material.Material;
-import fiuba.algo3.tp2.material.Metal;
-import fiuba.algo3.tp2.material.Piedra;
+import fiuba.algo3.tp2.modelo.herramienta.Herramienta;
+import fiuba.algo3.tp2.modelo.herramienta.HerramientaFactory;
+import fiuba.algo3.tp2.modelo.material.Diamante;
+import fiuba.algo3.tp2.modelo.material.Madera;
+import fiuba.algo3.tp2.modelo.material.Material;
+import fiuba.algo3.tp2.modelo.material.Metal;
+import fiuba.algo3.tp2.modelo.material.Piedra;
 
 public class HerramientaTest {
 	

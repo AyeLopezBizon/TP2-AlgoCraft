@@ -5,15 +5,15 @@ import java.math.BigDecimal;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.tp2.herramienta.Herramienta;
-import fiuba.algo3.tp2.herramienta.creador.CreadorHerramienta;
-import fiuba.algo3.tp2.herramienta.creador.MaterialesMalPosicionadosException;
-import fiuba.algo3.tp2.herramienta.creador.MesaDeTrabajoVacia;
-import fiuba.algo3.tp2.material.UnidadMaterialVacio;
-import fiuba.algo3.tp2.matriz.posicion.Posicion;
-import fiuba.algo3.tp2.unidadMaterial.UnidadMadera;
-import fiuba.algo3.tp2.unidadMaterial.UnidadMetal;
-import fiuba.algo3.tp2.unidadMaterial.UnidadPiedra;
+import fiuba.algo3.tp2.modelo.herramienta.Herramienta;
+import fiuba.algo3.tp2.modelo.herramienta.creador.CreadorHerramienta;
+import fiuba.algo3.tp2.modelo.herramienta.creador.MaterialesMalPosicionadosException;
+import fiuba.algo3.tp2.modelo.herramienta.creador.MesaDeTrabajoVacia;
+import fiuba.algo3.tp2.modelo.material.UnidadMaterialVacio;
+import fiuba.algo3.tp2.modelo.matriz.posicion.Posicion;
+import fiuba.algo3.tp2.modelo.unidadMaterial.UnidadMadera;
+import fiuba.algo3.tp2.modelo.unidadMaterial.UnidadMetal;
+import fiuba.algo3.tp2.modelo.unidadMaterial.UnidadPiedra;
 
 public class CreadorDeHerramientaTest {
 
