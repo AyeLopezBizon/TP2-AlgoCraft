@@ -27,6 +27,7 @@ import fiuba.algo3.tp2.modelo.material.Piedra;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroNoEncontradoException;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroOcupadoException;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroVacioException;
+import fiuba.algo3.tp2.modelo.matriz.direccion.Direccion;
 import fiuba.algo3.tp2.modelo.matriz.posicion.Posicion;
 import fiuba.algo3.tp2.modelo.terreno.OcupanteTerreno;
 import fiuba.algo3.tp2.modelo.terreno.Terreno;
@@ -298,7 +299,6 @@ public class JugadorTest {
         Terreno terreno = new Terreno(3, 3);
         Posicion posicionJugador = new Posicion(2,2);
         Posicion posicionMaterial = new Posicion(3,2);
-        Movimiento movimiento = new MovimientoHaciaDerecha();
         Jugador jugador = new Jugador();
         Material material = new Diamante();
 
@@ -306,7 +306,7 @@ public class JugadorTest {
         terreno.ocuparCasillero(material, posicionMaterial);
 
         try {
-            jugador.mover(movimiento, terreno);
+            jugador.mover(Direccion.DERECHA);
             fail("Deberia lanzar CasilleroOcupadoException");
         } catch(CasilleroOcupadoException e) {
         }
@@ -323,10 +323,9 @@ public class JugadorTest {
         Posicion posicionInicial = new Posicion(2,2);
         Posicion posicionFinal = new Posicion(3,2);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoHaciaDerecha();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+		jugador.mover(Direccion.DERECHA);
 
         try {
             terreno.desocuparCasillero(posicionInicial);
@@ -350,10 +349,9 @@ public class JugadorTest {
         Posicion posicionInicial = new Posicion(1,1);
         Posicion posicionFinal = new Posicion(2,1);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoHaciaDerecha();
         
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DERECHA);
 
         OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
         assertEquals(jugador, ocupanteTerreno);
@@ -367,10 +365,9 @@ public class JugadorTest {
         Posicion posicionInicial = new Posicion(1,1);
         Posicion posicionFinal = new Posicion(2,2);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoDiagonalSuperiorDerecha();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DIAGONAL_SUPERIOR_DERECHA);
 
         OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
         assertEquals(jugador, ocupanteTerreno);
@@ -384,10 +381,9 @@ public class JugadorTest {
         Posicion posicionInicial = new Posicion(1,1);
         Posicion posicionFinal = new Posicion(1,2);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoHaciaArriba();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.ARRIBA);
 
         OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
         assertEquals(jugador, ocupanteTerreno);
@@ -400,10 +396,9 @@ public class JugadorTest {
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(1, 1);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoDiagonalSuperiorIzquierda();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DIAGONAL_SUPERIOR_IZQUIERDA);
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -413,10 +408,9 @@ public class JugadorTest {
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(1, 1);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoHaciaIzquierda();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.IZQUIERDA);
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -426,10 +420,9 @@ public class JugadorTest {
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(1, 1);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoDiagonalInferiorIzquierda();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DIAGONAL_INFERIOR_IZQUIERDA);
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -439,10 +432,9 @@ public class JugadorTest {
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(1, 1);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoHaciaAbajo();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.ABAJO);
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -452,10 +444,9 @@ public class JugadorTest {
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(1, 1);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoDiagonalInferiorDerecha();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DIAGONAL_INFERIOR_DERECHA);
     }
 
     /******************************************************************
@@ -469,10 +460,9 @@ public class JugadorTest {
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(10, 1);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoHaciaDerecha();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DERECHA);
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -482,10 +472,9 @@ public class JugadorTest {
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(10, 1);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoDiagonalSuperiorDerecha();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DIAGONAL_SUPERIOR_DERECHA);
     }
 
     @Test
@@ -496,10 +485,9 @@ public class JugadorTest {
         Posicion posicionInicial = new Posicion(10,1);
         Posicion posicionFinal = new Posicion(10,2);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoHaciaArriba();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.ARRIBA);
 
         OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
         assertEquals(jugador, ocupanteTerreno);
@@ -513,10 +501,9 @@ public class JugadorTest {
         Posicion posicionInicial = new Posicion(10,1);
         Posicion posicionFinal = new Posicion(9,2);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoDiagonalSuperiorIzquierda();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DIAGONAL_SUPERIOR_IZQUIERDA);
 
         OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
         assertEquals(jugador, ocupanteTerreno);
@@ -530,10 +517,9 @@ public class JugadorTest {
         Posicion posicionInicial = new Posicion(10,1);
         Posicion posicionFinal = new Posicion(9,1);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoHaciaIzquierda();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.IZQUIERDA);
 
         OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
         assertEquals(jugador, ocupanteTerreno);
@@ -546,10 +532,9 @@ public class JugadorTest {
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(10, 1);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoDiagonalInferiorIzquierda();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DIAGONAL_INFERIOR_IZQUIERDA);
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -559,10 +544,9 @@ public class JugadorTest {
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(10, 1);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoHaciaAbajo();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.ABAJO);
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -572,10 +556,9 @@ public class JugadorTest {
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(10, 1);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoDiagonalInferiorDerecha();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DIAGONAL_INFERIOR_DERECHA);
     }
 
     /******************************************************************
@@ -589,10 +572,9 @@ public class JugadorTest {
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(10, 10);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoHaciaDerecha();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DERECHA);
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -602,10 +584,9 @@ public class JugadorTest {
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(10, 10);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoDiagonalSuperiorDerecha();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DIAGONAL_SUPERIOR_DERECHA);
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -615,10 +596,9 @@ public class JugadorTest {
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(10, 10);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoHaciaArriba();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.ARRIBA);
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -628,10 +608,9 @@ public class JugadorTest {
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(10, 10);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoDiagonalSuperiorIzquierda();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DIAGONAL_SUPERIOR_IZQUIERDA);
     }
 
     @Test
@@ -642,10 +621,9 @@ public class JugadorTest {
         Posicion posicionInicial = new Posicion(10,10);
         Posicion posicionFinal = new Posicion(9,10);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoHaciaIzquierda();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.IZQUIERDA);
 
         OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
         assertEquals(jugador, ocupanteTerreno);
@@ -659,10 +637,9 @@ public class JugadorTest {
         Posicion posicionInicial = new Posicion(10,10);
         Posicion posicionFinal = new Posicion(9,9);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoDiagonalInferiorIzquierda();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DIAGONAL_INFERIOR_IZQUIERDA);
 
         OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
         assertEquals(jugador, ocupanteTerreno);
@@ -676,10 +653,9 @@ public class JugadorTest {
         Posicion posicionInicial = new Posicion(10,10);
         Posicion posicionFinal = new Posicion(10,9);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoHaciaAbajo();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.ABAJO);
 
         OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
         assertEquals(jugador, ocupanteTerreno);
@@ -692,10 +668,9 @@ public class JugadorTest {
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(10, 10);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoDiagonalInferiorDerecha();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DIAGONAL_INFERIOR_DERECHA);
     }
 
     /********************************************************************
@@ -710,10 +685,9 @@ public class JugadorTest {
         Posicion posicionInicial = new Posicion(1,10);
         Posicion posicionFinal = new Posicion(2,10);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoHaciaDerecha();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DERECHA);
 
         OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
         assertEquals(jugador, ocupanteTerreno);
@@ -726,10 +700,9 @@ public class JugadorTest {
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(1, 10);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoDiagonalSuperiorDerecha();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DIAGONAL_SUPERIOR_DERECHA);
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -739,10 +712,9 @@ public class JugadorTest {
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(1, 10);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoHaciaArriba();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.ARRIBA);
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -752,10 +724,9 @@ public class JugadorTest {
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(1, 10);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoDiagonalSuperiorIzquierda();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DIAGONAL_SUPERIOR_IZQUIERDA);
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -765,10 +736,9 @@ public class JugadorTest {
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(1, 10);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoHaciaIzquierda();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.IZQUIERDA);
     }
 
     @Test(expected = CasilleroNoEncontradoException.class)
@@ -778,10 +748,9 @@ public class JugadorTest {
         Terreno terreno = new Terreno(10, 10);
         Posicion posicionInicial = new Posicion(1, 10);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoDiagonalInferiorIzquierda();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DIAGONAL_INFERIOR_IZQUIERDA);
     }
 
     @Test
@@ -792,10 +761,9 @@ public class JugadorTest {
         Posicion posicionInicial = new Posicion(1,10);
         Posicion posicionFinal = new Posicion(1,9);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoHaciaAbajo();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.ABAJO);
 
         OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
         assertEquals(jugador, ocupanteTerreno);
@@ -809,10 +777,9 @@ public class JugadorTest {
         Posicion posicionInicial = new Posicion(1,10);
         Posicion posicionFinal = new Posicion(2,9);
         Jugador jugador = new Jugador();
-        Movimiento movimiento = new MovimientoDiagonalInferiorDerecha();
 
         terreno.ocuparCasillero(jugador, posicionInicial);
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DIAGONAL_INFERIOR_DERECHA);
 
         OcupanteTerreno ocupanteTerreno = terreno.obtenerOcupanteTerreno(posicionFinal);
         assertEquals(jugador, ocupanteTerreno);
@@ -829,14 +796,13 @@ public class JugadorTest {
         Terreno terreno = new Terreno(3, 3);
         Posicion posicionJugador = new Posicion(2, 2);
         Posicion posicionMaterial = new Posicion(3, 2);
-        Movimiento movimiento = new MovimientoHaciaDerecha();
         Jugador jugador = new Jugador();
         Material material = new Madera();
 
         terreno.ocuparCasillero(jugador, posicionJugador);
         terreno.ocuparCasillero(material, posicionMaterial);
 
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DERECHA);
     }
 
     @Test(expected = CasilleroOcupadoException.class)
@@ -846,14 +812,13 @@ public class JugadorTest {
         Terreno terreno = new Terreno(3, 3);
         Posicion posicionJugador = new Posicion(2, 2);
         Posicion posicionMaterial = new Posicion(3, 3);
-        Movimiento movimiento = new MovimientoDiagonalSuperiorDerecha();
         Jugador jugador = new Jugador();
         Material material = new Madera();
 
         terreno.ocuparCasillero(jugador, posicionJugador);
         terreno.ocuparCasillero(material, posicionMaterial);
 
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DIAGONAL_SUPERIOR_DERECHA);
     }
 
     @Test(expected = CasilleroOcupadoException.class)
@@ -863,14 +828,13 @@ public class JugadorTest {
         Terreno terreno = new Terreno(3, 3);
         Posicion posicionJugador = new Posicion(2, 2);
         Posicion posicionMaterial = new Posicion(2, 3);
-        Movimiento movimiento = new MovimientoHaciaArriba();
         Jugador jugador = new Jugador();
         Material material = new Piedra();
 
         terreno.ocuparCasillero(jugador, posicionJugador);
         terreno.ocuparCasillero(material, posicionMaterial);
 
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.ARRIBA);
     }
 
     @Test(expected = CasilleroOcupadoException.class)
@@ -880,14 +844,13 @@ public class JugadorTest {
         Terreno terreno = new Terreno(3, 3);
         Posicion posicionJugador = new Posicion(2, 2);
         Posicion posicionMaterial = new Posicion(1, 3);
-        Movimiento movimiento = new MovimientoDiagonalSuperiorIzquierda();
         Jugador jugador = new Jugador();
         Material material = new Piedra();
 
         terreno.ocuparCasillero(jugador, posicionJugador);
         terreno.ocuparCasillero(material, posicionMaterial);
 
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DIAGONAL_SUPERIOR_IZQUIERDA);
     }
 
     @Test(expected = CasilleroOcupadoException.class)
@@ -897,14 +860,13 @@ public class JugadorTest {
         Terreno terreno = new Terreno(3, 3);
         Posicion posicionJugador = new Posicion(2, 2);
         Posicion posicionMaterial = new Posicion(1, 2);
-        Movimiento movimiento = new MovimientoHaciaIzquierda();
         Jugador jugador = new Jugador();
         Material material = new Metal();
 
         terreno.ocuparCasillero(jugador, posicionJugador);
         terreno.ocuparCasillero(material, posicionMaterial);
 
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.IZQUIERDA);
     }
 
     @Test(expected = CasilleroOcupadoException.class)
@@ -914,14 +876,13 @@ public class JugadorTest {
         Terreno terreno = new Terreno(3, 3);
         Posicion posicionJugador = new Posicion(2, 2);
         Posicion posicionMaterial = new Posicion(1, 1);
-        Movimiento movimiento = new MovimientoDiagonalInferiorIzquierda();
         Jugador jugador = new Jugador();
         Material material = new Metal();
 
         terreno.ocuparCasillero(jugador, posicionJugador);
         terreno.ocuparCasillero(material, posicionMaterial);
 
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DIAGONAL_INFERIOR_IZQUIERDA);
     }
 
     @Test(expected = CasilleroOcupadoException.class)
@@ -931,14 +892,13 @@ public class JugadorTest {
         Terreno terreno = new Terreno(3, 3);
         Posicion posicionJugador = new Posicion(2, 2);
         Posicion posicionMaterial = new Posicion(2, 1);
-        Movimiento movimiento = new MovimientoHaciaAbajo();
         Jugador jugador = new Jugador();
         Material material = new Diamante();
 
         terreno.ocuparCasillero(jugador, posicionJugador);
         terreno.ocuparCasillero(material, posicionMaterial);
 
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.ABAJO);
     }
 
     @Test(expected = CasilleroOcupadoException.class)
@@ -948,13 +908,12 @@ public class JugadorTest {
         Terreno terreno = new Terreno(3, 3);
         Posicion posicionJugador = new Posicion(2, 2);
         Posicion posicionMaterial = new Posicion(3, 1);
-        Movimiento movimiento = new MovimientoDiagonalInferiorDerecha();
         Jugador jugador = new Jugador();
         Material material = new Diamante();
 
         terreno.ocuparCasillero(jugador, posicionJugador);
         terreno.ocuparCasillero(material, posicionMaterial);
 
-        jugador.mover(movimiento, terreno);
+        jugador.mover(Direccion.DIAGONAL_INFERIOR_DERECHA);
     }
 }

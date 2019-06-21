@@ -23,7 +23,7 @@ public abstract class VistaMaterial extends Vista implements VistaOcupanteTerren
 		this.material = (Material)ocupanteTerreno;
 		this.transicionGolpe = crearTransicionGolpe();
 	}
-
+	
 	@Override
 	public void update(Observable o, Object arg) {
 

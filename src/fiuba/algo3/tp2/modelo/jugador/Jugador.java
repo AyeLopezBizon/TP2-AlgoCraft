@@ -11,12 +11,12 @@ import fiuba.algo3.tp2.modelo.jugador.inventario.EspacioVacioException;
 import fiuba.algo3.tp2.modelo.jugador.inventario.Inventario;
 import fiuba.algo3.tp2.modelo.jugador.inventario.InventarioLlenoException;
 import fiuba.algo3.tp2.modelo.jugador.inventario.NoSePudoAlmacenarItemException;
-import fiuba.algo3.tp2.modelo.jugador.movimiento.Movimiento;
 import fiuba.algo3.tp2.modelo.material.Material;
 import fiuba.algo3.tp2.modelo.material.MaterialDestruidoNoSePuedeGolpearException;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroNoEncontradoException;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroOcupadoException;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroVacioException;
+import fiuba.algo3.tp2.modelo.matriz.direccion.Direccion;
 import fiuba.algo3.tp2.modelo.matriz.posicion.Posicion;
 import fiuba.algo3.tp2.modelo.terreno.OcupanteTerreno;
 import fiuba.algo3.tp2.modelo.terreno.Terreno;
@@ -60,9 +60,13 @@ public class Jugador extends Observable implements OcupanteTerreno {
         this.herramientaActiva.golpear(material);
     }
     
-    public void lanzarGolpe(DireccionGolpe direccionGolpe) 
+    public void lanzarGolpe(Direccion direccionGolpe) 
     		throws CasilleroNoEncontradoException, CasilleroVacioException {
-    	direccionGolpe.lanzarGolpe(posicion);
+    	
+    	Posicion posicionALanzarGolpe = direccionGolpe.obtenerPosicion(posicion);
+    	OcupanteTerreno ocupanteAGolpear = terreno.obtenerOcupanteTerreno(posicionALanzarGolpe);
+    	ocupanteAGolpear.recibirGolpe(this);
+    	
     	
     	setChanged();
     	notifyObservers(new Object[] {"lanzarGolpe"});
@@ -78,11 +82,11 @@ public class Jugador extends Observable implements OcupanteTerreno {
 		this.posicion = posicion;
 	}
 
-    public void mover(Movimiento movimiento, Terreno terreno)
+    public void mover(Direccion direccion)
 			throws CasilleroNoEncontradoException, CasilleroOcupadoException, CasilleroVacioException {
 
 		Posicion posicionInicial = this.posicion;
-		Posicion posicionFinal = movimiento.mover(this.posicion);
+		Posicion posicionFinal = direccion.obtenerPosicion(posicion);
 		terreno.ocuparCasillero(this, posicionFinal);
 		terreno.desocuparCasillero(posicionInicial);
 	}

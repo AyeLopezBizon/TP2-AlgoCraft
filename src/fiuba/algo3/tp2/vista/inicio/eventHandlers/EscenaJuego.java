@@ -3,27 +3,12 @@ package fiuba.algo3.tp2.vista.inicio.eventHandlers;
 import java.util.HashSet;
 import java.util.Set;
 
-import fiuba.algo3.tp2.modelo.herramienta.golpe.DireccionGolpeAbajo;
-import fiuba.algo3.tp2.modelo.herramienta.golpe.DireccionGolpeArriba;
-import fiuba.algo3.tp2.modelo.herramienta.golpe.DireccionGolpeDerecha;
-import fiuba.algo3.tp2.modelo.herramienta.golpe.DireccionGolpeInferiorDerecha;
-import fiuba.algo3.tp2.modelo.herramienta.golpe.DireccionGolpeInferiorIzquierda;
-import fiuba.algo3.tp2.modelo.herramienta.golpe.DireccionGolpeIzquierda;
-import fiuba.algo3.tp2.modelo.herramienta.golpe.DireccionGolpeSuperiorDerecha;
-import fiuba.algo3.tp2.modelo.herramienta.golpe.DireccionGolpeSuperiorIzquierda;
 import fiuba.algo3.tp2.modelo.jugador.Jugador;
 import fiuba.algo3.tp2.modelo.jugador.inventario.EspacioVacioException;
-import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoDiagonalInferiorDerecha;
-import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoDiagonalInferiorIzquierda;
-import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoDiagonalSuperiorDerecha;
-import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoDiagonalSuperiorIzquierda;
-import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoHaciaAbajo;
-import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoHaciaArriba;
-import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoHaciaDerecha;
-import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoHaciaIzquierda;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroNoEncontradoException;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroOcupadoException;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroVacioException;
+import fiuba.algo3.tp2.modelo.matriz.direccion.Direccion;
 import fiuba.algo3.tp2.modelo.terreno.Terreno;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -74,41 +59,39 @@ public class EscenaJuego extends Scene {
 		} else if(teclasPresioandas.contains(KeyCode.SPACE)) {
 			
 			if (teclasPresioandas.contains(KeyCode.UP) && teclasPresioandas.contains(KeyCode.RIGHT)) {
-				jugador.lanzarGolpe(new DireccionGolpeSuperiorDerecha(jugador, terreno));
+				jugador.lanzarGolpe(Direccion.DIAGONAL_SUPERIOR_DERECHA);
 			} else if (teclasPresioandas.contains(KeyCode.UP) && teclasPresioandas.contains(KeyCode.LEFT)) {
-				jugador.lanzarGolpe(new DireccionGolpeSuperiorIzquierda(jugador, terreno));
+				jugador.lanzarGolpe(Direccion.DIAGONAL_SUPERIOR_IZQUIERDA);
 			} else if (teclasPresioandas.contains(KeyCode.DOWN) && teclasPresioandas.contains(KeyCode.RIGHT)) {
-				jugador.lanzarGolpe(new DireccionGolpeInferiorDerecha(jugador, terreno));
+				jugador.lanzarGolpe(Direccion.DIAGONAL_INFERIOR_DERECHA);
 			} else if (teclasPresioandas.contains(KeyCode.DOWN) && teclasPresioandas.contains(KeyCode.LEFT)) {
-				jugador.lanzarGolpe(new DireccionGolpeInferiorIzquierda(jugador, terreno));
+				jugador.lanzarGolpe(Direccion.DIAGONAL_INFERIOR_IZQUIERDA);
 			} else if (teclasPresioandas.contains(KeyCode.RIGHT)) {
-				System.out.println("GOLPE");
-				jugador.lanzarGolpe(new DireccionGolpeDerecha(jugador, terreno));
+				jugador.lanzarGolpe(Direccion.DERECHA);
 		    } else if (teclasPresioandas.contains(KeyCode.LEFT)) {
-		    	jugador.lanzarGolpe(new DireccionGolpeIzquierda(jugador, terreno));
+		    	jugador.lanzarGolpe(Direccion.IZQUIERDA);
 		    } else if (teclasPresioandas.contains(KeyCode.UP)) {
-		    	jugador.lanzarGolpe(new DireccionGolpeArriba(jugador, terreno));
+		    	jugador.lanzarGolpe(Direccion.ARRIBA);
 		    } else if (teclasPresioandas.contains(KeyCode.DOWN)) {
-		    	jugador.lanzarGolpe(new DireccionGolpeAbajo(jugador, terreno));
+		    	jugador.lanzarGolpe(Direccion.ABAJO);
 		    }
 		} else {
-			System.out.println("MOVIMIENTO");
 			if (teclasPresioandas.contains(KeyCode.UP) && teclasPresioandas.contains(KeyCode.RIGHT)) {
-				jugador.mover(new MovimientoDiagonalSuperiorDerecha(), terreno);
+				jugador.mover(Direccion.DIAGONAL_SUPERIOR_DERECHA);
 			} else if (teclasPresioandas.contains(KeyCode.UP) && teclasPresioandas.contains(KeyCode.LEFT)) {
-				jugador.mover(new MovimientoDiagonalSuperiorIzquierda(), terreno);
+				jugador.mover(Direccion.DIAGONAL_SUPERIOR_IZQUIERDA);
 			} else if (teclasPresioandas.contains(KeyCode.DOWN) && teclasPresioandas.contains(KeyCode.RIGHT)) {
-				jugador.mover(new MovimientoDiagonalInferiorDerecha(), terreno);
+				jugador.mover(Direccion.DIAGONAL_INFERIOR_DERECHA);
 			} else if (teclasPresioandas.contains(KeyCode.DOWN) && teclasPresioandas.contains(KeyCode.LEFT)) {
-				jugador.mover(new MovimientoDiagonalInferiorIzquierda(), terreno);
+				jugador.mover(Direccion.DIAGONAL_INFERIOR_IZQUIERDA);
 			} else if (teclasPresioandas.contains(KeyCode.RIGHT)) {
-				jugador.mover(new MovimientoHaciaDerecha(), terreno);
+				jugador.mover(Direccion.DERECHA);
 		    } else if (teclasPresioandas.contains(KeyCode.LEFT)) {
-				jugador.mover(new MovimientoHaciaIzquierda(), terreno);
+				jugador.mover(Direccion.IZQUIERDA);
 		    } else if (teclasPresioandas.contains(KeyCode.UP)) {
-				jugador.mover(new MovimientoHaciaArriba(), terreno);
+				jugador.mover(Direccion.ARRIBA);
 		    } else if (teclasPresioandas.contains(KeyCode.DOWN)) {
-				jugador.mover(new MovimientoHaciaAbajo(), terreno);
+				jugador.mover(Direccion.ABAJO);
 		    }
 		}
 	}
