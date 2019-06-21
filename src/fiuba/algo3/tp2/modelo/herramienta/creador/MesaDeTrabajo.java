@@ -104,4 +104,12 @@ public abstract class MesaDeTrabajo{
 			}
 		}
 	}
+
+	public int getCantidadDeFilas() {
+		return this.cantidadDeFilas;
+	}
+
+	public int getCantidadDeColumnas() {
+		return this.cantidadDeColumnas;
+	}
 }

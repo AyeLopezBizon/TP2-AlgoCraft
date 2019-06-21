@@ -115,4 +115,8 @@ public class Jugador extends Observable implements OcupanteTerreno {
 	public void removeObserver(Observer obsever) {
 		super.deleteObserver(obsever);
 	}
+
+	public Inventario obtenerInventario() {
+		return inventario;
+	}
 }

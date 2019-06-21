@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.vista.inicio.eventHandlers;
 import java.util.HashSet;
 import java.util.Set;
 
+import fiuba.algo3.tp2.modelo.herramienta.creador.NoSePuedeInicializarMesaDeTrabajoException;
 import fiuba.algo3.tp2.modelo.jugador.Jugador;
 import fiuba.algo3.tp2.modelo.jugador.inventario.EspacioVacioException;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroNoEncontradoException;
@@ -10,6 +11,7 @@ import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroOcupadoException;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroVacioException;
 import fiuba.algo3.tp2.modelo.matriz.direccion.Direccion;
 import fiuba.algo3.tp2.modelo.terreno.Terreno;
+import fiuba.algo3.tp2.vista.inventario.VistaInventario;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
@@ -33,7 +35,7 @@ public class EscenaJuego extends Scene {
 		this.teclasPresioandas = new HashSet<KeyCode>();
 	}
 	
-	public void presionarTecla(KeyCode code) {
+	public void presionarTecla(KeyCode code) throws NoSePuedeInicializarMesaDeTrabajoException {
 		
 		this.teclasPresioandas.add(code);
 		try {
@@ -50,12 +52,12 @@ public class EscenaJuego extends Scene {
 	
 	private void realizarAccion() 
 			throws CasilleroNoEncontradoException, CasilleroOcupadoException, 
-			CasilleroVacioException, EspacioVacioException {
+			CasilleroVacioException, EspacioVacioException, NoSePuedeInicializarMesaDeTrabajoException {
 		
 		if(teclasPresioandas.contains(KeyCode.E)) {
 			jugador.equipar(1);
 		} else if(teclasPresioandas.contains(KeyCode.TAB)) {
-			// abrirInventario();
+			abrirInventario();
 		} else if(teclasPresioandas.contains(KeyCode.SPACE)) {
 			
 			if (teclasPresioandas.contains(KeyCode.UP) && teclasPresioandas.contains(KeyCode.RIGHT)) {
@@ -94,5 +96,10 @@ public class EscenaJuego extends Scene {
 				jugador.mover(Direccion.ABAJO);
 		    }
 		}
+	}
+	
+	private void abrirInventario() throws NoSePuedeInicializarMesaDeTrabajoException {
+		VistaInventario inventario = new VistaInventario(jugador.obtenerInventario());
+		inventario.mostrarInventario();
 	}
 }
