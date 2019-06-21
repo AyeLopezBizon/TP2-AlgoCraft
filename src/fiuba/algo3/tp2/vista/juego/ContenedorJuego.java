@@ -6,25 +6,10 @@ import javafx.stage.Stage;
 
 public class ContenedorJuego extends BorderPane {
 	
-	private Stage stage;
-	private BarraDeMenu barraDeMenu;
 	
-	
-    public ContenedorJuego(Stage stage, ContenedorTerreno contenedorTerreno) {
+    public ContenedorJuego(Stage stage, BarraDeMenu barraDeMenu, ContenedorTerreno contenedorTerreno) {
     	
-    	this.stage = stage;
-    	
-        this.setMenu();
+    	this.setTop(barraDeMenu);
         this.setCenter(contenedorTerreno);
     }
-
-	public void setMenu() {
-    	
-        barraDeMenu = new BarraDeMenu(stage);
-        this.setTop(barraDeMenu);
-    }
-
-	public BarraDeMenu getBarraDeMenu() {
-		return barraDeMenu;
-	}
 }

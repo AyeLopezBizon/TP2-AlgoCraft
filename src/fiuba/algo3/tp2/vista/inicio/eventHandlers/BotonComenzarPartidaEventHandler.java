@@ -3,8 +3,8 @@ package fiuba.algo3.tp2.vista.inicio.eventHandlers;
 import fiuba.algo3.tp2.modelo.juego.Juego;
 import fiuba.algo3.tp2.modelo.jugador.Jugador;
 import fiuba.algo3.tp2.modelo.terreno.Terreno;
+import fiuba.algo3.tp2.vista.juego.BarraDeMenu;
 import fiuba.algo3.tp2.vista.juego.ContenedorJuego;
-import fiuba.algo3.tp2.vista.juego.eventHandler.AplicacionOnKeyPressEventHandler;
 import fiuba.algo3.tp2.vista.terreno.ContenedorTerreno;
 import fiuba.algo3.tp2.vista.terreno.VistaTerreno;
 import javafx.event.ActionEvent;
@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 public class BotonComenzarPartidaEventHandler implements EventHandler<ActionEvent> {
 
-	Stage stage;
+	private Stage stage;
 	
 	public BotonComenzarPartidaEventHandler(Stage stage) {
 		this.stage = stage;
@@ -33,11 +33,12 @@ public class BotonComenzarPartidaEventHandler implements EventHandler<ActionEven
 		Terreno terreno = juego.obtenerTerreno();
 		Jugador jugador = juego.obtenerJugador();
 		
+		BarraDeMenu barraDeMenu = new BarraDeMenu(stage);
 		ContenedorTerreno contenedorTerreno = new ContenedorTerreno(terreno);		
-		ContenedorJuego contenedorJuego = new ContenedorJuego(stage, contenedorTerreno);
+		ContenedorJuego contenedorJuego = new ContenedorJuego(stage, barraDeMenu, contenedorTerreno);
 		
 		VistaTerreno vistaTerreno = new VistaTerreno(terreno, contenedorTerreno);		
-		EscenaJuego escenaJuego = new EscenaJuego(stage, contenedorJuego, jugador, terreno);
+		EscenaJuego escenaJuego = new EscenaJuego(stage, contenedorJuego, barraDeMenu, jugador, terreno);
 		
 		AplicacionOnKeyPressEventHandler aplicacionOnKeyPressEventHandler = 
 				new AplicacionOnKeyPressEventHandler(escenaJuego);
