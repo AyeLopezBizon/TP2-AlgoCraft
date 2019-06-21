@@ -5,6 +5,7 @@ import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroNoEncontradoException;
 import fiuba.algo3.tp2.modelo.matriz.posicion.Posicion;
 import fiuba.algo3.tp2.modelo.terreno.OcupanteTerreno;
 import fiuba.algo3.tp2.modelo.terreno.Terreno;
+import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -27,7 +28,7 @@ public class ContenedorTerreno extends GridPane {
 		this.cantidadFilas = terreno.obtenerCantidadFilas();
 		this.terreno = terreno;
 		
-    	//setAlignment(Pos.CENTER);
+    	setAlignment(Pos.CENTER);
     	setGridLinesVisible(true);
     	
         Image imagen = new Image("file:src/fiuba/algo3/tp2/vista/resources/imagenes/terreno/fondo.jpg",
@@ -35,7 +36,7 @@ public class ContenedorTerreno extends GridPane {
         		terreno.obtenerCantidadFilas() * VistaTerreno.TAMANIO_NODO,
         		false,
         		true);
-        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         setBackground(new Background(imagenDeFondo));
         
         dibujarTerreno();
@@ -44,11 +45,13 @@ public class ContenedorTerreno extends GridPane {
 	public void dibujarTerreno() {
 		
 		for (int i = 0; i < terreno.obtenerCantidadFilas(); i++) {
-            RowConstraints row = new RowConstraints(VistaTerreno.TAMANIO_NODO);
+            RowConstraints row = new RowConstraints();
+            row.percentHeightProperty().set(5);
             getRowConstraints().add(row);
         }
         for (int i = 0; i < terreno.obtenerCantidadColumnas(); i++) {
-            ColumnConstraints col = new ColumnConstraints(VistaTerreno.TAMANIO_NODO);
+            ColumnConstraints col = new ColumnConstraints();
+            col.percentWidthProperty().set(3);
             getColumnConstraints().add(col);
         }
         
