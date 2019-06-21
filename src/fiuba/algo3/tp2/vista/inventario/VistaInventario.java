@@ -16,12 +16,6 @@ public class VistaInventario extends Vista {
 
 	public void mostrarInventario() throws NoSePuedeInicializarMesaDeTrabajoException {
 		
-		Stage stageCreador = new Stage();
-		ContenedorInventario contenedorInventario = new ContenedorInventario(this.inventario);		
-		Scene escenaCreadorHerramienta = new Scene(contenedorInventario);
-		stageCreador.setTitle("Inventario");
-		stageCreador.setScene(escenaCreadorHerramienta);
-		stageCreador.show();
 	
 	}
 }

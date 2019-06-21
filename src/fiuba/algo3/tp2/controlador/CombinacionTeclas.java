@@ -5,6 +5,7 @@ import java.util.Set;
 
 import fiuba.algo3.tp2.modelo.jugador.Jugador;
 import fiuba.algo3.tp2.modelo.matriz.direccion.Direccion;
+import fiuba.algo3.tp2.vista.inventario.ContenedorInventario;
 import fiuba.algo3.tp2.vista.juego.BarraDeMenu;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
@@ -15,13 +16,15 @@ public class CombinacionTeclas {
 	private Jugador jugador;
 	private Stage stage;
 	private BarraDeMenu menuBar;
+	private ContenedorInventario contenedorInventario;
 	
 	
-	public CombinacionTeclas(Stage stage, BarraDeMenu menuBar, Jugador jugador) {
+	public CombinacionTeclas(Stage stage, ContenedorInventario contenedorInventario, BarraDeMenu menuBar, Jugador jugador) {
 		this.jugador = jugador;
 		this.teclasPresionadas = new HashSet<KeyCode>();
 		this.stage = stage;
 		this.menuBar = menuBar;
+		this.contenedorInventario = contenedorInventario;
 	}
 
 	public void agregarTecla(KeyCode tecla) {
@@ -39,7 +42,7 @@ public class CombinacionTeclas {
 		} else if(teclasPresionadas.contains(KeyCode.E)) {
 			return new AccionUsuarioEquipar(jugador);
 		} else if(teclasPresionadas.contains(KeyCode.TAB)) {
-			return new AccionUsuarioAbrirInventario(jugador.obtenerInventario());
+			return new AccionUsuarioAbrirInventario(contenedorInventario);
 		} else if(teclasPresionadas.contains(KeyCode.SPACE)) {
 			return new AccionUsuarioLanzarGolpe(jugador, obtenerDireccion());
 		} else {

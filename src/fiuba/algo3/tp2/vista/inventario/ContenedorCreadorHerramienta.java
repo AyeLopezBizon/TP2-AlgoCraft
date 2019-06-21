@@ -7,9 +7,10 @@ public class ContenedorCreadorHerramienta extends HBox {
 	public ContenedorCreadorHerramienta() throws NoSePuedeInicializarMesaDeTrabajoException {
 		ContenedorMesaDeTrabajo contenedorMesa = new ContenedorMesaDeTrabajo();
 		this.getChildren().add(contenedorMesa);
-		
+		/*
 		ContenedorBotones contenedorBotones = new ContenedorBotones();
 		this.getChildren().add(contenedorBotones);
+		*/
 		
 	}
 }

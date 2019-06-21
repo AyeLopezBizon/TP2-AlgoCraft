@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.vista.inventario;
 import fiuba.algo3.tp2.modelo.herramienta.creador.MesaDeTrabajo;
 import fiuba.algo3.tp2.modelo.herramienta.creador.MesaDeTrabajoVacia;
 import fiuba.algo3.tp2.modelo.herramienta.creador.NoSePuedeInicializarMesaDeTrabajoException;
+import javafx.geometry.Pos;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
