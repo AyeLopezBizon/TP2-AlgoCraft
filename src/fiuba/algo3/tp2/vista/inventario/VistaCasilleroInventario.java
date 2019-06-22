@@ -16,6 +16,7 @@ public class VistaCasilleroInventario extends Pane implements Observer {
 
 	private Almacenable almacenable;
 	private VistaAlmacenable vistaAlmacenable;
+	private static Jugador jugador;
 
 	@Override
 	public void update(Observable o, Object arg) {
@@ -34,6 +35,21 @@ public class VistaCasilleroInventario extends Pane implements Observer {
 						.newInstance(this, almacenable);
 				
 				almacenable.addObserver(vistaAlmacenable);
+				setOnMouseClicked(new EventHandler<MouseEvent>() {
+				    @Override
+				    public void handle(MouseEvent mouseEvent) {
+				        if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+				            if(mouseEvent.getClickCount() == 2){
+				            	try {
+									jugador.equipar(almacenable.obtenerNumeroEspacioInventario());
+								} catch (EspacioVacioException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+				            }
+				        }
+				    }
+				});
 				vistaAlmacenable.dibujar();
 			} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
 					| InvocationTargetException | NoSuchMethodException | SecurityException
@@ -50,6 +66,7 @@ public class VistaCasilleroInventario extends Pane implements Observer {
 		
 		try {
 			this.almacenable = almacenable;
+			this.jugador = jugador;
 			String nombreClaseVista = "fiuba.algo3.tp2.vista.inventario.Vista" + almacenable.getClass().getSimpleName();
 		
 			vistaAlmacenable = (VistaAlmacenable) Class.forName(nombreClaseVista)

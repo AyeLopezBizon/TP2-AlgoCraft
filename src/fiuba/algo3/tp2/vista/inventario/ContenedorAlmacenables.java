@@ -19,16 +19,14 @@ public class ContenedorAlmacenables extends GridPane{
 	
 	public ContenedorAlmacenables(Jugador jugador, Inventario inventario) {
 		this.inventario = inventario;
-		this.cantFilas = 5;
-		this.cantColumnas = 10;
 		
 		this.setGridLinesVisible(true);
 		
-		for (int i = 0; i < cantFilas; i++) {
-            RowConstraints row = new RowConstraints(TAMANIO);
-            this.getRowConstraints().add(row);
-        }
-        for (int i = 0; i < cantColumnas; i++) {
+		
+        RowConstraints row = new RowConstraints(TAMANIO);
+        this.getRowConstraints().add(row);
+        
+        for (int i = 0; i < inventario.obtenerCapacidad(); i++) {
             ColumnConstraints col = new ColumnConstraints(TAMANIO);
             this.getColumnConstraints().add(col);
         }

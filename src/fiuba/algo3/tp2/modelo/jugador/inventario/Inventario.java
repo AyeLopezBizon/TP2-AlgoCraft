@@ -1,6 +1,5 @@
 package fiuba.algo3.tp2.modelo.jugador.inventario;
 
-import fiuba.algo3.tp2.modelo.herramienta.Herramienta;
 import fiuba.algo3.tp2.modelo.matriz.Matriz;
 import fiuba.algo3.tp2.modelo.matriz.casillero.Casillero;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroNoEncontradoException;

@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.modelo.jugador;
 
+import static org.junit.Assume.assumeThat;
+
 import java.util.Observable;
 import java.util.Observer;
 
@@ -50,8 +52,21 @@ public class Jugador extends Observable implements OcupanteTerreno {
 	}
 	
 	public void equipar(Herramienta herramienta) throws EspacioVacioException {
+		
 		herramientaActiva = herramienta;
 		inventario.quitar(herramienta.obtenerNumeroEspacioInventario());
+		
+		setChanged();
+		notifyObservers(new Object[] { "equipar", herramientaActiva });
+	}
+	
+	public void desequipar() throws InventarioLlenoException, NoSePudoAlmacenarItemException {
+		
+		inventario.almacenar(herramientaActiva);
+		herramientaActiva = null;
+		
+		setChanged();
+		notifyObservers(new Object[] { "desequipar", herramientaActiva });
 	}
 	
     public void golpear(Material material)
