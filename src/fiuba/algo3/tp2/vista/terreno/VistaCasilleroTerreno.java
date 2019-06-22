@@ -10,7 +10,7 @@ import javafx.scene.layout.Pane;
 public class VistaCasilleroTerreno extends Pane implements Observer {
 	
 	private OcupanteTerreno ocupanteTerreno;
-	VistaOcupanteTerreno vistaOcupanteTerreno;
+	private VistaOcupanteTerreno vistaOcupanteTerreno;
 	
 	@Override
 	public void update(Observable o, Object arg) {

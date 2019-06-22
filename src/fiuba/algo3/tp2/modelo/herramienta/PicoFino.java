@@ -9,8 +9,8 @@ import fiuba.algo3.tp2.modelo.material.Piedra;
 
 public class PicoFino extends Herramienta {
 	
-	public PicoFino(Durabilidad durabilidad, Golpe golpe) {
-		super(durabilidad, golpe);
+	public PicoFino(Durabilidad durabilidad, Golpe golpe, String nombre) {
+		super(durabilidad, golpe, nombre);
 	}
 
 	public void reducirDurabilidad(Madera madera) throws MaterialDestruidoNoSePuedeGolpearException {

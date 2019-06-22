@@ -33,7 +33,8 @@ public class VistaJugador extends Vista implements VistaOcupanteTerreno {
 		imagenJugadorPasivo = obtenerImagenJugadorPasivo();
         imagenJugadorGolpeando = obtenerImagenJugadorGolpeando();
         imageView = new ImageView();
-        
+        imageView.fitWidthProperty().bind(vistaCasilleroTerreno.widthProperty());
+        imageView.fitHeightProperty().bind(vistaCasilleroTerreno.heightProperty());
 		
         transicionGolpeandoAPasivo = crearTransicionGolpeandoAPasivo();
         

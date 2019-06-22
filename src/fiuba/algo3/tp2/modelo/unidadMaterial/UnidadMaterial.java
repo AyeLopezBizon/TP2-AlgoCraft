@@ -1,10 +1,15 @@
 package fiuba.algo3.tp2.modelo.unidadMaterial;
 
+import java.util.Observable;
+
 import fiuba.algo3.tp2.modelo.jugador.Jugador;
 import fiuba.algo3.tp2.modelo.jugador.inventario.Almacenable;
 import fiuba.algo3.tp2.modelo.material.UnidadMaterialVacio;
 
-public abstract class UnidadMaterial implements Almacenable {
+public abstract class UnidadMaterial extends Observable implements Almacenable {
+	
+	private Integer numeroEspacioInventario;
+	
 	
 	public abstract boolean esIgualA(UnidadMaterial otroMaterial);
 	
@@ -14,6 +19,16 @@ public abstract class UnidadMaterial implements Almacenable {
 	
 	public abstract boolean esIgualA(UnidadMetal otroMaterial);
 	
+	@Override
+	public void almacenar(Integer numeroEspacioInventario) {
+		this.numeroEspacioInventario = numeroEspacioInventario;
+	}
+
+	@Override
+	public Integer obtenerNumeroEspacioInventario() {
+		return numeroEspacioInventario;
+	}
+
 	public abstract boolean esIgualA(UnidadDiamante otroMaterial);
 
 	public abstract boolean esIgualA(UnidadMaterialVacio otroMaterial);

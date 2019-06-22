@@ -5,7 +5,7 @@ import fiuba.algo3.tp2.modelo.herramienta.golpe.Golpe;
 
 public class Pico extends Herramienta {
 	
-	public Pico(Durabilidad durabilidad, Golpe golpe) {
-		super(durabilidad, golpe);
+	public Pico(Durabilidad durabilidad, Golpe golpe, String nombre) {
+		super(durabilidad, golpe, nombre);
 	}
 }

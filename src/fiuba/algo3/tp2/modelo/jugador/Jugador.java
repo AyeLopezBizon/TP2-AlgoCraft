@@ -47,11 +47,11 @@ public class Jugador extends Observable implements OcupanteTerreno {
 		
 		Almacenable almacenable = inventario.obtenerAlmacenable(numeroEspacioInventario);
 		almacenable.equiparEn(this);
-		inventario.quitar(numeroEspacioInventario);
 	}
 	
-	public void equipar(Herramienta herramienta) {
+	public void equipar(Herramienta herramienta) throws EspacioVacioException {
 		herramientaActiva = herramienta;
+		inventario.quitar(herramienta.obtenerNumeroEspacioInventario());
 	}
 	
     public void golpear(Material material)

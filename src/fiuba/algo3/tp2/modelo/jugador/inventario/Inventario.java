@@ -1,6 +1,8 @@
 package fiuba.algo3.tp2.modelo.jugador.inventario;
 
+import fiuba.algo3.tp2.modelo.herramienta.Herramienta;
 import fiuba.algo3.tp2.modelo.matriz.Matriz;
+import fiuba.algo3.tp2.modelo.matriz.casillero.Casillero;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroNoEncontradoException;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroOcupadoException;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroVacioException;
@@ -23,7 +25,7 @@ public class Inventario {
 	public Integer obtenerCapacidad() {
 		return this.capacidad;
 	}
-
+	
 	public void almacenar(Almacenable almacenable) 
 			throws InventarioLlenoException, NoSePudoAlmacenarItemException {
 		
@@ -50,6 +52,10 @@ public class Inventario {
 		return almacenable;
 	}
 	
+	public Casillero<Almacenable> obtenerCasillero(Integer numeroEspacioInventario) throws CasilleroNoEncontradoException {
+		return itemsInventario.obtenerCasillero(new Posicion(numeroEspacioInventario, 1));
+	}
+	
 	public void quitar(Integer numeroEspacioInventario) throws EspacioVacioException {
 		
 		try {
@@ -71,6 +77,7 @@ public class Inventario {
 				itemsInventario.obtenerValor(posicionaAOcupar);
 			} catch(CasilleroVacioException e) {
 				itemsInventario.ocuparCasillero(almacenable, posicionaAOcupar);
+				almacenable.almacenar(indiceInventario);
 				itemFueAlmacenado = true;
 			}
 		}

@@ -71,53 +71,5 @@ public class ContenedorTerreno extends GridPane {
             }
         }
 	}
-	/*
-	public void ocuparCasillero(OcupanteTerreno ocupanteTerreno, Posicion posicion) {
-		
-		for(Node nodo : getChildren()) {
-			if(nodo instanceof Pane && 
-					new Posicion(GridPane.getColumnIndex(nodo) + 1, cantidadFilas - (GridPane.getRowIndex(nodo))).esIgualA(posicion)) {
-				
-				VistaOcupanteTerreno vista;
-				try {
-					String nombreClaseVista = "Vista" + ocupanteTerreno.getClass().getSimpleName();
-					vista = (VistaOcupanteTerreno) Class.forName(nombreClaseVista).getDeclaredConstructor(Pane.class, OcupanteTerreno.class).newInstance(nodo, ocupanteTerreno);
-					ocupanteTerreno.addObserver(vista);
-					vista.dibujar();
-				} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-	}
-	
-	public void desocuparCasillero(Posicion posicion) {
-		for(Node nodo : getChildren()) {
-			if(nodo instanceof Pane && 
-					new Posicion(GridPane.getColumnIndex(nodo) + 1, cantidadFilas - (GridPane.getRowIndex(nodo))).esIgualA(posicion)) {
-				((Pane)nodo).setBackground(null);
-			}
-		}
-	}
-	 
-	private Background obtenerImagen(OcupanteTerreno ocupanteTerreno) {
-		
-		String nombreImagen = ocupanteTerreno.getClass().getSimpleName() + ".png";
-
-		String imagePath = "file:src/fiuba/algo3/tp2/vista/resources/imagenes/terreno/" + nombreImagen;
-
-		Image imagen = new Image(imagePath,
-				VistaTerreno.TAMANIO_NODO,
-				VistaTerreno.TAMANIO_NODO,
-				false,
-				true);
-
-		BackgroundImage fondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-		
-		System.out.println(imagePath);
-		return new Background(fondo);
-	}
-*/
 
 }

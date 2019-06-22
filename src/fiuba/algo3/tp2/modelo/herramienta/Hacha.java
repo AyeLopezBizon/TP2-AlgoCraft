@@ -5,7 +5,7 @@ import fiuba.algo3.tp2.modelo.herramienta.golpe.Golpe;
 
 public class Hacha extends Herramienta {
 
-	public Hacha(Durabilidad durabilidad, Golpe golpe) {
-		super(durabilidad, golpe);
+	public Hacha(Durabilidad durabilidad, Golpe golpe, String nombre) {
+		super(durabilidad, golpe, nombre);
 	}
 }

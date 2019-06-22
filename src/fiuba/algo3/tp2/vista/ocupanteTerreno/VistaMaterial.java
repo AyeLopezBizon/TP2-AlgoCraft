@@ -8,6 +8,8 @@ import fiuba.algo3.tp2.modelo.terreno.OcupanteTerreno;
 import fiuba.algo3.tp2.vista.terreno.VistaCasilleroTerreno;
 import fiuba.algo3.tp2.vista.terreno.VistaOcupanteTerreno;
 import javafx.animation.RotateTransition;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 public abstract class VistaMaterial extends Vista implements VistaOcupanteTerreno {
@@ -16,14 +18,36 @@ public abstract class VistaMaterial extends Vista implements VistaOcupanteTerren
 	private Material material;
 	private boolean materialYaSeEncuentraDebilitado;
 	private RotateTransition transicionGolpe;
+	private ImageView imageView;
+	private Image imagenMaterial;
+	private Image imagenMaterialDebilitado;
 	
 
 	public VistaMaterial(VistaCasilleroTerreno vistaCasilleroTerreno, OcupanteTerreno ocupanteTerreno) {
+		
 		this.vistaCasilleroTerreno = vistaCasilleroTerreno;
 		this.material = (Material)ocupanteTerreno;
 		this.transicionGolpe = crearTransicionGolpe();
+		this.imagenMaterial = obtenerImagenMaterial();
+		this.imagenMaterialDebilitado = obtenerImagenMaterialDebilitado();
+		
+        imageView = new ImageView();
+        imageView.fitWidthProperty().bind(vistaCasilleroTerreno.widthProperty());
+        imageView.fitHeightProperty().bind(vistaCasilleroTerreno.heightProperty());
+        
+        vistaCasilleroTerreno.getChildren().add(imageView);
 	}
 	
+	private Image obtenerImagenMaterialDebilitado() {
+		String nombreImagen = "file:src/fiuba/algo3/tp2/vista/resources/imagenes/terreno/" + material.getClass().getSimpleName() + "MitadVida.png";
+		return new Image(nombreImagen);
+	}
+
+	private Image obtenerImagenMaterial() {
+		String nombreImagen = "file:src/fiuba/algo3/tp2/vista/resources/imagenes/terreno/" + material.getClass().getSimpleName() + ".png";
+		return new Image(nombreImagen);
+	}
+
 	@Override
 	public void update(Observable o, Object arg) {
 
@@ -47,8 +71,7 @@ public abstract class VistaMaterial extends Vista implements VistaOcupanteTerren
 
 			if(durabilidad.compareTo(durabilidadMaxima.divide(new BigDecimal(2))) <= 0) {
 
-				String nombreImagen = material.getClass().getSimpleName() + "MitadVida.png";
-				vistaCasilleroTerreno.setBackground(obtenerImagen(nombreImagen));
+				imageView.setImage(imagenMaterialDebilitado);
 				materialYaSeEncuentraDebilitado = true;
 			}
 		}
@@ -66,7 +89,7 @@ public abstract class VistaMaterial extends Vista implements VistaOcupanteTerren
 
 	@Override
 	public void dibujar() {
-		String nombreImagen = material.getClass().getSimpleName() + ".png";
-		vistaCasilleroTerreno.setBackground(obtenerImagen(nombreImagen));
+		
+		imageView.setImage(imagenMaterial);
 	}
 }

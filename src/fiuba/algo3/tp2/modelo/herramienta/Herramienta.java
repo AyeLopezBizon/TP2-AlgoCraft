@@ -1,12 +1,14 @@
 package fiuba.algo3.tp2.modelo.herramienta;
 
 import java.math.BigDecimal;
+import java.util.Observable;
 
 import fiuba.algo3.tp2.modelo.herramienta.durabilidad.Durabilidad;
 import fiuba.algo3.tp2.modelo.herramienta.durabilidad.DurabilidadDesgastadaNoSePuedeReducirException;
 import fiuba.algo3.tp2.modelo.herramienta.golpe.Golpe;
 import fiuba.algo3.tp2.modelo.jugador.Jugador;
 import fiuba.algo3.tp2.modelo.jugador.inventario.Almacenable;
+import fiuba.algo3.tp2.modelo.jugador.inventario.EspacioVacioException;
 import fiuba.algo3.tp2.modelo.material.Diamante;
 import fiuba.algo3.tp2.modelo.material.Madera;
 import fiuba.algo3.tp2.modelo.material.Material;
@@ -14,18 +16,35 @@ import fiuba.algo3.tp2.modelo.material.MaterialDestruidoNoSePuedeGolpearExceptio
 import fiuba.algo3.tp2.modelo.material.Metal;
 import fiuba.algo3.tp2.modelo.material.Piedra;
 
-public abstract class Herramienta implements Almacenable {
+public abstract class Herramienta extends Observable implements Almacenable {
 	
 	protected Durabilidad durabilidad;
 	protected Golpe golpe;
+	protected String nombre;
+	private Integer numeroEspacioInventario;
 	
-	public Herramienta(Durabilidad durabilidad, Golpe golpe) {
+	public Herramienta(Durabilidad durabilidad, Golpe golpe, String nombre) {
 		this.durabilidad = durabilidad;
 		this.golpe = golpe;
+		this.nombre = nombre;
+	}
+	
+	@Override
+	public void almacenar(Integer numeroEspacioInventario) {
+		this.numeroEspacioInventario = numeroEspacioInventario;
 	}
 
 	@Override
-	public void equiparEn(Jugador jugador) {
+	public Integer obtenerNumeroEspacioInventario() {
+		return numeroEspacioInventario;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	@Override
+	public void equiparEn(Jugador jugador) throws EspacioVacioException {
 		jugador.equipar(this);
 	}
 

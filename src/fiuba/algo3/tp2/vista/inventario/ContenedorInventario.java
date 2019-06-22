@@ -35,7 +35,7 @@ public class ContenedorInventario extends VBox{
 
 			this.getChildren().add(contenedorCreador);
 			
-			ContenedorAlmacenables contenedorAlmacenables = new ContenedorAlmacenables(inventario);
+			ContenedorAlmacenables contenedorAlmacenables = new ContenedorAlmacenables(jugador, inventario);
 			this.getChildren().add(contenedorAlmacenables);
 		} catch (NoSePuedeInicializarMesaDeTrabajoException e) {
 			// TODO Auto-generated catch block
