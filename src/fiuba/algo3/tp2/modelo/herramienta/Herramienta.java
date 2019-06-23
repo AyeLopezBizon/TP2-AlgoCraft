@@ -51,6 +51,10 @@ public abstract class Herramienta extends Observable implements Almacenable {
 	public BigDecimal getDurabilidad() {
 		return durabilidad.getValor();
 	}
+	
+	public BigDecimal getMaximaDurabilidad() {
+		return durabilidad.getMaximoValor();
+	}
 
 	public BigDecimal getFuerza() {
 		return golpe.getFuerza();
@@ -66,7 +70,7 @@ public abstract class Herramienta extends Observable implements Almacenable {
 			throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
 
 		try {
-			durabilidad.reducir();
+			reducirDurabilidad();
 		} catch (DurabilidadDesgastadaNoSePuedeReducirException e) {
 			throw new HerramientaDesgastadaNoSePuedeUsarException();
 		}
@@ -78,7 +82,7 @@ public abstract class Herramienta extends Observable implements Almacenable {
 			throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
 
 		try {
-			durabilidad.reducir();
+			reducirDurabilidad();
 		} catch (DurabilidadDesgastadaNoSePuedeReducirException e) {
 			throw new HerramientaDesgastadaNoSePuedeUsarException();
 		}
@@ -90,11 +94,11 @@ public abstract class Herramienta extends Observable implements Almacenable {
 			throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
 
 		try {
-			durabilidad.reducir();
+			reducirDurabilidad();
 		} catch (DurabilidadDesgastadaNoSePuedeReducirException e) {
 			throw new HerramientaDesgastadaNoSePuedeUsarException();
 		}
-
+		
 		golpe.golpear(metal);
 	}
 
@@ -102,12 +106,20 @@ public abstract class Herramienta extends Observable implements Almacenable {
 			throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
 
 		try {
-			durabilidad.reducir();
+			reducirDurabilidad();
 		}
 		catch (DurabilidadDesgastadaNoSePuedeReducirException e) {
 			throw new HerramientaDesgastadaNoSePuedeUsarException();
 		}
 
 		golpe.golpear(diamante);
+	}
+	
+	private void reducirDurabilidad() throws DurabilidadDesgastadaNoSePuedeReducirException {
+		
+		durabilidad.reducir();
+		
+		setChanged();
+		notifyObservers(new Object[] {"reducirDurabilidad", this});
 	}
 }

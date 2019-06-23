@@ -7,6 +7,7 @@ import fiuba.algo3.tp2.modelo.herramienta.Herramienta;
 
 public class VistaHerramientaActiva implements Observer {
 	
+	private Herramienta herramientaActiva;
 	private ContenedorHerramientaActiva contenedorHerramientaActiva;
 	
 	
@@ -22,10 +23,17 @@ public class VistaHerramientaActiva implements Observer {
 		
 		if(accion.equals("equipar")) {
 			
-			Herramienta herramientaActiva = (Herramienta)parametros[1];
+			herramientaActiva = (Herramienta)parametros[1];
 			contenedorHerramientaActiva.dibujar(herramientaActiva);
+			herramientaActiva.addObserver(this);
+			
 		} else if(accion.equals("desequipar")) {
+			
 			contenedorHerramientaActiva.dibujar(null);
+			herramientaActiva.deleteObserver(this);
+			
+		} else if(accion.equals("reducirDurabilidad")) {
+			contenedorHerramientaActiva.dibujar(herramientaActiva);
 		}
 	}
 }

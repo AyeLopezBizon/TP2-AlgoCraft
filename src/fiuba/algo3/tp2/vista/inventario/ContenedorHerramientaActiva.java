@@ -5,6 +5,7 @@ import fiuba.algo3.tp2.modelo.jugador.Jugador;
 import fiuba.algo3.tp2.modelo.jugador.inventario.InventarioLlenoException;
 import fiuba.algo3.tp2.modelo.jugador.inventario.NoSePudoAlmacenarItemException;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
@@ -15,15 +16,19 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
-public class ContenedorHerramientaActiva extends Pane {
+public class ContenedorHerramientaActiva extends StackPane {
 
+	private BarraDurabilidad barraDurabilidad;
 	private ImageView imageView;
 	
 	
 	public ContenedorHerramientaActiva(Jugador jugador) {
 		
+		
+		setAlignment(Pos.BOTTOM_CENTER);
 		setPrefWidth(100);
 		setMaxWidth(100);
 		setPrefHeight(100);
@@ -31,11 +36,19 @@ public class ContenedorHerramientaActiva extends Pane {
 		
 		this.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(4))));
 		
+		Pane imagenHerramienta = new Pane();
+		
+		
 		imageView = new ImageView();
-        imageView.fitWidthProperty().bind(this.widthProperty());
-        imageView.fitHeightProperty().bind(this.heightProperty());
-        getChildren().add(imageView);
+        imageView.fitWidthProperty().bind(imagenHerramienta.widthProperty());
+        imageView.fitHeightProperty().bind(imagenHerramienta.heightProperty());
+        imagenHerramienta.getChildren().add(imageView);
         
+        getChildren().add(imagenHerramienta);
+        barraDurabilidad = new BarraDurabilidad();
+        barraDurabilidad.prefWidthProperty().bind(widthProperty());
+        
+        getChildren().add(barraDurabilidad);
         setOnMouseClicked(new EventHandler<MouseEvent>() {
 		    @Override
 		    public void handle(MouseEvent mouseEvent) {
@@ -59,6 +72,8 @@ public class ContenedorHerramientaActiva extends Pane {
 			imageView.setImage(null);
 		} else {
 			imageView.setImage(new Image("file:src/fiuba/algo3/tp2/vista/resources/imagenes/inventario/" + herramientaActiva.getNombre() + ".png"));
+			barraDurabilidad.dibujar(herramientaActiva.getMaximaDurabilidad().doubleValue(), 
+					herramientaActiva.getDurabilidad().doubleValue());
 		}
 	}
 }
