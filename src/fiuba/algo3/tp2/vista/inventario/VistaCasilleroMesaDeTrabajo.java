@@ -30,7 +30,7 @@ public class VistaCasilleroMesaDeTrabajo extends Pane implements Observer {
 	private VistaUnidadMaterial vista;
 	
 	
-	public VistaCasilleroMesaDeTrabajo(Inventario inventario, MesaDeTrabajo mesaDeTrabajo, Posicion posicion) {
+	public VistaCasilleroMesaDeTrabajo(final Inventario inventario, final MesaDeTrabajo mesaDeTrabajo, final Posicion posicion) {
 		
 		setOnDragOver(new EventHandler<DragEvent>() {
 		    public void handle(DragEvent event) {

@@ -32,8 +32,8 @@ public class CreadorDeHerramientaTest {
 		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(3), new Integer(2)));
 		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(3), new Integer(3)));
 
-		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
-		Herramienta herramienta = creador.crearHerramienta();
+		CreadorHerramienta creador = new CreadorHerramienta();
+		Herramienta herramienta = creador.crearHerramienta(mesaDeTrabajo);
 
 		Assert.assertEquals( new BigDecimal(100), herramienta.getDurabilidad());
 		Assert.assertEquals(herramienta.getFuerza(), new BigDecimal(2));
@@ -55,8 +55,8 @@ public class CreadorDeHerramientaTest {
 		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(3), new Integer(2)));
 		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(3), new Integer(3)));
 
-		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
-		Herramienta herramienta = creador.crearHerramienta();
+		CreadorHerramienta creador = new CreadorHerramienta();
+		Herramienta herramienta = creador.crearHerramienta(mesaDeTrabajo);
 
 		Assert.assertEquals(new BigDecimal(200), herramienta.getDurabilidad());
 		Assert.assertEquals(new BigDecimal(5), herramienta.getFuerza());
@@ -79,8 +79,8 @@ public class CreadorDeHerramientaTest {
 		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(3), new Integer(2)));
 		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(3), new Integer(3)));
 
-		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
-		Herramienta herramienta = creador.crearHerramienta();
+		CreadorHerramienta creador = new CreadorHerramienta();
+		Herramienta herramienta = creador.crearHerramienta(mesaDeTrabajo);
 
 		Assert.assertEquals(herramienta.getDurabilidad(), new BigDecimal(400));
 		Assert.assertEquals(herramienta.getFuerza(), new BigDecimal(10));
@@ -102,8 +102,8 @@ public class CreadorDeHerramientaTest {
 		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(3), new Integer(2)));
 		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(3), new Integer(3)));
 
-		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
-		Herramienta herramienta = creador.crearHerramienta();
+		CreadorHerramienta creador = new CreadorHerramienta();
+		Herramienta herramienta = creador.crearHerramienta(mesaDeTrabajo);
 
 
 		Assert.assertEquals(new BigDecimal(100), herramienta.getDurabilidad());
@@ -126,8 +126,8 @@ public class CreadorDeHerramientaTest {
 		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(3), new Integer(2)));
 		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(3), new Integer(3)));
 
-		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
-		Herramienta herramienta = creador.crearHerramienta();
+		CreadorHerramienta creador = new CreadorHerramienta();
+		Herramienta herramienta = creador.crearHerramienta(mesaDeTrabajo);
 
 		Assert.assertEquals(new BigDecimal(200), herramienta.getDurabilidad());
 		Assert.assertEquals(new BigDecimal(4), herramienta.getFuerza());
@@ -149,8 +149,8 @@ public class CreadorDeHerramientaTest {
 		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(3), new Integer(2)));
 		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(3), new Integer(3)));
 
-		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
-		Herramienta herramienta = creador.crearHerramienta();
+		CreadorHerramienta creador = new CreadorHerramienta();
+		Herramienta herramienta = creador.crearHerramienta(mesaDeTrabajo);
 
 		Assert.assertEquals(new BigDecimal(400), herramienta.getDurabilidad());
 		Assert.assertEquals(new BigDecimal(12), herramienta.getFuerza());
@@ -172,8 +172,8 @@ public class CreadorDeHerramientaTest {
 		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(3), new Integer(2)));
 		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(3), new Integer(3)));
 
-		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
-		Herramienta herramienta = creador.crearHerramienta();
+		CreadorHerramienta creador = new CreadorHerramienta();
+		Herramienta herramienta = creador.crearHerramienta(mesaDeTrabajo);
 
 		Assert.assertEquals(new BigDecimal(1000), herramienta.getDurabilidad());
 		Assert.assertEquals(new BigDecimal(20), herramienta.getFuerza());
@@ -191,7 +191,7 @@ public class CreadorDeHerramientaTest {
 			}
 		}
 
-		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
-		creador.crearHerramienta();
+		CreadorHerramienta creador = new CreadorHerramienta();
+		creador.crearHerramienta(mesaDeTrabajo);
 	}
 }

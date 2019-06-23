@@ -16,11 +16,12 @@ public class ReproductorSonido {
 	public static void cargar() {
 		
 		sonidos = new HashMap<String, MediaPlayer>();
-		
+		/*
 		sonidos.put("GOLPE_MATERIAL", newMediaPlayer("src/fiuba/algo3/tp2/vista/resources/sonidos/Golpear.m4a"));
 		sonidos.put("RECOGER_UNIDAD_MATERIAL", newMediaPlayer("src/fiuba/algo3/tp2/vista/resources/sonidos/RecogerUnidadMaterial.m4a"));
 		sonidos.put("MOVER", newMediaPlayer("src/fiuba/algo3/tp2/vista/resources/sonidos/Mover.m4a"));
 		sonidos.put("CLICK", newMediaPlayer("src/fiuba/algo3/tp2/vista/resources/sonidos/Click.m4a"));
+		 */
 	}
 	
 	public static void reproducir(String sonido) {

@@ -37,7 +37,7 @@ public class ContenedorMesaDeTrabajo extends GridPane{
         		Casillero<UnidadMaterial> casilleroMesaDeTrabajo;
     			try {
     				Posicion posicion = new Posicion(i, j);
-    				casilleroMesaDeTrabajo = mesaDeTrabajo.obtenerCasillero(new Posicion(i, j));
+    				casilleroMesaDeTrabajo = mesaDeTrabajo.obtenerCasillero(posicion);
     				VistaCasilleroMesaDeTrabajo vista = new VistaCasilleroMesaDeTrabajo(inventario, mesaDeTrabajo, posicion);
     	        	casilleroMesaDeTrabajo.addObserver(vista);
     	        	add(vista, i - 1, j - 1);

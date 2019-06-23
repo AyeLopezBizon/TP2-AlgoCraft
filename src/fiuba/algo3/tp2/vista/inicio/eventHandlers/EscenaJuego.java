@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.vista.inicio.eventHandlers;
 
 import fiuba.algo3.tp2.controlador.CombinacionTeclas;
+import fiuba.algo3.tp2.controlador.TeclaIncorrectaException;
 import fiuba.algo3.tp2.modelo.jugador.Jugador;
 import fiuba.algo3.tp2.modelo.terreno.Terreno;
 import fiuba.algo3.tp2.vista.inventario.ContenedorInventario;
@@ -24,7 +25,12 @@ public class EscenaJuego extends Scene {
 	public void presionarTecla(KeyCode tecla) {
 		
 		combinacionTeclas.agregarTecla(tecla);
-		combinacionTeclas.obtenerAccion().ejecutar();
+		try {
+			combinacionTeclas.obtenerAccion().ejecutar();
+		} catch (TeclaIncorrectaException e) {
+			//e.printStackTrace();
+			return;
+		}
 	}
 
 	public void soltarTecla(KeyCode tecla) {

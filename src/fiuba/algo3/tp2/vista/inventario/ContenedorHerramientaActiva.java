@@ -25,7 +25,7 @@ public class ContenedorHerramientaActiva extends StackPane {
 	private ImageView imageView;
 	
 	
-	public ContenedorHerramientaActiva(Jugador jugador) {
+	public ContenedorHerramientaActiva(final Jugador jugador) {
 		
 		setAlignment(Pos.BOTTOM_CENTER);
 		setPrefWidth(100);

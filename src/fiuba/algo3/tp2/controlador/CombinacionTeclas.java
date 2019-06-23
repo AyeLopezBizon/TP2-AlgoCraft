@@ -35,7 +35,7 @@ public class CombinacionTeclas {
 		teclasPresionadas.remove(tecla);
 	}
 	
-	public AccionUsuario obtenerAccion() {
+	public AccionUsuario obtenerAccion() throws TeclaIncorrectaException {
 		
 		if(teclasPresionadas.contains(KeyCode.ESCAPE)) {
 			return new AccionUsuarioSalirPantallaCompleta(stage, menuBar);
@@ -50,7 +50,7 @@ public class CombinacionTeclas {
 		}
 	}
 
-	private Direccion obtenerDireccion() {
+	private Direccion obtenerDireccion() throws TeclaIncorrectaException {
 		
 		if (teclasPresionadas.contains(KeyCode.UP) && teclasPresionadas.contains(KeyCode.RIGHT)) {
 			return Direccion.DIAGONAL_SUPERIOR_DERECHA;
@@ -68,8 +68,8 @@ public class CombinacionTeclas {
 	    	return Direccion.ARRIBA;
 	    } else if (teclasPresionadas.contains(KeyCode.DOWN)) {
 	    	return Direccion.ABAJO;
-	    } else {
-	    	return null;
 	    }
+
+		throw new TeclaIncorrectaException();
 	}
 }

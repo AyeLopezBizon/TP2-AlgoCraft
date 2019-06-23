@@ -80,7 +80,7 @@ public class VistaCasilleroInventario extends Pane implements Observer {
 		}
 	}
 	
-	public void dibujar(Integer numeroCasillero, Jugador jugador, Almacenable almacenable) {
+	public void dibujar(final Integer numeroCasillero, final Jugador jugador, final Almacenable almacenable) {
 		
 		try {
 			this.almacenable = almacenable;

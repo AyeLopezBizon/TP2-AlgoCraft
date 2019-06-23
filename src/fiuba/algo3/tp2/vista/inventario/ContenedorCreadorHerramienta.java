@@ -16,7 +16,7 @@ public class ContenedorCreadorHerramienta extends HBox {
 		ContenedorMesaDeTrabajo contenedorMesa = new ContenedorMesaDeTrabajo(inventario, mesaDeTrabajo);
 		this.getChildren().add(contenedorMesa);
 		
-		ContenedorBotones contenedorBotones = new ContenedorBotones();
+		ContenedorBotones contenedorBotones = new ContenedorBotones(inventario, mesaDeTrabajo);
 		this.getChildren().add(contenedorBotones);
 		
 	}
