@@ -34,6 +34,10 @@ public class VistaHerramientaActiva implements Observer {
 			
 		} else if(accion.equals("reducirDurabilidad")) {
 			contenedorHerramientaActiva.dibujar(herramientaActiva);
+		} else if(accion.equals("destruirHerramienta")) {
+			
+			herramientaActiva = null;
+			contenedorHerramientaActiva.dibujar(null);
 		}
 	}
 }

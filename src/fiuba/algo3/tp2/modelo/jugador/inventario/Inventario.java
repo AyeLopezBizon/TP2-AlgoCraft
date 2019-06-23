@@ -59,6 +59,7 @@ public class Inventario {
 		
 		try {
 			itemsInventario.desocuparCasillero(new Posicion(numeroEspacioInventario, 1));
+			cantidadEspaciosOcupados--;
 		} catch (CasilleroNoEncontradoException | CasilleroVacioException e) {
 			throw new EspacioVacioException();
 		}

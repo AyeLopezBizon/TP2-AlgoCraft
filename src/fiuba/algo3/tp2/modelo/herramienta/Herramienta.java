@@ -22,6 +22,7 @@ public abstract class Herramienta extends Observable implements Almacenable {
 	protected Golpe golpe;
 	protected String nombre;
 	private Integer numeroEspacioInventario;
+	private Jugador jugador;
 	
 	public Herramienta(Durabilidad durabilidad, Golpe golpe, String nombre) {
 		this.durabilidad = durabilidad;
@@ -45,6 +46,7 @@ public abstract class Herramienta extends Observable implements Almacenable {
 
 	@Override
 	public void equiparEn(Jugador jugador) throws EspacioVacioException {
+		this.jugador = jugador;
 		jugador.equipar(this);
 	}
 
@@ -119,7 +121,20 @@ public abstract class Herramienta extends Observable implements Almacenable {
 		
 		durabilidad.reducir();
 		
+		if(estaRota()) {
+			jugador.destruirHerramienta(this);
+		}
+		
 		setChanged();
 		notifyObservers(new Object[] {"reducirDurabilidad", this});
+	}
+
+	private boolean estaRota() {
+		
+		return durabilidad.getValor().equals(new BigDecimal(0));
+	}
+
+	public void desequiparDe(Jugador jugador) {
+		this.jugador = null;
 	}
 }

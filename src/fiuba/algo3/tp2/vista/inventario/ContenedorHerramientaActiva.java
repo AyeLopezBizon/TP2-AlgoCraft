@@ -48,7 +48,6 @@ public class ContenedorHerramientaActiva extends StackPane {
         barraDurabilidad = new BarraDurabilidad();
         barraDurabilidad.prefWidthProperty().bind(widthProperty());
         
-        getChildren().add(barraDurabilidad);
         setOnMouseClicked(new EventHandler<MouseEvent>() {
 		    @Override
 		    public void handle(MouseEvent mouseEvent) {
@@ -68,12 +67,14 @@ public class ContenedorHerramientaActiva extends StackPane {
 
 	public void dibujar(Herramienta herramientaActiva) {
 		
+		getChildren().remove(barraDurabilidad);
 		if(herramientaActiva == null) {
 			imageView.setImage(null);
 		} else {
 			imageView.setImage(new Image("file:src/fiuba/algo3/tp2/vista/resources/imagenes/inventario/" + herramientaActiva.getNombre() + ".png"));
 			barraDurabilidad.dibujar(herramientaActiva.getMaximaDurabilidad().doubleValue(), 
 					herramientaActiva.getDurabilidad().doubleValue());
+			getChildren().add(barraDurabilidad);
 		}
 	}
 }
