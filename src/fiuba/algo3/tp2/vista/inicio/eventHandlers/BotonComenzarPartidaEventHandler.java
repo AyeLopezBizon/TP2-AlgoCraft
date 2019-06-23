@@ -10,6 +10,7 @@ import fiuba.algo3.tp2.vista.inventario.ContenedorInventario;
 import fiuba.algo3.tp2.vista.juego.BarraDeMenu;
 import fiuba.algo3.tp2.vista.juego.ContenedorJuego;
 import fiuba.algo3.tp2.vista.juego.ContenedorPrincipal;
+import fiuba.algo3.tp2.vista.sonido.ReproductorSonido;
 import fiuba.algo3.tp2.vista.terreno.ContenedorTerreno;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -25,6 +26,8 @@ public class BotonComenzarPartidaEventHandler implements EventHandler<ActionEven
 	
 	@Override
 	public void handle(ActionEvent actionEvent) {
+		
+		ReproductorSonido.reproducir("CLICK");
 		
 		Juego juego = null;
 		try {

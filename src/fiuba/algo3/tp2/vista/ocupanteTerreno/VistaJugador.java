@@ -4,6 +4,7 @@ import java.util.Observable;
 
 import fiuba.algo3.tp2.modelo.jugador.Jugador;
 import fiuba.algo3.tp2.modelo.terreno.OcupanteTerreno;
+import fiuba.algo3.tp2.vista.sonido.ReproductorSonido;
 import fiuba.algo3.tp2.vista.terreno.VistaCasilleroTerreno;
 import fiuba.algo3.tp2.vista.terreno.VistaOcupanteTerreno;
 import fiuba.algo3.tp2.vista.terreno.VistaTerreno;
@@ -70,6 +71,8 @@ public class VistaJugador extends Vista implements VistaOcupanteTerreno {
 		if(accion.equals("lanzarGolpe")) {
 			imageView.setImage(imagenJugadorGolpeando);
 			transicionGolpeandoAPasivo.play();
+		} else if (accion.equals("mover")) {
+			ReproductorSonido.reproducir("MOVER");
 		}
 	}
 

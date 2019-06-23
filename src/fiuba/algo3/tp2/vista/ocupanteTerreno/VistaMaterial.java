@@ -5,6 +5,7 @@ import java.util.Observable;
 
 import fiuba.algo3.tp2.modelo.material.Material;
 import fiuba.algo3.tp2.modelo.terreno.OcupanteTerreno;
+import fiuba.algo3.tp2.vista.sonido.ReproductorSonido;
 import fiuba.algo3.tp2.vista.terreno.VistaCasilleroTerreno;
 import fiuba.algo3.tp2.vista.terreno.VistaOcupanteTerreno;
 import javafx.animation.RotateTransition;
@@ -59,9 +60,12 @@ public abstract class VistaMaterial extends Vista implements VistaOcupanteTerren
 			BigDecimal danio = (BigDecimal)parametros[1];
 			BigDecimal durabilidad = (BigDecimal)parametros[2];
 			BigDecimal durabilidadMaxima = (BigDecimal)parametros[3];
-
+			
 			transicionGolpe.play();
+			ReproductorSonido.reproducir("GOLPE_MATERIAL");
 			dibujarMaterialDebilitado(durabilidad, durabilidadMaxima);
+		} else if(accion.equals("materialDestruido")) {
+			ReproductorSonido.reproducir("RECOGER_UNIDAD_MATERIAL");
 		}
 	}
 

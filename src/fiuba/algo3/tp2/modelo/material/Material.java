@@ -48,6 +48,9 @@ public abstract class Material extends Observable implements Golpeable, Ocupante
 			jugador.golpear(this);
 			System.out.println(durabilidad);
 			if(estaRoto()) {
+				setChanged();
+				notifyObservers(new Object[] { "materialDestruido" });
+				
 				terreno.desocuparCasillero(posicion);
 				jugador.almacenar(obtenerUnidadMaterial());
 			}

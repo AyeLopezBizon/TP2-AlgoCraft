@@ -109,6 +109,9 @@ public class Jugador extends Observable implements OcupanteTerreno {
 		Posicion posicionFinal = direccion.obtenerPosicion(posicion);
 		terreno.ocuparCasillero(this, posicionFinal);
 		terreno.desocuparCasillero(posicionInicial);
+		
+		setChanged();
+		notifyObservers(new Object[] {"mover"});
 	}
 
 	@Override

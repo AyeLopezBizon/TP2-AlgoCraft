@@ -15,6 +15,7 @@ public class BarraDeMenu extends MenuBar {
 	
 	    Menu menuArchivo = new Menu("Archivo");
 	    Menu menuVer = new Menu("Ver");
+	    Menu menuSonido = new Menu("Sonido");
 	
 	    MenuItem opcionSalir = new MenuItem("Salir");
 	    opcionSalir.setOnAction(new OpcionSalirEventHandler());
@@ -22,12 +23,16 @@ public class BarraDeMenu extends MenuBar {
 	    OpcionPantallaCompletaEventHandler opcionPantallaCompletaHandler = new OpcionPantallaCompletaEventHandler(stage, opcionPantallaCompleta);
 	    opcionPantallaCompleta.setOnAction(opcionPantallaCompletaHandler);
 	    opcionPantallaCompleta.setDisable(true);
+	    
+	    MenuItem opcionSilenciar = new MenuItem("Mute");
+	    OpcionSilenciarEventHandler opcionSilenciarEventHandler = new OpcionSilenciarEventHandler(opcionSilenciar);
+	    opcionSilenciar.setOnAction(opcionSilenciarEventHandler);
 	
 	    menuArchivo.getItems().addAll(opcionSalir);
 	    menuVer.getItems().addAll(opcionPantallaCompleta);
-	    
+	    menuSonido.getItems().addAll(opcionSilenciar);
 	
-	    this.getMenus().addAll(menuArchivo, menuVer);
+	    this.getMenus().addAll(menuArchivo, menuVer, menuSonido);
 	}
 
 	public void aplicacionMaximizada() {

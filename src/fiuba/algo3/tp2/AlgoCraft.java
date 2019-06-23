@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2;
 
 import fiuba.algo3.tp2.vista.inicio.ContenedorInicio;
+import fiuba.algo3.tp2.vista.sonido.ReproductorSonido;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -15,7 +16,9 @@ public class AlgoCraft extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		
 		primaryStage.setTitle("Algo Craft");
-		
+
+		ReproductorSonido.cargar();
+
 		ContenedorInicio contenedorInicio = new ContenedorInicio(primaryStage);
         Scene escenaBienvenidos = new Scene(contenedorInicio);
 		
