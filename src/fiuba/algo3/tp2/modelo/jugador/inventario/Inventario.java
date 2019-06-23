@@ -77,7 +77,7 @@ public class Inventario {
 				itemsInventario.obtenerValor(posicionaAOcupar);
 			} catch(CasilleroVacioException e) {
 				itemsInventario.ocuparCasillero(almacenable, posicionaAOcupar);
-				almacenable.almacenar(indiceInventario);
+				almacenable.almacenar(this, indiceInventario);
 				itemFueAlmacenado = true;
 			}
 		}

@@ -3,18 +3,22 @@ package fiuba.algo3.tp2.modelo.herramienta;
 import java.math.BigDecimal;
 import java.util.Observable;
 
+import fiuba.algo3.tp2.modelo.herramienta.creador.MesaDeTrabajo;
+import fiuba.algo3.tp2.modelo.herramienta.creador.PosicionIncorrectaException;
 import fiuba.algo3.tp2.modelo.herramienta.durabilidad.Durabilidad;
 import fiuba.algo3.tp2.modelo.herramienta.durabilidad.DurabilidadDesgastadaNoSePuedeReducirException;
 import fiuba.algo3.tp2.modelo.herramienta.golpe.Golpe;
 import fiuba.algo3.tp2.modelo.jugador.Jugador;
 import fiuba.algo3.tp2.modelo.jugador.inventario.Almacenable;
 import fiuba.algo3.tp2.modelo.jugador.inventario.EspacioVacioException;
+import fiuba.algo3.tp2.modelo.jugador.inventario.Inventario;
 import fiuba.algo3.tp2.modelo.material.Diamante;
 import fiuba.algo3.tp2.modelo.material.Madera;
 import fiuba.algo3.tp2.modelo.material.Material;
 import fiuba.algo3.tp2.modelo.material.MaterialDestruidoNoSePuedeGolpearException;
 import fiuba.algo3.tp2.modelo.material.Metal;
 import fiuba.algo3.tp2.modelo.material.Piedra;
+import fiuba.algo3.tp2.modelo.matriz.posicion.Posicion;
 
 public abstract class Herramienta extends Observable implements Almacenable {
 	
@@ -23,6 +27,7 @@ public abstract class Herramienta extends Observable implements Almacenable {
 	protected String nombre;
 	private Integer numeroEspacioInventario;
 	private Jugador jugador;
+	private Inventario inventario;
 	
 	public Herramienta(Durabilidad durabilidad, Golpe golpe, String nombre) {
 		this.durabilidad = durabilidad;
@@ -31,7 +36,14 @@ public abstract class Herramienta extends Observable implements Almacenable {
 	}
 	
 	@Override
-	public void almacenar(Integer numeroEspacioInventario) {
+	public void agregarAMesaDeTrabajo(MesaDeTrabajo mesaDeTrabajo, Posicion posicion)
+			throws PosicionIncorrectaException {
+		
+	}
+
+	@Override
+	public void almacenar(Inventario inventario, Integer numeroEspacioInventario) {
+		this.inventario = inventario;
 		this.numeroEspacioInventario = numeroEspacioInventario;
 	}
 

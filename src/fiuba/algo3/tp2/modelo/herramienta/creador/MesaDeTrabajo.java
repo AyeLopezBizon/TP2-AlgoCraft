@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.modelo.herramienta.creador;
 import fiuba.algo3.tp2.modelo.herramienta.Herramienta;
 import fiuba.algo3.tp2.modelo.material.UnidadMaterialVacio;
 import fiuba.algo3.tp2.modelo.matriz.Matriz;
+import fiuba.algo3.tp2.modelo.matriz.casillero.Casillero;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroNoEncontradoException;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroOcupadoException;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroVacioException;
@@ -111,5 +112,9 @@ public abstract class MesaDeTrabajo{
 
 	public int getCantidadDeColumnas() {
 		return this.cantidadDeColumnas;
+	}
+
+	public Casillero<UnidadMaterial> obtenerCasillero(Posicion posicion) throws CasilleroNoEncontradoException {
+		return materiales.obtenerCasillero(posicion);
 	}
 }

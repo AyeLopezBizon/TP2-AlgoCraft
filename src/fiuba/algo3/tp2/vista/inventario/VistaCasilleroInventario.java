@@ -8,8 +8,11 @@ import fiuba.algo3.tp2.modelo.jugador.Jugador;
 import fiuba.algo3.tp2.modelo.jugador.inventario.Almacenable;
 import fiuba.algo3.tp2.modelo.jugador.inventario.EspacioVacioException;
 import javafx.event.EventHandler;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.Pane;
 
 public class VistaCasilleroInventario extends Pane implements Observer {
@@ -31,10 +34,25 @@ public class VistaCasilleroInventario extends Pane implements Observer {
 				
 				String nombreClaseVista = "fiuba.algo3.tp2.vista.inventario.Vista" + almacenable.getClass().getSimpleName();
 				vistaAlmacenable = (VistaAlmacenable) Class.forName(nombreClaseVista)
-						.getDeclaredConstructor(VistaCasilleroInventario.class, Almacenable.class)
+						.getDeclaredConstructor(Pane.class, Almacenable.class)
 						.newInstance(this, almacenable);
 				
 				almacenable.addObserver(vistaAlmacenable);
+				
+				setOnDragDetected(new EventHandler<MouseEvent>() {
+				    public void handle(MouseEvent event) {
+				        /* drag was detected, start a drag-and-drop gesture*/
+				        /* allow any transfer mode */
+				        Dragboard db = startDragAndDrop(TransferMode.ANY);
+				        
+				        /* Put a string on a dragboard */
+				        ClipboardContent content = new ClipboardContent();
+				        content.putString(almacenable.obtenerNumeroEspacioInventario().toString());
+				        db.setContent(content);
+				        
+				        event.consume();
+				    }
+				});
 				setOnMouseClicked(new EventHandler<MouseEvent>() {
 				    @Override
 				    public void handle(MouseEvent mouseEvent) {
@@ -74,6 +92,22 @@ public class VistaCasilleroInventario extends Pane implements Observer {
 					.newInstance(this, almacenable);
 	
 			almacenable.addObserver(vistaAlmacenable);
+			
+			setOnDragDetected(new EventHandler<MouseEvent>() {
+			    public void handle(MouseEvent event) {
+			        /* drag was detected, start a drag-and-drop gesture*/
+			        /* allow any transfer mode */
+			        Dragboard db = startDragAndDrop(TransferMode.ANY);
+			        
+			        /* Put a string on a dragboard */
+			        ClipboardContent content = new ClipboardContent();
+			        content.putString(almacenable.obtenerNumeroEspacioInventario().toString());
+			        db.setContent(content);
+			        
+			        event.consume();
+			    }
+			});
+			
 			setOnMouseClicked(new EventHandler<MouseEvent>() {
 			    @Override
 			    public void handle(MouseEvent mouseEvent) {
@@ -96,6 +130,7 @@ public class VistaCasilleroInventario extends Pane implements Observer {
 			e.printStackTrace();
 		}
 	}
+	
 	private void limpiarCasillero() {
 		almacenable.deleteObserver(vistaAlmacenable);
 		getChildren().clear();

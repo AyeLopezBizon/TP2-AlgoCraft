@@ -1,5 +1,8 @@
 package fiuba.algo3.tp2.vista.inicio.eventHandlers;
 
+import fiuba.algo3.tp2.modelo.herramienta.creador.MesaDeTrabajo;
+import fiuba.algo3.tp2.modelo.herramienta.creador.MesaDeTrabajoVacia;
+import fiuba.algo3.tp2.modelo.herramienta.creador.NoSePuedeInicializarMesaDeTrabajoException;
 import fiuba.algo3.tp2.modelo.juego.Juego;
 import fiuba.algo3.tp2.modelo.jugador.Jugador;
 import fiuba.algo3.tp2.modelo.terreno.Terreno;
@@ -33,10 +36,17 @@ public class BotonComenzarPartidaEventHandler implements EventHandler<ActionEven
 		
 		Terreno terreno = juego.obtenerTerreno();
 		Jugador jugador = juego.obtenerJugador();
+		MesaDeTrabajo mesaDeTrabajo = null;
+		try {
+			mesaDeTrabajo = new MesaDeTrabajoVacia();
+		} catch (NoSePuedeInicializarMesaDeTrabajoException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		BarraDeMenu barraDeMenu = new BarraDeMenu(stage);
 		ContenedorTerreno contenedorTerreno = new ContenedorTerreno(terreno);
-		ContenedorInventario contenedorInventario = new ContenedorInventario(jugador);
+		ContenedorInventario contenedorInventario = new ContenedorInventario(jugador, mesaDeTrabajo);
 		ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(contenedorTerreno, contenedorInventario);
 		ContenedorJuego contenedorJuego = new ContenedorJuego(stage, barraDeMenu, contenedorPrincipal);
 		
