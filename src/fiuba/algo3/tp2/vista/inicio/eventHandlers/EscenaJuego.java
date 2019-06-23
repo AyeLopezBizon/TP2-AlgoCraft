@@ -32,3 +32,4 @@ public class EscenaJuego extends Scene {
 		combinacionTeclas.quitarTecla(tecla);
 	}
 }
+	

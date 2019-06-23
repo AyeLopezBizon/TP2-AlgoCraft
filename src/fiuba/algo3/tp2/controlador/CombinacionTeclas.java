@@ -26,7 +26,7 @@ public class CombinacionTeclas {
 		this.menuBar = menuBar;
 		this.contenedorInventario = contenedorInventario;
 	}
-
+	
 	public void agregarTecla(KeyCode tecla) {
 		teclasPresionadas.add(tecla);
 	}

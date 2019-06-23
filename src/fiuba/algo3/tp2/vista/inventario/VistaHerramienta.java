@@ -6,26 +6,27 @@ import fiuba.algo3.tp2.modelo.herramienta.Herramienta;
 import fiuba.algo3.tp2.modelo.jugador.inventario.Almacenable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
 public class VistaHerramienta implements VistaAlmacenable {
 
-	private VistaCasilleroInventario vistaCasilleroInventario;
+	private Pane contenedor;
 	private Herramienta herramienta;
 	private ImageView imageView;
 	private Image imagenHerramienta;
 	
 
-	public VistaHerramienta(VistaCasilleroInventario vistaCasilleroInventario, Almacenable almacenable) {
+	public VistaHerramienta(Pane contenedor, Almacenable almacenable) {
 		
-		this.vistaCasilleroInventario = vistaCasilleroInventario;
+		this.contenedor = contenedor;
 		this.herramienta = (Herramienta)almacenable;
 		this.imagenHerramienta = obtenerImagenHerramienta();
 		
         imageView = new ImageView();
-        imageView.fitWidthProperty().bind(vistaCasilleroInventario.widthProperty());
-        imageView.fitHeightProperty().bind(vistaCasilleroInventario.heightProperty());
+        imageView.fitWidthProperty().bind(contenedor.widthProperty());
+        imageView.fitHeightProperty().bind(contenedor.heightProperty());
         
-        vistaCasilleroInventario.getChildren().add(imageView);
+        contenedor.getChildren().add(imageView);
 	}
 
 

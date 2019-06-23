@@ -7,6 +7,7 @@ import fiuba.algo3.tp2.modelo.matriz.casillero.Casillero;
 import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroNoEncontradoException;
 import fiuba.algo3.tp2.modelo.matriz.posicion.Posicion;
 import fiuba.algo3.tp2.modelo.unidadMaterial.UnidadMaterial;
+import javafx.geometry.Pos;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
@@ -18,7 +19,7 @@ public class ContenedorMesaDeTrabajo extends GridPane{
 	public ContenedorMesaDeTrabajo(Inventario inventario, MesaDeTrabajo mesaDeTrabajo) throws NoSePuedeInicializarMesaDeTrabajoException {
 	
 		super();
-		
+		setAlignment(Pos.CENTER_RIGHT);
 		this.setGridLinesVisible(true);
 		
 		for (int i = 0; i < mesaDeTrabajo.getCantidadDeFilas(); i++) {

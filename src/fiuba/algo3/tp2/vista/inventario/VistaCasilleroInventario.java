@@ -88,7 +88,7 @@ public class VistaCasilleroInventario extends Pane implements Observer {
 			String nombreClaseVista = "fiuba.algo3.tp2.vista.inventario.Vista" + almacenable.getClass().getSimpleName();
 		
 			vistaAlmacenable = (VistaAlmacenable) Class.forName(nombreClaseVista)
-					.getDeclaredConstructor(VistaCasilleroInventario.class, Almacenable.class)
+					.getDeclaredConstructor(Pane.class, Almacenable.class)
 					.newInstance(this, almacenable);
 	
 			almacenable.addObserver(vistaAlmacenable);

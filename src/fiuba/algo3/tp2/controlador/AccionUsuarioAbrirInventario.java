@@ -15,5 +15,6 @@ public class AccionUsuarioAbrirInventario implements AccionUsuario {
 	public void ejecutar()  {
 		mostrarInventario = !mostrarInventario;
 		contenedorInventario.setVisible(mostrarInventario);
+		contenedorInventario.requestFocus();
 	}
 }
