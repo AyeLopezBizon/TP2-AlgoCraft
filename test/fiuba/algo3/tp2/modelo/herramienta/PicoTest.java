@@ -7,6 +7,7 @@ import java.math.RoundingMode;
 
 import org.junit.Test;
 
+import fiuba.algo3.tp2.modelo.jugador.Jugador;
 import fiuba.algo3.tp2.modelo.material.Diamante;
 import fiuba.algo3.tp2.modelo.material.Madera;
 import fiuba.algo3.tp2.modelo.material.Material;

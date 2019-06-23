@@ -69,9 +69,15 @@ public class Jugador extends Observable implements OcupanteTerreno {
 	}
 	
     public void golpear(Material material)
-            throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException {
-
+            throws MaterialDestruidoNoSePuedeGolpearException, HerramientaDesgastadaNoSePuedeUsarException, NoHayHerramientaEquipadaException {
+    	
+    	if(herramientaActiva == null) {
+    		throw new NoHayHerramientaEquipadaException();
+    	}
         this.herramientaActiva.golpear(material);
+        if(herramientaActiva.estaRota()) {
+        	destruirHerramienta();
+        }
     }
     
     public void lanzarGolpe(Direccion direccionGolpe) 
@@ -134,7 +140,7 @@ public class Jugador extends Observable implements OcupanteTerreno {
 		return inventario;
 	}
 
-	public void destruirHerramienta(Herramienta herramienta) {
+	public void destruirHerramienta() {
 		
 		this.herramientaActiva = null;
 		

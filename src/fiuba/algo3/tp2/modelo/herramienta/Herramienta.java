@@ -121,15 +121,11 @@ public abstract class Herramienta extends Observable implements Almacenable {
 		
 		durabilidad.reducir();
 		
-		if(estaRota()) {
-			jugador.destruirHerramienta(this);
-		}
-		
 		setChanged();
 		notifyObservers(new Object[] {"reducirDurabilidad", this});
 	}
 
-	private boolean estaRota() {
+	public boolean estaRota() {
 		
 		return durabilidad.getValor().equals(new BigDecimal(0));
 	}

@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import fiuba.algo3.tp2.modelo.herramienta.HerramientaDesgastadaNoSePuedeUsarException;
 import fiuba.algo3.tp2.modelo.jugador.Jugador;
+import fiuba.algo3.tp2.modelo.jugador.NoHayHerramientaEquipadaException;
 import fiuba.algo3.tp2.modelo.jugador.movimiento.Movimiento;
 import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoDiagonalInferiorDerecha;
 import fiuba.algo3.tp2.modelo.jugador.movimiento.MovimientoDiagonalInferiorIzquierda;
@@ -95,7 +96,7 @@ public class JugadorTest {
         jugador.golpear(material);
     }
 
-    @Test(expected = HerramientaDesgastadaNoSePuedeUsarException.class)
+    @Test(expected = NoHayHerramientaEquipadaException.class)
     public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearMaderas51VecesYDesgastarse ()
             throws Exception {
 
@@ -154,7 +155,7 @@ public class JugadorTest {
         assertEquals(durabilidadDelMaterialInicial, material.getDurabilidad());
     }
 
-    @Test(expected = HerramientaDesgastadaNoSePuedeUsarException.class)
+    @Test(expected = NoHayHerramientaEquipadaException.class)
     public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnaPiedra51VecesYDesgastarse()
             throws Exception {
 
@@ -207,7 +208,7 @@ public class JugadorTest {
         assertEquals(durabilidadDelMaterialInicial, material.getDurabilidad());
     }
 
-    @Test(expected = HerramientaDesgastadaNoSePuedeUsarException.class)
+    @Test(expected = NoHayHerramientaEquipadaException.class)
     public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnMetal51VecesYDesgastarse()
             throws Exception {
 
@@ -260,7 +261,7 @@ public class JugadorTest {
         assertEquals(durabilidadDelMaterialInicial, material.getDurabilidad());
     }
 
-    @Test(expected = HerramientaDesgastadaNoSePuedeUsarException.class)
+    @Test(expected = NoHayHerramientaEquipadaException.class)
     public void cuandoSeCreaUnJugador_DeberiaTenerUnHachaDeMaderaGolpearUnDiamante51VecesYDesgastarse()
             throws Exception {
 
