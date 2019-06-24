@@ -23,14 +23,10 @@ public class CreadorDeHerramientaTest {
 		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(1), new Integer(1)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(1), new Integer(2)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(1), new Integer(3)));
 		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(2), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(1), new Integer(2)));
 		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(2), new Integer(2)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(2), new Integer(3)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(3), new Integer(1)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(3), new Integer(2)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(3), new Integer(3)));
+		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(2), new Integer(3)));
 
 		CreadorHerramienta creador = new CreadorHerramienta();
 		Herramienta herramienta = creador.crearHerramienta(mesaDeTrabajo);
@@ -46,14 +42,10 @@ public class CreadorDeHerramientaTest {
 		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 		mesaDeTrabajo.agregarMaterial(new UnidadPiedra(),new Posicion(new Integer(1), new Integer(1)));
-		mesaDeTrabajo.agregarMaterial(new UnidadPiedra(),new Posicion(new Integer(1), new Integer(2)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(1), new Integer(3)));
 		mesaDeTrabajo.agregarMaterial(new UnidadPiedra(),new Posicion(new Integer(2), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new UnidadPiedra(),new Posicion(new Integer(1), new Integer(2)));
 		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(2), new Integer(2)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(2), new Integer(3)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(3), new Integer(1)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(3), new Integer(2)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(3), new Integer(3)));
+		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(2), new Integer(3)));
 
 		CreadorHerramienta creador = new CreadorHerramienta();
 		Herramienta herramienta = creador.crearHerramienta(mesaDeTrabajo);
@@ -70,14 +62,10 @@ public class CreadorDeHerramientaTest {
 
 
 		mesaDeTrabajo.agregarMaterial(new UnidadMetal(),new Posicion(new Integer(1), new Integer(1)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMetal(),new Posicion(new Integer(1), new Integer(2)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(1), new Integer(3)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMetal(), new Posicion(new Integer(2), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new UnidadMetal(),new Posicion(new Integer(2), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new UnidadMetal(), new Posicion(new Integer(1), new Integer(2)));
 		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(2), new Integer(2)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(2), new Integer(3)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(3), new Integer(1)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(3), new Integer(2)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(3), new Integer(3)));
+		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(2), new Integer(3)));
 
 		CreadorHerramienta creador = new CreadorHerramienta();
 		Herramienta herramienta = creador.crearHerramienta(mesaDeTrabajo);
@@ -113,14 +101,10 @@ public class CreadorDeHerramientaTest {
 		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 		mesaDeTrabajo.agregarMaterial(new UnidadPiedra(),new Posicion(new Integer(1), new Integer(1)));
-		mesaDeTrabajo.agregarMaterial(new UnidadPiedra(),new Posicion(new Integer(1), new Integer(2)));
-		mesaDeTrabajo.agregarMaterial(new UnidadPiedra(), new Posicion(new Integer(1), new Integer(3)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(),new Posicion(new Integer(2), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new UnidadPiedra(),new Posicion(new Integer(2), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new UnidadPiedra(), new Posicion(new Integer(3), new Integer(1)));
 		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(2), new Integer(2)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(2), new Integer(3)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(3), new Integer(1)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(3), new Integer(2)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(3), new Integer(3)));
+		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(2), new Integer(3)));
 
 		CreadorHerramienta creador = new CreadorHerramienta();
 		Herramienta herramienta = creador.crearHerramienta(mesaDeTrabajo);
@@ -136,14 +120,10 @@ public class CreadorDeHerramientaTest {
 		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 		mesaDeTrabajo.agregarMaterial(new UnidadMetal(),new Posicion(new Integer(1), new Integer(1)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMetal(),new Posicion(new Integer(1), new Integer(2)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMetal(), new Posicion(new Integer(1), new Integer(3)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(),new Posicion(new Integer(2), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new UnidadMetal(),new Posicion(new Integer(2), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new UnidadMetal(), new Posicion(new Integer(3), new Integer(1)));
 		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(2), new Integer(2)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(2), new Integer(3)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(3), new Integer(1)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(3), new Integer(2)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(3), new Integer(3)));
+		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(2), new Integer(3)));
 
 		CreadorHerramienta creador = new CreadorHerramienta();
 		Herramienta herramienta = creador.crearHerramienta(mesaDeTrabajo);
@@ -159,14 +139,11 @@ public class CreadorDeHerramientaTest {
 		MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();
 
 		mesaDeTrabajo.agregarMaterial(new UnidadMetal(),new Posicion(new Integer(1), new Integer(1)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMetal(),new Posicion(new Integer(1), new Integer(2)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMetal(), new Posicion(new Integer(1), new Integer(3)));
-		mesaDeTrabajo.agregarMaterial(new UnidadPiedra(),new Posicion(new Integer(2), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new UnidadMetal(),new Posicion(new Integer(2), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new UnidadMetal(), new Posicion(new Integer(3), new Integer(1)));
+		mesaDeTrabajo.agregarMaterial(new UnidadPiedra(),new Posicion(new Integer(1), new Integer(2)));
 		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(2), new Integer(2)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(2), new Integer(3)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(3), new Integer(1)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(3), new Integer(2)));
-		mesaDeTrabajo.agregarMaterial(new UnidadMaterialVacio(), new Posicion(new Integer(3), new Integer(3)));
+		mesaDeTrabajo.agregarMaterial(new UnidadMadera(),new Posicion(new Integer(2), new Integer(3)));
 
 		CreadorHerramienta creador = new CreadorHerramienta();
 		Herramienta herramienta = creador.crearHerramienta(mesaDeTrabajo);
