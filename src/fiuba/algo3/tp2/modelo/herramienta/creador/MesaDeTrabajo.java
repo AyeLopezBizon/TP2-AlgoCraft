@@ -54,7 +54,7 @@ public abstract class MesaDeTrabajo{
 		}
 	}
 	
-	public void quitarMaterial(UnidadMaterial material, Posicion posicion)
+	public void quitarMaterial(Posicion posicion)
 			throws PosicionIncorrectaException {
 
 		try{

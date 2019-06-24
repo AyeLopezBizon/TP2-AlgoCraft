@@ -51,8 +51,17 @@ public class Jugador extends Observable implements OcupanteTerreno {
 	
 	public void equipar(Herramienta herramienta) throws EspacioVacioException {
 		
+		Herramienta herramientaActivaAnterior = herramientaActiva;
 		herramientaActiva = herramienta;
 		inventario.quitar(herramienta.obtenerNumeroEspacioInventario());
+		if(herramientaActivaAnterior != null) {
+			try {
+				inventario.almacenar(herramientaActivaAnterior);
+			} catch (InventarioLlenoException | NoSePudoAlmacenarItemException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 		setChanged();
 		notifyObservers(new Object[] { "equipar", herramientaActiva });

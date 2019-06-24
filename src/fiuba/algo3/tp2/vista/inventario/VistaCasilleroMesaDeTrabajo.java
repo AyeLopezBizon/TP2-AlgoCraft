@@ -9,12 +9,16 @@ import fiuba.algo3.tp2.modelo.herramienta.creador.PosicionIncorrectaException;
 import fiuba.algo3.tp2.modelo.jugador.inventario.Almacenable;
 import fiuba.algo3.tp2.modelo.jugador.inventario.EspacioVacioException;
 import fiuba.algo3.tp2.modelo.jugador.inventario.Inventario;
+import fiuba.algo3.tp2.modelo.jugador.inventario.InventarioLlenoException;
+import fiuba.algo3.tp2.modelo.jugador.inventario.NoSePudoAlmacenarItemException;
 import fiuba.algo3.tp2.modelo.matriz.posicion.Posicion;
 import fiuba.algo3.tp2.modelo.unidadMaterial.UnidadMaterial;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -28,6 +32,7 @@ public class VistaCasilleroMesaDeTrabajo extends Pane implements Observer {
 			new Background(new BackgroundFill(Color.DARKGRAY, CornerRadii.EMPTY, Insets.EMPTY));
 	private static final Background onDragExitBackground = null;
 	private VistaUnidadMaterial vista;
+	private Almacenable almacenable;
 	
 	
 	public VistaCasilleroMesaDeTrabajo(Inventario inventario, MesaDeTrabajo mesaDeTrabajo, Posicion posicion) {
@@ -73,7 +78,8 @@ public class VistaCasilleroMesaDeTrabajo extends Pane implements Observer {
 		           
 		        	Integer numeroEspacioInventario = Integer.valueOf(db.getString());
 		        	try {
-						inventario.obtenerAlmacenable(numeroEspacioInventario).agregarAMesaDeTrabajo(mesaDeTrabajo, posicion);
+						almacenable = inventario.obtenerAlmacenable(numeroEspacioInventario);
+						almacenable.agregarAMesaDeTrabajo(mesaDeTrabajo, posicion);
 						success = true;
 					} catch (EspacioVacioException | PosicionIncorrectaException e) {
 						// TODO Auto-generated catch block
@@ -85,6 +91,24 @@ public class VistaCasilleroMesaDeTrabajo extends Pane implements Observer {
 		        
 		        event.consume();
 		     }
+		});
+		
+		setOnMouseClicked(new EventHandler<MouseEvent>() {
+		    @Override
+		    public void handle(MouseEvent mouseEvent) {
+		        if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+		            if(mouseEvent.getClickCount() == 2){
+		            	try {
+		            		UnidadMaterial unidadMaterial = mesaDeTrabajo.obtenerPosicionable(posicion);
+							inventario.almacenar(unidadMaterial);
+							mesaDeTrabajo.quitarMaterial(posicion);
+						} catch (PosicionIncorrectaException | InventarioLlenoException | NoSePudoAlmacenarItemException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+		            }
+		        }
+		    }
 		});
 	}
 
