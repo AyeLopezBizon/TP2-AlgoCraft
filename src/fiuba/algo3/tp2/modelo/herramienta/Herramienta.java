@@ -139,7 +139,7 @@ public abstract class Herramienta extends Observable implements Almacenable {
 
 	public boolean estaRota() {
 		
-		return durabilidad.getValor().equals(new BigDecimal(0));
+		return durabilidad.getValor().compareTo(new BigDecimal(0)) <= 0;
 	}
 
 	public void desequiparDe(Jugador jugador) {
