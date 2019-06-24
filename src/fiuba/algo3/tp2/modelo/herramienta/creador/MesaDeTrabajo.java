@@ -96,12 +96,13 @@ public abstract class MesaDeTrabajo{
 		return true;
 	}
 
-	public void limpiarMesaDeTrabajo() throws CasilleroVacioException, CasilleroNoEncontradoException {
+	public void limpiarMesaDeTrabajo() throws CasilleroVacioException, CasilleroNoEncontradoException, CasilleroOcupadoException {
 
 		for(int i = 1; i <= cantidadDeFilas; i++) {
 			for(int j = 1; j <= cantidadDeColumnas; j++) {
 				Posicion posicion = new Posicion(i, j);
 				materiales.desocuparCasillero(posicion);
+				materiales.ocuparCasillero(new UnidadMaterialVacio(), posicion);
 			}
 		}
 	}

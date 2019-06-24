@@ -1,5 +1,8 @@
 package fiuba.algo3.tp2.vista.inventario;
 
+import fiuba.algo3.tp2.modelo.herramienta.creador.CreadorHerramienta;
+import fiuba.algo3.tp2.modelo.herramienta.creador.MesaDeTrabajo;
+import fiuba.algo3.tp2.modelo.jugador.inventario.Inventario;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -8,7 +11,7 @@ import javafx.scene.paint.Color;
 
 public class ContenedorBotones extends VBox{
 	
-	public ContenedorBotones(){
+	public ContenedorBotones(Inventario inventario, MesaDeTrabajo mesaDeTrabajo, CreadorHerramienta creadorHerramienta){
 		
 		setAlignment(Pos.CENTER_RIGHT);
 		//this.setSpacing(20);
@@ -20,6 +23,8 @@ public class ContenedorBotones extends VBox{
 		botonCrear.setPrefHeight(50);
 		botonCrear.setPrefWidth(100);
 		botonCrear.setStyle(this.obtenerEstiloBoton());
+		
+		botonCrear.setOnAction(new BotonCrearEventHandler(inventario, mesaDeTrabajo, creadorHerramienta));
 		
 		this.getChildren().addAll(botonCrear);
 	}

@@ -16,11 +16,11 @@ public class MesaDeTrabajoPicoFino extends MesaDeTrabajo{
 		
 		try {
 			agregarMaterial(new UnidadMetal(),new Posicion(new Integer(1), new Integer(1)));
-			agregarMaterial(new UnidadMetal(),new Posicion(new Integer(1), new Integer(2)));
-			agregarMaterial(new UnidadMetal(),new Posicion(new Integer(1), new Integer(3)));
-			agregarMaterial(new UnidadPiedra(),new Posicion(new Integer(2), new Integer(1)));
+			agregarMaterial(new UnidadMetal(),new Posicion(new Integer(2), new Integer(1)));
+			agregarMaterial(new UnidadMetal(),new Posicion(new Integer(3), new Integer(1)));
+			agregarMaterial(new UnidadPiedra(),new Posicion(new Integer(1), new Integer(2)));
 			agregarMaterial(new UnidadMadera(),new Posicion(new Integer(2), new Integer(2)));
-			agregarMaterial(new UnidadMadera(),new Posicion(new Integer(3), new Integer(2)));
+			agregarMaterial(new UnidadMadera(),new Posicion(new Integer(2), new Integer(3)));
 		} catch(PosicionIncorrectaException e) {
 			throw new NoSePuedeInicializarMesaDeTrabajoException();
 		}

@@ -12,9 +12,9 @@ public class CreadorHerramientaTest {
 			throws Exception {
 
 		MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajoVacia();
-		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
+		CreadorHerramienta creador = new CreadorHerramienta();
 
-		creador.crearHerramienta();
+		creador.crearHerramienta(mesaDeTrabajo);
 	}
 
 	@Test(expected = MaterialesMalPosicionadosException.class)
@@ -25,8 +25,8 @@ public class CreadorHerramientaTest {
 		
 		mesaDeTrabajo.agregarMaterial(new UnidadMadera(), new Posicion(new Integer(1), new Integer(1)));
 		
-		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
-		creador.crearHerramienta();
+		CreadorHerramienta creador = new CreadorHerramienta();
+		creador.crearHerramienta(mesaDeTrabajo);
 	}
 
 	@Test(expected = MaterialesMalPosicionadosException.class)
@@ -38,8 +38,8 @@ public class CreadorHerramientaTest {
 		mesaDeTrabajo.agregarMaterial(new UnidadMadera(), new Posicion(new Integer(1), new Integer(2)));
 		mesaDeTrabajo.agregarMaterial(new UnidadMadera(), new Posicion(new Integer(1), new Integer(3)));
 
-		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
-		creador.crearHerramienta();
+		CreadorHerramienta creador = new CreadorHerramienta();
+		creador.crearHerramienta(mesaDeTrabajo);
 	}
 
 	@Test(expected = MaterialesMalPosicionadosException.class)
@@ -55,7 +55,7 @@ public class CreadorHerramientaTest {
 			
 		}
 		
-		CreadorHerramienta creador = new CreadorHerramienta(mesaDeTrabajo);
-		creador.crearHerramienta();
+		CreadorHerramienta creador = new CreadorHerramienta();
+		creador.crearHerramienta(mesaDeTrabajo);
 	}
 }

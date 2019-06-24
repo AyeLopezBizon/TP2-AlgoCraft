@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2.vista.inventario;
 
+import fiuba.algo3.tp2.modelo.herramienta.creador.CreadorHerramienta;
 import fiuba.algo3.tp2.modelo.herramienta.creador.MesaDeTrabajo;
 import fiuba.algo3.tp2.modelo.herramienta.creador.NoSePuedeInicializarMesaDeTrabajoException;
 import fiuba.algo3.tp2.modelo.jugador.Jugador;
@@ -20,7 +21,7 @@ public class ContenedorInventario extends VBox{
 
 	Inventario inventario;
 	
-	public ContenedorInventario(Jugador jugador, MesaDeTrabajo mesaDeTrabajo) {
+	public ContenedorInventario(Jugador jugador, MesaDeTrabajo mesaDeTrabajo, CreadorHerramienta creadorHerramienta) {
 		
 		try {
 			this.inventario = jugador.obtenerInventario();
@@ -39,7 +40,7 @@ public class ContenedorInventario extends VBox{
 			ContenedorHerramientaActiva contenedorHerramientaActiva;
 			contenedorHerramientaActiva = new ContenedorHerramientaActiva(jugador);
 			ContenedorCreadorHerramienta contenedorCreador;
-			contenedorCreador = new ContenedorCreadorHerramienta(jugador.obtenerInventario(), mesaDeTrabajo);
+			contenedorCreador = new ContenedorCreadorHerramienta(jugador.obtenerInventario(), mesaDeTrabajo, creadorHerramienta);
 
 			ContenedorSuperiorInventario contenedorSuperiorInventario = 
 					new ContenedorSuperiorInventario(contenedorHerramientaActiva, contenedorCreador);

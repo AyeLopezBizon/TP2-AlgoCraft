@@ -4,16 +4,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import fiuba.algo3.tp2.modelo.herramienta.Herramienta;
+import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroNoEncontradoException;
+import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroOcupadoException;
+import fiuba.algo3.tp2.modelo.matriz.casillero.CasilleroVacioException;
 
 public class CreadorHerramienta {
-	
-	private MesaDeTrabajo mesaDeTrabajo;
+
 	private Collection<MesaDeTrabajo> mesasDeTrabajoPredeterminadas;
 	
-	public CreadorHerramienta(MesaDeTrabajo mesaDeTrabajo) 
+	public CreadorHerramienta()
 			throws NoSePuedeInicializarMesaDeTrabajoException{
-		
-		this.mesaDeTrabajo = mesaDeTrabajo;
+
 		mesasDeTrabajoPredeterminadas = new ArrayList<>();
 		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoHachaMadera());
 		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoHachaPiedra());
@@ -24,37 +25,31 @@ public class CreadorHerramienta {
 		mesasDeTrabajoPredeterminadas.add(new MesaDeTrabajoPicoFino());			
 	}
 	
-	public Herramienta crearHerramienta()
-			throws MaterialesMalPosicionadosException, NoSePuedeInicializarMesaDeTrabajoException, MesaDeTrabajoIncorrectaException {
-		
-		if(!mesaDeTrabajoEstaBienArmada()) {
+	public Herramienta crearHerramienta(MesaDeTrabajo mesaDeTrabajo) throws MaterialesMalPosicionadosException, CasilleroVacioException, CasilleroNoEncontradoException, CasilleroOcupadoException
+			{
+
+		Herramienta herramientaADevolver = null;
+
+		try {
+			herramientaADevolver = asignarMesaDeTrabajoCorrespondiente(mesaDeTrabajo);
+		}catch(MesaDeTrabajoIncorrectaException e){
 			throw new MaterialesMalPosicionadosException();
 		}
-		
-		asignarMesaDeTrabajoCorrespondiente();
-		
-		Herramienta herramientaADevolver = mesaDeTrabajo.crearHerramienta();
 
-		mesaDeTrabajo = new MesaDeTrabajoVacia();
+		mesaDeTrabajo.limpiarMesaDeTrabajo();
 
 		return herramientaADevolver;
 	}
 	
-	private boolean mesaDeTrabajoEstaBienArmada() {
+	private Herramienta asignarMesaDeTrabajoCorrespondiente(MesaDeTrabajo mesaDeTrabajo) throws MesaDeTrabajoIncorrectaException {
 		
-		for(MesaDeTrabajo mesaDeTrabajo : mesasDeTrabajoPredeterminadas) {
-			if(mesaDeTrabajo.comparar(this.mesaDeTrabajo)) {
-				return true;
+		for(MesaDeTrabajo mesaDeTrabajoPredeterminada : mesasDeTrabajoPredeterminadas) {
+			if(mesaDeTrabajoPredeterminada.comparar(mesaDeTrabajo)) {
+				return mesaDeTrabajoPredeterminada.crearHerramienta();
 			}
 		}
-		return false;
+
+		throw new MesaDeTrabajoIncorrectaException();
 	}
-	
-	private void asignarMesaDeTrabajoCorrespondiente() {
-		
-		for(MesaDeTrabajo mesaDeTrabajo : mesasDeTrabajoPredeterminadas) {
-			if(mesaDeTrabajo.comparar(this.mesaDeTrabajo)) {
-				this.mesaDeTrabajo = mesaDeTrabajo;			}
-		}
-	}
+
 }

@@ -18,7 +18,11 @@ public class VistaUnidadMaterial implements VistaAlmacenable {
 	public VistaUnidadMaterial(Pane contenedor, Almacenable almacenable) {
 		
 		this.unidadMaterial = (UnidadMaterial)almacenable;
-		this.imagenUnidadMaterial = obtenerImagenUnidadMaterial();
+		try {
+			this.imagenUnidadMaterial = obtenerImagenUnidadMaterial();
+		}catch(Exception e) {
+			this.imagenUnidadMaterial = null;
+		}
 		
         imageView = new ImageView();
         imageView.fitWidthProperty().bind(contenedor.widthProperty());
