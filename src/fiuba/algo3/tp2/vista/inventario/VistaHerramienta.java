@@ -5,6 +5,7 @@ import java.util.Observable;
 import fiuba.algo3.tp2.modelo.herramienta.Herramienta;
 import fiuba.algo3.tp2.modelo.jugador.inventario.Almacenable;
 import fiuba.algo3.tp2.vista.ContenedorCasillero;
+import fiuba.algo3.tp2.vista.Imagen;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -31,7 +32,7 @@ public class VistaHerramienta implements VistaAlmacenable {
 
 
 	private Image obtenerImagenHerramienta() {
-		String nombreImagen = "file:src/fiuba/algo3/tp2/vista/resources/imagenes/inventario/" + herramienta.getNombre() + ".png";
+		String nombreImagen = Imagen.obtenerImagenHerramienta(herramienta.getNombre());
 		return new Image(nombreImagen);
 	}
 

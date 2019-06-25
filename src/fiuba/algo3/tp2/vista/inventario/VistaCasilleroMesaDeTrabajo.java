@@ -5,6 +5,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import fiuba.algo3.tp2.modelo.jugador.inventario.Almacenable;
+import fiuba.algo3.tp2.modelo.notificacion.Notificacion;
 import fiuba.algo3.tp2.modelo.unidadMaterial.UnidadMaterial;
 import fiuba.algo3.tp2.vista.ContenedorCasillero;
 
@@ -25,7 +26,7 @@ public class VistaCasilleroMesaDeTrabajo implements Observer {
 		Object[] parametros = ((Object[])arg);
 		String accion = (String)parametros[0];
 		
-		if(accion.equals("ocuparCasillero")) {
+		if(accion.equals(Notificacion.OCUPAR_CASILLERO)) {
 			
 			try {
 				
@@ -43,7 +44,7 @@ public class VistaCasilleroMesaDeTrabajo implements Observer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}	
-		}else if(accion.equals("desocuparCasillero")){
+		}else if(accion.equals(Notificacion.DESOCUPAR_CASILLERO)){
 			contenedorCasilleroMesaDeTrabajo.limpiarCasillero();
 		}
 	}

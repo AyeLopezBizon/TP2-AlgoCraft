@@ -5,6 +5,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import fiuba.algo3.tp2.modelo.jugador.inventario.Almacenable;
+import fiuba.algo3.tp2.modelo.notificacion.Notificacion;
 import fiuba.algo3.tp2.vista.ContenedorCasillero;
 
 public class VistaCasilleroInventario implements Observer {
@@ -23,11 +24,10 @@ public class VistaCasilleroInventario implements Observer {
 		Object[] parametros = ((Object[])arg);
 		String accion = (String)parametros[0];
 		
-		if(accion.equals("ocuparCasillero")) {
-			
+		if(accion.equals(Notificacion.OCUPAR_CASILLERO)) {	
 			dibujar((Almacenable)parametros[1]);
 			
-		}else if(accion.equals("desocuparCasillero")){
+		}else if(accion.equals(Notificacion.DESOCUPAR_CASILLERO)){
 			
 			almacenable.deleteObserver(vistaAlmacenable);
 			contenedorCasilleroInventario.limpiarCasillero();

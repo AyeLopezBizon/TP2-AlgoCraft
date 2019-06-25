@@ -20,7 +20,6 @@ public class VistaUnidadMaterial implements VistaAlmacenable {
 	}
 
 	private Image obtenerImagenUnidadMaterial(Almacenable unidadMaterial) {
-		
 		return new Image(Imagen.obtenerImagenUnidadMaterial(unidadMaterial.getClass().getSimpleName()));
 	}
 
