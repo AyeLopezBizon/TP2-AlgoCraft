@@ -77,7 +77,7 @@ public abstract class VistaMaterial implements VistaOcupanteTerreno {
 		Object[] parametros = ((Object[])arg);
 		String accion = (String)parametros[0];
 
-		if(accion.equals(Notificacion.REDUCIR_DURABILIDAD)) {
+		if(accion.equals(Notificacion.REDUCIR_DURABILIDAD_MATERIAL)) {
 			
 			BigDecimal durabilidad = (BigDecimal)parametros[2];
 			BigDecimal durabilidadMaxima = (BigDecimal)parametros[3];

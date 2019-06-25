@@ -1,5 +1,8 @@
 package fiuba.algo3.tp2.vista.inventario;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
@@ -12,6 +15,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class BarraDurabilidad extends StackPane {
 	
@@ -32,6 +36,7 @@ public class BarraDurabilidad extends StackPane {
 		
 		durabildadTexto = new Label();
 		durabildadTexto.setAlignment(Pos.CENTER);
+		durabildadTexto.setFont(Font.font(10));
 		durabildadTexto.maxWidthProperty().bind(widthProperty());
 		
 		getChildren().add(barraDurabilidadActual);
@@ -41,6 +46,8 @@ public class BarraDurabilidad extends StackPane {
 	public void dibujar(double maximaDurabilidad, double durabilidadActual) {
 		
 		barraDurabilidadActual.maxWidthProperty().bind(widthProperty().multiply(durabilidadActual / maximaDurabilidad));
-		durabildadTexto.setText(durabilidadActual + "/" + maximaDurabilidad);
+		durabildadTexto.setText(new BigDecimal(durabilidadActual).setScale(2, RoundingMode.HALF_DOWN) 
+				+ "/" 
+				+ new BigDecimal(maximaDurabilidad).setScale(2, RoundingMode.HALF_DOWN));
 	}
 }

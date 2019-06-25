@@ -20,6 +20,7 @@ public class CombinacionTeclas {
 	
 	
 	public CombinacionTeclas(Stage stage, ContenedorInventario contenedorInventario, BarraDeMenu menuBar, Jugador jugador) {
+		
 		this.jugador = jugador;
 		this.teclasPresionadas = new HashSet<KeyCode>();
 		this.stage = stage;
@@ -29,6 +30,7 @@ public class CombinacionTeclas {
 	
 	public void agregarTecla(KeyCode tecla) {
 		teclasPresionadas.add(tecla);
+		obtenerAccion().ejecutar();
 	}
 	
 	public void quitarTecla(KeyCode tecla) {
@@ -39,15 +41,25 @@ public class CombinacionTeclas {
 		
 		if(teclasPresionadas.contains(KeyCode.ESCAPE)) {
 			return new AccionUsuarioSalirPantallaCompleta(stage, menuBar);
-		} else if(teclasPresionadas.contains(KeyCode.E)) {
-			return new AccionUsuarioEquipar(jugador);
 		} else if(teclasPresionadas.contains(KeyCode.TAB)) {
 			return new AccionUsuarioAbrirInventario(contenedorInventario);
-		} else if(teclasPresionadas.contains(KeyCode.SPACE)) {
-			return new AccionUsuarioLanzarGolpe(jugador, obtenerDireccion());
+		} else if(usuarioEstaDireccionando()) {
+			Direccion direccion = obtenerDireccion();
+			if(teclasPresionadas.contains(KeyCode.SPACE)) {
+				return new AccionUsuarioLanzarGolpe(jugador, direccion);
+			} else {
+				return new AccionUsuarioMoverJugador(jugador, direccion);
+			}
 		} else {
-			return new AccionUsuarioMoverJugador(jugador, obtenerDireccion());
+			return new AccionUsuarioNoHayAccion();
 		}
+	}
+
+	private boolean usuarioEstaDireccionando() {
+		return (teclasPresionadas.contains(KeyCode.UP)
+				|| teclasPresionadas.contains(KeyCode.RIGHT)
+				|| teclasPresionadas.contains(KeyCode.DOWN)
+				|| teclasPresionadas.contains(KeyCode.LEFT));
 	}
 
 	private Direccion obtenerDireccion() {

@@ -31,4 +31,12 @@ public class Imagen {
 	public static String obtenerImagenMaterial(String nombreClaseMaterial) {
 		return obtenerBasePath() + "/terreno/" + nombreClaseMaterial + ".png";
 	}
+
+	public static String obtenerImagenHerramienta(String nombreClaseHerramienta) {
+		return obtenerBasePath() + "/inventario/" + nombreClaseHerramienta + ".png";
+	}
+
+	public static String obtenerImagenUnidadMaterial(String nombreClaseUnidadMaterial) {
+		return obtenerBasePath() + "/inventario/" + nombreClaseUnidadMaterial + ".png";
+	}
 }

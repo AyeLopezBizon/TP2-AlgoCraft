@@ -4,19 +4,19 @@ import java.util.Observable;
 
 import fiuba.algo3.tp2.modelo.herramienta.Herramienta;
 import fiuba.algo3.tp2.modelo.jugador.inventario.Almacenable;
+import fiuba.algo3.tp2.vista.ContenedorCasillero;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 
 public class VistaHerramienta implements VistaAlmacenable {
 
-	private Pane contenedor;
+	private ContenedorCasillero contenedor;
 	private Herramienta herramienta;
 	private ImageView imageView;
 	private Image imagenHerramienta;
 	
 
-	public VistaHerramienta(Pane contenedor, Almacenable almacenable) {
+	public VistaHerramienta(ContenedorCasillero contenedor, Almacenable almacenable) {
 		
 		this.contenedor = contenedor;
 		this.herramienta = (Herramienta)almacenable;
@@ -38,13 +38,11 @@ public class VistaHerramienta implements VistaAlmacenable {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	@Override
 	public void dibujar() {
 
-		imageView.setImage(imagenHerramienta);
+		contenedor.dibujar(imagenHerramienta);
 	}
 }

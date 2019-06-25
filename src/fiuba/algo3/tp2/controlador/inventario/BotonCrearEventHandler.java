@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.vista.inventario;
+package fiuba.algo3.tp2.controlador.inventario;
 
 import fiuba.algo3.tp2.modelo.herramienta.Herramienta;
 import fiuba.algo3.tp2.modelo.herramienta.creador.CreadorHerramienta;

@@ -10,38 +10,39 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
-public class ContenedorAlmacenables extends GridPane{
+public class ContenedorAlmacenables extends GridPane {
 	
 	private final int TAMANIO = 50;
-	private Inventario inventario;
-	private int cantFilas;
-	private int cantColumnas;
 	
-	public ContenedorAlmacenables(Jugador jugador, Inventario inventario) {
-		this.inventario = inventario;
+	public ContenedorAlmacenables(Jugador jugador) {
 		
-		this.setGridLinesVisible(true);
-		
-		
-        RowConstraints row = new RowConstraints(TAMANIO);
-        this.getRowConstraints().add(row);
-        
-        for (int i = 0; i < inventario.obtenerCapacidad(); i++) {
-            ColumnConstraints col = new ColumnConstraints(TAMANIO);
-            this.getColumnConstraints().add(col);
-        }
-        for (int i = 1 ; i <= inventario.obtenerCapacidad() ; i++) {
-        	
-    		Casillero<Almacenable> casilleroInventario;
-			try {
-				casilleroInventario = inventario.obtenerCasillero(i);
-	        	VistaCasilleroInventario vista = new VistaCasilleroInventario();
+		try {
+			Inventario inventario = jugador.obtenerInventario();
+			this.setGridLinesVisible(true);
+			
+	        RowConstraints row = new RowConstraints(TAMANIO);
+	        this.getRowConstraints().add(row);
+	        
+	        for (int i = 0; i < inventario.obtenerCapacidad(); i++) {
+	            ColumnConstraints col = new ColumnConstraints(TAMANIO);
+	            this.getColumnConstraints().add(col);
+	        }
+	        for (int i = 1 ; i <= inventario.obtenerCapacidad() ; i++) {
+        		
+    			Casillero<Almacenable> casilleroInventario = inventario.obtenerCasillero(i);
+    			ContenedorCasilleroInventario contenedorCasilleroInventario = 
+    					new ContenedorCasilleroInventario(jugador, i);
+	        	VistaCasilleroInventario vista = new VistaCasilleroInventario(contenedorCasilleroInventario);
 	        	casilleroInventario.addObserver(vista);
-	        	add(vista, i-1, 0);
-	        	vista.dibujar(i, jugador, casilleroInventario.obtenerValor());
-			} catch (CasilleroNoEncontradoException | CasilleroVacioException e) {
-				// TODO Auto-generated catch block
-			}
-        }
+	        	add(contenedorCasilleroInventario, i-1, 0);
+	        	try {
+	        		vista.dibujar(casilleroInventario.obtenerValor());
+	        	} catch (CasilleroVacioException e) {
+	    			// Hay que dejar que siga iterando y dibujando lo que pueda
+	    		}
+	        }
+		} catch(CasilleroNoEncontradoException e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -1,11 +1,13 @@
 package fiuba.algo3.tp2.controlador.inicio;
 
+import fiuba.algo3.tp2.controlador.juego.CombinacionTeclas;
+import fiuba.algo3.tp2.controlador.juego.EscenaJuegoOnKeyPressEventHandler;
+import fiuba.algo3.tp2.controlador.juego.EscenaJuegoOnKeyReleasedEventHandler;
 import fiuba.algo3.tp2.modelo.herramienta.creador.CreadorHerramienta;
 import fiuba.algo3.tp2.modelo.herramienta.creador.MesaDeTrabajoVacia;
 import fiuba.algo3.tp2.modelo.juego.Juego;
 import fiuba.algo3.tp2.modelo.jugador.Jugador;
 import fiuba.algo3.tp2.modelo.terreno.Terreno;
-import fiuba.algo3.tp2.vista.inicio.EscenaJuego;
 import fiuba.algo3.tp2.vista.inventario.ContenedorInventario;
 import fiuba.algo3.tp2.vista.juego.BarraDeMenu;
 import fiuba.algo3.tp2.vista.juego.ContenedorJuego;
@@ -15,6 +17,7 @@ import fiuba.algo3.tp2.vista.sonido.Sonido;
 import fiuba.algo3.tp2.vista.terreno.ContenedorTerreno;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class BotonComenzarPartidaEventHandler implements EventHandler<ActionEvent> {
@@ -32,31 +35,28 @@ public class BotonComenzarPartidaEventHandler implements EventHandler<ActionEven
 			
 			ReproductorSonido.reproducir(Sonido.CLICK);
 			
+			// Creacion del modelo
 			Juego juego = new Juego();
 			Terreno terreno = juego.obtenerTerreno();
 			Jugador jugador = juego.obtenerJugador();
 			MesaDeTrabajoVacia mesaDeTrabajo = new MesaDeTrabajoVacia();			
 			CreadorHerramienta creadorHerramienta = new CreadorHerramienta();
 			
+			// Creacion de contenedores
 			BarraDeMenu barraDeMenu = new BarraDeMenu(stage);
 			ContenedorTerreno contenedorTerreno = new ContenedorTerreno(terreno);
 			ContenedorInventario contenedorInventario = new ContenedorInventario(jugador, mesaDeTrabajo, creadorHerramienta);
 			ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(contenedorTerreno, contenedorInventario);
 			ContenedorJuego contenedorJuego = new ContenedorJuego(stage, barraDeMenu, contenedorPrincipal);
 			
-			EscenaJuego escenaJuego = new EscenaJuego(stage, contenedorJuego, contenedorInventario, barraDeMenu, jugador, terreno);
+			CombinacionTeclas combinacionTeclas = new CombinacionTeclas(stage, contenedorInventario, barraDeMenu, jugador);
 			
-			AplicacionOnKeyPressEventHandler aplicacionOnKeyPressEventHandler = 
-					new AplicacionOnKeyPressEventHandler(escenaJuego);
-			escenaJuego.setOnKeyPressed(aplicacionOnKeyPressEventHandler);
-			
-			AplicacionOnKeyReleasedEventHandler aplicacionOnKeyReleasedEventHandler = 
-					new AplicacionOnKeyReleasedEventHandler(escenaJuego);
-			escenaJuego.setOnKeyReleased(aplicacionOnKeyReleasedEventHandler);
+			Scene escenaJuego = new Scene(contenedorJuego);
+			escenaJuego.setOnKeyPressed(new EscenaJuegoOnKeyPressEventHandler(combinacionTeclas));
+			escenaJuego.setOnKeyReleased(new EscenaJuegoOnKeyReleasedEventHandler(combinacionTeclas));
 	        
-	        
+			// Inicializacion del juego
 			juego.inicializar();
-	        
 	        
 			stage.setScene(escenaJuego);
 			stage.setFullScreenExitHint("");

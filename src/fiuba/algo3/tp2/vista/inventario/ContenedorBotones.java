@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2.vista.inventario;
 
+import fiuba.algo3.tp2.controlador.inventario.BotonCrearEventHandler;
 import fiuba.algo3.tp2.modelo.herramienta.creador.CreadorHerramienta;
 import fiuba.algo3.tp2.modelo.herramienta.creador.MesaDeTrabajo;
 import fiuba.algo3.tp2.modelo.jugador.inventario.Inventario;
