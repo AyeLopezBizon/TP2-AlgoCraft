@@ -1,11 +1,11 @@
 package fiuba.algo3.tp2.vista.ocupanteTerreno;
 
 import fiuba.algo3.tp2.modelo.terreno.OcupanteTerreno;
-import fiuba.algo3.tp2.vista.terreno.VistaCasilleroTerreno;
+import fiuba.algo3.tp2.vista.ContenedorCasillero;
 
 public class VistaMadera extends VistaMaterial {
 
-	public VistaMadera(VistaCasilleroTerreno casilleroTerreno, OcupanteTerreno ocupanteTerreno) {
-		super(casilleroTerreno, ocupanteTerreno);
+	public VistaMadera(ContenedorCasillero contenedor, OcupanteTerreno ocupanteTerreno) {
+		super(contenedor, ocupanteTerreno);
 	}
 }

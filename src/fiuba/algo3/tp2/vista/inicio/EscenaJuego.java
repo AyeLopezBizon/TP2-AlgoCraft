@@ -1,6 +1,6 @@
-package fiuba.algo3.tp2.vista.inicio.eventHandlers;
+package fiuba.algo3.tp2.vista.inicio;
 
-import fiuba.algo3.tp2.controlador.CombinacionTeclas;
+import fiuba.algo3.tp2.controlador.juego.CombinacionTeclas;
 import fiuba.algo3.tp2.modelo.jugador.Jugador;
 import fiuba.algo3.tp2.modelo.terreno.Terreno;
 import fiuba.algo3.tp2.vista.inventario.ContenedorInventario;

@@ -1,6 +1,6 @@
-package fiuba.algo3.tp2.vista.inicio.eventHandlers;
+package fiuba.algo3.tp2.controlador.inicio;
 
-import fiuba.algo3.tp2.vista.inicio.eventHandlers.EscenaJuego;
+import fiuba.algo3.tp2.vista.inicio.EscenaJuego;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 

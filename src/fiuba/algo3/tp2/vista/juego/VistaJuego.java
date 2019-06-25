@@ -1,7 +1,6 @@
-package fiuba.algo3.tp2.vista.inicio.eventHandlers;
+package fiuba.algo3.tp2.vista.juego;
 
 import fiuba.algo3.tp2.modelo.juego.Juego;
-import fiuba.algo3.tp2.vista.juego.ContenedorJuego;
 import fiuba.algo3.tp2.vista.terreno.ContenedorTerreno;
 import fiuba.algo3.tp2.vista.terreno.VistaTerreno;
 import javafx.stage.Stage;

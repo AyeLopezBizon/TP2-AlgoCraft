@@ -1,11 +1,11 @@
 package fiuba.algo3.tp2.vista.ocupanteTerreno;
 
 import fiuba.algo3.tp2.modelo.terreno.OcupanteTerreno;
-import fiuba.algo3.tp2.vista.terreno.VistaCasilleroTerreno;
+import fiuba.algo3.tp2.vista.ContenedorCasillero;
 
 public class VistaDiamante extends VistaMaterial {
 
-	public VistaDiamante(VistaCasilleroTerreno vistaCasilleroTerreno, OcupanteTerreno ocupanteTerreno) {
-		super(vistaCasilleroTerreno, ocupanteTerreno);
+	public VistaDiamante(ContenedorCasillero contenedor, OcupanteTerreno ocupanteTerreno) {
+		super(contenedor, ocupanteTerreno);
 	}
 }

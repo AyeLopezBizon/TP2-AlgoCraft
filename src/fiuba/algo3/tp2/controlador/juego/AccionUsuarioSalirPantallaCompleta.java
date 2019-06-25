@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.controlador;
+package fiuba.algo3.tp2.controlador.juego;
 
 import fiuba.algo3.tp2.vista.juego.BarraDeMenu;
 import javafx.stage.Stage;

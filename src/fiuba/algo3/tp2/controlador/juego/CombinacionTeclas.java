@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.controlador;
+package fiuba.algo3.tp2.controlador.juego;
 
 import java.util.HashSet;
 import java.util.Set;

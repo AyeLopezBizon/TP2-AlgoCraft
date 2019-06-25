@@ -4,46 +4,48 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Observable;
 import java.util.Observer;
 
+import fiuba.algo3.tp2.modelo.notificacion.Notificacion;
 import fiuba.algo3.tp2.modelo.terreno.OcupanteTerreno;
-import javafx.scene.layout.Pane;
+import fiuba.algo3.tp2.vista.ContenedorCasillero;
+import fiuba.algo3.tp2.vista.ocupanteTerreno.Vista;
 
-public class VistaCasilleroTerreno extends Pane implements Observer {
+public class VistaCasilleroTerreno implements Observer {
 	
 	private OcupanteTerreno ocupanteTerreno;
 	private VistaOcupanteTerreno vistaOcupanteTerreno;
+	private ContenedorCasilleroTerreno contenedorCasilleroTerreno;
 	
+	public VistaCasilleroTerreno(ContenedorCasilleroTerreno contenedorCasilleroTerreno) {
+		this.contenedorCasilleroTerreno = contenedorCasilleroTerreno;
+	}
+
 	@Override
 	public void update(Observable o, Object arg) {
 		
 		Object[] parametros = ((Object[])arg);
 		String accion = (String)parametros[0];
 		
-		if(accion.equals("ocuparCasillero")) {
+		if(accion.equals(Notificacion.OCUPAR_CASILLERO)) {
 			try {
 				
 				ocupanteTerreno = (OcupanteTerreno)parametros[1];
 				
-				String nombreClaseVista = "fiuba.algo3.tp2.vista.ocupanteTerreno.Vista" + ocupanteTerreno.getClass().getSimpleName();
+				String nombreClaseVista = Vista.obtenerNombreClaseVistaParaOcupanteTerreno(ocupanteTerreno.getClass().getSimpleName());
 				vistaOcupanteTerreno = (VistaOcupanteTerreno) Class.forName(nombreClaseVista)
-						.getDeclaredConstructor(VistaCasilleroTerreno.class, OcupanteTerreno.class)
-						.newInstance(this, ocupanteTerreno);
-	
+						.getDeclaredConstructor(ContenedorCasillero.class, OcupanteTerreno.class)
+						.newInstance(contenedorCasilleroTerreno, ocupanteTerreno);
+				
 				ocupanteTerreno.addObserver(vistaOcupanteTerreno);
 				vistaOcupanteTerreno.dibujar();
+				
 			} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
 					| InvocationTargetException | NoSuchMethodException | SecurityException
 					| ClassNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}	
-		}else if(accion.equals("desocuparCasillero")){
-			limpiarCasillero();
+			}
+		}else if(accion.equals(Notificacion.DESOCUPAR_CASILLERO)){
+			ocupanteTerreno.removeObserver(vistaOcupanteTerreno);
+			contenedorCasilleroTerreno.limpiarCasillero();
 		}
-	}
-
-	private void limpiarCasillero() {
-		ocupanteTerreno.removeObserver(vistaOcupanteTerreno);
-		getChildren().clear();
-		setBackground(null);
 	}
 }

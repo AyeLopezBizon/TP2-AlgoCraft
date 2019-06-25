@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.vista.juego.eventHandler;
+package fiuba.algo3.tp2.controlador.juego;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
